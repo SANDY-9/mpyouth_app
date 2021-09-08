@@ -10,5 +10,7 @@
 
     <color name="mapo_blue">#00A3E0</color>
     <color name="mapo_gray">#676767</color>
+    <color name="app_background">#F3F3F3</color>
+    <color name="spinner_stroke">#F5F5F5</color>
 
 </resources>

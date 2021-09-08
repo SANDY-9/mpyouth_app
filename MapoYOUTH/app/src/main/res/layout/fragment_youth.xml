@@ -27,10 +27,59 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        app:tabMode="auto">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전체보기" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="건강/스포츠" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="모험개척" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="역사탐방" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="봉사협력" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <Spinner
+        android:overlapAnchor="false"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="@dimen/spinner_height"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:background="@drawable/bg_spinner"
+        android:dropDownWidth="@dimen/spinner_width"
+        android:entries="@array/spinner_youth"
+        android:spinnerMode="dropdown"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FF9800"
-        android:text="청소년활동" />
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        tools:listitem="@layout/item_youth_rv" />
+
 
 </LinearLayout>

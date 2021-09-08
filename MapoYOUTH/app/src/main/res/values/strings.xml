@@ -8,4 +8,12 @@
     <string name="title_edu">평생교육</string>
     <string name="title_donation">재능기부</string>
     <string name="title_home">홈</string>
+
+    <array name="spinner_youth">
+        <item>전체</item>
+        <item>초등학생</item>
+        <item>중학생</item>
+        <item>고등학생</item>
+        <item>대학생</item>
+    </array>
 </resources>

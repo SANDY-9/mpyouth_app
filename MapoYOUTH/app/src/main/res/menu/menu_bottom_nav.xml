@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="홈" />
     <item
-        android:id="@+id/nav_youth"
+        android:id="@+id/youthFragment"
         android:icon="@drawable/ic_youth"
         android:title="청소년활동" />
     <item
-        android:id="@+id/nav_volunteer"
+        android:id="@+id/volunteerFragment"
         android:icon="@drawable/ic_volunteer"
         android:title="봉사활동" />
     <item
-        android:id="@+id/nav_edu"
+        android:id="@+id/eduFragment"
         android:icon="@drawable/ic_edu"
         android:title="평생교육" />
     <item
-        android:id="@+id/nav_donation"
+        android:id="@+id/donationFragment"
         android:icon="@drawable/ic_donation"
         android:title="재능기부" />
 </menu>

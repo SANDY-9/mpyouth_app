@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="홈" />
+    <item
+        android:id="@+id/nav_youth"
+        android:icon="@drawable/ic_youth"
+        android:title="청소년활동" />
+    <item
+        android:id="@+id/nav_volunteer"
+        android:icon="@drawable/ic_volunteer"
+        android:title="봉사활동" />
+    <item
+        android:id="@+id/nav_edu"
+        android:icon="@drawable/ic_edu"
+        android:title="평생교육" />
+    <item
+        android:id="@+id/nav_donation"
+        android:icon="@drawable/ic_donation"
+        android:title="재능기부" />
+</menu>

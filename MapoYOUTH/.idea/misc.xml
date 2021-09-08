@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/drawable/ic_search.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/layout/activity_main.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/layout/fragment_blank.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/layout/fragment_donation.xml" value="0.24682971014492755" />
@@ -11,6 +12,8 @@
         <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/layout/fragment_volunteer.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/layout/fragment_youth.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/menu/menu_bottom_nav.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/menu/menu_top_search.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/nnal0/Desktop/Work/Project/mpyouth_app/MapoYOUTH/app/src/main/res/menu/menu_top_share.xml" value="0.16927083333333334" />
       </map>
     </option>
   </component>

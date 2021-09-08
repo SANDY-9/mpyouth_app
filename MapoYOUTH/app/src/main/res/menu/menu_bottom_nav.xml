@@ -4,21 +4,21 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="홈" />
+        android:title="@string/title_home" />
     <item
         android:id="@+id/youthFragment"
         android:icon="@drawable/ic_youth"
-        android:title="청소년활동" />
+        android:title="@string/title_youth" />
     <item
         android:id="@+id/volunteerFragment"
         android:icon="@drawable/ic_volunteer"
-        android:title="봉사활동" />
+        android:title="@string/title_volunteer" />
     <item
         android:id="@+id/eduFragment"
         android:icon="@drawable/ic_edu"
-        android:title="평생교육" />
+        android:title="@string/title_edu" />
     <item
         android:id="@+id/donationFragment"
         android:icon="@drawable/ic_donation"
-        android:title="재능기부" />
+        android:title="@string/title_donation" />
 </menu>

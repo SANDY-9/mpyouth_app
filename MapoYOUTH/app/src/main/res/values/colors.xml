@@ -21,4 +21,6 @@
     <color name="spinner_stroke">#F5F5F5</color>
     <color name="list_divider">#E5E5E5</color>
 
+    <color name="donation_item_tv_tag">#FFB23F</color>
+
 </resources>

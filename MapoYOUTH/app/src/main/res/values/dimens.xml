@@ -22,5 +22,7 @@
 
     <dimen name="details_title">18sp</dimen>
     <dimen name="details_bottom_size">48dp</dimen>
+    <dimen name="item_donation_rv_outer_padding">16dp</dimen>
+    <dimen name="item_donation_rv_tag_textsize">10sp</dimen>
 
 </resources>

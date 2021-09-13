@@ -53,7 +53,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_8dp"
                     android:text="시립보라매청소년센터"
-                    android:textColor="@color/mapo_gray" />
+                    android:textColor="@color/mapo_gray"
+                    android:textSize="11sp" />
             </LinearLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -63,8 +64,8 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorHeight="@dimen/tab_indicator_height"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:tabIndicatorHeight="@dimen/tab_indicator_height"
         app:tabTextAppearance="@style/TabItem">
 
         <com.google.android.material.tabs.TabItem
@@ -83,16 +84,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="48dp"
-
         android:fillViewport="true"
+        android:background="@color/app_background"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:ignore="SpeakableTextPresentCheck">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/app_background" />
+            android:layout_height="wrap_content" />
     </androidx.core.widget.NestedScrollView>
 
 

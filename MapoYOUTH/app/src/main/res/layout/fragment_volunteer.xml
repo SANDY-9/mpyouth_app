@@ -34,6 +34,7 @@
         android:background="@color/list_divider" />
 
     <com.google.android.material.tabs.TabLayout
+        app:tabTextAppearance="@style/TabItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicatorHeight="@dimen/tab_indicator_height"

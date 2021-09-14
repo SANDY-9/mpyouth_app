@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:icon="@drawable/ic_search"
+        android:title="검색"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/setting"
         android:icon="@drawable/ic_setting"
         android:title="설정"

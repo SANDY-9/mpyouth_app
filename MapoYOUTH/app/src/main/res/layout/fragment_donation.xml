@@ -27,10 +27,9 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/donationRv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#03A9F4"
-        android:text="재능기부" />
+        android:layout_height="wrap_content" />/>
 
 </LinearLayout>

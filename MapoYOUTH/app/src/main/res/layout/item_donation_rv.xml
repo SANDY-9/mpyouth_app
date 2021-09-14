@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="교육(지도)"
+            android:text="교육(지도)"
             android:textSize="@dimen/item_donation_rv_tag_textsize"
             android:textColor="@color/white"/>
     </LinearLayout>
@@ -41,13 +41,13 @@
             android:id="@+id/donationRvItemTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="초,중학교 학습지원 희망해요! (전교과 가능)"
+            android:text="초,중학교 학습지원 희망해요! (전교과 가능)"
             android:textSize="@dimen/item_donation_rv_title_tv_size"
             android:layout_marginBottom="@dimen/item_donation_rv_tag_padding_vertical"/>
         <TextView
             android:id="@+id/donationTvItemContentTv"
             android:textSize="@dimen/item_donation_rv_content_tv_size"
-            tools:text="주최기관 : 도화청소년문화의집\n봉사주기 : 정기 월, 화"
+            android:text="주최기관 : 도화청소년문화의집\n봉사주기 : 정기 월, 화"
             android:textColor="@color/mapo_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/donationRvEduCategoryLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="1일 전"
+        android:text="1일 전"
         android:textSize="@dimen/item_donation_rv_content_tv_size"/>
 
 

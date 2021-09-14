@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/app_background"
+            app:tabIndicatorHeight="@dimen/tab_indicator_height"
             app:tabMode="auto">
 
             <com.google.android.material.tabs.TabItem

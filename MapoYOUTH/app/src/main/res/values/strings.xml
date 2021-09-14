@@ -13,6 +13,8 @@
 
     <string name="detail_notice">※ 해당 정보는 운영기관에서 직접 등록하였으며 문의 및 신청은 기관전화번호를 참고하세요.</string>
 
+    <string name="search_hint">원하는 서비스를 찾아보세요</string>
+
     <array name="spinner_youth">
         <item>전체</item>
         <item>초등학생</item>

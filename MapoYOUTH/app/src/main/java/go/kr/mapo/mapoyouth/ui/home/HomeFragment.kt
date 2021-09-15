@@ -18,6 +18,8 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.forEachIndexed
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.MutableLiveData
@@ -65,7 +67,9 @@ class HomeFragment : Fragment() {
             }
             tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    tab?.let { autoScroll(it.position) }
+                    tab?.let {
+                        autoScroll(it.position)
+                    }
                 }
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
                 }
@@ -111,9 +115,27 @@ class HomeFragment : Fragment() {
                     else -> titleDonation.top + 70
                 }
             ).apply {
-                duration = 1000L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
+                duration = 500L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
             }.start()
         }
+    }
+
+    fun TabLayout.changeTabsFont(selectPosition: Int) {
+        val vg = this.getChildAt(0) as ViewGroup
+        val tabsCount = vg.childCount
+        for (j in 0 until tabsCount) {
+            val vgTab = vg.getChildAt(j) as ViewGroup
+            vgTab.forEachIndexed { index, _ ->
+                val tabViewChild = vgTab.getChildAt(index)
+                if (tabViewChild is TextView) {
+                    tabViewChild.setTextBold(j == selectPosition)
+                }
+            }
+        }
+    }
+
+    private fun TextView.setTextBold(isBold: Boolean) {
+        this.setTypeface(this.typeface, if(isBold) Typeface.BOLD else Typeface.NORMAL)
     }
 
 }

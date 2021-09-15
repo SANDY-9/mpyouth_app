@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_share"
-        android:icon="@drawable/ic_share"
-        android:title="공유하기"
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_setting"
+        android:title="설정"
         app:showAsAction="always" />
 </menu>

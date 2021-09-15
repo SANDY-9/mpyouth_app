@@ -7,9 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- 검색 Toolbar -->
-    <!-- app:menu="@menu/menu_top_backbtn" - 왼쪽으로 이동이 안됨 ㅠㅠㅠㅠ -->
-    <!-- app:logo="@drawable/ic_arrow_back" - 검색이 중앙으로 배치 안됨 -->
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
@@ -140,7 +137,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/search_gray"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

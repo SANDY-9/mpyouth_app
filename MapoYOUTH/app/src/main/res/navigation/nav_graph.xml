@@ -31,7 +31,7 @@
         android:label="fragment_edu"
         tools:layout="@layout/fragment_edu" />
     <fragment
-        android:id="@+id/SettingFragment"
-        android:name="go.kr.mapo.mapoyouth.ui.home.SettingFragment"
-        android:label="SettingFragment" />
+        android:id="@+id/SearchFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.home.SearchFragment"
+        android:label="SearchFragment" />
 </navigation>

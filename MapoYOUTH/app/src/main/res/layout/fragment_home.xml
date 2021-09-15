@@ -327,7 +327,7 @@
         <View
             android:id="@+id/view5"
             android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_height="8dp"
             android:background="@drawable/bg_shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

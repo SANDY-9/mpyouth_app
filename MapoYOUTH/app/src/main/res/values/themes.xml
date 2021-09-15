@@ -21,4 +21,14 @@
         <item name="android:textSize">@dimen/action_bar_title</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="buttonTheme" parent="TextAppearance.AppCompat.Button">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

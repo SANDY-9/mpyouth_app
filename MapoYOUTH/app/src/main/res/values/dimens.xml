@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="action_bar_title">18sp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
 
 </resources>

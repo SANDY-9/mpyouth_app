@@ -30,4 +30,8 @@
         android:name="go.kr.mapo.mapoyouth.ui.edu.EduFragment"
         android:label="fragment_edu"
         tools:layout="@layout/fragment_edu" />
+    <fragment
+        android:id="@+id/SettingFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.home.SettingFragment"
+        android:label="SettingFragment" />
 </navigation>

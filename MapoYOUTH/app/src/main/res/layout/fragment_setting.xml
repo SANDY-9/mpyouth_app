@@ -6,142 +6,130 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- 설정 Toolbar -->
-    <LinearLayout
-        android:id="@+id/settingtoolbar"
+    <!-- 검색 toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/settingline1"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="@color/white"
-            android:src="@drawable/ic_arrow_back" />
-
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="24dp"
-            android:gravity="center"
-            android:text="설정"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:id="@+id/textView"
+            style="@style/ActionBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="검색"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </androidx.appcompat.widget.Toolbar>
 
-    <!-- 선색 #C4C4C4 육안으로 다른데 확인필요! -->
+
+    <!-- 구분선 1 -->
     <View
         android:id="@+id/settingline1"
         android:layout_width="match_parent"
-        android:layout_height="8dp"
+        android:layout_height="1dp"
         android:background="#C4C4C4"
-        app:layout_constraintTop_toBottomOf="@+id/settingtoolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/setting_toolbar" />
 
-    <!-- 나의 책갈피 - height : 48dp -->
+    <View
+        android:id="@+id/settingline2"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toBottomOf="@+id/settingline1" />
+
+<!--    &lt;!&ndash; 나의 책갈피 - height : 48dp 9/15 피그마 확인시 삭제 &ndash;&gt;
     <Button
+        style="@style/buttonTheme"
         android:id="@+id/mybookmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="white"
         android:gravity="left|center"
         android:text="나의 책갈피"
-        android:textSize="14sp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/settingline1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingline1" />-->
 
     <!-- 알림설정 -->
     <Button
-        android:id="@+id/noticesetting"
+        android:id="@+id/btn_noticesetting"
+        style="@style/buttonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="알림설정"
         android:gravity="left|center"
-        android:textColor="#666666"
-        android:textSize="14sp"
-        android:background="white"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/mybookmark"/>
+        android:text="알림설정"
+        app:layout_constraintTop_toBottomOf="@+id/settingline2" />
 
 
-    <!-- 약관 및 정책 - 수정필요 -->
-    <TextView
+    <!-- 약관 및 정책 -->
+    <View
         android:id="@+id/settingline3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#666666"
+        app:layout_constraintTop_toBottomOf="@+id/btn_noticesetting" />
+
+    <TextView
+        android:id="@+id/view_terms_of_service"
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:background="#F6F6F6"
         android:elevation="1px"
         android:text="      약관 및 정책"
-        android:textColor="#666666"
+        android:textColor="#000000"
         android:textStyle="bold"
         android:textSize="12sp"
         android:gravity="left|center"
-        app:layout_constraintBottom_toTopOf="@+id/service"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noticesetting" />
+        app:layout_constraintTop_toBottomOf="@+id/settingline3" />
 
     <!-- 서비스 이용약관 -->
     <Button
-        android:id="@+id/service"
+        android:id="@+id/btn_terms_of_service"
+        style="@style/buttonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="white"
         android:gravity="left|center"
         android:text="서비스 이용약관"
-        android:textSize="14sp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/noticesetting" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_noticesetting" />
 
     <!-- 위치정보서비스 이용약관 -->
     <Button
-        android:id="@+id/a"
+        android:id="@+id/btn_location_of_service"
+        style="@style/buttonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="white"
         android:gravity="left|center"
         android:text="위치정보서비스 이용약관"
-        android:textSize="14sp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/service" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_terms_of_service" />
 
 
     <!-- 개인정보 처리방침 -->
     <Button
-        android:id="@+id/b"
+        android:id="@+id/btn_privacy_policy"
+        style="@style/buttonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="white"
         android:gravity="left|center"
         android:text="개인정보 처리방침"
-        android:textSize="14sp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/a" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_location_of_service" />
 
 
     <!-- 오픈소스 라이선스 -->
     <Button
-        android:id="@+id/c"
+        android:id="@+id/btn_open_source"
+        style="@style/buttonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="white"
         android:gravity="left|center"
         android:text="오픈소스 라이선스"
-        android:textSize="14sp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/b" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_privacy_policy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

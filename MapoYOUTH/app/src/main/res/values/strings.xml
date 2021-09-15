@@ -8,4 +8,6 @@
     <string name="title_edu">평생교육</string>
     <string name="title_donation">재능기부</string>
     <string name="title_home">홈</string>
+
+    <string name="search_hint">원하는 서비스를 찾아보세요</string>
 </resources>

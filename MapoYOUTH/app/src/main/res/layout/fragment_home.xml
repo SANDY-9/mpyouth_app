@@ -304,17 +304,19 @@
                     android:text="청소년활동" />
 
                 <com.google.android.material.tabs.TabItem
+                    android:id="@+id/item1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="봉사활동" />
 
                 <com.google.android.material.tabs.TabItem
+                    android:id="@+id/item2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="평생교육" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tabItem3"
+                    android:id="@+id/item3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="재능기부" />
@@ -325,7 +327,7 @@
         <View
             android:id="@+id/view5"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="3dp"
             android:background="@drawable/bg_shadow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

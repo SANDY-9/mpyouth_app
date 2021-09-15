@@ -17,6 +17,7 @@ import android.os.Build
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
+import androidx.core.widget.NestedScrollView
 
 
 private const val TAG = "HomeFragment"
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
     lateinit var binding : FragmentHomeBinding
     private var tabSelected = false
     private var scrolledEnd = false
+    private var realTabSelecd = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,45 +42,44 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                Log.e(TAG, scrollY.toString())
                 if(!tabSelected) {
                     when (scrollY) {
                         in 0..titleVolunteer.top -> {
                             searchLayout.visibility = View.VISIBLE
                             topSearch.visibility = View.GONE
+                            realTabSelecd = false
+                            tabs.getTabAt(0)!!.select()
                         }
                         in titleVolunteer.top..titleEdu.top -> {
                             searchLayout.visibility = View.GONE
                             topSearch.visibility = View.VISIBLE
+                            realTabSelecd = false
+                            tabs.getTabAt(1)!!.select()
                         }
                         in titleEdu.top..titleDonation.top -> {
                             searchLayout.visibility = View.GONE
                             topSearch.visibility = View.VISIBLE
+                            realTabSelecd = false
+                            tabs.getTabAt(2)!!.select()
                         }
                         in titleDonation.top..rvDonationAd.bottom -> {
                             searchLayout.visibility = View.GONE
                             topSearch.visibility = View.VISIBLE
+                            realTabSelecd = false
+                            tabs.getTabAt(3)!!.select()
                         }
                     }
                 }
-//                if(!tabSelected) {
-//                    searchLayout.visibility = when(scrollY) {
-//                        in 0..200 -> View.VISIBLE
-//                        else -> View.GONE
-//                    }
-//                }
                 if(scrolledEnd) {
                     tabSelected = false
                     scrolledEnd = false
                 }
             }
-
             tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
                         Log.e(TAG, "onTabSelected: ", )
-                        //tabLayout.visibility = View.GONE
-                        if (!tabSelected) {
+                        if (tabSelected) {
                             ObjectAnimator.ofInt(
                                 nestedScrollView, "scrollY", when (it.position) {
                                     0 -> 0
@@ -89,8 +90,8 @@ class HomeFragment : Fragment() {
                             ).apply {
                                 duration = 1000L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
                                 doOnEnd {
-                                    scrolledEnd = true
                                     tabSelected = true
+                                    scrolledEnd = true
                                 }
                             }.start()
                         }

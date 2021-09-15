@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
                         autoScroll(it.position)
+                        //tabs.changeTabsFont(it.position)
                     }
                 }
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -120,6 +121,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /*
     fun TabLayout.changeTabsFont(selectPosition: Int) {
         val vg = this.getChildAt(0) as ViewGroup
         val tabsCount = vg.childCount
@@ -137,5 +139,7 @@ class HomeFragment : Fragment() {
     private fun TextView.setTextBold(isBold: Boolean) {
         this.setTypeface(this.typeface, if(isBold) Typeface.BOLD else Typeface.NORMAL)
     }
+
+     */
 
 }

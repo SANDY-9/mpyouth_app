@@ -21,9 +21,21 @@
     <dimen name="list_img_height">140dp</dimen>
     <dimen name="details_img_height">200dp</dimen>
 
-    <dimen name="tag_size">12sp</dimen>
+    <dimen name="tag_size">10sp</dimen>
 
     <dimen name="details_title">18sp</dimen>
     <dimen name="details_bottom_size">48dp</dimen>
+
+    <dimen name="home_ad_item_width">160dp</dimen>
+    <dimen name="home_ad_item_height">130dp</dimen>
+    <dimen name="home_youth_item_width">272dp</dimen>
+    <dimen name="home_youth_item_height">219dp</dimen>
+    <dimen name="home_youth_item_img_size">48dp</dimen>
+    <dimen name="home_volunteer_item_width">258dp</dimen>
+    <dimen name="home_volunteer_item_height">195dp</dimen>
+    <dimen name="home_edu_item_width">258dp</dimen>
+    <dimen name="home_edu_item_height">223dp</dimen>
+    <dimen name="home_ad_width">328dp</dimen>
+    <dimen name="home_ad_height">130dp</dimen>
 
 </resources>

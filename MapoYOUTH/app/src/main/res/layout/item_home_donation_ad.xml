@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/home_ad_width"
+    android:layout_height="@dimen/home_ad_height"
+    android:layout_marginEnd="@dimen/margin_16dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="@null"
+    app:cardMaxElevation="@null">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/poster" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradi" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/margin_12dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="@font/roboto_700"
+        android:text="오일 파스텔 해 봤어? \n야 너두? 야 나두!"
+        android:textColor="@color/white" />
+</androidx.cardview.widget.CardView>

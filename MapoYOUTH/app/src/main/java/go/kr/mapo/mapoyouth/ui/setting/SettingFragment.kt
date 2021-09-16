@@ -1,4 +1,4 @@
-package go.kr.mapo.mapoyouth.ui.home
+package go.kr.mapo.mapoyouth.ui.setting
 
 import android.os.Bundle
 import android.view.MenuItem

@@ -1,4 +1,4 @@
-package go.kr.mapo.mapoyouth.ui.home
+package go.kr.mapo.mapoyouth.ui.search
 
 import android.os.Bundle
 import android.view.*
@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.MainActivity
-import go.kr.mapo.mapoyouth.ui.donation.DonationFragment
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
-import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
+import go.kr.mapo.mapoyouth.util.CustomAttr
 
 class SearchFragment: Fragment(R.layout.fragment_search) {
 
@@ -33,34 +32,44 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
+        val youthAdapter = SearchYouthListAdapter(listOf("1", "1", "1", "1", "1"))
+        val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
+        val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
+
         with(recyclerView) {
 
             //레이아웃 매니저 셋팅 -> xml에서 진행함
 
             // Adapter 셋팅
-            adapter = SearchYouthListAdapter(listOf("1", "1", "1", "1", "1"))
-            // adapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
-            // adapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
-            //adapter = DonationListAdapter(listOf("1", "1", "1", "1", "1"))
+            adapter = youthAdapter
 
         }
-
+        val tabItem = tabLayout.getChildAt(0) as ViewGroup
         // Tab 클릭시 동작
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab : TabLayout.Tab?){
-                when (tab!!.position){
 
-
-
+        tabLayout.apply {
+            getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+                override fun onTabSelected(tab : TabLayout.Tab?){
+                    tab?.let {
+                        val position = it.position
+                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount)
+                        recyclerView.adapter = when (position){
+                            0 -> youthAdapter
+                            1 -> volunteerAdapter
+                            2 -> eduAdapter
+                            else -> null
+                        }
+                    }
                 }
-            }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-        })
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
+            })
+        }
 
         val parent = activity as MainActivity
         with(parent) {

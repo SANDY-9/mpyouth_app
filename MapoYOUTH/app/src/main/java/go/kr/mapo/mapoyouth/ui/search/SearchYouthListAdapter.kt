@@ -1,4 +1,4 @@
-package go.kr.mapo.mapoyouth.ui.home
+package go.kr.mapo.mapoyouth.ui.search
 
 import android.content.Intent
 import android.view.LayoutInflater

@@ -4,21 +4,63 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.donation.DonationFragment
+import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
+import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
+import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
 
 class SearchFragment: Fragment(R.layout.fragment_search) {
 
     // Toolbar에는 Home(왼쪽 배치)과 menu(오른쪽 배치)가 존재함
     // HomeBtn을 BackBtn으로 변경진행
 
+    // Fragment는 레이아웃 매니저와 어댑터를 생성하고 연결해주는 곳
+
     private lateinit var mToolbar: Toolbar
+    private lateinit var tabLayout: TabLayout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)     // Fragment에 메뉴가 있다고 알려줌
 
         mToolbar = view.findViewById(R.id.search_toolbar)
+        tabLayout = view.findViewById(R.id.tabLayout)
+
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+
+        with(recyclerView) {
+
+            //레이아웃 매니저 셋팅 -> xml에서 진행함
+
+            // Adapter 셋팅
+            adapter = SearchYouthListAdapter(listOf("1", "1", "1", "1", "1"))
+            // adapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
+            // adapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
+            //adapter = DonationListAdapter(listOf("1", "1", "1", "1", "1"))
+
+        }
+
+        // Tab 클릭시 동작
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab : TabLayout.Tab?){
+                when (tab!!.position){
+
+
+
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
 
         val parent = activity as MainActivity
         with(parent) {
@@ -29,6 +71,9 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
                 title = null
             }
         }
+
+
+
     }
 
     // 액션버튼 클릭 이벤트 처리
@@ -38,6 +83,8 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }
 
 

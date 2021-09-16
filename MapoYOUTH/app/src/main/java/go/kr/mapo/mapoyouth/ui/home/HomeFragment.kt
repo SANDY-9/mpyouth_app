@@ -16,8 +16,15 @@ import android.os.Build
 
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.forEachIndexed
+import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
+import androidx.lifecycle.MutableLiveData
+import go.kr.mapo.mapoyouth.util.CustomAttr
+import kotlin.math.log
 
 
 private const val TAG = "HomeFragment"
@@ -25,9 +32,6 @@ private const val TAG = "HomeFragment"
 class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
-    private var tabSelected = false
-    private var scrolledEnd = false
-    private var realTabSelecd = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,69 +45,43 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                if(!tabSelected) {
-                    when (scrollY) {
-                        in 0..titleVolunteer.top -> {
-                            searchLayout.visibility = View.VISIBLE
-                            topSearch.visibility = View.GONE
-                            realTabSelecd = false
-                            tabs.getTabAt(0)!!.select()
-                        }
-                        in titleVolunteer.top..titleEdu.top -> {
-                            searchLayout.visibility = View.GONE
-                            topSearch.visibility = View.VISIBLE
-                            realTabSelecd = false
-                            tabs.getTabAt(1)!!.select()
-                        }
-                        in titleEdu.top..titleDonation.top -> {
-                            searchLayout.visibility = View.GONE
-                            topSearch.visibility = View.VISIBLE
-                            realTabSelecd = false
-                            tabs.getTabAt(2)!!.select()
-                        }
-                        in titleDonation.top..rvDonationAd.bottom -> {
-                            searchLayout.visibility = View.GONE
-                            topSearch.visibility = View.VISIBLE
-                            realTabSelecd = false
-                            tabs.getTabAt(3)!!.select()
-                        }
+            val tabItem = tabs.getChildAt(0) as ViewGroup
+            nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+                when(scrollY) {
+                    in 0 until titleVolunteer.top -> {
+                        setVisibilityDisplay(true)
+                        setTabItem(tabItem, 0, tabs.tabCount)
                     }
-                }
-                if(scrolledEnd) {
-                    tabSelected = false
-                    scrolledEnd = false
+                    in titleVolunteer.top until titleEdu.top -> {
+                        setVisibilityDisplay(false)
+                        setTabItem(tabItem, 1, tabs.tabCount)
+                    }
+                    in titleEdu.top until rvEdu.top+100-> {
+                        setVisibilityDisplay(false)
+                        setTabItem(tabItem, 2, tabs.tabCount)
+                    }
+                    in rvEdu.top+100 until rvDonationAd.bottom -> {
+                        setVisibilityDisplay(false)
+                        setTabItem(tabItem, 3, tabs.tabCount)
+                    }
                 }
             }
-            tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    tab?.let {
+            tabs.apply {
+                getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                    override fun onTabSelected(tab: TabLayout.Tab?) {
                         Log.e(TAG, "onTabSelected: ", )
-                        if (tabSelected) {
-                            ObjectAnimator.ofInt(
-                                nestedScrollView, "scrollY", when (it.position) {
-                                    0 -> 0
-                                    1 -> titleVolunteer.top + 70
-                                    2 -> titleEdu.top + 70
-                                    else -> titleDonation.top + 70
-                                }
-                            ).apply {
-                                duration = 1000L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
-                                doOnEnd {
-                                    tabSelected = true
-                                    scrolledEnd = true
-                                }
-                            }.start()
+                        tab?.let {
+                            autoScroll(it.position)
+                            CustomAttr.changeTabsBold(tabItem, it.position, tabs.tabCount)
                         }
                     }
-                }
-
-                override fun onTabUnselected(tab: TabLayout.Tab?) {
-                }
-
-                override fun onTabReselected(tab: TabLayout.Tab?) {
-                }
-            })
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    }
+                    override fun onTabReselected(tab: TabLayout.Tab?) {
+                    }
+                })
+            }
 
             rvYouth.adapter = HomeYouthListAdapter(listOf("1","2","3","4","5"))
             rvVolunteer.adapter = HomeVolunteerListAdapter(listOf("1","2","3","4","5"))
@@ -111,6 +89,40 @@ class HomeFragment : Fragment() {
             rvEdu.adapter = HomeEduListAdapter(listOf("1","2","3","4","5"))
             rvDonation.adapter = HomeDonationListAdapter(listOf("1","2","3","4","5"))
             rvDonationAd.adapter = HomeDonationADAdapter(listOf("1","2","3","4","5"))
+        }
+    }
+
+    private fun setVisibilityDisplay(boolean: Boolean) {
+        with(binding) {
+            if(boolean) {
+                searchLayout.visibility = View.VISIBLE
+                topSearch.visibility = View.GONE
+            } else {
+                searchLayout.visibility = View.GONE
+                topSearch.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun setTabItem(tabs: ViewGroup, position: Int, tabCount: Int) {
+        for (i in 0 until tabCount) {
+            tabs.getChildAt(i).isSelected = i == position
+            CustomAttr.changeTabsBold(tabs, position, tabCount)
+        }
+    }
+
+    private fun autoScroll(position : Int) {
+        with(binding) {
+            ObjectAnimator.ofInt(
+                nestedScrollView, "scrollY", when (position) {
+                    0 -> 0
+                    1 -> titleVolunteer.top + 70
+                    2 -> titleEdu.top + 70
+                    else -> titleDonation.top + 70
+                }
+            ).apply {
+                duration = 500L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
+            }.start()
         }
     }
 

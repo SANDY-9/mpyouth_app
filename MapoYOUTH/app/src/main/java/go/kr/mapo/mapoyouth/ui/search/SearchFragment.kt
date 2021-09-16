@@ -10,7 +10,15 @@ import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
+import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
 import go.kr.mapo.mapoyouth.util.CustomAttr
+
+/**
+ * @author LimSeulgi
+ * @email sg21.lim@gamil.com
+ * @created 2021-09-09
+ * @desc
+ **/
 
 class SearchFragment: Fragment(R.layout.fragment_search) {
 
@@ -32,7 +40,7 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        val youthAdapter = SearchYouthListAdapter(listOf("1", "1", "1", "1", "1"))
+        val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
 
@@ -45,15 +53,15 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
 
         }
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
-        // Tab 클릭시 동작
 
+        // Tab 클릭시 동작
         tabLayout.apply {
             getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
                 override fun onTabSelected(tab : TabLayout.Tab?){
                     tab?.let {
                         val position = it.position
-                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount)
+                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount) // 탭 선택시 글씨 굵게
                         recyclerView.adapter = when (position){
                             0 -> youthAdapter
                             1 -> volunteerAdapter
@@ -71,6 +79,9 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             })
         }
 
+        // HomeFragment의 et_search 클릭시 SearchFragment로 이동
+
+        // 화면 뒤로가기
         val parent = activity as MainActivity
         with(parent) {
             setSupportActionBar(mToolbar)
@@ -81,19 +92,15 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             }
         }
 
-
-
     }
 
-    // 액션버튼 클릭 이벤트 처리
+    // 화면 뒤로가기 - 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             android.R.id.home -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }
 
 

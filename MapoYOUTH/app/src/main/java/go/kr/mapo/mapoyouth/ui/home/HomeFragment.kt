@@ -1,6 +1,7 @@
 package go.kr.mapo.mapoyouth.ui.home
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ import androidx.core.view.forEachIndexed
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.MutableLiveData
+import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
 import kotlin.math.log
 
@@ -33,11 +35,28 @@ class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
 
+    var mainActivity:MainActivity?= null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        // Setting Btn에 SettingFragment 추가
+        binding.topSetting.setOnClickListener {
+            mainActivity!!.openFragmnetOnFrameLayout(1)
+        }
+
+        // et_search에 SearchFragment 추가 - Home에서 검색어 입력 후 확인시 동작은 어떻게 처리하나?
+        binding.etSearch.setOnClickListener {
+            mainActivity!!.openFragmnetOnFrameLayout(2)
+        }
         return binding.root
     }
 
@@ -65,6 +84,8 @@ class HomeFragment : Fragment() {
                         setTabItem(tabItem, 3, tabs.tabCount)
                     }
                 }
+
+
             }
             tabs.apply {
                 getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
@@ -90,6 +111,7 @@ class HomeFragment : Fragment() {
             rvDonation.adapter = HomeDonationListAdapter(listOf("1","2","3","4","5"))
             rvDonationAd.adapter = HomeDonationADAdapter(listOf("1","2","3","4","5"))
         }
+
     }
 
     private fun setVisibilityDisplay(boolean: Boolean) {
@@ -125,5 +147,6 @@ class HomeFragment : Fragment() {
             }.start()
         }
     }
+
 
 }

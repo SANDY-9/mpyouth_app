@@ -7,6 +7,13 @@ import androidx.fragment.app.Fragment
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.MainActivity
 
+/**
+ * @author LimSeulgi
+ * @email sg21.lim@gamil.com
+ * @created 2021-09-09
+ * @desc
+ **/
+
 class SettingFragment: Fragment(R.layout.fragment_setting) {
 
     private lateinit var mToolbar : androidx.appcompat.widget.Toolbar
@@ -36,4 +43,6 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    // HomeFragment의 top_setting 클릭시 SettingFragment로 이동
 }

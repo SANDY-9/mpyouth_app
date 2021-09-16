@@ -16,11 +16,9 @@ object CustomAttr {
     fun changeTabsBold(tabs: ViewGroup, selectPosition: Int, tabCount : Int) {
         for (j in 0 until tabCount) {
             val vgTab = tabs.getChildAt(j) as ViewGroup
-            vgTab.forEachIndexed { index, _ ->
-                val tabViewChild = vgTab.getChildAt(index)
-                if (tabViewChild is TextView) {
-                    tabViewChild.typeface = if(j == selectPosition) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
-                }
+            val tabViewChild = vgTab.getChildAt(1)
+            if (tabViewChild is TextView) {
+                tabViewChild.typeface = if(j == selectPosition) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
             }
         }
     }

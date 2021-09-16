@@ -70,7 +70,6 @@ class HomeFragment : Fragment() {
                 getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
                 addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                     override fun onTabSelected(tab: TabLayout.Tab?) {
-                        Log.e(TAG, "onTabSelected: ", )
                         tab?.let {
                             autoScroll(it.position)
                             CustomAttr.changeTabsBold(tabItem, it.position, tabs.tabCount)
@@ -89,6 +88,7 @@ class HomeFragment : Fragment() {
             rvEdu.adapter = HomeEduListAdapter(listOf("1","2","3","4","5"))
             rvDonation.adapter = HomeDonationListAdapter(listOf("1","2","3","4","5"))
             rvDonationAd.adapter = HomeDonationADAdapter(listOf("1","2","3","4","5"))
+            
         }
     }
 

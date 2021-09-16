@@ -19,6 +19,14 @@
 
     <string name="details_btn"><u>자세히보기</u></string>
 
+    <array name="youth_tab">
+        <item>전체보기</item>
+        <item>건강/스포츠</item>
+        <item>모험개척</item>
+        <item>역사탐방</item>
+        <item>봉사협력</item>
+    </array>
+
     <array name="spinner_youth">
         <item>전체</item>
         <item>초등학생</item>
@@ -26,4 +34,13 @@
         <item>고등학생</item>
         <item>대학생</item>
     </array>
+
+    <array name="volunteer_tab">
+        <item>전체보기</item>
+        <item>교육봉사</item>
+        <item>노력봉사</item>
+        <item>문화봉사</item>
+        <item>재능봉사</item>
+    </array>
+
 </resources>

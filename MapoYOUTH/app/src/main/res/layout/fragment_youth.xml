@@ -33,12 +33,13 @@
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
-            app:tabTextAppearance="@style/TabItem"
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/app_background"
             app:tabIndicatorHeight="@dimen/tab_indicator_height"
-            app:tabMode="auto">
+            app:tabMode="auto"
+            app:tabTextAppearance="@style/TabItem">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -69,6 +70,7 @@
         </com.google.android.material.tabs.TabLayout>
 
         <Spinner
+            android:id="@+id/spinner"
             android:layout_width="@dimen/spinner_width"
             android:layout_height="@dimen/spinner_height"
             android:layout_gravity="end"
@@ -82,16 +84,10 @@
             android:spinnerMode="dropdown"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin_16dp"
-            android:layout_marginEnd="@dimen/margin_16dp"
-
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_youth_rv" />
-
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

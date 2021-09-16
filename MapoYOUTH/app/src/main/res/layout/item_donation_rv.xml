@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/item_donation_rv_outer_padding">
+
+    <LinearLayout
+        android:id="@+id/donatoinRvItemTagLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingVertical="@dimen/item_donation_rv_tag_padding_vertical"
+        android:paddingHorizontal="@dimen/item_domation_rv_tag_padding_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/bg_item_donatoin_tag"
+        >
+
+        <TextView
+            android:id="@+id/donationRvItemTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="교육(지도)"
+            android:textSize="@dimen/item_donation_rv_tag_textsize"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/donationRvItemTextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/donatoinRvItemTagLayout"
+        android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/donationRvItemTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="초,중학교 학습지원 희망해요! (전교과 가능)"
+            android:textSize="@dimen/item_donation_rv_title_tv_size"
+            android:layout_marginBottom="@dimen/item_donation_rv_tag_padding_vertical"/>
+        <TextView
+            android:id="@+id/donationTvItemContentTv"
+            android:textSize="@dimen/item_donation_rv_content_tv_size"
+            android:text="주최기관 : 도화청소년문화의집\n봉사주기 : 정기 월, 화"
+            android:textColor="@color/mapo_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/donationRvEduCategoryLayout"
+        android:layout_height="22dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
+        app:layout_constraintTop_toBottomOf="@id/donationRvItemTextLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/donationRvAgoTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/donationRvEduCategoryLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="1일 전"
+        android:textSize="@dimen/item_donation_rv_content_tv_size"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

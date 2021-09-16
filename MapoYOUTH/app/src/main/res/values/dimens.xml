@@ -24,6 +24,13 @@
 
     <dimen name="details_title">18sp</dimen>
     <dimen name="details_bottom_size">48dp</dimen>
+    <dimen name="item_donation_rv_outer_padding">16dp</dimen>
+    <dimen name="item_donation_rv_tag_textsize">10sp</dimen>
+    <dimen name="item_donation_rv_tag_padding_vertical">4dp</dimen>
+    <dimen name="item_domation_rv_tag_padding_horizontal">8dp</dimen>
+    <dimen name="item_donation_rv_text_margin_vertical">8dp</dimen>
+    <dimen name="item_donation_rv_title_tv_size">14sp</dimen>
+    <dimen name="item_donation_rv_content_tv_size">10sp</dimen>
 
     <dimen name="home_ad_item_width">160dp</dimen>
     <dimen name="home_ad_item_height">130dp</dimen>

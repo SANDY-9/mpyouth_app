@@ -23,6 +23,7 @@ import androidx.core.view.forEachIndexed
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.MutableLiveData
+import go.kr.mapo.mapoyouth.util.CustomAttr
 import kotlin.math.log
 
 
@@ -49,34 +50,38 @@ class HomeFragment : Fragment() {
                 when(scrollY) {
                     in 0 until titleVolunteer.top -> {
                         setVisibilityDisplay(true)
-                        setTabItem(tabItem, 0, 4)
+                        setTabItem(tabItem, 0, tabs.tabCount)
                     }
                     in titleVolunteer.top until titleEdu.top -> {
                         setVisibilityDisplay(false)
-                        setTabItem(tabItem, 1, 4)
+                        setTabItem(tabItem, 1, tabs.tabCount)
                     }
                     in titleEdu.top until rvEdu.top+100-> {
                         setVisibilityDisplay(false)
-                        setTabItem(tabItem, 2, 4)
+                        setTabItem(tabItem, 2, tabs.tabCount)
                     }
                     in rvEdu.top+100 until rvDonationAd.bottom -> {
                         setVisibilityDisplay(false)
-                        setTabItem(tabItem, 3, 4)
+                        setTabItem(tabItem, 3, tabs.tabCount)
                     }
                 }
             }
-            tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    tab?.let {
-                        autoScroll(it.position)
-                        //tabs.changeTabsFont(it.position)
+            tabs.apply {
+                getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                    override fun onTabSelected(tab: TabLayout.Tab?) {
+                        Log.e(TAG, "onTabSelected: ", )
+                        tab?.let {
+                            autoScroll(it.position)
+                            CustomAttr.changeTabsBold(tabItem, it.position, tabs.tabCount)
+                        }
                     }
-                }
-                override fun onTabUnselected(tab: TabLayout.Tab?) {
-                }
-                override fun onTabReselected(tab: TabLayout.Tab?) {
-                }
-            })
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    }
+                    override fun onTabReselected(tab: TabLayout.Tab?) {
+                    }
+                })
+            }
 
             rvYouth.adapter = HomeYouthListAdapter(listOf("1","2","3","4","5"))
             rvVolunteer.adapter = HomeVolunteerListAdapter(listOf("1","2","3","4","5"))
@@ -99,14 +104,14 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setTabItem(tabs: ViewGroup, position: Int, size: Int) {
-        for (i in 0 until size) {
+    private fun setTabItem(tabs: ViewGroup, position: Int, tabCount: Int) {
+        for (i in 0 until tabCount) {
             tabs.getChildAt(i).isSelected = i == position
+            CustomAttr.changeTabsBold(tabs, position, tabCount)
         }
     }
 
     private fun autoScroll(position : Int) {
-        Log.e(TAG, "autoScroll: ")
         with(binding) {
             ObjectAnimator.ofInt(
                 nestedScrollView, "scrollY", when (position) {
@@ -120,26 +125,5 @@ class HomeFragment : Fragment() {
             }.start()
         }
     }
-
-    /*
-    fun TabLayout.changeTabsFont(selectPosition: Int) {
-        val vg = this.getChildAt(0) as ViewGroup
-        val tabsCount = vg.childCount
-        for (j in 0 until tabsCount) {
-            val vgTab = vg.getChildAt(j) as ViewGroup
-            vgTab.forEachIndexed { index, _ ->
-                val tabViewChild = vgTab.getChildAt(index)
-                if (tabViewChild is TextView) {
-                    tabViewChild.setTextBold(j == selectPosition)
-                }
-            }
-        }
-    }
-
-    private fun TextView.setTextBold(isBold: Boolean) {
-        this.setTypeface(this.typeface, if(isBold) Typeface.BOLD else Typeface.NORMAL)
-    }
-
-     */
 
 }

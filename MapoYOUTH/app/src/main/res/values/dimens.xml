@@ -15,6 +15,9 @@
     <dimen name="margin_30dp">30dp</dimen>
     <dimen name="margin_32dp">32dp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_42dp">42dp</dimen>
+
+    <dimen name="scroll_margin">100dp</dimen>
 
     <dimen name="list_img_width">120dp</dimen>
     <dimen name="list_img_height">140dp</dimen>
@@ -36,5 +39,7 @@
     <dimen name="home_edu_item_height">223dp</dimen>
     <dimen name="home_ad_width">328dp</dimen>
     <dimen name="home_ad_height">130dp</dimen>
+
+    <dimen name="map_height">200dp</dimen>
 
 </resources>

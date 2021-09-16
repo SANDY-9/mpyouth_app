@@ -14,6 +14,8 @@ import go.kr.mapo.mapoyouth.R
  * @created 2021-09-09
  * @desc
  */
+
+
 class YouthListAdapter(val list: List<String>) : RecyclerView.Adapter<YouthListAdapter.HolderView>() {
     inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun setDivider() {

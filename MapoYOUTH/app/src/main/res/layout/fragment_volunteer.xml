@@ -20,9 +20,9 @@
         <TextView
             android:id="@+id/textView"
             style="@style/ActionBarTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:text="@string/title_volunteer" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -34,6 +34,7 @@
         android:background="@color/list_divider" />
 
     <com.google.android.material.tabs.TabLayout
+        app:tabTextAppearance="@style/TabItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicatorHeight="@dimen/tab_indicator_height"

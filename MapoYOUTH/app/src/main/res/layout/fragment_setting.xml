@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 검색 toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/ActionBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="검색"
+            android:fontFamily="@font/roboto_700"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <!-- 구분선 1 -->
+    <View
+        android:id="@+id/settingline1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C4C4C4"
+        app:layout_constraintTop_toBottomOf="@+id/setting_toolbar" />
+
+    <View
+        android:id="@+id/settingline2"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toBottomOf="@+id/settingline1" />
+
+<!--    &lt;!&ndash; 나의 책갈피 - height : 48dp 9/15 피그마 확인시 삭제 &ndash;&gt;
+    <Button
+        style="@style/buttonTheme"
+        android:id="@+id/mybookmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center"
+        android:text="나의 책갈피"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingline1" />-->
+
+    <!-- 알림설정 -->
+    <Button
+        android:id="@+id/btn_noticesetting"
+        style="@style/buttonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_700"
+        android:gravity="left|center"
+        android:text="알림설정"
+        app:layout_constraintTop_toBottomOf="@+id/settingline2" />
+
+
+    <!-- 약관 및 정책 -->
+    <View
+        android:id="@+id/settingline3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#666666"
+        app:layout_constraintTop_toBottomOf="@+id/btn_noticesetting" />
+
+    <TextView
+        android:id="@+id/view_terms_of_service"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="#F6F6F6"
+        android:elevation="1px"
+        android:fontFamily="@font/roboto_700"
+        android:gravity="left|center"
+        android:text="      약관 및 정책"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/settingline3" />
+
+    <!-- 서비스 이용약관 -->
+    <Button
+        android:id="@+id/btn_terms_of_service"
+        style="@style/buttonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_700"
+        android:gravity="left|center"
+        android:text="서비스 이용약관"
+        app:layout_constraintTop_toBottomOf="@+id/btn_noticesetting" />
+
+    <!-- 위치정보서비스 이용약관 -->
+    <Button
+        android:id="@+id/btn_location_of_service"
+        style="@style/buttonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_700"
+        android:gravity="left|center"
+        android:text="위치정보서비스 이용약관"
+        app:layout_constraintTop_toBottomOf="@+id/btn_terms_of_service" />
+
+
+    <!-- 개인정보 처리방침 -->
+    <Button
+        android:id="@+id/btn_privacy_policy"
+        style="@style/buttonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_700"
+        android:gravity="left|center"
+        android:text="개인정보 처리방침"
+        app:layout_constraintTop_toBottomOf="@+id/btn_location_of_service" />
+
+
+    <!-- 오픈소스 라이선스 -->
+    <Button
+        android:id="@+id/btn_open_source"
+        style="@style/buttonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_700"
+        android:gravity="left|center"
+        android:text="오픈소스 라이선스"
+        app:layout_constraintTop_toBottomOf="@+id/btn_privacy_policy" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

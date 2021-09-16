@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_12dp"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginBottom="8dp">
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/margin_12dp"
+        android:layout_marginBottom="12dp"
         android:orientation="horizontal"
-        android:paddingEnd="@dimen/margin_16dp">
+        android:paddingEnd="16dp">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="@dimen/list_img_width"
-            android:layout_height="@dimen/list_img_height"
+            android:layout_width="120dp"
+            android:layout_height="140dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="0dp"
             app:cardMaxElevation="0dp">
 
+            <!-- 게시글 포스터 -->
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/poster" />
+                android:src="@drawable/poster2" />
 
+            <!-- 모집마감 Tag-->
             <TextView
                 android:id="@+id/tv_deem"
-                style="@style/TagBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -43,21 +47,22 @@
                 android:textColor="#333333"
                 android:visibility="gone" />
 
+            <!-- 모집마감시 게시글 처리-->
             <View
                 android:id="@+id/view_deem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#33000000"
                 android:visibility="gone" />
-
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginStart="16dp"
             android:orientation="vertical">
 
+            <!-- 환경보존 Tag -->
             <TextView
                 android:id="@+id/tv_tag"
                 style="@style/TagBox"
@@ -69,28 +74,33 @@
                 android:text="환경보존"
                 android:textColor="@color/mapo_green" />
 
+            <!-- 게시글 제목-->
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
+                android:fontFamily="@font/roboto_400"
                 android:inputType="textMultiLine"
                 android:lineSpacingExtra="-1sp"
                 android:maxLines="2"
                 android:singleLine="false"
-                android:text="2021 제로웨이스트 업사이클 디자인 공모전(~7/23)"
+                android:text="환경을 바꾸는 달리기\n: 쓰담런 [시즌1]"
                 android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
+            <!-- 주최 기관명 -->
             <TextView
                 android:id="@+id/tv_organization"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="마포청소년센터"
+                android:fontFamily="@font/roboto_400"
+                android:text="시립보라매청소년센터"
                 android:textColor="@color/mapo_gray"
                 android:textSize="12sp" />
 
+            <!-- 초중고 Tag -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,39 +108,40 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tv_tag_elementary"
                     style="@style/AgeBox"
                     android:layout_width="22dp"
                     android:layout_height="21dp"
-                    android:layout_marginTop="@dimen/margin_8dp"
-                    android:layout_marginEnd="@dimen/margin_4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/mapo_olive"
                     android:text="초" />
 
                 <TextView
-                    android:id="@+id/textView61"
+                    android:id="@+id/tv_tag_middle"
                     style="@style/AgeBox"
                     android:layout_width="22dp"
                     android:layout_height="21dp"
-                    android:layout_marginTop="@dimen/margin_8dp"
-                    android:layout_marginEnd="@dimen/margin_4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/mapo_sky"
                     android:text="중" />
 
                 <TextView
-                    android:id="@+id/textView62"
+                    android:id="@+id/tv_tag_high"
                     style="@style/AgeBox"
                     android:layout_width="22dp"
                     android:layout_height="21dp"
-                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/mapo_navy"
                     android:text="고" />
-
             </LinearLayout>
 
+            <!-- 모집 인원 Tag -->
             <TextView
                 android:id="@+id/tv_people"
                 style="@style/TagBox"
@@ -138,18 +149,21 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:backgroundTint="@color/mapo_blue"
-                android:text="모집 인원: 00명"
+                android:text="모집 인원 : 00명"
                 android:textColor="@color/mapo_blue" />
 
         </LinearLayout>
-
     </LinearLayout>
 
+    <!-- 게시글 구분선-->
     <View
         android:id="@+id/divider"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:layout_gravity="bottom"
-        android:background="@color/list_divider" />
+        android:background="@color/list_divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,17 @@
 package go.kr.mapo.mapoyouth.ui.search
 
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.databinding.FragmentHomeBinding
+import go.kr.mapo.mapoyouth.databinding.FragmentSearchBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
@@ -79,15 +84,15 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
             })
         }
 
-        // HomeFragment의 et_search 클릭시 SearchFragment로 이동
 
         // 화면 뒤로가기
+        Log.d("Backbtn", "BackBtn Start!")
         val parent = activity as MainActivity
         with(parent) {
             setSupportActionBar(mToolbar)
             supportActionBar!!.apply {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true)          // 뒤로가기 버튼, Default = true
+                setHomeAsUpIndicator(R.drawable.ic_arrow_back)              // Toolbar의 홈버튼 이미지를 변경 (Default IMG = <- 모양 )
                 title = null
             }
         }
@@ -95,12 +100,19 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
     }
 
     // 화면 뒤로가기 - 클릭 이벤트 처리
+    // 살려주세요 제발 동작 좀 해주세요....
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("Backbtn", "잘 출력되나 home")
         return when (item.itemId){
-            android.R.id.home -> true
+            android.R.id.home ->
+                true
             else -> super.onOptionsItemSelected(item)
         }
+
+        Log.d("Backbtn", "왜 동작을 안함?")
     }
+
+
 }
 
 

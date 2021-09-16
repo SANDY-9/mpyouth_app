@@ -57,6 +57,7 @@ class HomeFragment : Fragment() {
         binding.etSearch.setOnClickListener {
             mainActivity!!.openFragmnetOnFrameLayout(2)
         }
+
         return binding.root
     }
 

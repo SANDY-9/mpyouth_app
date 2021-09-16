@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
     private var pressedTime : Long = 0
-    private val HomeFragment = HomeFragment()
+
     private var SettingFragment = SettingFragment()
     private var SearchFragment = SearchFragment()
 

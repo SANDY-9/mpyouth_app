@@ -44,5 +44,5 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         }
     }
 
-    // HomeFragment의 top_setting 클릭시 SettingFragment로 이동
+
 }

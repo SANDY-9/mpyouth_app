@@ -1,9 +1,11 @@
 package go.kr.mapo.mapoyouth.ui.search
 
+import android.content.Context
 import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -34,6 +36,7 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
 
     private lateinit var mToolbar: Toolbar
     private lateinit var tabLayout: TabLayout
+    private lateinit var callback: OnBackPressedCallback
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -105,12 +108,43 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
         Log.d("Backbtn", "잘 출력되나 home")
         return when (item.itemId){
             android.R.id.home ->
+
                 true
             else -> super.onOptionsItemSelected(item)
+
         }
 
         Log.d("Backbtn", "왜 동작을 안함?")
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                TODO("Not yet implemented")
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        callback.remove()
+    }
+
+
+/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("Backbtn", "잘 출력되나 home")
+        return when (item.itemId){
+            android.R.id.home ->
+
+                true
+            else -> super.onOptionsItemSelected(item)
+
+        }
+
+        Log.d("Backbtn", "왜 동작을 안함?")
+    }*/
 
 
 }

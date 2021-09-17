@@ -54,7 +54,7 @@
                 android:paddingStart="@dimen/margin_16dp"
                 android:paddingTop="@dimen/margin_24dp"
                 android:paddingEnd="@dimen/margin_16dp"
-                android:text="노숙자 및 쪽방촌 거주자를 위한\n 도시락 나눔 활동"
+                android:text="노숙자 및 쪽방촌 거주자를 위한\n도시락 나눔 활동"
                 android:textSize="18sp" />
 
             <TextView

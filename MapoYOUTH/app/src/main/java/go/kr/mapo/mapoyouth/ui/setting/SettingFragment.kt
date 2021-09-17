@@ -48,7 +48,6 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
 
         mToolbar = view.findViewById(R.id.setting_toolbar)
 
-
         val parent = activity as MainActivity
         with(parent){
             setSupportActionBar(mToolbar)
@@ -66,6 +65,5 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         if(item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingFragment_to_homeFragment)
         return super.onOptionsItemSelected(item)
     }
-
 
 }

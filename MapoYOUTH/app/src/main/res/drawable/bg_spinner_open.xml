@@ -13,7 +13,7 @@
                 </shape>
             </item>
             <item
-                android:drawable="@drawable/ic_arrow_down"
+                android:drawable="@drawable/ic_arrow_up"
                 android:gravity="center|end"
                 android:width="25dp"
                 android:height="25dp" />

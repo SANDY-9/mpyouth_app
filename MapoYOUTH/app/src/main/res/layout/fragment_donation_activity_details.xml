@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.donation.DonationActivityDetailsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_background">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dona_de_first"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginVertical="@dimen/margin_8dp"
+                android:paddingBottom="@dimen/margin_16dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/dona_de_place"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/name"
+                    android:text="활동장소" />
+
+                <TextView
+                    android:id="@+id/dona_de_place_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/dona_de_place"
+                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_24dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="사단법인 디나 사무실" />
+
+                <TextView
+                    android:id="@+id/dona_de_count"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_place"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/name"
+                    android:text="모집인원" />
+
+                <TextView
+                    android:id="@+id/dona_de_count_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_place_val"
+                    app:layout_constraintStart_toEndOf="@id/dona_de_count"
+                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_24dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="50명" />
+
+                <TextView
+                    android:id="@+id/dona_de_period"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_count"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/name"
+                    android:text="모집기간" />
+
+                <TextView
+                    android:id="@+id/dona_de_period_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_count_val"
+                    app:layout_constraintStart_toEndOf="@id/dona_de_period"
+                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_24dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="2021-11-01 ~ 2021-11-30" />
+
+                <TextView
+                    android:id="@+id/dona_de_due"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_period"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/name"
+                    android:text="활동일" />
+
+                <TextView
+                    android:id="@+id/dona_de_due_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_period_val"
+                    app:layout_constraintStart_toEndOf="@id/dona_de_url"
+                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_24dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="2021-09-07 10:00 ~ 14:00" />
+
+                <TextView
+                    android:id="@+id/dona_de_url"
+                    android:layout_width="52dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_due"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/name"
+                    android:text="URL" />
+
+                <TextView
+                    android:id="@+id/dona_de_url_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/dona_de_due_val"
+                    app:layout_constraintStart_toEndOf="@id/dona_de_url"
+                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_24dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="-" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/dona_de_second"
+                app:layout_constraintTop_toBottomOf="@id/dona_de_first"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginVertical="@dimen/margin_8dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/dona_de_act_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginVertical="@dimen/margin_12dp"
+                    android:fontFamily="@font/roboto_700"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="활동내용" />
+
+                <TextView
+                    android:id="@+id/dona_de_act_con"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16dp"
+                    android:layout_marginVertical="@dimen/margin_24dp"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_400"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="영어책을 읽어 주는 것을 즐기는 친구들에게 재능 기부를 하고 싶습니다.
+외국에서 5년이상(초1~초6) 거주하며 영어를 익힌 중1학생 입니다." />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/dona_de_warn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dona_de_second"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_42dp"
+                android:fontFamily="@font/roboto_700"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="주의사항" />
+
+            <TextView
+                android:id="@+id/dona_de_warn_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dona_de_warn"
+                android:layout_margin="@dimen/margin_16dp"
+                android:fontFamily="@font/roboto_400"
+                android:textSize="14sp"
+                android:lineHeight="20dp"
+                android:textColor="@color/black"
+                android:text="※ 재학 중인 중, 고등학생은 평일 봉사활동 인정\n 가능 시간이 학교마다 다르므로 반드시 수업 일정에 따른 봉사\n활동 시간을 확인해주시기 바랍니다.\n6교시 수업 - 봉사 시간 2시간 인정\n7교시 수업 - 봉사 시간 1시간 인정" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dona_de_warn_con"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

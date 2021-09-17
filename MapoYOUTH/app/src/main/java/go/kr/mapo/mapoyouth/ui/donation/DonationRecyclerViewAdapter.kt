@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.donation
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,9 @@ class DonationRecyclerViewAdapter(private val itemList: List<String>) : Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val donationData = itemList[position]
+        holder.itemView.setOnClickListener {
+            it.context.startActivity(Intent(it.context, DonationDetailsActivity::class.java))
+        }
         with (holder) {
             titleTv.text = donationData
         }

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
     private var pressedTime : Long = 0
-    var BACKBUTTON_FLAG = false
+    var BACKSTACK_FLAG = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(!BACKBUTTON_FLAG) {
+        if(BACKSTACK_FLAG) {
+            BACKSTACK_FLAG = false
+            super.onBackPressed()
+        } else {
             if (System.currentTimeMillis() > pressedTime + 2000) {
                 pressedTime = System.currentTimeMillis()
                 Toast.makeText(this, "한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
@@ -43,8 +46,6 @@ class MainActivity : AppCompatActivity() {
                 finishAndRemoveTask()                 // 액티비티 종료 + 태스크 리스트에서 지우기
                 android.os.Process.killProcess(android.os.Process.myPid()) // 앱 프로세스 종료
             }
-        } else {
-            super.onBackPressed()
         }
     }
 

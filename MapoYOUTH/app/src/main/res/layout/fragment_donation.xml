@@ -47,8 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/appbar"
-                android:background="@drawable/bg_bottom_line"
-                app:elevation="0dp">
+                android:background="@drawable/bg_bottom_line">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
@@ -72,7 +71,7 @@
                             android:fontFamily="@font/roboto_700"
                             android:textSize="16sp"
                             android:lineHeight="18dp"
-                            android:text="원하는 재능기부를 선택하세요." />
+                            android:text="@string/dona_sub" />
 
                         <TextView
                             android:id="@+id/sltAll"
@@ -87,8 +86,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="전체" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/all" />
 
                         <TextView
                             android:id="@+id/sltDesign"
@@ -104,8 +103,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="디자인" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/dona_design" />
 
                         <TextView
                             android:id="@+id/sltLanguage"
@@ -121,8 +120,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="번역/외국어" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/dona_language" />
 
                         <TextView
                             android:id="@+id/sltLife"
@@ -138,8 +137,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="전체" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/dona_life" />
 
                         <TextView
                             android:id="@+id/sltMusic"
@@ -154,8 +153,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="음악/영상" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/dona_music" />
 
                         <TextView
                             android:id="@+id/sltDevelop"
@@ -171,8 +170,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="프로그램개발" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/dona_develop" />
 
                         <TextView
                             android:id="@+id/sltDoc"
@@ -189,7 +188,7 @@
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
                             android:lineHeight="16dp"
-                            android:text="문서작성" />
+                            android:text="@string/dona_doc" />
 
                         <TextView
                             android:id="@+id/sltBusiness"
@@ -204,8 +203,8 @@
                             android:paddingVertical="8dp"
                             android:paddingHorizontal="@dimen/margin_16dp"
                             android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="마케팅/비지니스" />
+                            android:lineHeight="@dimen/margin_16dp"
+                            android:text="@string/dona_business" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.appbar.CollapsingToolbarLayout>

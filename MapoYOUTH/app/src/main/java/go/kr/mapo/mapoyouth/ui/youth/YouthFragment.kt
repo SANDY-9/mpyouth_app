@@ -38,9 +38,10 @@ class YouthFragment : Fragment() {
                 adapter = ListItemPagerAdapter(FLAG_YOUTH)
             }
             val tabItem = tabs.getChildAt(0) as ViewGroup
-            tabs.getTabAt(0)!!.select().apply { CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount) }
+            tabs.getTabAt(0)!!.select()
+                .apply { CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount) }
             TabLayoutMediator(tabs, viewPager) { tab, position ->
-                tab.text = when(position) {
+                tab.text = when (position) {
                     0 -> tabList[0]
                     1 -> tabList[1]
                     2 -> tabList[2]

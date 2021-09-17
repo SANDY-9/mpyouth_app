@@ -60,7 +60,6 @@ class HomeFragment : Fragment() {
         binding.etSearch.setOnClickListener {
             val nextIntent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(nextIntent)
-
         }
 
         return binding.root

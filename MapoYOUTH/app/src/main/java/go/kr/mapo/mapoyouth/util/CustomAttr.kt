@@ -3,11 +3,13 @@ package go.kr.mapo.mapoyouth.util
 import android.graphics.Typeface
 import android.util.Log
 import android.view.ViewGroup
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.databinding.BindingAdapter
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
 
 /**
  * @author SANDY
@@ -33,8 +35,10 @@ object CustomAttr {
     @JvmStatic
     @BindingAdapter("DefaultSelectedTab")
     fun defaultSelectedTab(tabs: TabLayout, boolean: Boolean) {
-        val tabItem = tabs.getChildAt(0) as ViewGroup
-        changeTabsBold(tabItem, 0, tabs.tabCount)
+        if (boolean) {
+            val tabItem = tabs.getChildAt(0) as ViewGroup
+            changeTabsBold(tabItem, 0, tabs.tabCount)
+        }
     }
 
     fun commonSettingActionbar(actionBar: ActionBar?) {
@@ -42,6 +46,24 @@ object CustomAttr {
             title = null
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("SpinnerEventListener")
+    fun setSpinnerEventsListener(spinner: CustomSpinner, boolean: Boolean) {
+        if(boolean) {
+            spinner.apply {
+                setSpinnerEventsListener(object : CustomSpinner.OnSpinnerEventsListener {
+                    override fun onPopupWindowOpened(spinner: Spinner?) {
+                        setBackgroundResource(R.drawable.bg_spinner_open)
+                    }
+
+                    override fun onPopupWindowClosed(spinner: Spinner?) {
+                        setBackgroundResource(R.drawable.bg_spinner_close)
+                    }
+                })
+            }
         }
     }
 

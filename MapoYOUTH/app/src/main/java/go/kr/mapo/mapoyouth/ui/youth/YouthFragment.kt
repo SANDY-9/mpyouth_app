@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
@@ -14,6 +16,7 @@ import go.kr.mapo.mapoyouth.databinding.FragmentYouthBinding
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
 import go.kr.mapo.mapoyouth.util.Constants.FLAG_YOUTH
 import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
 
 private const val TAG = "YouthFragment"
 

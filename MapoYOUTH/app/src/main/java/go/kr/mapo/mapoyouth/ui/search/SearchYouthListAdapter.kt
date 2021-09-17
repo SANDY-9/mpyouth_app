@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.youth.YouthDetailsActivity
 
-// 1) ViewHolder라는 객체를 통해서 각 항목 나타냄
-// 2) ViewHolder 위 inflate를 통해 내가 원하는 레이아웃을 표한하고 객체 반환 (onCreateViewHolder)
-// 3) 거기에 데이터를 넣어줌 (onBindViewHolder)
-
+/**
+ * @author LimSeulgi
+ * @email sg21.lim@gamil.com
+ * @created 2021-09-15
+ * @desc
+ **/
 
 class SearchYouthListAdapter(val list: List<String>) : RecyclerView.Adapter<SearchYouthListAdapter.HolderView>() {
 
@@ -30,8 +32,8 @@ class SearchYouthListAdapter(val list: List<String>) : RecyclerView.Adapter<Sear
         // 내가 표현하고 싶은(코드로 조작하고 싶은) 레이아웃을 inflate하고
         HolderView(LayoutInflater.from(parent.context).inflate(R.layout.item_youth_rv, parent, false))
 
-        // ViewHolder에 담아서 반환함
-        // return HolderView(itemView)
+    // ViewHolder에 담아서 반환함
+    // return HolderView(itemView)
 
     // item에 데이터를 바인딩한다. 화면에 들어온 아이템에 대해서만 작업을 진행
     override fun onBindViewHolder(holder: HolderView, position: Int) {

@@ -16,6 +16,9 @@
         <activity
             android:name=".ui.donation.DonationDetailsActivity"
             android:exported="true" />
+        <activity    
+            android:name=".ui.search.SearchActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.edu.EduDetailsActivity"
             android:exported="true" />

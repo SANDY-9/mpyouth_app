@@ -10,8 +10,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerBinding
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
-import go.kr.mapo.mapoyouth.util.Constants.FLAG_VOLUNTEER
 import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
 
 class VolunteerFragment : Fragment() {
 

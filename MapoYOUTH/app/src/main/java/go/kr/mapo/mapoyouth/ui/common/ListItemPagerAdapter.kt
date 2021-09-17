@@ -8,9 +8,9 @@ import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
-import go.kr.mapo.mapoyouth.util.Constants.FLAG_EDU
-import go.kr.mapo.mapoyouth.util.Constants.FLAG_VOLUNTEER
-import go.kr.mapo.mapoyouth.util.Constants.FLAG_YOUTH
+import go.kr.mapo.mapoyouth.util.FLAG_EDU
+import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
+import go.kr.mapo.mapoyouth.util.FLAG_YOUTH
 
 /**
  * @author SANDY

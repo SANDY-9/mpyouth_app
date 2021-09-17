@@ -1,64 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.volunteer.VolunteerDetailsActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_top_share" />
+        tools:context=".ui.volunteer.VolunteerDetailsActivity">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/app_background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
-
-        <TextView
-            android:id="@+id/textView13"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:maxLines="2"
-            android:paddingStart="@dimen/margin_16dp"
-            android:paddingTop="@dimen/margin_24dp"
-            android:paddingEnd="@dimen/margin_16dp"
-            android:text="노숙자 및 쪽방촌 거주자를 위한\n 도시락 나눔 활동"
-            android:textSize="18sp" />
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_top_share" />
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="match_parent"
+        <View
+            android:id="@+id/view8"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="47dp"
+            android:background="@color/search_outline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingStart="@dimen/margin_16dp"
-            android:paddingTop="@dimen/margin_8dp"
-            android:paddingEnd="@dimen/margin_16dp"
-            android:paddingBottom="@dimen/margin_24dp"
-            android:singleLine="true"
-            android:text="사단법인다나"
-            android:textColor="@color/mapo_gray"
-            android:textSize="11sp" />
+            android:background="@color/app_background"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:maxLines="2"
+                android:paddingStart="@dimen/margin_16dp"
+                android:paddingTop="@dimen/margin_24dp"
+                android:paddingEnd="@dimen/margin_16dp"
+                android:text="노숙자 및 쪽방촌 거주자를 위한\n 도시락 나눔 활동"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingStart="@dimen/margin_16dp"
+                android:paddingTop="@dimen/margin_8dp"
+                android:paddingEnd="@dimen/margin_16dp"
+                android:paddingBottom="@dimen/margin_24dp"
+                android:singleLine="true"
+                android:text="사단법인다나"
+                android:textColor="@color/mapo_gray"
+                android:textSize="11sp" />
+
+
+        </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
             app:tabIndicatorHeight="@dimen/tab_indicator_height"
             app:tabTextAppearance="@style/TabItem">
 
@@ -77,38 +101,43 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            android:background="@color/app_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:layout_marginBottom="@dimen/margin_30dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginBottom="@dimen/margin_30dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            <Button
+                android:id="@+id/button"
+                android:layout_width="@dimen/details_bottom_size"
+                android:layout_height="@dimen/details_bottom_size"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:background="@drawable/bg_btn"
+                app:icon="@drawable/ic_call"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="@dimen/details_bottom_size"
-            android:layout_height="@dimen/details_bottom_size"
-            android:layout_marginEnd="@dimen/margin_10dp"
-            android:background="@drawable/bg_btn"
-            app:icon="@drawable/ic_call"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="@dimen/details_bottom_size"
+                android:layout_height="@dimen/details_bottom_size"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn"
+                android:fontFamily="@font/roboto_700"
+                android:text="@string/btn_apply" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="@dimen/details_bottom_size"
-            android:layout_height="@dimen/details_bottom_size"
-            android:layout_weight="1"
-            android:background="@drawable/bg_btn"
-            android:fontFamily="@font/roboto_700"
-            android:text="@string/btn_apply" />
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

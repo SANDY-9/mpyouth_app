@@ -15,6 +15,8 @@ import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
 import go.kr.mapo.mapoyouth.util.Constants.FLAG_YOUTH
 import go.kr.mapo.mapoyouth.util.CustomAttr
 
+private const val TAG = "YouthFragment"
+
 class YouthFragment : Fragment() {
 
     private lateinit var binding : FragmentYouthBinding
@@ -36,7 +38,7 @@ class YouthFragment : Fragment() {
                 adapter = ListItemPagerAdapter(FLAG_YOUTH)
             }
             val tabItem = tabs.getChildAt(0) as ViewGroup
-            tabs.getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount) }
+            tabs.getTabAt(0)!!.select().apply { CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount) }
             TabLayoutMediator(tabs, viewPager) { tab, position ->
                 tab.text = when(position) {
                     0 -> tabList[0]

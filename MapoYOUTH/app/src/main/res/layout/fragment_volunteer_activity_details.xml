@@ -100,41 +100,21 @@
                 app:layout_constraintTop_toTopOf="@+id/textView19" />
 
             <TextView
-                android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_32dp"
-                android:text="상세내용"
-                android:textColor="@color/name"
-                app:layout_constraintStart_toStartOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:text="주먹밥 만들기- 도시락 포장 용기 정리- 도시락 식자재 손질 및 준비- 주방 도구 비품 준비"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView20"
-                app:layout_constraintTop_toTopOf="@+id/textView24" />
-
-            <TextView
                 android:id="@+id/textView26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_32dp"
                 android:text="참가비"
                 android:textColor="@color/name"
-                app:layout_constraintStart_toStartOf="@+id/textView24"
-                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+                app:layout_constraintStart_toStartOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <TextView
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="없음"
-                app:layout_constraintStart_toStartOf="@+id/textView25"
+                app:layout_constraintStart_toStartOf="@+id/textView20"
                 app:layout_constraintTop_toTopOf="@+id/textView26" />
 
             <TextView
@@ -193,6 +173,53 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/search_outline" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_12dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_12dp"
+                android:fontFamily="@font/roboto_700"
+                android:text="활동내용" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/list_divider" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_24dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_24dp"
+                android:inputType="textMultiLine"
+                android:text="주먹밥 만들기- 도시락 포장 용기 정리- 도시락 식자재 손질 및 준비- 주방 도구 비품 준비"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
@@ -203,7 +230,7 @@
             android:text="주의사항"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <TextView
             android:id="@+id/textView22"

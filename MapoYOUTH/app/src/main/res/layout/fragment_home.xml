@@ -297,7 +297,8 @@
                 android:layout_height="wrap_content"
                 app:tabIndicatorColor="@null"
                 app:tabMode="fixed"
-                app:tabTextAppearance="@style/TabItem">
+                app:tabTextAppearance="@style/TabItem"
+                DefaultSelectedTab="@{true}">
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/item0"

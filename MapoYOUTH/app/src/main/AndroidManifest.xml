@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MapoYOUTH"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.edu.EduDetailsActivity"
             android:exported="true" />
         <activity

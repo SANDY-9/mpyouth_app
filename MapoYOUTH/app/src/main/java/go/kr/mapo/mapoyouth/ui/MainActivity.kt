@@ -9,7 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityMainBinding
 import go.kr.mapo.mapoyouth.ui.home.HomeFragment
-import go.kr.mapo.mapoyouth.ui.search.SearchFragment
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.setting.SettingFragment
 
 class MainActivity : AppCompatActivity() {
@@ -18,17 +18,18 @@ class MainActivity : AppCompatActivity() {
     private var pressedTime : Long = 0
 
     private var SettingFragment = SettingFragment()
-    private var SearchFragment = SearchFragment()
+    private var SearchActivity = SearchActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
+
+        // NavController 정의
         with(binding) {
             val navController = findNavController(R.id.navHostFragment)
             navBottom.setupWithNavController(navController)
         }
 
-        // frameLayout에 HomeFragment 로드하기
     }
 
     override fun onBackPressed() {
@@ -45,11 +46,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     fun openFragmnetOnFrameLayout(int:Int){
         val transaction = supportFragmentManager.beginTransaction()
         when(int){
             1 -> transaction.replace(R.id.container,SettingFragment)     // HomeFragmnet Setting Btn 클릭시 SettingFragment 추가
-            2 -> transaction.replace(R.id.container,SearchFragment)      // HomeFragmnet search 클릭시 SearchFragment 추가
+            //2 -> transaction.replace(R.id.container,SearchFragment)      // HomeFragmnet search 클릭시 SearchFragment 추가
         }
         transaction.commit()
     }

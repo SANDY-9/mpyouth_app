@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.ui.home
 
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -24,7 +25,9 @@ import androidx.core.view.forEachIndexed
 import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
 import kotlin.math.log
 
@@ -50,12 +53,14 @@ class HomeFragment : Fragment() {
 
         // Setting Btn에 SettingFragment 추가
         binding.topSetting.setOnClickListener {
-            mainActivity!!.openFragmnetOnFrameLayout(1)
+            findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
         }
 
-        // et_search에 SearchFragment 추가 - Home에서 검색어 입력 후 확인시 동작은 어떻게 처리하나?
+       // et_search에 SearchActivity 추가
         binding.etSearch.setOnClickListener {
-            mainActivity!!.openFragmnetOnFrameLayout(2)
+            val nextIntent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(nextIntent)
+
         }
 
         return binding.root

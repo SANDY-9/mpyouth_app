@@ -1,11 +1,19 @@
 package go.kr.mapo.mapoyouth.ui.setting
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.databinding.FragmentHomeBinding
+import go.kr.mapo.mapoyouth.databinding.FragmentSettingBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.home.HomeFragment
 
 /**
  * @author LimSeulgi
@@ -17,6 +25,18 @@ import go.kr.mapo.mapoyouth.ui.MainActivity
 class SettingFragment: Fragment(R.layout.fragment_setting) {
 
     private lateinit var mToolbar : androidx.appcompat.widget.Toolbar
+    lateinit var binding : FragmentSettingBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_setting, container, false)
+
+        // BackBtn 이름이 없는디 ㅠㅠ
+/*       binding..setOnClickListener {
+
+        }*/
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,13 +55,19 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
                 title = null
             }
         }
+
+
     }
     // 액션버튼 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
-            android.R.id.home -> true
-            else -> super.onOptionsItemSelected(item)
+        if(item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingFragment_to_homeFragment)
+        return super.onOptionsItemSelected(item)
+
+/*        if (item.itemId == android.R.id.home){
+            onBackPressed()     // 뒤로가기 동작 - 작업표시줄 단추가 아닌 하드웨어 뒤로가기 단추 호출이라고?
+            return true
         }
+        return false*/
     }
 
 

@@ -21,10 +21,8 @@ private const val TAG = "CustomAttr"
 object CustomAttr {
 
     fun changeTabsBold(tabs: ViewGroup, selectPosition: Int, tabCount : Int) {
-        Log.e(TAG, "changeTabsBold: $tabs" )
         for (j in 0 until tabCount) {
             val vgTab = tabs.getChildAt(j) as ViewGroup
-            Log.e(TAG, "changeTabsBold: $vgTab", )
             val tabViewChild = vgTab.getChildAt(1)
             if (tabViewChild is TextView) {
                 tabViewChild.typeface = if(j == selectPosition) Typeface.DEFAULT_BOLD else Typeface.DEFAULT

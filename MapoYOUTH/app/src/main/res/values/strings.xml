@@ -9,17 +9,26 @@
     <string name="title_donation">재능기부</string>
     <string name="title_home">홈</string>
 
+    <string name="all">전체</string>
+
     <string name="btn_apply">참여 신청하기</string>
-
     <string name="detail_notice">※ 해당 정보는 운영기관에서 직접 등록하였으며 문의 및 신청은 기관전화번호를 참고하세요.</string>
-
     <string name="search_hint">원하는 서비스를 찾아보세요</string>
-
     <string name="search_background_hint">검색 내용을 입력해주세요.</string>
-
     <string name="details_btn"><u>자세히보기</u></string>
-
     <string name="random_url"><u>https://devuryu.tistory.com/284</u></string>
+
+
+    <!--donation tab-->
+    <string name="dona_sub">원하는 재능기부를 선택하세요.</string>
+    <string name="dona_design">디자인</string>
+    <string name="dona_language">번역/외국어</string>
+    <string name="dona_life">생활</string>
+    <string name="dona_music">음악/영상</string>
+    <string name="dona_develop">프로그램개발</string>
+    <string name="dona_doc">문서작성</string>
+    <string name="dona_business">마케팅/비지니스</string>
+
 
     <array name="youth_tab">
         <item>전체보기</item>

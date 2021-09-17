@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
 
-    var mainActivity:MainActivity?= null
+    private var mainActivity:MainActivity?= null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,13 +54,13 @@ class HomeFragment : Fragment() {
         // Setting Btn에 SettingFragment 추가
         binding.topSetting.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+            mainActivity!!.BACKBUTTON_FLAG = true
         }
 
        // et_search에 SearchActivity 추가
         binding.etSearch.setOnClickListener {
             val nextIntent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(nextIntent)
-
         }
 
         return binding.root

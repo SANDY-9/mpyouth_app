@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -14,6 +15,7 @@ import go.kr.mapo.mapoyouth.databinding.FragmentHomeBinding
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.ui.home.HomeFragment
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 
 /**
  * @author LimSeulgi
@@ -31,10 +33,11 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
     ): View? {
         return inflater.inflate(R.layout.fragment_setting, container, false)
 
-        // BackBtn 이름이 없는디 ㅠㅠ
-/*       binding..setOnClickListener {
-
-        }*/
+        // 알림설정 Btn
+        binding.btnNoticesetting.setOnClickListener {
+            val nextIntent = Intent(requireContext(), SettingNoticeFragment::class.java)
+            startActivity(nextIntent)
+        }
     }
 
 
@@ -55,19 +58,13 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
                 title = null
             }
         }
-
-
     }
+
+
     // 액션버튼 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingFragment_to_homeFragment)
         return super.onOptionsItemSelected(item)
-
-/*        if (item.itemId == android.R.id.home){
-            onBackPressed()
-            return true
-        }
-        return false*/
     }
 
 

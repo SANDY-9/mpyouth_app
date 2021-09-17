@@ -1,36 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.donation.DonationFragment">
+    android:background="@color/app_background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:menu="@menu/menu_top_search">
+    <data>
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/ActionBarTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/title_donation" />
+    </data>
 
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#03A9F4"
-        android:text="재능기부" />
+        tools:context=".ui.donation.DonationFragment">
 
-</LinearLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_top_search">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/ActionBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/title_donation" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/appbar"
+                android:background="@drawable/bg_bottom_line"
+                app:elevation="0dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/margin_24dp"
+                        android:paddingVertical="@dimen/margin_16dp">
+
+                        <TextView
+                            android:id="@+id/subtitle"
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/roboto_700"
+                            android:textSize="16sp"
+                            android:lineHeight="18dp"
+                            android:text="원하는 재능기부를 선택하세요." />
+
+                        <TextView
+                            android:id="@+id/sltAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/subtitle"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="@dimen/margin_16dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="전체" />
+
+                        <TextView
+                            android:id="@+id/sltDesign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/subtitle"
+                            app:layout_constraintStart_toEndOf="@id/sltAll"
+                            android:layout_marginTop="@dimen/margin_16dp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="디자인" />
+
+                        <TextView
+                            android:id="@+id/sltLanguage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/subtitle"
+                            app:layout_constraintStart_toEndOf="@id/sltDesign"
+                            android:layout_marginTop="@dimen/margin_16dp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="번역/외국어" />
+
+                        <TextView
+                            android:id="@+id/sltLife"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/subtitle"
+                            app:layout_constraintStart_toEndOf="@id/sltLanguage"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="@dimen/margin_16dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="전체" />
+
+                        <TextView
+                            android:id="@+id/sltMusic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/sltAll"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="음악/영상" />
+
+                        <TextView
+                            android:id="@+id/sltDevelop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/sltAll"
+                            app:layout_constraintStart_toEndOf="@id/sltMusic"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="프로그램개발" />
+
+                        <TextView
+                            android:id="@+id/sltDoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/sltAll"
+                            app:layout_constraintStart_toEndOf="@id/sltDevelop"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="문서작성" />
+
+                        <TextView
+                            android:id="@+id/sltBusiness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/sltMusic"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/mapo_gray"
+                            android:fontFamily="@font/roboto_400"
+                            android:textSize="14sp"
+                            android:paddingVertical="8dp"
+                            android:paddingHorizontal="@dimen/margin_16dp"
+                            android:background="@drawable/bg_dona_btn"
+                            android:lineHeight="16dp"
+                            android:text="마케팅/비지니스" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/donationRv"
+                app:layout_constraintTop_toBottomOf="@id/appbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:paddingStart="@dimen/margin_16dp"
+                android:paddingEnd="@dimen/margin_16dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:listitem="@layout/item_donation_rv" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

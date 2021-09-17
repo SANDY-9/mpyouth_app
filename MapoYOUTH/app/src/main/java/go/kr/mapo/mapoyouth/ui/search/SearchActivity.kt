@@ -94,6 +94,8 @@ class SearchActivity: AppCompatActivity() {
 
 
         // 화면 뒤로가기
+        setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
+        /*
         Log.d("Backbtn", "BackBtn Start!")
         with(parent) {
             setSupportActionBar(mToolbar)
@@ -103,6 +105,8 @@ class SearchActivity: AppCompatActivity() {
                 title = null
             }
         }
+
+         */
 
     }
 
@@ -116,10 +120,7 @@ class SearchActivity: AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
-
         }
-
-        Log.d("Backbtn", "왜 동작을 안함?")
     }
 }
 

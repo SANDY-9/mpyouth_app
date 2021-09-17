@@ -69,7 +69,7 @@
                 android:text="봉사협력" />
         </com.google.android.material.tabs.TabLayout>
 
-        <Spinner
+        <go.kr.mapo.mapoyouth.util.customView.CustomSpinner
             android:id="@+id/spinner"
             android:layout_width="@dimen/spinner_width"
             android:layout_height="@dimen/spinner_height"
@@ -77,11 +77,12 @@
             android:layout_marginTop="@dimen/margin_8dp"
             android:layout_marginEnd="@dimen/margin_16dp"
             android:layout_marginBottom="@dimen/margin_8dp"
-            android:background="@drawable/bg_spinner"
+            android:background="@drawable/bg_spinner_close"
             android:dropDownWidth="@dimen/spinner_width"
-            android:entries="@array/spinner_youth"
             android:overlapAnchor="false"
+            android:entries="@array/spinner_youth"
             android:spinnerMode="dropdown"
+            SpinnerEventListener="@{true}"
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.viewpager2.widget.ViewPager2

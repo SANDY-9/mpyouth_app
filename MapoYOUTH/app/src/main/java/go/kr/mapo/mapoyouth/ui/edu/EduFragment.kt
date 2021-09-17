@@ -5,17 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.databinding.FragmentEduBinding
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 
 class EduFragment : Fragment() {
+
+    private lateinit var binding : FragmentEduBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edu, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edu, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -64,7 +64,7 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         return super.onOptionsItemSelected(item)
 
 /*        if (item.itemId == android.R.id.home){
-            onBackPressed()     // 뒤로가기 동작 - 작업표시줄 단추가 아닌 하드웨어 뒤로가기 단추 호출이라고?
+            onBackPressed()
             return true
         }
         return false*/

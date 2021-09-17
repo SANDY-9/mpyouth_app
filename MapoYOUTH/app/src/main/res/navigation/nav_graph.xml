@@ -18,38 +18,22 @@
         android:id="@+id/donationFragment"
         android:name="go.kr.mapo.mapoyouth.ui.donation.DonationFragment"
         android:label="fragment_donation"
-        tools:layout="@layout/fragment_donation" >
-        <action
-            android:id="@+id/action_donationFragment_to_SearchFragment"
-            app:destination="@id/SearchFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_donation" />
     <fragment
         android:id="@+id/youthFragment"
         android:name="go.kr.mapo.mapoyouth.ui.youth.YouthFragment"
         android:label="fragment_youth"
-        tools:layout="@layout/fragment_youth" >
-        <action
-            android:id="@+id/action_youthFragment_to_SearchFragment"
-            app:destination="@id/SearchFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_youth" />
     <fragment
         android:id="@+id/volunteerFragment"
         android:name="go.kr.mapo.mapoyouth.ui.volunteer.VolunteerFragment"
         android:label="fragment_volunteer"
-        tools:layout="@layout/fragment_volunteer" >
-        <action
-            android:id="@+id/action_volunteerFragment_to_SearchFragment"
-            app:destination="@id/SearchFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_volunteer" />
     <fragment
         android:id="@+id/eduFragment"
         android:name="go.kr.mapo.mapoyouth.ui.edu.EduFragment"
         android:label="fragment_edu"
-        tools:layout="@layout/fragment_edu" >
-        <action
-            android:id="@+id/action_eduFragment_to_SearchFragment"
-            app:destination="@id/SearchFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_edu" />
     <fragment
         android:id="@+id/settingFragment"
         android:name="go.kr.mapo.mapoyouth.ui.setting.SettingFragment"

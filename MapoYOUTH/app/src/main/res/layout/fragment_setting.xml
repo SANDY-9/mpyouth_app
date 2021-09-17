@@ -66,6 +66,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
+        android:paddingStart="@dimen/margin_24dp"
         android:text="알림설정"
         app:layout_constraintTop_toBottomOf="@+id/settingline2" />
 
@@ -86,7 +87,8 @@
         android:elevation="1px"
         android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
-        android:text="      약관 및 정책"
+        android:paddingStart="@dimen/margin_24dp"
+        android:text="약관 및 정책"
         android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -98,11 +100,11 @@
         style="@style/buttonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
+        android:paddingStart="@dimen/margin_24dp"
         android:text="서비스 이용약관"
-        app:layout_constraintTop_toBottomOf="@+id/btn_noticesetting" />
+        app:layout_constraintTop_toBottomOf="@+id/view_terms_of_service" />
 
     <!-- 위치정보서비스 이용약관 -->
     <Button
@@ -112,6 +114,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
+        android:paddingStart="@dimen/margin_24dp"
         android:text="위치정보서비스 이용약관"
         app:layout_constraintTop_toBottomOf="@+id/btn_terms_of_service" />
 
@@ -124,6 +127,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
+        android:paddingStart="@dimen/margin_24dp"
         android:text="개인정보 처리방침"
         app:layout_constraintTop_toBottomOf="@+id/btn_location_of_service" />
 
@@ -136,6 +140,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
+        android:paddingStart="@dimen/margin_24dp"
         android:text="오픈소스 라이선스"
         app:layout_constraintTop_toBottomOf="@+id/btn_privacy_policy" />
 

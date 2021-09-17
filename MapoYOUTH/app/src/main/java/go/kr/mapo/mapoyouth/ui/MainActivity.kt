@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private var pressedTime : Long = 0
 
     private var SettingFragment = SettingFragment()
-    private var SearchActivity = SearchActivity()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         when(int){
             1 -> transaction.replace(R.id.container,SettingFragment)     // HomeFragmnet Setting Btn 클릭시 SettingFragment 추가
-            //2 -> transaction.replace(R.id.container,SearchFragment)      // HomeFragmnet search 클릭시 SearchFragment 추가
+
         }
         transaction.commit()
     }

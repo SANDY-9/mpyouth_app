@@ -63,6 +63,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@drawable/bg_bottom_line"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 app:tabIndicatorHeight="@dimen/tab_indicator_height"
                 app:tabTextAppearance="@style/TabItem">
@@ -79,7 +80,8 @@
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/tabLayout"/>
+                app:layout_constraintTop_toBottomOf="@id/tabLayout"
+                android:background="@color/app_background"/>
         </LinearLayout>
 
 

@@ -91,6 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="초"
+            android:textStyle="bold"
             android:textSize="@dimen/donation_rv_edu_icon_textsize"
             android:textColor="@color/white"
             android:gravity="center"

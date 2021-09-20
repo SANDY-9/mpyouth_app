@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="초,중학교 학습지원 희망해요! (전교과 가능)"
             android:textSize="@dimen/item_donation_rv_title_tv_size"
-            android:layout_constraintStart_toStartOf="@id/donatoinRvItemTagLayout"
+            app:layout_constraintStart_toStartOf="@id/donatoinRvItemTagLayout"
             app:layout_constraintTop_toBottomOf="@id/donatoinRvItemTagLayout"
             android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
             android:layout_marginBottom="@dimen/item_donation_rv_tag_padding_vertical"/>

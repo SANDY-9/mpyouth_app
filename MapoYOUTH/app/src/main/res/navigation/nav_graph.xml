@@ -14,34 +14,35 @@
             android:id="@+id/action_homeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/donationFragment"
         android:name="go.kr.mapo.mapoyouth.ui.donation.DonationFragment"
         android:label="fragment_donation"
         tools:layout="@layout/fragment_donation" >
-
     </fragment>
+
     <fragment
         android:id="@+id/youthFragment"
         android:name="go.kr.mapo.mapoyouth.ui.youth.YouthFragment"
         android:label="fragment_youth"
         tools:layout="@layout/fragment_youth" >
-
     </fragment>
+
     <fragment
         android:id="@+id/volunteerFragment"
         android:name="go.kr.mapo.mapoyouth.ui.volunteer.VolunteerFragment"
         android:label="fragment_volunteer"
         tools:layout="@layout/fragment_volunteer" >
-
     </fragment>
+
     <fragment
         android:id="@+id/eduFragment"
         android:name="go.kr.mapo.mapoyouth.ui.edu.EduFragment"
         android:label="fragment_edu"
         tools:layout="@layout/fragment_edu" >
-
     </fragment>
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="go.kr.mapo.mapoyouth.ui.setting.SettingFragment"
@@ -52,4 +53,5 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
 </navigation>

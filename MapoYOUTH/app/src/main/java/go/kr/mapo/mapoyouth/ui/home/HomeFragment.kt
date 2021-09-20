@@ -60,7 +60,6 @@ class HomeFragment : Fragment() {
         binding.etSearch.setOnClickListener {
             val nextIntent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(nextIntent)
-
         }
 
         return binding.root
@@ -94,7 +93,7 @@ class HomeFragment : Fragment() {
 
             }
             tabs.apply {
-                getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+                CustomAttr.changeTabsBold(tabItem, 0, tabCount)
                 addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         tab?.let {

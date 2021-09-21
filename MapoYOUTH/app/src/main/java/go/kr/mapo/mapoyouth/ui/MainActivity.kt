@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     var BACKSTACK_FLAG = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_MapoYOUTH)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
 

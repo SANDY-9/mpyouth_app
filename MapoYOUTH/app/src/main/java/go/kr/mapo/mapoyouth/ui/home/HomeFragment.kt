@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,26 +12,13 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentHomeBinding
-import android.graphics.Typeface
 import android.os.Build
 
-import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
-import androidx.core.animation.doOnEnd
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.forEachIndexed
-import androidx.core.view.get
-import androidx.core.widget.NestedScrollView
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
-import kotlin.math.log
-
-
-private const val TAG = "HomeFragment"
 
 class HomeFragment : Fragment() {
 
@@ -50,19 +36,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-
-        // Setting Btn에 SettingFragment 추가
-        binding.topSetting.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+        with(binding) {
+            lifecycleOwner = viewLifecycleOwner
+            fragment = this@HomeFragment
+            return root
         }
-
-       // et_search에 SearchActivity 추가
-        binding.etSearch.setOnClickListener {
-            val nextIntent = Intent(requireContext(), SearchActivity::class.java)
-            startActivity(nextIntent)
-        }
-
-        return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -150,6 +128,19 @@ class HomeFragment : Fragment() {
             ).apply {
                 duration = 500L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
             }.start()
+        }
+    }
+
+    fun setOnButtonClick(view: View) {
+        when(view.id) {
+            R.id.top_setting -> {
+                mainActivity!!.BACKSTACK_FLAG = true
+                findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+            }
+            R.id.top_search, R.id.et_search, R.id.btn_search -> {
+                val nextIntent = Intent(requireContext(), SearchActivity::class.java)
+                startActivity(nextIntent)
+            }
         }
     }
 

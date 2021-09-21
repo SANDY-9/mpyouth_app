@@ -14,9 +14,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentYouthBinding
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
-import go.kr.mapo.mapoyouth.util.Constants.FLAG_YOUTH
 import go.kr.mapo.mapoyouth.util.CustomAttr
-import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
+import go.kr.mapo.mapoyouth.util.FLAG_YOUTH
 
 private const val TAG = "YouthFragment"
 

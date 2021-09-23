@@ -52,6 +52,17 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingNoticeFragment"
+            app:destination="@id/settingNoticeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingNoticeFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.setting.SettingNoticeFragment"
+        android:label="SettingNoticeFragment" >
+        <action
+            android:id="@+id/action_settingNoticeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
 
 </navigation>

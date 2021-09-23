@@ -140,6 +140,7 @@ class HomeFragment : Fragment() {
             R.id.top_search, R.id.et_search, R.id.btn_search -> {
                 val nextIntent = Intent(requireContext(), SearchActivity::class.java)
                 startActivity(nextIntent)
+
             }
         }
     }

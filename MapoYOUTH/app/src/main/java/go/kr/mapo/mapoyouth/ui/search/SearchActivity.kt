@@ -54,6 +54,8 @@ class SearchActivity: AppCompatActivity() {
 
             // Adapter 셋팅
             adapter = youthAdapter
+
+
         }
 
 
@@ -63,14 +65,12 @@ class SearchActivity: AppCompatActivity() {
         // Tab 클릭시 동작
         tabLayout.apply {
             getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
                         val position = it.position
-                        CustomAttr.changeTabsBold(
-                            tabItem,
-                            position,
-                            tabLayout.tabCount
+                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount
                         ) // 탭 선택시 글씨 굵게
                         recyclerView.adapter = when (position) {
                             0 -> youthAdapter
@@ -90,7 +90,7 @@ class SearchActivity: AppCompatActivity() {
         }
 
 
-        // 화면 뒤로가기
+        // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
         /*
         Log.d("Backbtn", "BackBtn Start!")

@@ -1,17 +1,19 @@
 package go.kr.mapo.mapoyouth.ui.setting
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.FragmentHomeBinding
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.ui.home.HomeFragment
@@ -27,17 +29,22 @@ import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 class SettingFragment: Fragment(R.layout.fragment_setting) {
 
     private lateinit var mToolbar : androidx.appcompat.widget.Toolbar
-    lateinit var binding : FragmentSettingBinding
+    private var _binding : FragmentSettingBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        //return inflater.inflate(R.layout.fragment_setting, container, false)
+        _binding = FragmentSettingBinding.inflate(inflater, container, false)
+        return binding.root
 
-        // 알림설정 Btn
+/*        // 알림설정 Btn - 왜 알림설정 화면으로 안넘어가지?
         binding.btnNoticesetting.setOnClickListener {
-            val nextIntent = Intent(requireContext(), SettingNoticeFragment::class.java)
-            startActivity(nextIntent)
-        }
+            val nextIntent = Intent(requireContext(), SettingNoticeFragment::class.java)    //인텐트 생성
+            startActivity(nextIntent)   // 화면전환 진행
+        }*/
+
     }
 
 
@@ -57,6 +64,12 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
                 title = null
             }
         }
+
+        // 알림설정 Btn
+        binding.btnNoticesetting.setOnClickListener {
+            findNavController().navigate(R.id.action_settingFragment_to_settingNoticeFragment)
+        }
+
     }
 
 
@@ -66,4 +79,9 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         return super.onOptionsItemSelected(item)
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null             // binding 자원 미사용시 반환
+    }
 }

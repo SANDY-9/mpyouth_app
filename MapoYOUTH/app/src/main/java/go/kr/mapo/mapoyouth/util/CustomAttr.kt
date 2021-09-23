@@ -1,8 +1,15 @@
 package go.kr.mapo.mapoyouth.util
 
+import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.util.Log
+import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -65,6 +72,38 @@ object CustomAttr {
                 })
             }
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("Call-Connection")
+    fun connectCallButton(button: Button, tel: String) {
+        button.setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse("tel:$tel")
+            }
+            it.context.startActivity(intent)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("Url-Connection")
+    fun connectURLButton(button: Button, url: String) {
+        button.setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse(url)
+            }
+            it.context.startActivity(intent)
+        }
+    }
+
+    fun actionShare(context: Context, message: String) {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, message)
+        }
+        context.startActivity(Intent.createChooser(intent, "친구한테 공유하기"))
     }
 
 }

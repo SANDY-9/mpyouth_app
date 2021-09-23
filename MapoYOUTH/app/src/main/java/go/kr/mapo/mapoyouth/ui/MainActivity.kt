@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
@@ -21,14 +22,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MapoYOUTH)
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
+        binding = ActivityMainBinding.inflate(layoutInflater).apply {
+            setContentView(root)
 
-        // NavController 정의
-        with(binding) {
+            // NavController initialize
             val navController = findNavController(R.id.navHostFragment)
             navBottom.setupWithNavController(navController)
         }
-
     }
 
     override fun onBackPressed() {

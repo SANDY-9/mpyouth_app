@@ -11,6 +11,7 @@ import go.kr.mapo.mapoyouth.databinding.ActivityMainBinding
 import go.kr.mapo.mapoyouth.ui.home.HomeFragment
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.setting.SettingFragment
+import go.kr.mapo.mapoyouth.ui.setting.SettingNoticeFragment
 
 class MainActivity : AppCompatActivity() {
 

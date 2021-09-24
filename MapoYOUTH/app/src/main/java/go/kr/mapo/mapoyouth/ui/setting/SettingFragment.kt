@@ -39,7 +39,7 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         return binding.root
 
-/*        // 알림설정 Btn - 왜 알림설정 화면으로 안넘어가지?
+/*        // 알림설정 Btn
         binding.btnNoticesetting.setOnClickListener {
             val nextIntent = Intent(requireContext(), SettingNoticeFragment::class.java)    //인텐트 생성
             startActivity(nextIntent)   // 화면전환 진행
@@ -65,9 +65,20 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
             }
         }
 
-        // 알림설정 Btn
+/*        // 알림설정 Btn - 21.09.24 기능 삭제
         binding.btnNoticesetting.setOnClickListener {
             findNavController().navigate(R.id.action_settingFragment_to_settingNoticeFragment)
+        }*/
+
+        // 서비스 이용약관 Btn
+        binding.btnTermsOfService.setOnClickListener {
+            findNavController().navigate(R.id.action_settingFragment_to_settingTermsOfServiceFragment)
+        }
+
+        // 오픈소스 라이선스
+
+        binding.btnOpenSource.setOnClickListener {
+            findNavController().navigate(R.id.action_settingFragment_to_SettingOpenSourceFragment)
         }
 
     }

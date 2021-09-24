@@ -53,15 +53,27 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_settingFragment_to_settingNoticeFragment"
-            app:destination="@id/settingNoticeFragment" />
+            android:id="@+id/action_settingFragment_to_settingTermsOfServiceFragment"
+            app:destination="@id/settingTermsOfServiceFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_SettingOpenSourceFragment"
+            app:destination="@id/SettingOpenSourceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingNoticeFragment"
-        android:name="go.kr.mapo.mapoyouth.ui.setting.SettingNoticeFragment"
-        android:label="SettingNoticeFragment" >
+        android:id="@+id/SettingOpenSourceFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.setting.SettingOpenSourceFragment"
+        android:label="SettingOpenSourceFragment"
+        tools:layout="@layout/fragment_setting_open_source">
         <action
-            android:id="@+id/action_settingNoticeFragment_to_settingFragment"
+            android:id="@+id/action_SettingOpenSourceFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingTermsOfServiceFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.setting.SettingTermsOfServiceFragment"
+        android:label="SettingTermsOfServiceFragment" >
+        <action
+            android:id="@+id/action_settingTermsOfServiceFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
     </fragment>
 

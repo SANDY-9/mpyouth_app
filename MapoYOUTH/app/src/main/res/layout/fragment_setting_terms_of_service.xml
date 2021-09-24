@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 서비스 이용약관 -->
+    <!-- 서비스 이용약관 Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_terms_of_service_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="서비스 이용약관"
+            android:fontFamily="@font/roboto_700"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- 구분선 1 음영 -->
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#33666666"
+        app:layout_constraintTop_toBottomOf="@+id/setting_terms_of_service_toolbar"/>
+
+    <!-- 구분선 1 -->
+    <View
+        android:id="@+id/view_terms_of_service"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:elevation="1px"
+        android:background="#33C4C4C4"
+        app:layout_constraintTop_toBottomOf="@id/line1"/>
+
+    <!-- 서비스 이용약관 내용 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/view_terms_of_service">
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

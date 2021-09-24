@@ -9,23 +9,26 @@ import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.FragmentSettingnoticeBinding
+import go.kr.mapo.mapoyouth.databinding.FragmentSettingTermsOfServiceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
 
 /**
  * @author LimSeulgi
  * @email sg21.lim@gamil.com
- * @created 2021-09-17
+ * @created 2021-09-24
  * @desc
  **/
-class SettingNoticeFragment: Fragment(R.layout.fragment_settingnotice) {
+
+// 서비스 이용약관
+
+class SettingTermsOfServiceFragment : Fragment() {
 
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
-    lateinit var binding : FragmentSettingnoticeBinding
+    lateinit var binding: FragmentSettingTermsOfServiceBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_settingnotice, container, false)
+        return inflater.inflate(R.layout.fragment_setting_terms_of_service, container, false)
 
     }
 
@@ -35,7 +38,7 @@ class SettingNoticeFragment: Fragment(R.layout.fragment_settingnotice) {
         setHasOptionsMenu(true)
 
         // Toolbar
-        mToolbar = view.findViewById(R.id.notice_toolbar)
+        mToolbar = view.findViewById(R.id.setting_terms_of_service_toolbar)
 
         val parent = activity as MainActivity
         with(parent){
@@ -48,10 +51,8 @@ class SettingNoticeFragment: Fragment(R.layout.fragment_settingnotice) {
         }
     }
 
-/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingNoticeFragment_to_settingFragment)
-            return super.onOptionsItemSelected(item)
-        }*/
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingTermsOfServiceFragment_to_settingFragment)
+        return super.onOptionsItemSelected(item)
     }
-
-
+}

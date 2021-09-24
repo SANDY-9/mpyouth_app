@@ -36,15 +36,16 @@
         android:id="@+id/settingline1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#C4C4C4"
+        android:background="#666666"
         app:layout_constraintTop_toBottomOf="@+id/setting_toolbar" />
 
+<!-- 구분선 21.09.24 삭제
     <View
         android:id="@+id/settingline2"
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:background="#F6F6F6"
-        app:layout_constraintTop_toBottomOf="@+id/settingline1" />
+        app:layout_constraintTop_toBottomOf="@+id/settingline1" />-->
 
 <!--    &lt;!&ndash; 나의 책갈피 - height : 48dp 9/15 피그마 확인시 삭제 &ndash;&gt;
     <Button
@@ -58,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingline1" />-->
 
-    <!-- 알림설정 -->
+<!--    &lt;!&ndash; 알림설정 - 21.09.24 기능 삭제 &ndash;&gt;
     <Button
         android:id="@+id/btn_noticesetting"
         style="@style/buttonTheme"
@@ -68,17 +69,18 @@
         android:gravity="left|center"
         android:paddingStart="@dimen/margin_24dp"
         android:text="알림설정"
-        app:layout_constraintTop_toBottomOf="@+id/settingline2" />
+        app:layout_constraintTop_toBottomOf="@+id/settingline2" />-->
 
 
-    <!-- 약관 및 정책 -->
+<!--    &lt;!&ndash; 약관 및 정책 구분선 - 21.09.24 삭제 &ndash;&gt;
     <View
         android:id="@+id/settingline3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#666666"
-        app:layout_constraintTop_toBottomOf="@+id/btn_noticesetting" />
+        app:layout_constraintTop_toBottomOf="@+id/settingline2" />-->
 
+    <!-- 약관 및 정책 -->
     <TextView
         android:id="@+id/view_terms_of_service"
         android:layout_width="match_parent"
@@ -92,7 +94,7 @@
         android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/settingline3" />
+        app:layout_constraintTop_toBottomOf="@+id/settingline1" />
 
 
     <!-- 서비스 이용약관 -->

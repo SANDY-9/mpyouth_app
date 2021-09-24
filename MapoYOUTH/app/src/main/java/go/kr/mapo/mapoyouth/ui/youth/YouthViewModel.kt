@@ -9,4 +9,6 @@ import androidx.lifecycle.ViewModel
  * @desc
  */
 class YouthViewModel : ViewModel() {
+
+
 }

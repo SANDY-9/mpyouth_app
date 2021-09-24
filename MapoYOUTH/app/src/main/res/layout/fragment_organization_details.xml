@@ -110,6 +110,9 @@
                 android:lineSpacingExtra="0sp"
                 android:text="@string/random_url"
                 android:textColor="#000000"
+                android:linksClickable="true"
+                android:textColorLink="@color/black"
+                android:autoLink="web"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView16"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />

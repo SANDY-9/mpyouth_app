@@ -7,6 +7,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatSpinner;
 
 /**
  * @author SANDY
@@ -14,7 +15,7 @@ import androidx.annotation.Nullable;
  * @created 2021-09-17
  * @desc
  */
-public class CustomSpinner extends androidx.appcompat.widget.AppCompatSpinner {
+public class CustomSpinner extends AppCompatSpinner {
 
     public interface OnSpinnerEventsListener {
         void onPopupWindowOpened(Spinner spinner);

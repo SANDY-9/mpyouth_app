@@ -1,5 +1,7 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -43,7 +45,10 @@ class YouthDetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home) finish()
+        when(item.itemId) {
+            android.R.id.home -> finish()
+            R.id.menu_share -> CustomAttr.actionShare(this, "공유할 내용")
+        }
         return super.onOptionsItemSelected(item)
     }
 }

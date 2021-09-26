@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_call"
                 android:layout_width="@dimen/details_bottom_size"
                 android:layout_height="@dimen/details_bottom_size"
                 android:layout_marginEnd="@dimen/margin_10dp"
@@ -55,7 +55,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_url"
                 android:layout_width="@dimen/details_bottom_size"
                 android:layout_height="@dimen/details_bottom_size"
                 android:layout_weight="1"

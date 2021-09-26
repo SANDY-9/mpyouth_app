@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
@@ -32,13 +33,10 @@ class SearchActivity: AppCompatActivity() {
 
     private lateinit var mToolbar: Toolbar
     private lateinit var tabLayout: TabLayout
-    private lateinit var callback: OnBackPressedCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
-        //setHasOptionsMenu(true)     // Fragment에 메뉴가 있다고 알려줌
 
         mToolbar = findViewById(R.id.search_toolbar)
         tabLayout = findViewById(R.id.tabLayout)
@@ -49,13 +47,14 @@ class SearchActivity: AppCompatActivity() {
         val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
+        val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
         with(recyclerView) {
-
             //레이아웃 매니저 셋팅 -> xml에서 진행함
 
             // Adapter 셋팅
             adapter = youthAdapter
+
 
         }
 
@@ -66,20 +65,18 @@ class SearchActivity: AppCompatActivity() {
         // Tab 클릭시 동작
         tabLayout.apply {
             getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
                         val position = it.position
-                        CustomAttr.changeTabsBold(
-                            tabItem,
-                            position,
-                            tabLayout.tabCount
+                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount
                         ) // 탭 선택시 글씨 굵게
                         recyclerView.adapter = when (position) {
                             0 -> youthAdapter
                             1 -> volunteerAdapter
                             2 -> eduAdapter
-                            else -> null
+                            else -> donationAdapter
                         }
                     }
                 }
@@ -93,7 +90,7 @@ class SearchActivity: AppCompatActivity() {
         }
 
 
-        // 화면 뒤로가기
+        // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
         /*
         Log.d("Backbtn", "BackBtn Start!")
@@ -111,12 +108,11 @@ class SearchActivity: AppCompatActivity() {
     }
 
     // 화면 뒤로가기 - 클릭 이벤트 처리
-    // 살려주세요 제발 동작 좀 해주세요.... 아아아아악
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("Backbtn", "잘 출력되나 home")
+
         return when (item.itemId) {
             android.R.id.home -> {
-                finish()// 뒤로가는 동작 누락 -> 동작 추가해야함
+                finish()            //뒤로가는 동작
                 true
             }
             else -> super.onOptionsItemSelected(item)

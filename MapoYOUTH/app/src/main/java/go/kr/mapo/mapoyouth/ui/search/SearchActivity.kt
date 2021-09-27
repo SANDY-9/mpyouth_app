@@ -54,8 +54,6 @@ class SearchActivity: AppCompatActivity() {
 
             // Adapter 셋팅
             adapter = youthAdapter
-
-
         }
 
 

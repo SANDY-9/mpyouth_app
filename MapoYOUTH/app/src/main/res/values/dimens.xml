@@ -49,5 +49,12 @@
 
     <dimen name="map_height">200dp</dimen>
     <dimen name="donation_rv_edu_icon_textsize">10sp</dimen>
+    <dimen name="item_onboard_skip_btn_margintop">24dp</dimen>
+    <dimen name="item_onboard_skip_btn_marginend">16dp</dimen>
+    <dimen name="item_onboard_skip_btn_textsize">14sp</dimen>
+    <dimen name="item_onboard_indicator_margintop">441dp</dimen>
+    <dimen name="item_onboard_title_margin_horizontal">78dp</dimen>
+    <dimen name="item_onboard_title_text_size">18sp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
 
 </resources>

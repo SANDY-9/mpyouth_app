@@ -1,10 +1,12 @@
 package go.kr.mapo.mapoyouth.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import go.kr.mapo.mapoyouth.R
@@ -13,6 +15,8 @@ import go.kr.mapo.mapoyouth.ui.home.HomeFragment
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.setting.SettingFragment
 import go.kr.mapo.mapoyouth.ui.setting.SettingNoticeFragment
+import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR
+import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,14 +26,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MapoYOUTH)
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).apply {
-            setContentView(root)
 
-            // NavController initialize
-            val navController = findNavController(R.id.navHostFragment)
-            navBottom.setupWithNavController(navController)
+        // onboard
+//        if (!onBoardingFinished()) {
+//            findNavController(R.id.navHostFragment).navigate(R.id.action_homeFragment_to_onboardingFragment)
+//        } else {
+//        }
+
+        if (onBoardingFinished()) {
+            super.onCreate(savedInstanceState)
+            binding = ActivityMainBinding.inflate(layoutInflater).apply {
+                setContentView(root)
+
+                // NavController initialize
+                val navController = findNavController(R.id.navHostFragment)
+                navBottom.setupWithNavController(navController)
+            }
+        } else {
+            Toast.makeText(this, "!!OnBoarding NEVER played!!", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(this, R.id.navHostFragment).navigate(R.id.action_homeFragment_to_onboardingFragment)
         }
+
+
     }
 
     override fun onBackPressed() {
@@ -51,6 +69,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun onBoardingFinished(): Boolean {
+        val sharedPref = getSharedPreferences(ONBOARD_SHARED_PREF, Context.MODE_PRIVATE)
+        return sharedPref.getBoolean(ONBOARD_FINISHED_STR, false)
     }
 
 }

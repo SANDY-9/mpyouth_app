@@ -111,14 +111,18 @@ class SearchActivity: AppCompatActivity() {
         // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
 
-        autoCompleteTextView.setOnEditorActionListener { v, actionId, event ->
-            var handled = false
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.searchButton.performClick()
-                handled = true
+        autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
+
+            if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                search_start.visibility = View.GONE
+                search_end.visibility = View.VISIBLE
+                true
+
+            } else {
+                false
             }
-            handled
         }
+
 
     }
 

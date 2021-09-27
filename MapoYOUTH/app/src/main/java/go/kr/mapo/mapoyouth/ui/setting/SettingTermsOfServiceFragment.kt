@@ -1,16 +1,21 @@
 package go.kr.mapo.mapoyouth.ui.setting
 
+import android.content.res.AssetManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
+import android.widget.TextView
 import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingTermsOfServiceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import java.io.InputStream
 
 /**
  * @author LimSeulgi
@@ -21,16 +26,23 @@ import go.kr.mapo.mapoyouth.ui.MainActivity
 
 // 서비스 이용약관
 
-class SettingTermsOfServiceFragment : Fragment() {
+private const val TAG = "SettingTermsOfServiceFr"
+
+class SettingTermsOfServiceFragment : Fragment(R.layout.fragment_setting_terms_of_service) {
 
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
     lateinit var binding: FragmentSettingTermsOfServiceBinding
+    private lateinit var textView: TextView
 
+    /*
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_setting_terms_of_service, container, false)
+        val view = inflater.inflate(R.layout.fragment_setting_terms_of_service, container, false)
+        textView = view.findViewById(R.id.textView_terms_of_service)
+        return view
 
     }
+     */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,10 +61,20 @@ class SettingTermsOfServiceFragment : Fragment() {
                 title = null
             }
         }
+
+        textView = view.findViewById(R.id.textView_terms_of_service)
+
+        val assetManager : AssetManager = resources.assets
+        var inputStream:InputStream = assetManager.open("terms_of_service.txt")
+        val inputString = inputStream.bufferedReader().use { it.readText() }
+        Log.e(TAG, "onCreateView: $inputString", )
+        textView.text = inputString
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingTermsOfServiceFragment_to_settingFragment)
         return super.onOptionsItemSelected(item)
     }
+
 }

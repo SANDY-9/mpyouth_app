@@ -34,6 +34,11 @@ android {
         viewBinding true
         dataBinding true
     }
+
+    // 모든 파일을 압축하지 않고 assets에 보관
+    aaptOptions{
+        noCompress ''
+    }
 }
 
 dependencies {

@@ -111,6 +111,7 @@ class SearchActivity: AppCompatActivity() {
         // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
 
+        // 검색 Btn, 검색시
         autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
 
             if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -123,7 +124,10 @@ class SearchActivity: AppCompatActivity() {
             }
         }
 
-
+        search_button.setOnClickListener {
+                search_start.visibility = View.GONE
+                search_end.visibility = View.VISIBLE
+        }
     }
 
     // 화면 뒤로가기 - 클릭 이벤트 처리

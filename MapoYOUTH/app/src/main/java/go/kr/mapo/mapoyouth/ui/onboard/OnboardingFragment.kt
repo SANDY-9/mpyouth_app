@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentOnboardingBinding
 import go.kr.mapo.mapoyouth.ui.onboard.screens.OnboardFirstScreen
@@ -33,6 +34,7 @@ class OnboardingFragment : Fragment() {
         )
 
         binding.onboardingViewPager.adapter = adapter
+        binding.dotsIndicator.setViewPager2(binding.onboardingViewPager)
 
         return binding.root
     }

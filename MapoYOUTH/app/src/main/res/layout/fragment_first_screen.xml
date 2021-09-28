@@ -41,7 +41,7 @@
         android:id="@+id/onboard_screen_indicator"
         android:layout_width="44dp"
         android:layout_height="8dp"
-        android:background="@color/mapo_gray"
+        android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

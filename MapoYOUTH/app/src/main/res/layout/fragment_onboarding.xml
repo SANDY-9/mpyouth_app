@@ -17,4 +17,21 @@
         app:layout_constraintHorizontal_bias="0.5"
         />
 
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="@color/mapo_gray"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="10dp"
+        app:dotsSpacing="4dp"
+        app:dotsWidthFactor="1.8"
+        app:selectedDotColor="@color/mapo_blue"
+        app:progressMode="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/item_onboard_indicator_margintop"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

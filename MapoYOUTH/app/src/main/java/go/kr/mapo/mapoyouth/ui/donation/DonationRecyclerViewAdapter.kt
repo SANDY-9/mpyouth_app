@@ -31,4 +31,5 @@ class DonationRecyclerViewAdapter(private val itemList: List<String>) : Recycler
     }
 
     override fun getItemCount() = itemList.count()
+
 }

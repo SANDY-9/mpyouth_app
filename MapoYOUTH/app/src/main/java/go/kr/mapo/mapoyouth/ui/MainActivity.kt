@@ -3,21 +3,12 @@ package go.kr.mapo.mapoyouth.ui
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Spinner
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityMainBinding
-import go.kr.mapo.mapoyouth.ui.home.HomeFragment
-import go.kr.mapo.mapoyouth.ui.search.SearchActivity
-import go.kr.mapo.mapoyouth.ui.setting.SettingFragment
-import go.kr.mapo.mapoyouth.ui.setting.SettingNoticeFragment
 import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR
 import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
@@ -32,20 +23,17 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
-            setContentView(root)
+            setContentView(root)}
 
-            val navController = findNavController(R.id.navHostFragment)
-            if (onBoardingFinished()) {
+        // NavController 정의
+        val navController = findNavController(R.id.navHostFragment)
+        binding.navBottom.setupWithNavController(navController)
 
-                // NavController initialize
-                navBottom.setupWithNavController(navController)
-                navController.navigate(R.id.action_onboardingFragment_to_homeFragment)
-            } else {
-                navBottom.visibility = View.GONE
-            }
-
+        if (onBoardingFinished()) {
+            navController.navigate(R.id.action_onboardingFragment_to_homeFragment)
+        } else {
+            binding.navBottom.visibility = View.GONE
         }
-
 
     }
 

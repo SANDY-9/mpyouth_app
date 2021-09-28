@@ -3,11 +3,14 @@ package go.kr.mapo.mapoyouth.ui
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityMainBinding
@@ -27,24 +30,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MapoYOUTH)
 
-        // onboard
-//        if (!onBoardingFinished()) {
-//            findNavController(R.id.navHostFragment).navigate(R.id.action_homeFragment_to_onboardingFragment)
-//        } else {
-//        }
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater).apply {
+            setContentView(root)
 
-        if (onBoardingFinished()) {
-            super.onCreate(savedInstanceState)
-            binding = ActivityMainBinding.inflate(layoutInflater).apply {
-                setContentView(root)
+            val navController = findNavController(R.id.navHostFragment)
+            if (onBoardingFinished()) {
 
                 // NavController initialize
-                val navController = findNavController(R.id.navHostFragment)
                 navBottom.setupWithNavController(navController)
+                navController.navigate(R.id.action_onboardingFragment_to_homeFragment)
+            } else {
+                navBottom.visibility = View.GONE
             }
-        } else {
-            Toast.makeText(this, "!!OnBoarding NEVER played!!", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(this, R.id.navHostFragment).navigate(R.id.action_homeFragment_to_onboardingFragment)
+
         }
 
 

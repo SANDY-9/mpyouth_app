@@ -10,11 +10,18 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentOnboardThirdScreenBinding
+import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR
 import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
 class OnboardThirdScreen : Fragment() {
 
+    private lateinit var owner : MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        owner = context as MainActivity
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +32,7 @@ class OnboardThirdScreen : Fragment() {
         binding.btnFinish.setOnClickListener {
             findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
             onBoardingFinished()
+            owner.binding.navBottom.visibility = View.VISIBLE
         }
 
         return binding.root

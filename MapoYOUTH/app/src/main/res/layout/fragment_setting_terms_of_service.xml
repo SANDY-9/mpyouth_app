@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
 
     <!-- 서비스 이용약관 -->
     <!-- 서비스 이용약관 Toolbar -->
@@ -19,6 +22,7 @@
 
         <TextView
             android:id="@+id/textView"
+            style="@style/ActionBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -41,17 +45,42 @@
         android:id="@+id/view_terms_of_service"
         android:layout_width="match_parent"
         android:layout_height="8dp"
-        android:elevation="1px"
         android:background="#33C4C4C4"
-        app:layout_constraintTop_toBottomOf="@id/line1"/>
+        android:elevation="1px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line1" />
+
 
     <!-- 서비스 이용약관 내용 -->
-    <ScrollView
+    <!-- layout_height 수정필요 -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/view_terms_of_service">
+        android:layout_height="match_parent"
+        android:layout_marginTop="66dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_terms_of_service_toolbar">
 
-    </ScrollView>
 
+        <TextView
+            android:id="@+id/textView_terms_of_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_700"
+            android:text="" />
+
+<!--        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:orientation="vertical">
+        </LinearLayout>-->
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

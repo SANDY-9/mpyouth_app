@@ -1,17 +1,20 @@
 package go.kr.mapo.mapoyouth.ui.setting
 
 
+import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingOpenSourceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import java.io.InputStream
 
 /**
  * @author LimSeulgi
@@ -26,6 +29,7 @@ class SettingOpenSourceFragment : Fragment() {
 
     private lateinit var mToolbar: Toolbar
     lateinit var binding : FragmentSettingOpenSourceBinding
+    private lateinit var textView: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -50,6 +54,14 @@ class SettingOpenSourceFragment : Fragment() {
                 title = null
             }
         }
+
+        // txt 파일 읽어오기
+        textView = view.findViewById(R.id.textView_open_source)
+
+        val assetManager : AssetManager = resources.assets
+        var inputStream:InputStream = assetManager.open("open_source.txt")
+        val inputString = inputStream.bufferedReader().use { it.readText() }
+        textView.text = inputString
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

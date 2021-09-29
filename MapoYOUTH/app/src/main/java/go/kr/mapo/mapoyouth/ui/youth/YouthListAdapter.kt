@@ -4,8 +4,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import go.kr.mapo.mapoyouth.R
 
 /**
@@ -18,6 +20,8 @@ import go.kr.mapo.mapoyouth.R
 
 class YouthListAdapter(val list: List<String>) : RecyclerView.Adapter<YouthListAdapter.HolderView>() {
     inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val poster = itemView.findViewById<ImageView>(R.id.poster)
+
         fun setDivider() {
             itemView.setOnClickListener {
                 it.context.startActivity(Intent(it.context, YouthDetailsActivity::class.java))

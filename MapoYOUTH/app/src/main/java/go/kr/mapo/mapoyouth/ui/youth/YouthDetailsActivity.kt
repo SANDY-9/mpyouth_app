@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityYouthDetailsBinding
@@ -32,7 +33,6 @@ class YouthDetailsActivity : AppCompatActivity() {
                     tab.text = when(position) {
                         0 -> "활동정보"
                         else -> "기관정보"
-
                     }
                 }.attach()
             }

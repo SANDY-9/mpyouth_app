@@ -19,8 +19,6 @@ import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
 
-private const val TAG = "HomeFragment"
-
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding

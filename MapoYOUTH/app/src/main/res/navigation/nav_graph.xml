@@ -33,8 +33,7 @@
         android:id="@+id/volunteerFragment"
         android:name="go.kr.mapo.mapoyouth.ui.volunteer.VolunteerFragment"
         android:label="fragment_volunteer"
-        tools:layout="@layout/fragment_volunteer" >
-    </fragment>
+        tools:layout="@layout/fragment_volunteer" />
 
     <fragment
         android:id="@+id/eduFragment"

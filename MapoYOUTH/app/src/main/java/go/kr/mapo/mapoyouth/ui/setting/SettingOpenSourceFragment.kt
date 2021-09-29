@@ -68,7 +68,7 @@ class SettingOpenSourceFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             findNavController().popBackStack()
-            BACKSTACK_FLAG = false
+            BACKSTACK_FLAG = true
         }
         return super.onOptionsItemSelected(item)
     }

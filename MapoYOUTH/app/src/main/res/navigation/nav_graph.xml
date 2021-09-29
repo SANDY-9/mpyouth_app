@@ -33,8 +33,7 @@
         android:id="@+id/volunteerFragment"
         android:name="go.kr.mapo.mapoyouth.ui.volunteer.VolunteerFragment"
         android:label="fragment_volunteer"
-        tools:layout="@layout/fragment_volunteer" >
-    </fragment>
+        tools:layout="@layout/fragment_volunteer" />
 
     <fragment
         android:id="@+id/eduFragment"
@@ -48,11 +47,6 @@
         android:name="go.kr.mapo.mapoyouth.ui.setting.SettingFragment"
         android:label="SettingFragment" >
         <action
-            android:id="@+id/action_settingFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_settingFragment_to_settingTermsOfServiceFragment"
             app:destination="@id/settingTermsOfServiceFragment" />
         <action
@@ -63,19 +57,11 @@
         android:id="@+id/SettingOpenSourceFragment"
         android:name="go.kr.mapo.mapoyouth.ui.setting.SettingOpenSourceFragment"
         android:label="SettingOpenSourceFragment"
-        tools:layout="@layout/fragment_setting_open_source">
-        <action
-            android:id="@+id/action_SettingOpenSourceFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_setting_open_source"/>
     <fragment
         android:id="@+id/settingTermsOfServiceFragment"
         android:name="go.kr.mapo.mapoyouth.ui.setting.SettingTermsOfServiceFragment"
-        android:label="SettingTermsOfServiceFragment" >
-        <action
-            android:id="@+id/action_settingTermsOfServiceFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
-    </fragment>
+        android:label="SettingTermsOfServiceFragment" />
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="go.kr.mapo.mapoyouth.ui.onboard.OnboardingFragment"

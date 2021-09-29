@@ -14,9 +14,12 @@ import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        var BACKSTACK_FLAG = false
+    }
+
     lateinit var binding : ActivityMainBinding
     private var pressedTime : Long = 0
-    var BACKSTACK_FLAG = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MapoYOUTH)

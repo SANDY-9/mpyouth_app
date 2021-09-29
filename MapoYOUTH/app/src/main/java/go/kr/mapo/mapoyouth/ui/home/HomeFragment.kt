@@ -1,9 +1,7 @@
 package go.kr.mapo.mapoyouth.ui.home
 
 import android.animation.ObjectAnimator
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,12 +12,10 @@ import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentHomeBinding
 import android.os.Build
-import android.util.Log
-import android.view.MotionEvent
 
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
-import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
 
@@ -27,14 +23,7 @@ private const val TAG = "HomeFragment"
 
 class HomeFragment : Fragment() {
 
-    lateinit var binding : FragmentHomeBinding
-
-    private var mainActivity:MainActivity?= null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-    }
+    private lateinit var binding : FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -136,13 +125,12 @@ class HomeFragment : Fragment() {
     fun setOnButtonClick(view: View) {
         when(view.id) {
             R.id.top_setting -> {
-                mainActivity!!.BACKSTACK_FLAG = true
+                BACKSTACK_FLAG = true
                 findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
             }
             R.id.top_search, R.id.et_search, R.id.btn_search -> {
                 val nextIntent = Intent(requireContext(), SearchActivity::class.java)
                 startActivity(nextIntent)
-
             }
         }
     }

@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.home.HomeFragment
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 
@@ -86,7 +87,10 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
 
     // 액션버튼 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingFragment_to_homeFragment)
+        if(item.itemId == android.R.id.home) {
+            findNavController().popBackStack()
+            BACKSTACK_FLAG = false
+        }
         return super.onOptionsItemSelected(item)
     }
 

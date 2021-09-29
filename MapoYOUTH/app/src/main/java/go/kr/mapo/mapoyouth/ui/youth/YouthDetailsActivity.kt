@@ -1,13 +1,10 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityYouthDetailsBinding

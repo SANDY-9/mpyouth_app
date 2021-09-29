@@ -27,7 +27,7 @@ import go.kr.mapo.mapoyouth.util.CustomAttr
 
 /**
  * @author LimSeulgi
- * @email sg21.lim@gamil.com
+ * @email sg21.lim@gmail.com
  * @created 2021-09-09
  * @desc
  **/

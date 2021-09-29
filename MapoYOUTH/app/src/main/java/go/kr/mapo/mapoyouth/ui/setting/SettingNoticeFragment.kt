@@ -14,7 +14,7 @@ import go.kr.mapo.mapoyouth.ui.MainActivity
 
 /**
  * @author LimSeulgi
- * @email sg21.lim@gamil.com
+ * @email sg21.lim@gmail.com
  * @created 2021-09-17
  * @desc
  **/

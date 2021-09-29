@@ -10,7 +10,7 @@ import go.kr.mapo.mapoyouth.ui.youth.YouthDetailsActivity
 
 /**
  * @author LimSeulgi
- * @email sg21.lim@gamil.com
+ * @email sg21.lim@gmail.com
  * @created 2021-09-15
  * @desc
  **/

@@ -19,7 +19,7 @@ import java.io.InputStream
 
 /**
  * @author LimSeulgi
- * @email sg21.lim@gamil.com
+ * @email sg21.lim@gmail.com
  * @created 2021-09-24
  * @desc
  **/

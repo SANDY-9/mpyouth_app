@@ -6,19 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.onboard.screens.OnboardFirstScreen">
 
-    <TextView
-        android:id="@+id/btnSkipScreen01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/onboard_skip_btn_text"
-        android:textColor="@color/search_outline"
-        android:textStyle="bold"
-        android:textSize="@dimen/item_onboard_skip_btn_textsize"
-        android:layout_marginTop="@dimen/item_onboard_skip_btn_margintop"
-        android:layout_marginEnd="@dimen/item_onboard_skip_btn_marginend"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="255dp"

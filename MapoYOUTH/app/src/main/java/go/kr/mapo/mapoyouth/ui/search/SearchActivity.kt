@@ -128,6 +128,8 @@ class SearchActivity: AppCompatActivity() {
                 search_start.visibility = View.GONE
                 search_end.visibility = View.VISIBLE
         }
+
+        //입력 검사 구현필요
     }
 
     // 화면 뒤로가기 - 클릭 이벤트 처리

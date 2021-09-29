@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingTermsOfServiceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import java.io.InputStream
 
 /**
@@ -28,7 +29,7 @@ import java.io.InputStream
 
 private const val TAG = "SettingTermsOfServiceFr"
 
-class SettingTermsOfServiceFragment : Fragment(R.layout.fragment_setting_terms_of_service) {
+class SettingTermsOfServiceFragment : Fragment() {
 
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
     lateinit var binding: FragmentSettingTermsOfServiceBinding
@@ -73,7 +74,10 @@ class SettingTermsOfServiceFragment : Fragment(R.layout.fragment_setting_terms_o
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) findNavController().navigate(R.id.action_settingTermsOfServiceFragment_to_settingFragment)
+        if (item.itemId == android.R.id.home) {
+            findNavController().popBackStack()
+            BACKSTACK_FLAG = false
+        }
         return super.onOptionsItemSelected(item)
     }
 

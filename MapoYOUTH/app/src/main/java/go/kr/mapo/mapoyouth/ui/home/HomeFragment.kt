@@ -20,6 +20,7 @@ import android.view.MotionEvent
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
 
@@ -28,13 +29,6 @@ private const val TAG = "HomeFragment"
 class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
-
-    private var mainActivity:MainActivity?= null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -136,7 +130,7 @@ class HomeFragment : Fragment() {
     fun setOnButtonClick(view: View) {
         when(view.id) {
             R.id.top_setting -> {
-                mainActivity!!.BACKSTACK_FLAG = true
+                BACKSTACK_FLAG = true
                 findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
             }
             R.id.top_search, R.id.et_search, R.id.btn_search -> {

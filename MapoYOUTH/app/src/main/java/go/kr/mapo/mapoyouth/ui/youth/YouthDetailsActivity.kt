@@ -1,7 +1,5 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -32,7 +30,6 @@ class YouthDetailsActivity : AppCompatActivity() {
                     tab.text = when(position) {
                         0 -> "활동정보"
                         else -> "기관정보"
-
                     }
                 }.attach()
             }

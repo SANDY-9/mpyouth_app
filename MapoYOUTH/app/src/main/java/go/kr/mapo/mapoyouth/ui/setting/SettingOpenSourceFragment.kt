@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentSettingOpenSourceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import java.io.InputStream
 
 /**
@@ -65,7 +66,10 @@ class SettingOpenSourceFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) findNavController().navigate(R.id.action_SettingOpenSourceFragment_to_settingFragment)
+        if (item.itemId == android.R.id.home) {
+            findNavController().popBackStack()
+            BACKSTACK_FLAG = true
+        }
         return super.onOptionsItemSelected(item)
     }
 }

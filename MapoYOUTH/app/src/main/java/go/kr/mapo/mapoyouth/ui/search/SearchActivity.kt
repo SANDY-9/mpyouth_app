@@ -1,16 +1,25 @@
 package go.kr.mapo.mapoyouth.ui.search
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.inputmethod.EditorInfo
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.databinding.ActivitySearchBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.ui.donation.DonationDetailsActivity
+import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
@@ -32,31 +41,40 @@ class SearchActivity: AppCompatActivity() {
 
     private lateinit var mToolbar: Toolbar
     private lateinit var tabLayout: TabLayout
-    private lateinit var callback: OnBackPressedCallback
+    private lateinit var search_button : ImageButton
+    private lateinit var search_start : TextView
+    private lateinit var search_end : RecyclerView
+    private lateinit var autoCompleteTextView : AutoCompleteTextView
+
+    private lateinit var binding : ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        //setHasOptionsMenu(true)     // Fragment에 메뉴가 있다고 알려줌
-
         mToolbar = findViewById(R.id.search_toolbar)
         tabLayout = findViewById(R.id.tabLayout)
+        search_button = findViewById(R.id.search_button)
+        search_start = findViewById(R.id.search_start)
+        search_end = findViewById(R.id.recyclerView)
+        autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
+
+        search_start.visibility = View.VISIBLE          //보임
+        search_end.visibility = View.GONE               //숨기기
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        // val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
+        val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
-        with(recyclerView) {
-
+        with(search_end) {
             //레이아웃 매니저 셋팅 -> xml에서 진행함
 
             // Adapter 셋팅
             adapter = youthAdapter
-
         }
 
 
@@ -66,20 +84,18 @@ class SearchActivity: AppCompatActivity() {
         // Tab 클릭시 동작
         tabLayout.apply {
             getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
+
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
                         val position = it.position
-                        CustomAttr.changeTabsBold(
-                            tabItem,
-                            position,
-                            tabLayout.tabCount
+                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount
                         ) // 탭 선택시 글씨 굵게
-                        recyclerView.adapter = when (position) {
+                        search_end.adapter = when (position) {
                             0 -> youthAdapter
                             1 -> volunteerAdapter
                             2 -> eduAdapter
-                            else -> null
+                            else -> donationAdapter
                         }
                     }
                 }
@@ -92,222 +108,38 @@ class SearchActivity: AppCompatActivity() {
             })
         }
 
-
-        // 화면 뒤로가기
+        // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
-        /*
-        Log.d("Backbtn", "BackBtn Start!")
-        with(parent) {
-            setSupportActionBar(mToolbar)
-            supportActionBar!!.apply {
-                supportActionBar!!.setDisplayHomeAsUpEnabled(true)          // 뒤로가기 버튼, Default = true
-                setHomeAsUpIndicator(R.drawable.ic_arrow_back)              // Toolbar의 홈버튼 이미지를 변경 (Default IMG = <- 모양 )
-                title = null
+
+        // 검색 Btn, 검색시
+        autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
+
+            if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                search_start.visibility = View.GONE
+                search_end.visibility = View.VISIBLE
+                true
+
+            } else {
+                false
             }
         }
 
-         */
-
+        search_button.setOnClickListener {
+                search_start.visibility = View.GONE
+                search_end.visibility = View.VISIBLE
+        }
     }
 
     // 화면 뒤로가기 - 클릭 이벤트 처리
-    // 살려주세요 제발 동작 좀 해주세요.... 아아아아악
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("Backbtn", "잘 출력되나 home")
+
         return when (item.itemId) {
             android.R.id.home -> {
-                finish()// 뒤로가는 동작 누락 -> 동작 추가해야함
+                finish()            //뒤로가는 동작
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 }
-
-
-    /*// [Fragment]
-    class SearchFragment: Fragment(R.layout.fragment_search) {
-
-        // Toolbar에는 Home(왼쪽 배치)과 menu(오른쪽 배치)가 존재함
-        // HomeBtn을 BackBtn으로 변경진행
-
-        // Fragment는 레이아웃 매니저와 어댑터를 생성하고 연결해주는 곳
-
-        private lateinit var mToolbar: Toolbar
-        private lateinit var tabLayout: TabLayout
-        private lateinit var callback: OnBackPressedCallback
-
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            setHasOptionsMenu(true)     // Fragment에 메뉴가 있다고 알려줌
-
-            mToolbar = view.findViewById(R.id.search_toolbar)
-            tabLayout = view.findViewById(R.id.tabLayout)
-
-
-            val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-
-            val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
-            val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
-            val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
-
-            with(recyclerView) {
-
-                //레이아웃 매니저 셋팅 -> xml에서 진행함
-
-                // Adapter 셋팅
-                adapter = youthAdapter
-
-            }
-            val tabItem = tabLayout.getChildAt(0) as ViewGroup
-
-            // Tab 클릭시 동작
-            tabLayout.apply {
-                getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
-                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-                    override fun onTabSelected(tab : TabLayout.Tab?){
-                        tab?.let {
-                            val position = it.position
-                            CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount) // 탭 선택시 글씨 굵게
-                            recyclerView.adapter = when (position){
-                                0 -> youthAdapter
-                                1 -> volunteerAdapter
-                                2 -> eduAdapter
-                                else -> null
-                            }
-                        }
-                    }
-
-                    override fun onTabUnselected(tab: TabLayout.Tab?) {
-                    }
-
-                    override fun onTabReselected(tab: TabLayout.Tab?) {
-                    }
-                })
-            }
-
-
-            // 화면 뒤로가기
-            Log.d("Backbtn", "BackBtn Start!")
-            val parent = activity as MainActivity
-            with(parent) {
-                setSupportActionBar(mToolbar)
-                supportActionBar!!.apply {
-                    supportActionBar!!.setDisplayHomeAsUpEnabled(true)          // 뒤로가기 버튼, Default = true
-                    setHomeAsUpIndicator(R.drawable.ic_arrow_back)              // Toolbar의 홈버튼 이미지를 변경 (Default IMG = <- 모양 )
-                    title = null
-                }
-            }
-
-        }*/
-
-/*        // 화면 뒤로가기 - 클릭 이벤트 처리
-        // 살려주세요 제발 동작 좀 해주세요.... 아아아아악
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            Log.d("Backbtn", "잘 출력되나 home")
-            return when (item.itemId){
-                android.R.id.home ->
-                    // 뒤로가는 동작 누락 -> 동작 추가해야함
-                    true
-                else -> super.onOptionsItemSelected(item)
-
-            }
-
-            Log.d("Backbtn", "왜 동작을 안함?")
-        }
-
-        override fun onAttach(context: Context) {
-            super.onAttach(context)
-            callback = object : OnBackPressedCallback(true){
-                override fun handleOnBackPressed() {
-                    TODO("Not yet implemented")
-                }
-            }
-            requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-        }
-
-        override fun onDestroy() {
-            super.onDestroy()
-            callback.remove()
-        }
-}*/
-
-
-/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("Backbtn", "잘 출력되나 home")
-        return when (item.itemId){
-            android.R.id.home ->
-
-                true
-            else -> super.onOptionsItemSelected(item)
-
-        }
-
-        Log.d("Backbtn", "왜 동작을 안함?")
-    }*/
-
-
-
-
-// Fragment에서 OnCreate 사용할 필요 없음!!!
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setHasOptionsMenu(true)     // Fragment에 메뉴가 있다고 알려줌
-//
-//
-//        val mToolbar = findViewById(R.id.menu_backbtn) as Toolbar
-//        setSupportActionBar(mToolbar)
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
-//
-//
-//         Fragment에서 getSupportActionBar를 어떻게 사용해야하나?
-//        ((MainActivity) getActivity()).getSupportActionBar()
-//
-//
-//    }
-
-
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
-//
-//
-//        Fragment에서 getSupportActionBar를 어떻게 사용해야하나?
-//        ((MainActivity) getActivity()).getSupportActionBar()
-
-
-/*
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-
-        return view
-    }
-*/
-
-
-// Live Data
-/*
-    private lateinit var binding: FragmentSearchBinding
-    private lateinit var toolbar: Toolbar
-
-override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-
-        toolbar = view.findViewById(R.id.toolbar2)
-
-        binding = FragmentSearchBinding.inflate(layoutInflater)
-
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        toolbar.setNavigationOnClickListener {
-            val fragmentManager = getActivity()?.getSupportFragmentManager();
-            fragmentManager?.beginTransaction()?.remove(this)?.commit();
-            fragmentManager?.popBackStack()
-        }
-
-        return binding.root
-    }*/
 

@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
 
-    var mainActivity:MainActivity?= null
+    private var mainActivity:MainActivity?= null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -142,6 +142,7 @@ class HomeFragment : Fragment() {
             R.id.top_search, R.id.et_search, R.id.btn_search -> {
                 val nextIntent = Intent(requireContext(), SearchActivity::class.java)
                 startActivity(nextIntent)
+
             }
         }
     }

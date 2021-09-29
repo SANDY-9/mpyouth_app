@@ -17,7 +17,7 @@
         android:paddingVertical="@dimen/item_donation_rv_tag_padding_vertical"
         android:paddingHorizontal="@dimen/item_domation_rv_tag_padding_horizontal"
         android:orientation="vertical"
-        android:background="@drawable/bg_item_donatoin_tag"
+        android:background="@drawable/bg_donation_category_design"
         >
 
         <TextView
@@ -28,41 +28,124 @@
             app:layout_constraintTop_toTopOf="parent"
             android:text="교육(지도)"
             android:textSize="@dimen/item_donation_rv_tag_textsize"
-            android:textColor="@color/white"/>
+            android:textColor="@color/mapo_orange"
+            android:textStyle="bold"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/donationRvItemTextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/donatoinRvItemTagLayout"
-        android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
-        android:orientation="vertical">
         <TextView
             android:id="@+id/donationRvItemTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="초,중학교 학습지원 희망해요! (전교과 가능)"
             android:textSize="@dimen/item_donation_rv_title_tv_size"
+            app:layout_constraintStart_toStartOf="@id/donatoinRvItemTagLayout"
+            app:layout_constraintTop_toBottomOf="@id/donatoinRvItemTagLayout"
+            android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
             android:layout_marginBottom="@dimen/item_donation_rv_tag_padding_vertical"/>
         <TextView
-            android:id="@+id/donationTvItemContentTv"
+            android:id="@+id/donationTvItemContent1TvTitle"
             android:textSize="@dimen/item_donation_rv_content_tv_size"
-            android:text="주최기관 : 도화청소년문화의집\n봉사주기 : 정기 월, 화"
+            android:text="주최기관 : "
             android:textColor="@color/mapo_gray"
             android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/donationRvItemTitleTv"
+            app:layout_constraintTop_toBottomOf="@id/donationRvItemTitleTv"
             android:layout_height="wrap_content" />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/donationTvItemContent1TvText"
+            android:textSize="@dimen/item_donation_rv_content_tv_size"
+            android:text="도화청소년문화의집"
+            app:layout_constraintStart_toEndOf="@id/donationTvItemContent1TvTitle"
+            app:layout_constraintTop_toTopOf="@id/donationTvItemContent1TvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/donationTvItemContent2TvTitle"
+        android:textSize="@dimen/item_donation_rv_content_tv_size"
+        android:text="봉사주기 : "
+        android:textColor="@color/mapo_gray"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/donationRvItemTitleTv"
+        app:layout_constraintTop_toBottomOf="@id/donationTvItemContent1TvTitle"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/donationTvItemContent2TvText"
+        android:textSize="@dimen/item_donation_rv_content_tv_size"
+        android:text="정기 월,화"
+        app:layout_constraintStart_toEndOf="@id/donationTvItemContent2TvTitle"
+        app:layout_constraintTop_toTopOf="@id/donationTvItemContent2TvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/donationRvEduCategoryLayout"
         android:layout_height="22dp"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
-        app:layout_constraintTop_toBottomOf="@id/donationRvItemTextLayout"
+        app:layout_constraintTop_toBottomOf="@id/donationTvItemContent2TvTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/edu_tag_ele"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:text="초"
+            android:textStyle="bold"
+            android:textSize="@dimen/donation_rv_edu_icon_textsize"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/bg_edu_category_ele"/>
+
+        <TextView
+            android:id="@+id/edu_tag_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:text="중"
+            android:textStyle="bold"
+            android:textSize="@dimen/donation_rv_edu_icon_textsize"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/bg_edu_category_mid"/>
+
+        <TextView
+            android:id="@+id/edu_tag_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:text="고"
+            android:textStyle="bold"
+            android:textSize="@dimen/donation_rv_edu_icon_textsize"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/bg_edu_category_high"/>
+
+        <TextView
+            android:id="@+id/edu_tag_univ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:text="대"
+            android:textStyle="bold"
+            android:textSize="@dimen/donation_rv_edu_icon_textsize"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:background="@drawable/bg_edu_category_univ"/>
+
+        <TextView
+            android:id="@+id/edu_tag_gen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4dp"
+            android:text="일반"
+            android:textStyle="bold"
+            android:textSize="@dimen/donation_rv_edu_icon_textsize"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/bg_edu_category_general"/>
 
     </LinearLayout>
 
@@ -73,6 +156,7 @@
         app:layout_constraintTop_toBottomOf="@id/donationRvEduCategoryLayout"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="1일 전"
+        android:textColor="@color/mapo_gray"
         android:textSize="@dimen/item_donation_rv_content_tv_size"/>
 
 

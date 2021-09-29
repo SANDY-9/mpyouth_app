@@ -28,6 +28,14 @@
     <string name="dona_develop">프로그램개발</string>
     <string name="dona_doc">문서작성</string>
     <string name="dona_business">마케팅/비지니스</string>
+    <string name="onboard_skip_btn_text">건너뛰기</string>
+    <string name="onboard_screen_title01">청소년들이 필요한 정보들을\n마포유스에서 한번에!</string>
+    <string name="onboard_screen_content01">사이트는 많은데\n어디에서 봐야할지 고민했나요?\n이젠 마포유스에서 한번에 확인하세요!</string>
+    <string name="onboard_finish_btn_text">완료</string>
+    <string name="onboard_screen_title02">내 지역의 청소년 활동과 \n재능기부를 간편하게!</string>
+    <string name="onboard_screen_content02">내 지역에서 재능기부하고 싶었거나\n원하는 재능 기부가 있으신가요?\n마포유스에서 간편하게 신청하세요!</string>
+    <string name="onboard_screen_title03">마포유스에서 평생교육도\n한 눈에 쉽게!</string>
+    <string name="onboard_screen_content03">마포유스를 통해 청소년활동뿐 만아니라\n학부모 활동까지 한 눈에 확인하세요!</string>
 
 
     <array name="youth_tab">

@@ -28,4 +28,6 @@
 
     <color name="donation_item_tv_tag">#FFB23F</color>
 
+    <color name="onboard_content_text_color">#999999</color>
+
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/onboardingFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -49,6 +49,40 @@
         android:label="SettingFragment" >
         <action
             android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingTermsOfServiceFragment"
+            app:destination="@id/settingTermsOfServiceFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_SettingOpenSourceFragment"
+            app:destination="@id/SettingOpenSourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SettingOpenSourceFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.setting.SettingOpenSourceFragment"
+        android:label="SettingOpenSourceFragment"
+        tools:layout="@layout/fragment_setting_open_source">
+        <action
+            android:id="@+id/action_SettingOpenSourceFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingTermsOfServiceFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.setting.SettingTermsOfServiceFragment"
+        android:label="SettingTermsOfServiceFragment" >
+        <action
+            android:id="@+id/action_settingTermsOfServiceFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="go.kr.mapo.mapoyouth.ui.onboard.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />

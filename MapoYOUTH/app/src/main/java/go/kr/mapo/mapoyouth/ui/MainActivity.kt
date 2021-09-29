@@ -1,17 +1,16 @@
 package go.kr.mapo.mapoyouth.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Spinner
+import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityMainBinding
-import go.kr.mapo.mapoyouth.ui.home.HomeFragment
-import go.kr.mapo.mapoyouth.ui.search.SearchActivity
-import go.kr.mapo.mapoyouth.ui.setting.SettingFragment
+import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR
+import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,14 +20,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MapoYOUTH)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
-            setContentView(root)
+            setContentView(root)}
 
-            // NavController initialize
-            val navController = findNavController(R.id.navHostFragment)
-            navBottom.setupWithNavController(navController)
+        // NavController 정의
+        val navController = findNavController(R.id.navHostFragment)
+        binding.navBottom.setupWithNavController(navController)
+
+        if (onBoardingFinished()) {
+            navController.navigate(R.id.action_onboardingFragment_to_homeFragment)
+        } else {
+            binding.navBottom.visibility = View.GONE
         }
+
     }
 
     override fun onBackPressed() {
@@ -50,6 +56,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun onBoardingFinished(): Boolean {
+        val sharedPref = getSharedPreferences(ONBOARD_SHARED_PREF, Context.MODE_PRIVATE)
+        return sharedPref.getBoolean(ONBOARD_FINISHED_STR, false)
     }
 
 }

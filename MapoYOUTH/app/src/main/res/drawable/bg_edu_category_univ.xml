@@ -4,7 +4,7 @@
 
     <corners android:radius="50px" />
 
-    <solid android:color="@color/mapo_gray" />
+    <solid android:color="@color/mapo_mist" />
 
     <padding
         android:left="6dp"

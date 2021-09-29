@@ -29,11 +29,11 @@
     <dimen name="details_bottom_size">48dp</dimen>
     <dimen name="item_donation_rv_outer_padding">16dp</dimen>
     <dimen name="item_donation_rv_tag_textsize">10sp</dimen>
-    <dimen name="item_donation_rv_tag_padding_vertical">4dp</dimen>
-    <dimen name="item_domation_rv_tag_padding_horizontal">8dp</dimen>
+    <dimen name="item_donation_rv_tag_padding_vertical">6dp</dimen>
+    <dimen name="item_domation_rv_tag_padding_horizontal">10dp</dimen>
     <dimen name="item_donation_rv_text_margin_vertical">8dp</dimen>
     <dimen name="item_donation_rv_title_tv_size">14sp</dimen>
-    <dimen name="item_donation_rv_content_tv_size">10sp</dimen>
+    <dimen name="item_donation_rv_content_tv_size">12sp</dimen>
 
     <dimen name="home_ad_item_width">160dp</dimen>
     <dimen name="home_ad_item_height">130dp</dimen>
@@ -48,5 +48,13 @@
     <dimen name="home_ad_height">130dp</dimen>
 
     <dimen name="map_height">200dp</dimen>
+    <dimen name="donation_rv_edu_icon_textsize">10sp</dimen>
+    <dimen name="item_onboard_skip_btn_margintop">24dp</dimen>
+    <dimen name="item_onboard_skip_btn_marginend">16dp</dimen>
+    <dimen name="item_onboard_skip_btn_textsize">14sp</dimen>
+    <dimen name="item_onboard_indicator_margintop">441dp</dimen>
+    <dimen name="item_onboard_title_margin_horizontal">78dp</dimen>
+    <dimen name="item_onboard_title_text_size">18sp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
 
 </resources>

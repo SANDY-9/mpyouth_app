@@ -74,12 +74,14 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         // 서비스 이용약관 Btn
         binding.btnTermsOfService.setOnClickListener {
             findNavController().navigate(R.id.action_settingFragment_to_settingTermsOfServiceFragment)
+            BACKSTACK_FLAG = true
         }
 
         // 오픈소스 라이선스
 
         binding.btnOpenSource.setOnClickListener {
             findNavController().navigate(R.id.action_settingFragment_to_SettingOpenSourceFragment)
+            BACKSTACK_FLAG = true
         }
 
     }

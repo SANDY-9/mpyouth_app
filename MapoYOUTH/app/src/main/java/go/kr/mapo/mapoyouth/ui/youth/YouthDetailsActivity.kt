@@ -6,12 +6,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityYouthDetailsBinding
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
 import go.kr.mapo.mapoyouth.util.CustomAttr
 
-
+@AndroidEntryPoint
 class YouthDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityYouthDetailsBinding

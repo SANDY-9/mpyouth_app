@@ -11,6 +11,7 @@ import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentYouthBinding
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
@@ -19,6 +20,7 @@ import go.kr.mapo.mapoyouth.util.FLAG_YOUTH
 
 private const val TAG = "YouthFragment"
 
+@AndroidEntryPoint
 class YouthFragment : Fragment() {
 
     private lateinit var binding : FragmentYouthBinding

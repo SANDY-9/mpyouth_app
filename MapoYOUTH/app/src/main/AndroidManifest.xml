@@ -14,12 +14,6 @@
         android:theme="@style/Theme.MapoYOUTH"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.setting.SettingTermsOfServiceFragment"
-            android:exported="true" />
-        <activity
-            android:name=".ui.setting.SettingOpenSourceFragment"
-            android:exported="true" />
-        <activity
             android:name=".ui.donation.DonationDetailsActivity"
             android:exported="true" />
         <activity

@@ -15,7 +15,11 @@ import go.kr.mapo.mapoyouth.R
  * @desc
  */
 
+class YouthListAdapter {
 
+}
+
+/*
 class YouthListAdapter(val list: List<String>) : RecyclerView.Adapter<YouthListAdapter.HolderView>() {
     inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val poster = itemView.findViewById<ImageView>(R.id.poster)
@@ -51,3 +55,5 @@ class YouthListAdapter(val list: List<String>) : RecyclerView.Adapter<YouthListA
 
     override fun getItemCount(): Int = list.size
 }
+
+ */

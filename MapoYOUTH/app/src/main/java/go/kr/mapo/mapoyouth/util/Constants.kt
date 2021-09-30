@@ -9,3 +9,6 @@ const val FLAG_EDU = 2
 // onboard sharedPref string constants
 const val ONBOARD_SHARED_PREF = "OnBoarding"
 const val ONBOARD_FINISHED_STR = "finished"
+
+const val STARTING_PAGE_INDEX = 0
+const val BASE_URL = "http://52.78.206.155:8080/api/"

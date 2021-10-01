@@ -44,7 +44,7 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var search_button : ImageButton
     private lateinit var search_start : TextView
     private lateinit var search_end : RecyclerView
-    private lateinit var autoCompleteTextView : EditText //AutoCompleteTextView
+    private lateinit var autoCompleteTextView : AutoCompleteTextView
 
     // private lateinit var binding : ActivitySearchBinding
 

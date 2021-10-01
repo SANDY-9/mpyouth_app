@@ -46,7 +46,6 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var search_end : RecyclerView
     private lateinit var autoCompleteTextView : AutoCompleteTextView
 
-    // private lateinit var binding : ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +61,6 @@ class SearchActivity: AppCompatActivity() {
         search_start.visibility = View.VISIBLE          //보임
         search_end.visibility = View.GONE               //숨기기
 
-
-        // val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))

@@ -23,7 +23,6 @@ import java.io.InputStream
 class SettingTermsOfServiceActivity : AppCompatActivity() {
 
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
-    lateinit var binding: ActivitySettingTermsOfServiceBinding
     private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {

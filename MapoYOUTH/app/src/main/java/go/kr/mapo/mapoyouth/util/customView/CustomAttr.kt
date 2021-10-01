@@ -1,4 +1,4 @@
-package go.kr.mapo.mapoyouth.util
+package go.kr.mapo.mapoyouth.util.customView
 
 import android.content.Context
 import android.content.Intent
@@ -8,8 +8,10 @@ import android.net.Uri
 import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -104,6 +106,12 @@ object CustomAttr {
             putExtra(Intent.EXTRA_TEXT, message)
         }
         context.startActivity(Intent.createChooser(intent, "친구한테 공유하기"))
+    }
+
+    @JvmStatic
+    @BindingAdapter("LoadingState")
+    fun loadingProgress(frameLayout: FrameLayout, load:Boolean) {
+        frameLayout.visibility = if(load) View.GONE else View.VISIBLE
     }
 
 }

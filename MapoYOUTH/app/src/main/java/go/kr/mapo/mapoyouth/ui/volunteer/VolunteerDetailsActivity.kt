@@ -12,7 +12,7 @@ import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityVolunteerDetailsBinding
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthActivityDetailsFragment
-import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 class VolunteerDetailsActivity : AppCompatActivity() {
 

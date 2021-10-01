@@ -13,11 +13,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class DetailsViewPagerAdapter(fragmentActivity: FragmentActivity, private val fragment : Fragment) :
     FragmentStateAdapter(fragmentActivity) {
 
-    override fun getItemCount(): Int = 2
+    override fun getItemCount() = 2
 
-    override fun createFragment(position: Int): Fragment =
-        when(position) {
+    override fun createFragment(position: Int): Fragment {
+        return when (position) {
             0 -> fragment
             else -> OrganizationDetailsFragment()
         }
+    }
 }

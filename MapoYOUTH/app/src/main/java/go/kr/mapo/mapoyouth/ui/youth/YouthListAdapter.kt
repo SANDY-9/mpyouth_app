@@ -5,8 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.databinding.DataBindingUtil
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.databinding.ItemYouthRvBinding
+import go.kr.mapo.mapoyouth.network.response.Youth
+import go.kr.mapo.mapoyouth.util.ID
 
 /**
  * @author SANDY
@@ -15,45 +21,43 @@ import go.kr.mapo.mapoyouth.R
  * @desc
  */
 
-class YouthListAdapter {
+class YouthListAdapter : PagingDataAdapter<Youth, YouthListAdapter.MyViewHolder>(DIFF_UTIL) {
 
-}
-
-/*
-class YouthListAdapter(val list: List<String>) : RecyclerView.Adapter<YouthListAdapter.HolderView>() {
-    inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val poster = itemView.findViewById<ImageView>(R.id.poster)
-
-        fun setDivider() {
-            itemView.setOnClickListener {
-                it.context.startActivity(Intent(it.context, YouthDetailsActivity::class.java))
-            }
-            when(adapterPosition) {
-                list.lastIndex -> {
-                    val divider = itemView.findViewById<View>(R.id.divider)
-                    divider.visibility = View.GONE
-                }
-                2,3 -> {
-                    /*
-                    val tv = itemView.findViewById<TextView>(R.id.tv_deem)
-                    val v = itemView.findViewById<View>(R.id.view_deem)
-                    tv.visibility = View.VISIBLE
-                    v.visibility = View.VISIBLE
-
-                     */
+    override fun onBindViewHolder(holder: YouthListAdapter.MyViewHolder, position: Int) {
+        getItem(position)?.let { youth ->
+            with(holder.binding) {
+                val context = root.context
+                this.youth = youth
+                lifecycleOwner = lifecycleOwner
+                root.setOnClickListener {
+                    val intent = Intent(context, YouthDetailsActivity::class.java).apply {
+                        putExtra(ID, youth.programId)
+                    }
+                    context.startActivity(intent)
                 }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderView =
-        HolderView(LayoutInflater.from(parent.context).inflate(R.layout.item_youth_rv, parent, false))
-
-    override fun onBindViewHolder(holder: HolderView, position: Int) {
-        holder.setDivider()
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): YouthListAdapter.MyViewHolder {
+        val binding = ItemYouthRvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = list.size
-}
+    inner class MyViewHolder(val binding :ItemYouthRvBinding) : RecyclerView.ViewHolder(binding.root) {}
 
- */
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<Youth>() {
+            override fun areItemsTheSame(oldItem: Youth, newItem: Youth): Boolean {
+                return oldItem.programId == newItem.programId
+            }
+
+            override fun areContentsTheSame(oldItem: Youth, newItem: Youth): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+}

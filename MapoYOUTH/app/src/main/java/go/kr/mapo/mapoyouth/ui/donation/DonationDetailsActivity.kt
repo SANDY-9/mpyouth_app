@@ -8,7 +8,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityDonationDetailsBinding
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
-import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 class DonationDetailsActivity : AppCompatActivity() {
 

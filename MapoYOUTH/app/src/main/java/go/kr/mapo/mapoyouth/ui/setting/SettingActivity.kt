@@ -32,7 +32,7 @@ class SettingActivity: AppCompatActivity() {
 
 
         // 화면 뒤로가기 - Btn 생성
-        mToolbar = findViewById(R.id.setting_toolbar)      //OnboardingFragment binding이랑 충돌나는데, 해결방법에 이것밖에 없을까?
+        mToolbar = findViewById(R.id.setting_toolbar)      // OnboardingFragment binding이랑 충돌나는데, 해결방법에 이것밖에 없을까?
         btnTermsOfService = findViewById(R.id.btn_terms_of_service)
         btnOpenSource = findViewById(R.id.btn_open_source)
 

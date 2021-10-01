@@ -3,16 +3,16 @@ package go.kr.mapo.mapoyouth.ui.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.EditorInfo
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
@@ -44,7 +44,7 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var search_button : ImageButton
     private lateinit var search_start : TextView
     private lateinit var search_end : RecyclerView
-    private lateinit var autoCompleteTextView : AutoCompleteTextView
+    private lateinit var autoCompleteTextView : EditText //AutoCompleteTextView
 
     // private lateinit var binding : ActivitySearchBinding
 
@@ -125,12 +125,8 @@ class SearchActivity: AppCompatActivity() {
         }
 
         search_button.setOnClickListener {
-                search_start.visibility = View.GONE
-                search_end.visibility = View.VISIBLE
+            requestSearch(autoCompleteTextView.text)
         }
-
-        //입력 검사 구현필요
-
 
     }
 
@@ -143,6 +139,16 @@ class SearchActivity: AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    // 검색입력 검사
+    private fun requestSearch(word : Editable){
+        if (word.isBlank()){
+            Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+        } else {    // 검색 요청
+            search_start.visibility = View.GONE
+            search_end.visibility = View.VISIBLE
         }
     }
 }

@@ -46,7 +46,7 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var search_end : RecyclerView
     private lateinit var autoCompleteTextView : AutoCompleteTextView
 
-    private lateinit var binding : ActivitySearchBinding
+    // private lateinit var binding : ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,6 +130,8 @@ class SearchActivity: AppCompatActivity() {
         }
 
         //입력 검사 구현필요
+
+
     }
 
     // 화면 뒤로가기 - 클릭 이벤트 처리

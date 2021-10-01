@@ -3,18 +3,15 @@ package go.kr.mapo.mapoyouth.ui.setting
 
 import android.content.res.AssetManager
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.FragmentSettingOpenSourceBinding
-import go.kr.mapo.mapoyouth.ui.MainActivity
+import go.kr.mapo.mapoyouth.databinding.ActivitySettingOpenSourceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
+import go.kr.mapo.mapoyouth.util.CustomAttr
 import java.io.InputStream
 
 /**
@@ -26,6 +23,57 @@ import java.io.InputStream
 
 // 오픈소스 라이선스
 
+class SettingOpenSourceActivity : AppCompatActivity() {
+
+    private lateinit var mToolbar: Toolbar
+    lateinit var binding : ActivitySettingOpenSourceBinding
+    private lateinit var textView: TextView
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_setting_open_source)
+
+        mToolbar = findViewById(R.id.setting_open_source_toolbar)
+
+
+        // 화면 뒤로가기 - Btn 생성
+        with(parent) {
+            setSupportActionBar(mToolbar)
+            supportActionBar!!.apply {
+                setDisplayHomeAsUpEnabled(true)
+                setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+                title = null
+            }
+        }
+
+
+        // txt 파일 읽어오기
+        textView = findViewById(R.id.textView_open_source)
+
+        val assetManager : AssetManager = resources.assets
+        var inputStream:InputStream = assetManager.open("open_source.txt")
+        val inputString = inputStream.bufferedReader().use { it.readText() }
+        textView.text = inputString
+
+    }
+
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            super.onBackPressed()
+            BACKSTACK_FLAG = true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+}
+
+
+
+// SettingOpenSourceFragment
+/*
 class SettingOpenSourceFragment : Fragment() {
 
     private lateinit var mToolbar: Toolbar
@@ -72,4 +120,4 @@ class SettingOpenSourceFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-}
+}*/

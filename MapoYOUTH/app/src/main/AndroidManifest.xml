@@ -13,12 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MapoYOUTH"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.setting.SettingTermsOfServiceFragment"
+
+        <activity android:name=".ui.setting.SettingActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.setting.SettingOpenSourceFragment"
+            android:name=".ui.setting.SettingOpenSourceActivity"
             android:exported="true" />
+        <activity android:name=".ui.setting.SettingTermsOfServiceActivity"
+            android:exported="true"/>
         <activity
             android:name=".ui.donation.DonationDetailsActivity"
             android:exported="true" />

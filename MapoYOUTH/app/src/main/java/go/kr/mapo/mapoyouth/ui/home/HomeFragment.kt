@@ -83,6 +83,7 @@ class HomeFragment : Fragment() {
             rvEdu.adapter = HomeEduListAdapter(listOf("1","2","3","4","5"))
             rvDonation.adapter = HomeDonationListAdapter(listOf("1","2","3","4","5"))
             rvDonationAd.adapter = HomeDonationADAdapter(listOf("1","2","3","4","5"))
+            
         }
 
     }

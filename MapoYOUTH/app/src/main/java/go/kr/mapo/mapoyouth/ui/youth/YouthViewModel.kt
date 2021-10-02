@@ -28,7 +28,8 @@ class YouthViewModel @Inject constructor(val mapoYouthService: MapoYouthService)
         YouthDataSource(mapoYouthService)
     }.liveData.cachedIn(viewModelScope)
 
-    lateinit var youthDetails : LiveData<YouthDetails>
+    private val _youthDetails = MutableLiveData<YouthDetails>()
+    val youthDetails : LiveData<YouthDetails> = _youthDetails
 
     private val _state = MutableLiveData(false)
     val state : LiveData<Boolean> = _state
@@ -37,7 +38,7 @@ class YouthViewModel @Inject constructor(val mapoYouthService: MapoYouthService)
         _state.value = false
         viewModelScope.launch {
             YouthRepository(mapoYouthService).getYouthDetails(id)?.let {
-                youthDetails = it
+                _youthDetails.value = it.value
                 _state.value = true
             }
         }

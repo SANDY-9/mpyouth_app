@@ -17,7 +17,7 @@ object TimeConverter {
     private const val HOUR = 24
     private const val DAY = 30
     private const val MONTH = 12
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    private val dateFormat = SimpleDateFormat(TIME_FORMAT)
 
     fun formatTimeString(date : String): String? {
         val currentTime = System.currentTimeMillis()

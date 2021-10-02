@@ -51,7 +51,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_700"
-                        android:text="환경을 바꾸는 달리기 : 쓰담런 [시즌1]"
+                        android:text="@{youth.title}"
+                        tools:text="환경을 바꾸는 달리기 : 쓰담런 [시즌1]"
                         android:textSize="@dimen/details_title" />
 
                     <TextView

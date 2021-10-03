@@ -13,7 +13,7 @@ data class YouthDetailsResponse(
     val message: String = "", // Program 단일 조회
     @SerializedName("data")
     @Expose
-    val `data`: YouthDetails = YouthDetails()
+    val `data`: YouthDetails
 )
 data class YouthDetails(
     @SerializedName("program_id")
@@ -78,5 +78,8 @@ data class YouthDetails(
     val organizationName: String = "", // 테스트기관이름
     @SerializedName("program_files")
     @Expose
-    val programFiles: List<Any> = listOf()
+    val programFiles: List<Any> = listOf(),
+    @SerializedName("organization")
+    @Expose
+    val organization: Organization
 )

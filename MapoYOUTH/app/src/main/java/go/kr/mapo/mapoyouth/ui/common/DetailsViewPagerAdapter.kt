@@ -17,7 +17,7 @@ import go.kr.mapo.mapoyouth.util.ORGANIZATION
 class DetailsViewPagerAdapter(
     fragmentActivity: FragmentActivity,
     private val fragment : Fragment,
-    private val organization: Organization) :
+    private val organization: Organization?) :
     FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount() = 2

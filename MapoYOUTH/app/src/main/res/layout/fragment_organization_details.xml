@@ -1,153 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.common.OrganizationDetailsFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="organ"
+            type="go.kr.mapo.mapoyouth.network.response.Organization" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/scroll_margin">
+        tools:context=".ui.common.OrganizationDetailsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@color/white"
-            android:paddingBottom="@dimen/margin_16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/scroll_margin">
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="담당기관"
-                android:textColor="@color/name"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/margin_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="담당기관"
+                    android:textColor="@color/name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:text="@{organ.name}"
+                    tools:text="시립보라매청소년센터"
+                    app:layout_constraintStart_toEndOf="@+id/textView10"
+                    app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_32dp"
+                    android:text="담당자"
+                    android:textColor="@color/name"
+                    app:layout_constraintStart_toStartOf="@+id/textView10"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{organ.representative}"
+                    tools:text="유선영"
+                    app:layout_constraintStart_toStartOf="@+id/textView14"
+                    app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_32dp"
+                    android:text="위치"
+                    android:textColor="@color/name"
+                    app:layout_constraintStart_toStartOf="@+id/textView19"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="55dp"
+                    android:lineSpacingExtra="0sp"
+                    android:text="@{organ.address}"
+                    tools:text="서울특별시 동작구 여의대방로20길 33 시립보라매청소년"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView16"
+                    app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_32dp"
+                    android:text="전화번호"
+                    android:textColor="@color/name"
+                    app:layout_constraintStart_toStartOf="@+id/textView15"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_32dp"
+                    android:text="URL"
+                    android:textColor="@color/name"
+                    app:layout_constraintStart_toStartOf="@+id/textView17"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="55dp"
+                    android:lineSpacingExtra="0sp"
+                    android:text="@{organ.homepage}"
+                    android:textColor="#000000"
+                    android:linksClickable="true"
+                    android:textColorLink="@color/black"
+                    android:autoLink="web"
+                    tools:text="https://naver.com"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView16"
+                    app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{organ.phone}"
+                    app:layout_constraintStart_toStartOf="@+id/textView18"
+                    app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
-                android:text="시립보라매청소년센터"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@+id/textView10" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_32dp"
-                android:text="담당자"
-                android:textColor="@color/name"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="유선영"
-                app:layout_constraintStart_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toTopOf="@+id/textView15" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_32dp"
-                android:text="위치"
-                android:textColor="@color/name"
-                app:layout_constraintStart_toStartOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="55dp"
-                android:lineSpacingExtra="0sp"
-                android:text="서울특별시 동작구 여의대방로20길 33 시립보라매청소년"
+                android:layout_marginTop="@dimen/margin_24dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:background="@color/search_outline"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toTopOf="@+id/textView17" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_32dp"
-                android:text="전화번호"
-                android:textColor="@color/name"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_32dp"
-                android:text="URL"
-                android:textColor="@color/name"
-                app:layout_constraintStart_toStartOf="@+id/textView17"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="55dp"
-                android:lineSpacingExtra="0sp"
-                android:text="@string/random_url"
-                android:textColor="#000000"
-                android:linksClickable="true"
-                android:textColorLink="@color/black"
-                android:autoLink="web"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="02-834-6412"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
-                app:layout_constraintTop_toTopOf="@+id/textView19" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/map_height"
+                    android:layout_margin="1dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/map_tp" />
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16dp"
-            android:layout_marginTop="@dimen/margin_24dp"
-            android:layout_marginEnd="@dimen/margin_16dp"
-            android:background="@color/search_outline"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/map_height"
-                android:layout_margin="1dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/map_tp" />
-        </FrameLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</layout>

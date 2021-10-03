@@ -6,6 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import go.kr.mapo.mapoyouth.network.MapoYouthService
+import go.kr.mapo.mapoyouth.network.repository.YouthRepository
+import go.kr.mapo.mapoyouth.ui.common.OrganizationDetailsFragment
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
 import go.kr.mapo.mapoyouth.util.BASE_URL
 import okhttp3.Interceptor
@@ -13,6 +15,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
@@ -28,7 +31,7 @@ object HiltModules {
 
     @Singleton
     @Provides
-    fun provideRetrofitInterface() : MapoYouthService {
+    fun provideRetrofitInterface() = { ->
         val requestInterceptor = Interceptor {
             val url = it.request()
                 .url()
@@ -48,12 +51,16 @@ object HiltModules {
         val gson = GsonBuilder()
             .setLenient()
             .create()
-        return Retrofit.Builder()
+        Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl(BASE_URL)
             .build()
             .create(MapoYouthService::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideYouthRepository(mapoYouthService: MapoYouthService) = YouthRepository(mapoYouthService)
 
 }

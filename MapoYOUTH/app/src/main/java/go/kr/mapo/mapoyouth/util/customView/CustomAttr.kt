@@ -10,12 +10,10 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
@@ -112,6 +110,12 @@ object CustomAttr {
     @BindingAdapter("LoadingState")
     fun loadingProgress(frameLayout: FrameLayout, load:Boolean) {
         frameLayout.visibility = if(load) View.GONE else View.VISIBLE
+    }
+
+    @JvmStatic
+    @BindingAdapter("ImageLoad")
+    fun setImage(imageView: ImageView, url: String) {
+        Glide.with(imageView).load(url).into(imageView)
     }
 
 }

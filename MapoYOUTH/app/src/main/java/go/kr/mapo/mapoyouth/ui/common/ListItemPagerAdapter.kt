@@ -37,7 +37,7 @@ class ListItemPagerAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderView =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         HolderView(LayoutInflater.from(parent.context).inflate(R.layout.item_pager_view, parent, false))
 
     override fun onBindViewHolder(holder: HolderView, position: Int) {

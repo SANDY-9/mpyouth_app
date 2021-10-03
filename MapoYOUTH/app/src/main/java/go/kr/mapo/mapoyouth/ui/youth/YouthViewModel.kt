@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
 import go.kr.mapo.mapoyouth.network.repository.YouthRepository
+import go.kr.mapo.mapoyouth.network.response.Organization
 import go.kr.mapo.mapoyouth.network.response.YouthDetails
 import go.kr.mapo.mapoyouth.util.PAGE_SIZE
 import kotlinx.coroutines.launch
@@ -22,7 +23,9 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class YouthViewModel @Inject constructor(val mapoYouthService: MapoYouthService) : ViewModel() {
+class YouthViewModel @Inject constructor(
+    private val mapoYouthService: MapoYouthService,
+    private val youthRepository: YouthRepository) : ViewModel() {
 
     val youthList = Pager(PagingConfig(PAGE_SIZE, prefetchDistance = 1)) {
         YouthDataSource(mapoYouthService)
@@ -37,11 +40,14 @@ class YouthViewModel @Inject constructor(val mapoYouthService: MapoYouthService)
     fun setYouthDetails(id : Int) {
         _state.value = false
         viewModelScope.launch {
-            YouthRepository(mapoYouthService).getYouthDetails(id)?.let {
+            youthRepository.getYouthDetails(id)?.let {
                 _youthDetails.value = it.value
                 _state.value = true
             }
         }
     }
+
+    fun getOrganiztionDetails() = youthDetails.value?.organization ?: Organization()
+
 
 }

@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityYouthDetailsBinding
+import go.kr.mapo.mapoyouth.network.response.Organization
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
 import go.kr.mapo.mapoyouth.util.ID
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
@@ -41,7 +42,10 @@ class YouthDetailsActivity : AppCompatActivity() {
         with(binding.include) {
             val detailsFragment = YouthActivityDetailsFragment()
             viewPager.apply {
-                adapter = DetailsViewPagerAdapter(this@YouthDetailsActivity, detailsFragment)
+                adapter = DetailsViewPagerAdapter(
+                    this@YouthDetailsActivity,
+                    detailsFragment,
+                    viewModel.getOrganiztionDetails())
                 currentItem = 0
             }
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->

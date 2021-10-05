@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerBinding
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
-import go.kr.mapo.mapoyouth.util.CustomAttr
 import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
+@AndroidEntryPoint
 class VolunteerFragment : Fragment() {
 
     lateinit var binding : FragmentVolunteerBinding
@@ -31,7 +33,7 @@ class VolunteerFragment : Fragment() {
             val tabList = resources.getStringArray(R.array.volunteer_tab)
             viewPager.apply {
                 currentItem = 0
-                adapter = ListItemPagerAdapter(FLAG_VOLUNTEER)
+                adapter = ListItemPagerAdapter(null, VolunteerListAdapter(listOf("","","")))
             }
             val tabItem = tabs.getChildAt(0) as ViewGroup
             tabs.getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount) }

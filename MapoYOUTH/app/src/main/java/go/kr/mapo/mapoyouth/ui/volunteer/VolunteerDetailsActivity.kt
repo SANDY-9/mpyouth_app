@@ -10,9 +10,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityVolunteerDetailsBinding
+import go.kr.mapo.mapoyouth.network.response.Organization
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthActivityDetailsFragment
-import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 class VolunteerDetailsActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class VolunteerDetailsActivity : AppCompatActivity() {
         with(binding) {
             setSupportActionBar(toolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
             with(viewPager) {
-                adapter = DetailsViewPagerAdapter(this@VolunteerDetailsActivity, VolunteerActivityDetailsFragment())
+                adapter = DetailsViewPagerAdapter(this@VolunteerDetailsActivity, VolunteerActivityDetailsFragment(), Organization())
                 currentItem = 0
             }
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->

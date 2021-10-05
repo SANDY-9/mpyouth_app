@@ -7,8 +7,9 @@ import android.view.MenuItem
 import com.google.android.material.tabs.TabLayoutMediator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityDonationDetailsBinding
+import go.kr.mapo.mapoyouth.network.response.Organization
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
-import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 class DonationDetailsActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class DonationDetailsActivity : AppCompatActivity() {
         binding = ActivityDonationDetailsBinding.inflate(layoutInflater).apply { setContentView(root) }
         setSupportActionBar(binding.toolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
         binding.viewPager.apply {
-            adapter = DetailsViewPagerAdapter(this@DonationDetailsActivity, DonationActivityDetailsFragment())
+            adapter = DetailsViewPagerAdapter(this@DonationDetailsActivity, DonationActivityDetailsFragment(), Organization())
             currentItem = 0
         }
 

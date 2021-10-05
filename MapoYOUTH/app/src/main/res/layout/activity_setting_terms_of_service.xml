@@ -71,7 +71,7 @@
             android:id="@+id/textView_terms_of_service"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_700"
+            android:fontFamily="@font/roboto_400"
             android:text="" />
 
 <!--        <LinearLayout

@@ -1,4 +1,4 @@
-package go.kr.mapo.mapoyouth.util
+package go.kr.mapo.mapoyouth.util.customView
 
 import android.content.Context
 import android.content.Intent
@@ -8,12 +8,13 @@ import android.net.Uri
 import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
@@ -104,6 +105,36 @@ object CustomAttr {
             putExtra(Intent.EXTRA_TEXT, message)
         }
         context.startActivity(Intent.createChooser(intent, "친구한테 공유하기"))
+    }
+
+    @JvmStatic
+    @BindingAdapter("LoadingState")
+    fun loadingProgress(frameLayout: FrameLayout, load:Boolean) {
+        frameLayout.visibility = if(load) View.GONE else View.VISIBLE
+    }
+
+    @JvmStatic
+    @BindingAdapter("ImageLoad")
+    fun setImage(imageView: ImageView, url: String) {
+        Glide.with(imageView).load(url).into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("Recruited_layout")
+    fun setRecruited(frameLayout: FrameLayout, boolean: Boolean) {
+        frameLayout.visibility = if(boolean) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("Recruited_textView")
+    fun setRecruited(textView: TextView, boolean: Boolean) {
+        textView.visibility = if(boolean) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("RecruitedButtonEnabled")
+    fun buttonEnabled(button: Button, boolean: Boolean) {
+        button.isEnabled = boolean
     }
 
 }

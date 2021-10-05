@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentEduBinding
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 
+@AndroidEntryPoint
 class EduFragment : Fragment() {
 
     private lateinit var binding : FragmentEduBinding

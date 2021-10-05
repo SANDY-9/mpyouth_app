@@ -15,11 +15,13 @@ import android.os.Build
 
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.setting.SettingActivity
 import go.kr.mapo.mapoyouth.util.CustomAttr
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
@@ -82,7 +84,6 @@ class HomeFragment : Fragment() {
             rvEdu.adapter = HomeEduListAdapter(listOf("1","2","3","4","5"))
             rvDonation.adapter = HomeDonationListAdapter(listOf("1","2","3","4","5"))
             rvDonationAd.adapter = HomeDonationADAdapter(listOf("1","2","3","4","5"))
-            
         }
 
     }

@@ -23,7 +23,7 @@ import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
-import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 /**
  * @author LimSeulgi
@@ -65,7 +65,7 @@ class SearchActivity: AppCompatActivity() {
 
         // val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
+        val youthAdapter = YouthListAdapter()
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))

@@ -7,11 +7,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityMainBinding
 import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR
 import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     companion object {

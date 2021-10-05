@@ -24,7 +24,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/list_img_width"
-                android:layout_height="@dimen/list_img_height"
+                android:layout_height="match_parent"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="0dp"
                 app:cardMaxElevation="0dp">
@@ -34,29 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/poster" />
-
-                <TextView
-                    android:id="@+id/tv_deem"
-                    style="@style/TagBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_tag"
-                    android:backgroundTint="#FFFFFF"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/roboto_700"
-                    android:text="모집마감"
-                    android:textColor="#333333"
-                    android:visibility="gone" />
-
-                <View
-                    android:id="@+id/view_deem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#33000000"
-                    android:visibility="gone" />
+                    app:srcCompat="@drawable/poster2" />
 
             </androidx.cardview.widget.CardView>
 
@@ -161,6 +139,26 @@
             android:layout_height="1dp"
             android:layout_gravity="bottom"
             android:background="@color/divider" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99FFFFFF">
+
+            <TextView
+                android:id="@+id/tv_deem"
+                style="@style/TagBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_tag"
+                android:backgroundTint="#CC999999"
+                android:backgroundTintMode="src_in"
+                android:fontFamily="@font/roboto_700"
+                android:text="모집마감"
+                android:textColor="@color/white" />
+        </FrameLayout>
 
     </FrameLayout>
 </layout>

@@ -47,7 +47,7 @@ class YouthViewModel @Inject constructor(
         }
     }
 
-    fun getOrganiztionDetails() = youthDetails.value?.organization ?: Organization()
+    fun getOrganizationDetails() = youthDetails.value?.organization ?: Organization()
 
 
 }

@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
@@ -116,6 +117,24 @@ object CustomAttr {
     @BindingAdapter("ImageLoad")
     fun setImage(imageView: ImageView, url: String) {
         Glide.with(imageView).load(url).into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("Recruited_layout")
+    fun setRecruited(frameLayout: FrameLayout, boolean: Boolean) {
+        frameLayout.visibility = if(boolean) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("Recruited_textView")
+    fun setRecruited(textView: TextView, boolean: Boolean) {
+        textView.visibility = if(boolean) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("RecruitedButtonEnabled")
+    fun buttonEnabled(button: Button, boolean: Boolean) {
+        button.isEnabled = boolean
     }
 
 }

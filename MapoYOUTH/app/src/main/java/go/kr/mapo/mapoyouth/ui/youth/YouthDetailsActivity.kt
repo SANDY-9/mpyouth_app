@@ -45,7 +45,7 @@ class YouthDetailsActivity : AppCompatActivity() {
                 adapter = DetailsViewPagerAdapter(
                     this@YouthDetailsActivity,
                     detailsFragment,
-                    viewModel.getOrganiztionDetails())
+                    viewModel.getOrganizationDetails())
                 currentItem = 0
             }
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->

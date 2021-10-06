@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -44,9 +45,8 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var search_button : ImageButton
     private lateinit var search_start : TextView
     private lateinit var search_end : RecyclerView
-    private lateinit var autoCompleteTextView : EditText //AutoCompleteTextView
+    private lateinit var autoCompleteTextView : AutoCompleteTextView
 
-    // private lateinit var binding : ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,9 +63,7 @@ class SearchActivity: AppCompatActivity() {
         search_end.visibility = View.GONE               //숨기기
 
 
-        // val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-
-        val youthAdapter = YouthListAdapter()
+        val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
@@ -111,12 +109,16 @@ class SearchActivity: AppCompatActivity() {
         // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
 
-        // 검색 Btn, 검색시
+        // KBD 검색 Btn(Enter)로 검색시
         autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
 
             if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                 search_start.visibility = View.GONE
                 search_end.visibility = View.VISIBLE
+
+/*                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view.windowToken, 0)*/
+
                 true
 
             } else {
@@ -124,11 +126,31 @@ class SearchActivity: AppCompatActivity() {
             }
         }
 
+        // 화면 내 검색 Btn로 검색시
         search_button.setOnClickListener {
             requestSearch(autoCompleteTextView.text)
         }
 
     }
+
+    // 검색입력 검사
+    private fun requestSearch(word : Editable){
+        if (word.isBlank()){
+            Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+        } else {    // 검색 요청
+
+            search_start.visibility = View.GONE
+            search_end.visibility = View.VISIBLE
+
+
+
+/*            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(View.search_end, 0)*/
+        }
+    }
+
+    // 1. search_button 누르면 키보드 내려가도록 구현
+    // 2. 키보드 내 엔터 클릭시 Toast 메시지, 내용 입력 후 클릭시 넘어가도록 구현
 
     // 화면 뒤로가기 - 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -142,14 +164,5 @@ class SearchActivity: AppCompatActivity() {
         }
     }
 
-    // 검색입력 검사
-    private fun requestSearch(word : Editable){
-        if (word.isBlank()){
-            Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
-        } else {    // 검색 요청
-            search_start.visibility = View.GONE
-            search_end.visibility = View.VISIBLE
-        }
-    }
-}
 
+}

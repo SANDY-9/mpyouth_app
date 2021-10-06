@@ -22,7 +22,6 @@ import go.kr.mapo.mapoyouth.util.CustomAttr
 class SettingActivity: AppCompatActivity() {
 
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
-    private lateinit var binding : ActivitySettingBinding
     lateinit var btnTermsOfService : Button
     lateinit var btnOpenSource : Button
 

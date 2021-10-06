@@ -26,7 +26,6 @@ import java.io.InputStream
 class SettingOpenSourceActivity : AppCompatActivity() {
 
     private lateinit var mToolbar: Toolbar
-    lateinit var binding : ActivitySettingOpenSourceBinding
     private lateinit var textView: TextView
 
 

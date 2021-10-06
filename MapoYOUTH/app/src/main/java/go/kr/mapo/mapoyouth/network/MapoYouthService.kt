@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.network
 
+import go.kr.mapo.mapoyouth.network.response.Category
 import go.kr.mapo.mapoyouth.network.response.YouthDetailsResponse
 import go.kr.mapo.mapoyouth.network.response.YouthListResponse
 import retrofit2.Response
@@ -21,5 +22,8 @@ interface MapoYouthService {
     suspend fun getYouthDetails(
         @Path("id")id : Int
     ) : Response<YouthDetailsResponse>
+
+    @GET("category")
+    suspend fun getCategory() : Response<Category.CategoryItem>
 
 }

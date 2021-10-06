@@ -63,7 +63,7 @@ class SearchActivity: AppCompatActivity() {
         search_end.visibility = View.GONE               //숨기기
 
 
-        val youthAdapter = YouthListAdapter(listOf("1", "1", "1", "1", "1"))
+        val youthAdapter = YouthListAdapter()
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))

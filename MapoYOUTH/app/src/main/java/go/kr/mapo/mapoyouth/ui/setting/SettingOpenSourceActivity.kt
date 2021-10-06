@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivitySettingOpenSourceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
-import go.kr.mapo.mapoyouth.util.CustomAttr
 import java.io.InputStream
 
 /**

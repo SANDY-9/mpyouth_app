@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.setting.SettingActivity
-import go.kr.mapo.mapoyouth.util.CustomAttr
+import go.kr.mapo.mapoyouth.util.customView.CustomAttr
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {

@@ -10,7 +10,7 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivitySettingBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
-import go.kr.mapo.mapoyouth.util.CustomAttr
+
 
 /**
  * @author LimSeulgi

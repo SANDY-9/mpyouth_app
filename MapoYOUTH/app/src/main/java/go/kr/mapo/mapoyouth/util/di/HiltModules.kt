@@ -29,9 +29,10 @@ import javax.inject.Singleton
 @Module
 object HiltModules {
 
+
     @Singleton
     @Provides
-    fun provideRetrofitInterface() = { ->
+    fun provideRetrofitInterface() : MapoYouthService {
         val requestInterceptor = Interceptor {
             val url = it.request()
                 .url()
@@ -51,7 +52,7 @@ object HiltModules {
         val gson = GsonBuilder()
             .setLenient()
             .create()
-        Retrofit.Builder()
+        return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl(BASE_URL)
@@ -61,6 +62,8 @@ object HiltModules {
 
     @Singleton
     @Provides
-    fun provideYouthRepository(mapoYouthService: MapoYouthService) = YouthRepository(mapoYouthService)
+    fun provideYouthRepository(mapoYouthService: MapoYouthService) : YouthRepository {
+      return YouthRepository(mapoYouthService)
+    }
 
 }

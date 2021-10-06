@@ -1,13 +1,11 @@
 package go.kr.mapo.mapoyouth.ui.setting
 
-import android.content.ContentValues.TAG
 import android.content.res.AssetManager
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.ActivitySettingTermsOfServiceBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import java.io.InputStream
 

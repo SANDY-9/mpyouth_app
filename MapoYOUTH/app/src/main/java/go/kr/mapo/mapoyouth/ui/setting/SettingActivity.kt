@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.ActivitySettingBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 
 

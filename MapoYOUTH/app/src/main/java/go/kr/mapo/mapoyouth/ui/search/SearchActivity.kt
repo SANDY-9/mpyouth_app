@@ -1,25 +1,16 @@
 package go.kr.mapo.mapoyouth.ui.search
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.*
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.ActivitySearchBinding
-import go.kr.mapo.mapoyouth.ui.MainActivity
-import go.kr.mapo.mapoyouth.ui.donation.DonationDetailsActivity
 import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
@@ -46,6 +37,7 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var search_start : TextView
     private lateinit var search_end : RecyclerView
     private lateinit var autoCompleteTextView : AutoCompleteTextView
+    private lateinit var inputMethodManager : InputMethodManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +55,7 @@ class SearchActivity: AppCompatActivity() {
         search_end.visibility = View.GONE               //숨기기
 
 
-        val youthAdapter = YouthListAdapter()
+        val youthAdapter = YouthListAdapter() // API 연결 후 listOf 삭제해야함
         val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
@@ -116,8 +108,8 @@ class SearchActivity: AppCompatActivity() {
                 search_start.visibility = View.GONE
                 search_end.visibility = View.VISIBLE
 
-/*                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(view.windowToken, 0)*/
+                requestSearch(autoCompleteTextView.text)
+                inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 KBD Enter 클릭시 KBD 숨김
 
                 true
 
@@ -126,9 +118,12 @@ class SearchActivity: AppCompatActivity() {
             }
         }
 
+        inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
         // 화면 내 검색 Btn로 검색시
         search_button.setOnClickListener {
             requestSearch(autoCompleteTextView.text)
+                inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 search_button 클릭시 KBD 숨김
         }
 
     }
@@ -141,16 +136,8 @@ class SearchActivity: AppCompatActivity() {
 
             search_start.visibility = View.GONE
             search_end.visibility = View.VISIBLE
-
-
-
-/*            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(View.search_end, 0)*/
         }
     }
-
-    // 1. search_button 누르면 키보드 내려가도록 구현
-    // 2. 키보드 내 엔터 클릭시 Toast 메시지, 내용 입력 후 클릭시 넘어가도록 구현
 
     // 화면 뒤로가기 - 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -163,6 +150,4 @@ class SearchActivity: AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }

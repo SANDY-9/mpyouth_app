@@ -19,7 +19,7 @@ object TimeConverter {
     private const val MONTH = 12
     private val dateFormat = SimpleDateFormat(TIME_FORMAT)
 
-    fun formatTimeString(date : String): String? {
+    fun formatTimeString(date : String): String {
         val currentTime = System.currentTimeMillis()
         val regTime = dateFormat.parse(date).time
         val diffTime = (currentTime - regTime) / 1000

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.response.YouthDetails
 import java.lang.Exception
+import javax.inject.Inject
 
 /**
  * @author SANDY

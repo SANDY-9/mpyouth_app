@@ -16,6 +16,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.setting.SettingActivity
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr

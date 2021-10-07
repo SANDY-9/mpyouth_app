@@ -220,8 +220,10 @@
                 android:layout_marginTop="@dimen/margin_16dp"
                 android:paddingStart="@dimen/margin_16dp"
                 android:paddingEnd="@dimen/margin_16dp"
+                android:paddingBottom="60dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 tools:listitem="@layout/item_donation_rv" />
+
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

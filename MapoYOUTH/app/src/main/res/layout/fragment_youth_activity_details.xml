@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="youth"
-            type="go.kr.mapo.mapoyouth.ui.youth.YouthViewModel" />
+            name="youthDetails"
+            type="go.kr.mapo.mapoyouth.network.response.YouthDetails" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
-                android:text="2021-08-02 ~ 08-10"
+                tools:text="2021-08-02 ~ 08-10"
+                app:recruitStart="@{youthDetails.recruitStartDate}"
+                app:recruitEnd="@{youthDetails.recruitEndDate}"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
                 app:layout_constraintTop_toTopOf="@+id/textView10" />
 
@@ -61,6 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2021-08-14(토) ~ 08-21(토)"
+                app:activityStart="@{youthDetails.startDate}"
+                app:activityEnd="@{youthDetails.endDate}"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toTopOf="@+id/textView15" />
 
@@ -80,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:lineSpacingExtra="0sp"
-                android:text="서울특별시 동작구 여의대방로20길 33\n시립보라매청소년"
+                android:text="@{youthDetails.organization.address}"
+                tools:text="서울특별시 동작구 여의대방로20길 33\n시립보라매청소년"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView16"
                 app:layout_constraintTop_toTopOf="@+id/textView17" />
@@ -99,7 +104,8 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="40명"
+                RecruitNumberDetails="@{youthDetails.recruitNumber}"
+                tools:text="40명"
                 app:layout_constraintStart_toStartOf="@+id/textView18"
                 app:layout_constraintTop_toTopOf="@+id/textView19" />
 
@@ -117,7 +123,8 @@
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="무료"
+                EntryFee="@{youthDetails.entryFee}"
+                tools:text="무료"
                 app:layout_constraintStart_toStartOf="@+id/textView20"
                 app:layout_constraintTop_toTopOf="@+id/textView30" />
 
@@ -166,7 +173,8 @@
                 android:layout_marginEnd="@dimen/margin_16dp"
                 android:layout_marginBottom="@dimen/margin_24dp"
                 android:inputType="textMultiLine"
-                android:text="환경을 바꾸는 달리기 쓰담런, 플로깅 활동에 관심있나요? 쓰담런은 8/14일, 8/21일 중 신청 회차 당일에 필수적으로 온라인 교육에 참여 가능한 청소년만 신청 가능합니다. 일정에 따라 쓰담런 활동에 참여하고, 최종 보고서 제출 확인이 된 청소년에 한해 봉사시간이 부여됩니다." />
+                android:text="@{youthDetails.description}"
+                tools:text="환경을 바꾸는 달리기 쓰담런, 플로깅 활동에 관심있나요? 쓰담런은 8/14일, 8/21일 중 신청 회차 당일에 필수적으로 온라인 교육에 참여 가능한 청소년만 신청 가능합니다. 일정에 따라 쓰담런 활동에 참여하고, 최종 보고서 제출 확인이 된 청소년에 한해 봉사시간이 부여됩니다." />
         </LinearLayout>
 
         <TextView
@@ -188,7 +196,8 @@
             android:layout_marginStart="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_16dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/detail_notice"
+            Caution="@{youthDetails.caution}"
+            tools:text="@string/detail_notice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />

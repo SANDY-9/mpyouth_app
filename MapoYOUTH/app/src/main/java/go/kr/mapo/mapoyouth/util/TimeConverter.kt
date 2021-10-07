@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.util
 
 import android.util.Log
 import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author SANDY
@@ -18,6 +19,7 @@ object TimeConverter {
     private const val DAY = 30
     private const val MONTH = 12
     private val dateFormat = SimpleDateFormat(TIME_FORMAT)
+    private val dayFormat = SimpleDateFormat("EEEE", Locale.getDefault())
 
     fun formatTimeString(date : String): String {
         val currentTime = System.currentTimeMillis()
@@ -31,6 +33,13 @@ object TimeConverter {
             diffTime/SEC/MIN/HOUR/DAY < MONTH -> "${diffTime/SEC/MIN/HOUR/DAY}달 전"
             else -> "${diffTime/SEC/MIN/HOUR/DAY/MONTH}년 전"
         }
+    }
+
+    fun getDayOfTheWeek(date: String) : String {
+        val calendar = Calendar.getInstance().also {
+            it.time = dateFormat.parse(date)
+        }
+        return dayFormat.format(calendar.time)
     }
 
 }

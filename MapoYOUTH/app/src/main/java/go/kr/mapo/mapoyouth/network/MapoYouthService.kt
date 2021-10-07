@@ -5,6 +5,7 @@ import go.kr.mapo.mapoyouth.network.response.YouthListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * @author SANDY
@@ -15,7 +16,9 @@ import retrofit2.http.Path
 interface MapoYouthService {
 
     @GET("program")
-    suspend fun getYouthList() : Response<YouthListResponse>
+    suspend fun getYouthList(
+        @Query("pageNumber") pageNumber : Int
+    ) : Response<YouthListResponse>
 
     @GET("program/{id}")
     suspend fun getYouthDetails(

@@ -37,12 +37,16 @@ class YouthDataSource(private val mapoYouthService: MapoYouthService) : PagingSo
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Youth> {
         return try {
             val page = params.key ?: STARTING_PAGE_INDEX
-            val data = mapoYouthService.getYouthList().body()?.data!!
-            LoadResult.Page(
-                data = data,
-                prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
-                nextKey = null
-            )
+            val data = mapoYouthService.getYouthList(page).body()?.data
+            if(data != null) {
+                LoadResult.Page(
+                    data = data.content,
+                    prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
+                    nextKey = if (data.last) null else page + 1
+                )
+            } else {
+                LoadResult.Invalid()
+            }
         } catch (e: Exception) {
             LoadResult.Error(e)
         }

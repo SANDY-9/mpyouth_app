@@ -2,22 +2,19 @@ package go.kr.mapo.mapoyouth.util.customView
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
 import android.util.Log
-import android.view.MenuItem
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.ActionBar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
+import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_RECRUITING
+import go.kr.mapo.mapoyouth.util.TimeConverter
 
 /**
  * @author SANDY
@@ -115,26 +112,75 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("ImageLoad")
-    fun setImage(imageView: ImageView, url: String) {
-        Glide.with(imageView).load(url).into(imageView)
+    fun setImage(imageView: ImageView, url: String?) {
+        Glide.with(imageView)
+            .load(url)
+            .placeholder(R.color.spinner_stroke)
+            .into(imageView)
     }
 
     @JvmStatic
-    @BindingAdapter("Recruited_layout")
-    fun setRecruited(frameLayout: FrameLayout, boolean: Boolean) {
-        frameLayout.visibility = if(boolean) View.VISIBLE else View.GONE
+    @BindingAdapter("RecruitedLayout")
+    fun setRecruited(frameLayout: FrameLayout, recruitedStatus: String?) {
+        frameLayout.visibility = when(recruitedStatus) {
+            RECRUIT_STATUS_RECRUITING -> View.GONE
+            else -> View.VISIBLE
+        }
     }
 
     @JvmStatic
-    @BindingAdapter("Recruited_textView")
-    fun setRecruited(textView: TextView, boolean: Boolean) {
-        textView.visibility = if(boolean) View.VISIBLE else View.GONE
+    @BindingAdapter("RecruitNumberText")
+    fun setRecruitNumber(textView: TextView, number: Int?) {
+        textView.text = "모집 인원: "+ if(number == 0 || number == null)"00명" else "${number}명"
     }
 
     @JvmStatic
-    @BindingAdapter("RecruitedButtonEnabled")
-    fun buttonEnabled(button: Button, boolean: Boolean) {
-        button.isEnabled = boolean
+    @BindingAdapter("RecruitNumberDetails")
+    fun setRecruitNumberDetails(textView: TextView, number: Int?) {
+        textView.text = if(number == 0 || number == null)"00명" else "${number}명"
     }
+
+    @JvmStatic
+    @BindingAdapter("RecruitButtonEnabled")
+    fun buttonEnabled(button: Button, recruitedStatus: String?) {
+        button.isEnabled = when(recruitedStatus) {
+            RECRUIT_STATUS_RECRUITING -> true
+            else -> false
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["recruitStart", "recruitEnd"])
+    fun setRecruitPeriod(textView: TextView, recruitStart: String?, recruitEnd: String?) {
+        val startDate = recruitStart?.substring(0, 10)
+        val endDate = recruitEnd?.substring(5, 10)
+        textView.text = if(!recruitStart.isNullOrBlank() && !recruitEnd.isNullOrBlank())
+            "$startDate ~ $endDate" else "2021-01-01 ~2021-01-01"
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["activityStart", "activityEnd"])
+    fun setActivityPeriod(textView: TextView, activityStart: String?, activityEnd: String?) {
+        val startDate = activityStart?.substring(0, 10)
+        val endDate = activityEnd?.substring(5, 10)
+        textView.text = if(!activityStart.isNullOrBlank() && !activityEnd.isNullOrBlank())
+            "$startDate(${TimeConverter.getDayOfTheWeek(activityStart)}) ~ " +
+                "$endDate(${TimeConverter.getDayOfTheWeek(activityEnd)})"
+        else "2021-01-01 ~ 2021-01-01"
+    }
+
+    @JvmStatic
+    @BindingAdapter("EntryFee")
+    fun setFee(textView: TextView, fee: Int?) {
+        textView.text = if(fee == 0 || fee == null) "무료" else "$fee"
+    }
+
+    @JvmStatic
+    @BindingAdapter("Caution")
+    fun setNotice(textView: TextView, notice: String?) {
+        val resource = textView.context.resources
+        textView.text = if(notice.isNullOrBlank()) resource.getString(R.string.detail_notice) else notice
+    }
+
 
 }

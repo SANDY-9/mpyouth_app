@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.ui.youth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -39,21 +40,23 @@ class YouthDetailsActivity : AppCompatActivity() {
     }
 
     private fun setInclude() {
+        val detailsFragment = YouthActivityDetailsFragment()
         with(binding.include) {
-            val detailsFragment = YouthActivityDetailsFragment()
-            viewPager.apply {
-                adapter = DetailsViewPagerAdapter(
-                    this@YouthDetailsActivity,
-                    detailsFragment,
-                    viewModel.getOrganizationDetails())
-                currentItem = 0
-            }
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = when(position) {
-                    0 -> "활동정보"
-                    else -> "기관정보"
+            viewModel.youthDetails.observe(this@YouthDetailsActivity, {
+                viewPager.apply {
+                    adapter = DetailsViewPagerAdapter(
+                        this@YouthDetailsActivity,
+                        detailsFragment,
+                        it.organization)
+                    currentItem = 0
                 }
-            }.attach()
+                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                    tab.text = when(position) {
+                        0 -> "활동정보"
+                        else -> "기관정보"
+                    }
+                }.attach()
+            })
         }
     }
 

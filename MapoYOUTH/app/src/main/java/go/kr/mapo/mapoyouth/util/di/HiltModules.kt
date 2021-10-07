@@ -29,7 +29,6 @@ import javax.inject.Singleton
 @Module
 object HiltModules {
 
-
     @Singleton
     @Provides
     fun provideRetrofitInterface() : MapoYouthService {

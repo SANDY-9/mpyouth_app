@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 import java.io.InputStream
 
 /**
@@ -54,6 +55,7 @@ class SettingTermsOfServiceActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             super.onBackPressed()
+            BACKSTACK_FLAG = true
         }
         return super.onOptionsItemSelected(item)
     }

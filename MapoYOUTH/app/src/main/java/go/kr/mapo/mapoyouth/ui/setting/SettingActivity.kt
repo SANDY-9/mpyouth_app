@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.ui.MainActivity.Companion.BACKSTACK_FLAG
 
 
 /**
@@ -60,6 +61,7 @@ class SettingActivity: AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             super.onBackPressed()
+            BACKSTACK_FLAG = false
         }
         return super.onOptionsItemSelected(item)
     }

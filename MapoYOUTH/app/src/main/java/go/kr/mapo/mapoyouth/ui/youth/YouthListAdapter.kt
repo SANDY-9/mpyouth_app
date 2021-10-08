@@ -21,7 +21,7 @@ import go.kr.mapo.mapoyouth.util.ID
  * @desc
  */
 
-class YouthListAdapter : PagingDataAdapter<Youth, YouthListAdapter.MyViewHolder>(DIFF_UTIL) {
+class YouthListAdapter : PagingDataAdapter<Youth, YouthListAdapter.MyViewHolder>(DIFF_UTIL_YOUTH) {
 
     override fun onBindViewHolder(holder: YouthListAdapter.MyViewHolder, position: Int) {
         getItem(position)?.let { youth ->
@@ -50,7 +50,7 @@ class YouthListAdapter : PagingDataAdapter<Youth, YouthListAdapter.MyViewHolder>
     inner class MyViewHolder(val binding :ItemYouthRvBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     companion object {
-        val DIFF_UTIL = object : DiffUtil.ItemCallback<Youth>() {
+        val DIFF_UTIL_YOUTH = object : DiffUtil.ItemCallback<Youth>() {
             override fun areItemsTheSame(oldItem: Youth, newItem: Youth): Boolean {
                 return oldItem.programId == newItem.programId
             }

@@ -40,13 +40,13 @@ class YouthDetailsActivity : AppCompatActivity() {
     }
 
     private fun setInclude() {
-        val detailsFragment = YouthActivityDetailsFragment()
+        val youthDetailsFragment = YouthActivityDetailsFragment()
         with(binding.include) {
             viewModel.youthDetails.observe(this@YouthDetailsActivity, {
                 viewPager.apply {
                     adapter = DetailsViewPagerAdapter(
                         this@YouthDetailsActivity,
-                        detailsFragment,
+                        youthDetailsFragment,
                         it.organization)
                     currentItem = 0
                 }

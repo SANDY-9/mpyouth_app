@@ -91,3 +91,15 @@ data class Category(
     @Expose
     val parentName: String = "" // string
 )
+
+data class Sort(
+    @SerializedName("sorted")
+    @Expose
+    val sorted: Boolean = false, // false
+    @SerializedName("unsorted")
+    @Expose
+    val unsorted: Boolean = false, // true
+    @SerializedName("empty")
+    @Expose
+    val empty: Boolean = false // true
+)

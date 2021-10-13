@@ -5,8 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerActivityDetailsBinding
+
 class VolunteerActivityDetailsFragment : Fragment() {
+
+    private lateinit var binding: FragmentVolunteerActivityDetailsBinding
+    private val viewModel: VolunteerViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

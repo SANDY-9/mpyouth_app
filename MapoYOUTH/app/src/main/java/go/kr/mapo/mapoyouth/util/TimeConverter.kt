@@ -21,7 +21,7 @@ object TimeConverter {
     private val dateFormat = SimpleDateFormat(TIME_FORMAT)
     private val dayFormat = SimpleDateFormat("EEEE", Locale.getDefault())
 
-    fun formatTimeString(date : String): String {
+    fun formatTimeString(date : String?): String {
         val currentTime = System.currentTimeMillis()
         val regTime = dateFormat.parse(date).time
         val diffTime = (currentTime - regTime) / 1000
@@ -35,7 +35,7 @@ object TimeConverter {
         }
     }
 
-    fun getDayOfTheWeek(date: String) : String {
+    fun getDayOfTheWeek(date: String?) : String {
         val calendar = Calendar.getInstance().also {
             it.time = dateFormat.parse(date)
         }

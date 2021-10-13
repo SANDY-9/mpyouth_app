@@ -7,6 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.RecyclerView
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.network.response.Volunteer
 import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
@@ -29,7 +30,6 @@ class ListItemPagerAdapter(
     val youthListAdapter : YouthListAdapter?,
     val volunteerListAdapter: VolunteerListAdapter?) : RecyclerView.Adapter<ListItemPagerAdapter.HolderView>() {
 
-
     inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recyclerView : RecyclerView = itemView.findViewById(R.id.recyclerView)
         fun setAdapter() {
@@ -50,7 +50,7 @@ class ListItemPagerAdapter(
         youthListAdapter?.let { it.submitData(lifecycle, pagingData) }
     }
 
-    fun submitVolunteerData(lifecycle: Lifecycle, pagingData: PagingData<Youth>) {
-        //volunteerListAdapter.let { it.submitData(lifecycle, pagingData) }
+    fun submitVolunteerData(lifecycle: Lifecycle, pagingData: PagingData<Volunteer>) {
+        volunteerListAdapter?.let { it.submitData(lifecycle, pagingData) }
     }
 }

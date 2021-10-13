@@ -80,7 +80,7 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("Call-Connection")
-    fun connectCallButton(button: Button, tel: String) {
+    fun connectCallButton(button: Button, tel: String?) {
         button.setOnClickListener {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
@@ -92,7 +92,7 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("Url-Connection")
-    fun connectURLButton(button: Button, url: String) {
+    fun connectURLButton(button: Button, url: String?) {
         button.setOnClickListener {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
@@ -102,7 +102,7 @@ object CustomAttr {
         }
     }
 
-    fun actionShare(context: Context, message: String) {
+    fun actionShare(context: Context, message: String?) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, message)
@@ -161,7 +161,7 @@ object CustomAttr {
         val start = recruitStart?.substring(0, 10)
         val end = recruitEnd?.substring(5, 10)
         textView.text = if(start.isNullOrBlank() || end.isNullOrBlank())
-            "$start ~ $end" else "2021-01-01 ~ 2021-01-01"
+            "-" else "$start ~ $end"
     }
 
     @JvmStatic
@@ -172,7 +172,7 @@ object CustomAttr {
         textView.text = if(!start.isNullOrBlank() && !end.isNullOrBlank())
             "$start(${TimeConverter.getDayOfTheWeek(activityStart)}) ~ " +
                 "$end(${TimeConverter.getDayOfTheWeek(activityEnd)})"
-        else "2021-01-01 ~ 2021-01-01"
+        else "-"
     }
 
     @JvmStatic
@@ -229,6 +229,23 @@ object CustomAttr {
             VOLUNTEER_TYPE_INDIVIDUAL -> "개인"
             else -> "단체"
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("ActivityPeriod")
+    fun setActivityPeriodText(textView: TextView, period: String?) {
+        textView.text = period?.let { period->
+            val split = period.split("|")
+            var str = ""
+            split.forEach { str += if(it == split.last()+1 || it == split[0]) "${it}요일" else ", ${it}요일" }
+            str
+        } ?: "-"
+    }
+
+    @JvmStatic
+    @BindingAdapter("DetailsRecruitNumberText")
+    fun setDetailsRecruitNumber(textView: TextView, number: Int?) {
+        textView.text = if(number == 0 || number == null)"00명" else "${number}명"
     }
 
 }

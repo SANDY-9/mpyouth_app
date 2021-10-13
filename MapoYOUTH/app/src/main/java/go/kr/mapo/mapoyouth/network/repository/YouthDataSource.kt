@@ -23,8 +23,6 @@ import javax.inject.Singleton
  * @desc
  */
 
-typealias YouthSearchResult = List<Youth>
-
 class YouthDataSource(
     private val mapoYouthService: MapoYouthService,
     private val keyword: String?) : PagingSource<Int, Youth>() {

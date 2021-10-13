@@ -1,62 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_8dp"
-    android:background="@color/white"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="@null"
-    app:cardMaxElevation="@null">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+        <variable
+            name="edu"
+            type="go.kr.mapo.mapoyouth.network.response.Edu" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_16dp">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:background="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="@null"
+        app:cardMaxElevation="@null">
 
-        <TextView
-            android:id="@+id/textView7"
-            style="@style/TagBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/mapo_green"
-            android:text="환경보존"
-            android:textColor="@color/mapo_green" />
-
-        <TextView
-            android:id="@+id/textView8"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8dp"
-            android:maxLines="2"
-            android:text="노숙자 및 쪽방촌 거주자를 위한 도시락 나눔 활동"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_16dp">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4dp"
-            android:text="일시 : 2021-08-21(13:00 ~ 16:00)"
-            android:textColor="@color/mapo_gray" />
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/TagBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mapo_green"
+                android:text="환경보존"
+                android:textColor="@color/mapo_green" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="장소 : 서울특별시 광진구 아차산로330(자양동) 3층"
-            android:textColor="@color/mapo_gray" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:maxLines="2"
+                android:text="노숙자 및 쪽방촌 거주자를 위한 도시락 나눔 활동"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textView12"
-            style="@style/TagBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="@dimen/margin_16dp"
-            android:backgroundTint="@color/mapo_blue"
-            android:text="모집 인원: 3명"
-            android:textColor="@color/mapo_blue" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:text="일시 : 2021-08-21(13:00 ~ 16:00)"
+                android:textColor="@color/mapo_gray" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="장소 : 서울특별시 광진구 아차산로330(자양동) 3층"
+                android:textColor="@color/mapo_gray" />
+
+            <TextView
+                android:id="@+id/textView12"
+                style="@style/TagBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:backgroundTint="@color/mapo_blue"
+                android:text="모집 인원: 3명"
+                android:textColor="@color/mapo_blue" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

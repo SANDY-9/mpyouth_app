@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.network.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.response.YouthDetails
@@ -12,12 +13,10 @@ import javax.inject.Inject
  * @created 2021-10-01
  * @desc
  */
-class YouthRepository(private val mapoYouthService: MapoYouthService) {
+class YouthRepository @Inject constructor(private val mapoYouthService: MapoYouthService) {
 
-    private lateinit var youthDataSource: YouthDataSource
-
-    suspend fun getYouthDetails(id: Int) : LiveData<YouthDetails> {
-        youthDataSource = YouthDataSource(mapoYouthService)
+    suspend fun getYouthDetails(id: Int) : LiveData<YouthDetails>? {
+        val youthDataSource = YouthDataSource(mapoYouthService, null)
         youthDataSource.fetchYouthDetails(id)
         return youthDataSource.downloadedYouthDetails
     }

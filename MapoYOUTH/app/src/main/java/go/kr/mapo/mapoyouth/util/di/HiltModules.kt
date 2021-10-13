@@ -6,6 +6,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import go.kr.mapo.mapoyouth.network.MapoYouthService
+import go.kr.mapo.mapoyouth.network.repository.VolunteerDataSource
+import go.kr.mapo.mapoyouth.network.repository.VolunteerRepository
+import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
 import go.kr.mapo.mapoyouth.network.repository.YouthRepository
 import go.kr.mapo.mapoyouth.ui.common.OrganizationDetailsFragment
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
@@ -63,6 +66,12 @@ object HiltModules {
     @Provides
     fun provideYouthRepository(mapoYouthService: MapoYouthService) : YouthRepository {
       return YouthRepository(mapoYouthService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideVolunteerRepository(mapoYouthService: MapoYouthService) : VolunteerRepository {
+        return VolunteerRepository(mapoYouthService)
     }
 
 }

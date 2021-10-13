@@ -13,9 +13,9 @@ data class YouthListResponse(
     val message: String = "", // Program 전체 조회
     @SerializedName("data")
     @Expose
-    val `data`: Data = Data()
+    val `data`: YouthData = YouthData()
 )
-data class Data(
+data class YouthData(
     @SerializedName("content")
     @Expose
     val content: List<Youth> = listOf(),

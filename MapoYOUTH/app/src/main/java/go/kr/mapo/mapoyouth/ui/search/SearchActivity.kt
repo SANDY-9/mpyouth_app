@@ -3,18 +3,22 @@ package go.kr.mapo.mapoyouth.ui.search
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
+import go.kr.mapo.mapoyouth.ui.youth.YouthViewModel
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 /**
@@ -24,6 +28,7 @@ import go.kr.mapo.mapoyouth.util.customView.CustomAttr
  * @desc
  **/
 
+@AndroidEntryPoint
 class SearchActivity: AppCompatActivity() {
 
     // Toolbar에는 Home(왼쪽 배치)과 menu(오른쪽 배치)가 존재함
@@ -35,9 +40,13 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var search_button : ImageButton
     private lateinit var search_start : TextView
-    private lateinit var search_end : RecyclerView
+    private lateinit var recyclerView : RecyclerView
     private lateinit var autoCompleteTextView : AutoCompleteTextView
     private lateinit var inputMethodManager : InputMethodManager
+
+    private val youthViewModel : YouthViewModel by viewModels()
+
+    private val youthAdapter by lazy { YouthListAdapter() }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,19 +57,18 @@ class SearchActivity: AppCompatActivity() {
         tabLayout = findViewById(R.id.tabLayout)
         search_button = findViewById(R.id.search_button)
         search_start = findViewById(R.id.search_start)
-        search_end = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
 
         search_start.visibility = View.VISIBLE          //보임
-        search_end.visibility = View.GONE               //숨기기
+        recyclerView.visibility = View.GONE               //숨기기
 
 
-        val youthAdapter = YouthListAdapter() // API 연결 후 listOf 삭제해야함
-        val volunteerAdapter = VolunteerListAdapter(listOf("1", "1", "1", "1", "1"))
+        val volunteerAdapter = VolunteerListAdapter()
         val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
-        with(search_end) {
+        with(recyclerView) {
             //레이아웃 매니저 셋팅 -> xml에서 진행함
 
             // Adapter 셋팅
@@ -81,7 +89,7 @@ class SearchActivity: AppCompatActivity() {
                         val position = it.position
                         CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount
                         ) // 탭 선택시 글씨 굵게
-                        search_end.adapter = when (position) {
+                        recyclerView.adapter = when (position) {
                             0 -> youthAdapter
                             1 -> volunteerAdapter
                             2 -> eduAdapter
@@ -103,10 +111,9 @@ class SearchActivity: AppCompatActivity() {
 
         // KBD 검색 Btn(Enter)로 검색시
         autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
-
             if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                 search_start.visibility = View.GONE
-                search_end.visibility = View.VISIBLE
+                recyclerView.visibility = View.VISIBLE
 
                 requestSearch(autoCompleteTextView.text)
                 inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 KBD Enter 클릭시 KBD 숨김
@@ -125,17 +132,26 @@ class SearchActivity: AppCompatActivity() {
             requestSearch(autoCompleteTextView.text)
                 inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 search_button 클릭시 KBD 숨김
         }
+        subscribeToObservers()
+    }
 
+    private fun subscribeToObservers() {
+        youthViewModel.youthSearchResult.observe(this, {
+            recyclerView.adapter = youthAdapter
+            youthAdapter.submitData(lifecycle, it)
+        })
     }
 
     // 검색입력 검사
     private fun requestSearch(word : Editable){
         if (word.isBlank()){
             Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            return
         } else {    // 검색 요청
-
+            val keyword = word.toString().trim()
+            youthViewModel.requestSearchYouth(keyword)
             search_start.visibility = View.GONE
-            search_end.visibility = View.VISIBLE
+            recyclerView.visibility = View.VISIBLE
         }
     }
 

@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:lineSpacingExtra="0sp"
-                android:text="@{youthDetails.organization.address}"
+                android:text="@{youthDetails.location}"
                 tools:text="서울특별시 동작구 여의대방로20길 33\n시립보라매청소년"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView16"

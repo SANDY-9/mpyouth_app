@@ -1,7 +1,6 @@
 package go.kr.mapo.mapoyouth.network
 
-import go.kr.mapo.mapoyouth.network.response.YouthDetailsResponse
-import go.kr.mapo.mapoyouth.network.response.YouthListResponse
+import go.kr.mapo.mapoyouth.network.response.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -40,6 +39,14 @@ interface MapoYouthService {
         @Path("id")id : Int
     ) : Response<VolunteerDetailsResponse>
 
+    @GET("donation")
+    suspend fun getDonationList(
+        @Query("page") page: Int
+    ) : Response<DonationListResponse>
 
+    @GET("donation/{id}")
+    suspend fun getDonationDetails(
+        @Query("id") id: Int
+    ) : Response<DonationDetailsResponse>
 
 }

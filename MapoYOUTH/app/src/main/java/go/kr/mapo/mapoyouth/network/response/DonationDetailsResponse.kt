@@ -4,10 +4,10 @@ package go.kr.mapo.mapoyouth.network.response
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
 
-data class DonationResponse(
+data class DonationDetailsResponse(
     @SerializedName("data")
     @Expose
-    val `data`: List<Data> = listOf(),
+    val `data`: Data = Data(),
     @SerializedName("message")
     @Expose
     val message: String = "",

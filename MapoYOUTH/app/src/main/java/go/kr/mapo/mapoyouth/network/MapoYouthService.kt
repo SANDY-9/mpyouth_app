@@ -42,6 +42,9 @@ interface MapoYouthService {
         @Path("id")id : Int
     ) : Response<VolunteerDetailsResponse>
 
-
+    @GET("volunteer/search")
+    suspend fun searchVolunteer(
+        @Query("keyword") keyword: String
+    ) : Response<VolunteerListResponse>
 
 }

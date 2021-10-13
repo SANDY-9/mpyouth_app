@@ -2,8 +2,13 @@ package go.kr.mapo.mapoyouth.util.customView
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
+import android.text.Spannable
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +20,7 @@ import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_RECRUITING
 import go.kr.mapo.mapoyouth.util.TimeConverter
+import go.kr.mapo.mapoyouth.util.VOLUNTEER_TYPE_INDIVIDUAL
 
 /**
  * @author SANDY
@@ -152,20 +158,20 @@ object CustomAttr {
     @JvmStatic
     @BindingAdapter(value = ["recruitStart", "recruitEnd"])
     fun setRecruitPeriod(textView: TextView, recruitStart: String?, recruitEnd: String?) {
-        val startDate = recruitStart?.substring(0, 10)
-        val endDate = recruitEnd?.substring(5, 10)
-        textView.text = if(!recruitStart.isNullOrBlank() && !recruitEnd.isNullOrBlank())
-            "$startDate ~ $endDate" else "2021-01-01 ~2021-01-01"
+        val start = recruitStart?.substring(0, 10)
+        val end = recruitEnd?.substring(5, 10)
+        textView.text = if(start.isNullOrBlank() || end.isNullOrBlank())
+            "$start ~ $end" else "2021-01-01 ~ 2021-01-01"
     }
 
     @JvmStatic
     @BindingAdapter(value = ["activityStart", "activityEnd"])
     fun setActivityPeriod(textView: TextView, activityStart: String?, activityEnd: String?) {
-        val startDate = activityStart?.substring(0, 10)
-        val endDate = activityEnd?.substring(5, 10)
-        textView.text = if(!activityStart.isNullOrBlank() && !activityEnd.isNullOrBlank())
-            "$startDate(${TimeConverter.getDayOfTheWeek(activityStart)}) ~ " +
-                "$endDate(${TimeConverter.getDayOfTheWeek(activityEnd)})"
+        val start = activityStart?.substring(0, 10)
+        val end = activityEnd?.substring(5, 10)
+        textView.text = if(!start.isNullOrBlank() && !end.isNullOrBlank())
+            "$start(${TimeConverter.getDayOfTheWeek(activityStart)}) ~ " +
+                "$end(${TimeConverter.getDayOfTheWeek(activityEnd)})"
         else "2021-01-01 ~ 2021-01-01"
     }
 
@@ -182,5 +188,47 @@ object CustomAttr {
         textView.text = if(notice.isNullOrBlank()) resource.getString(R.string.detail_notice) else notice
     }
 
+    @JvmStatic
+    @BindingAdapter(value = ["startDate", "endDate"])
+    fun setDateText(textView: TextView, startDate: String?, endDate: String?) {
+        val str = if(startDate.isNullOrBlank() || endDate.isNullOrBlank()) "2021-01-01 ~ 2021-01-01"
+            else startDate.substring(0, 10) + " ~ " + endDate.substring(0, 10)
+        textView.apply {
+            text = "일시 : $str"
+            (text as Spannable).apply {
+                setSpan(
+                    ForegroundColorSpan(Color.parseColor("#676767")),
+                    0,
+                    3,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("SetSpannable")
+    fun setSpannable(textView: TextView, location: String?) {
+        textView.apply {
+            text = "장소 : $location"
+            (text as Spannable).apply {
+                setSpan(
+                    ForegroundColorSpan(Color.parseColor("#676767")),
+                    0,
+                    3,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("VolunteerType")
+    fun setVolunteerType(textView: TextView, type: String?) {
+        textView.text = when(type) {
+            VOLUNTEER_TYPE_INDIVIDUAL -> "개인"
+            else -> "단체"
+        }
+    }
 
 }

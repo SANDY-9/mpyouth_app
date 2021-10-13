@@ -31,7 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding.navBottom.setupWithNavController(navController)
 
         if (onBoardingFinished()) {
-            navController.navigate(R.id.action_onboardingFragment_to_homeFragment)
+            with(navController) {
+                graph.startDestination = R.id.homeFragment
+                navigate(R.id.action_onboardingFragment_to_homeFragment)
+            }
         } else {
             binding.navBottom.visibility = View.GONE
         }

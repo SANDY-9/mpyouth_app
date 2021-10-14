@@ -18,8 +18,7 @@ import java.lang.Exception
  */
 class EduDataSource (
     private val mapoYouthService: MapoYouthService,
-    private val keyword: String?
-    ) : PagingSource<Int, Edu>() {
+    private val keyword: String?) : PagingSource<Int, Edu>() {
 
     private val _downloadedEduDetails = MutableLiveData<EduDetails>()
     val downloadedEduDetails : LiveData<EduDetails> = _downloadedEduDetails
@@ -34,12 +33,17 @@ class EduDataSource (
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Edu> {
         return try {
             val page = params.key ?: STARTING_PAGE_INDEX
-            val data = mapoYouthService.getEduList(page).body()?.data
+            val data =
+                if (keyword != null) {
+                    mapoYouthService.searchEdu(keyword).body()?.data
+                } else {
+                    mapoYouthService.getEduList(page).body()?.data
+                }
             if(data != null) {
                 LoadResult.Page(
-                    data.content,
-                    if(page == STARTING_PAGE_INDEX) null else page - 1,
-                    if(data.last) null else page + 1
+                    data = data.content,
+                    prevKey = if(page == STARTING_PAGE_INDEX) null else page - 1,
+                    nextKey = if(data.last) null else page + 1
                 )
             } else {
                 LoadResult.Invalid()

@@ -32,7 +32,7 @@ class EduViewModel @Inject constructor(
     }.liveData.cachedIn(viewModelScope)
 
     private val _eduDetails = MutableLiveData<EduDetails>()
-    val eduDetails : LiveData<EduDetails> = _eduDetails
+    val eduDetails: LiveData<EduDetails> = _eduDetails
 
     private val _state = MutableLiveData(false)
     val state : LiveData<Boolean> = _state
@@ -45,6 +45,18 @@ class EduViewModel @Inject constructor(
                 _state.value = true
             }
         }
+    }
+
+    private val keyword = MutableLiveData("")
+
+    val eduSearchResult = keyword.switchMap {
+        Pager(PagingConfig(PAGE_SIZE, maxSize = 100)) {
+            EduDataSource(mapoYouthService, it)
+        }.liveData.cachedIn(viewModelScope)
+    }
+
+    fun requestSearchEdu(keyword: String){
+        this.keyword.value = keyword
     }
 
 }

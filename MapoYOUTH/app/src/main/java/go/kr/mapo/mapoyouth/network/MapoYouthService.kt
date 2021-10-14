@@ -39,6 +39,11 @@ interface MapoYouthService {
         @Path("id")id : Int
     ) : Response<VolunteerDetailsResponse>
 
+    @GET("volunteer/search")
+    suspend fun searchVolunteer(
+        @Query("keyword") keyword: String
+    ) : Response<VolunteerListResponse>
+
     @GET("life-long-edu")
     suspend fun getEduList(
         @Query("page") page : Int
@@ -48,10 +53,10 @@ interface MapoYouthService {
     suspend fun getEduDetails(
         @Query("id") id : Int
     ) : Response<EduDetailsResponse>
-    
-    @GET("volunteer/search")
-    suspend fun searchVolunteer(
+
+    @GET("life-long-edu/search")
+    suspend fun searchEdu(
         @Query("keyword") keyword: String
-    ) : Response<VolunteerListResponse>
+    ) : Response<EduListResponse>
 
 }

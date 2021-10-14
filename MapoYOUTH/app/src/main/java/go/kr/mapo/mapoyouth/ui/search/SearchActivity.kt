@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
+import go.kr.mapo.mapoyouth.ui.edu.EduViewModel
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerViewModel
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
@@ -51,6 +52,9 @@ class SearchActivity: AppCompatActivity() {
     private val volunteerViewModel : VolunteerViewModel by viewModels()
     private val volunteerAdapter by lazy { VolunteerListAdapter() }
 
+    private val eduViewModel : EduViewModel by viewModels()
+    private val eduAdapter by lazy { EduListAdapter() }
+
 
     private var curTabPosition = 0
 
@@ -69,8 +73,6 @@ class SearchActivity: AppCompatActivity() {
         recyclerView.visibility = View.GONE               //숨기기
 
 
-        val volunteerAdapter = VolunteerListAdapter()
-        val eduAdapter = EduListAdapter()
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
         with(recyclerView) {
@@ -149,6 +151,11 @@ class SearchActivity: AppCompatActivity() {
             volunteerAdapter.submitData(lifecycle, it)
         })
 
+        eduViewModel.eduSearchResult.observe(this, {
+            recyclerView.adapter = eduAdapter
+            eduAdapter.submitData(lifecycle, it)
+        })
+
     }
 
     // 검색입력 검사
@@ -161,6 +168,8 @@ class SearchActivity: AppCompatActivity() {
             when(tabPosition) {
                 0 -> youthViewModel.requestSearchYouth(keyword)  //청소년 활동 검색요청
                 1 -> volunteerViewModel.requestSearchVolunteer(keyword)  // 봉사활동 검색요청
+                2 -> eduViewModel.requestSearchEdu(keyword)             // 평생교육 검색요청
+
             }
             search_start.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE

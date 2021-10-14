@@ -147,23 +147,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-        <!-- 검색 전 -->
-        <TextView
-            android:id="@+id/search_start"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/search_gray"
-            android:text="검색 내용을 입력해주세요."
-            android:gravity="center"
-            android:fontFamily="@font/roboto_700"
-            android:textColor="#999999"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"/>
-
         <!-- 검색 후 -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -171,36 +154,28 @@
             android:layout_height="0dp"
             android:background="@color/search_gray"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_youth_rv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+            tools:listitem="@layout/item_youth_rv" />
 
-
-<!--        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView2"
+        <!-- 검색 전 -->
+        <TextView
+            android:id="@+id/search_start"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/search_gray"
+            android:fontFamily="@font/roboto_700"
+            android:gravity="center"
+            android:text="검색 내용을 입력해주세요."
+            android:textColor="#999999"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_volunteer_rv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/search_gray"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_edu_rv"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />-->
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

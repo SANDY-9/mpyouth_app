@@ -10,6 +10,8 @@ import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.filter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +24,8 @@ import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerViewModel
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthViewModel
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 /**
  * @author LimSeulgi
@@ -57,6 +61,7 @@ class SearchActivity: AppCompatActivity() {
 
 
     private var curTabPosition = 0
+    private var isEverSearched = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,19 +74,8 @@ class SearchActivity: AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
 
-        search_start.visibility = View.VISIBLE          //보임
-        recyclerView.visibility = View.GONE               //숨기기
-
 
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
-
-        with(recyclerView) {
-            //레이아웃 매니저 셋팅 -> xml에서 진행함
-
-            // Adapter 셋팅
-            adapter = youthAdapter
-        }
-
 
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
 
@@ -92,27 +86,21 @@ class SearchActivity: AppCompatActivity() {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
                         curTabPosition = it.position
-                        CustomAttr.changeTabsBold(tabItem, curTabPosition, tabLayout.tabCount
-                        ) // 탭 선택시 글씨 굵게
-                        recyclerView.adapter = when (curTabPosition) {
-                            0 -> youthAdapter
-                            1 -> volunteerAdapter
-                            2 -> eduAdapter
-                            else -> donationAdapter
+                        CustomAttr.changeTabsBold(tabItem, curTabPosition, tabLayout.tabCount) // 탭 선택시 글씨 굵게
+                        if(isEverSearched) {
+                            requestSearch(autoCompleteTextView.text, curTabPosition)
                         }
                     }
                 }
-
-                override fun onTabUnselected(tab: TabLayout.Tab?) {
-                }
-
-                override fun onTabReselected(tab: TabLayout.Tab?) {
-                }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
         }
 
         // 화면 뒤로가기 - Btn 생성
         setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
+
+        inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         // KBD 검색 Btn(Enter)로 검색시
         autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
@@ -130,8 +118,6 @@ class SearchActivity: AppCompatActivity() {
             }
         }
 
-        inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
         // 화면 내 검색 Btn로 검색시
         search_button.setOnClickListener {
             requestSearch(autoCompleteTextView.text, curTabPosition)
@@ -142,18 +128,45 @@ class SearchActivity: AppCompatActivity() {
 
     private fun subscribeToObservers() {
         youthViewModel.youthSearchResult.observe(this, {
-            recyclerView.adapter = youthAdapter
-            youthAdapter.submitData(lifecycle, it)
+            if(isEverSearched) {
+                recyclerView.adapter = youthAdapter
+                youthAdapter.submitData(lifecycle, it)
+                lifecycleScope.launch {
+                    youthAdapter.loadStateFlow.collect { state ->
+                        if(state.append.endOfPaginationReached) {
+                            setViewSearchAfter(youthAdapter.itemCount)
+                        }
+                    }
+                }
+            }
         })
 
         volunteerViewModel.volunteerSearchResult.observe(this, {
-            recyclerView.adapter = volunteerAdapter
-            volunteerAdapter.submitData(lifecycle, it)
+            if(isEverSearched) {
+                recyclerView.adapter = volunteerAdapter
+                volunteerAdapter.submitData(lifecycle, it)
+                lifecycleScope.launch {
+                    volunteerAdapter.loadStateFlow.collect { state ->
+                        if(state.append.endOfPaginationReached) {
+                            setViewSearchAfter(volunteerAdapter.itemCount)
+                        }
+                    }
+                }
+            }
         })
 
         eduViewModel.eduSearchResult.observe(this, {
-            recyclerView.adapter = eduAdapter
-            eduAdapter.submitData(lifecycle, it)
+            if(isEverSearched) {
+                recyclerView.adapter = eduAdapter
+                eduAdapter.submitData(lifecycle, it)
+                lifecycleScope.launch {
+                    eduAdapter.loadStateFlow.collect { state ->
+                        if(state.append.endOfPaginationReached) {
+                            setViewSearchAfter(eduAdapter.itemCount)
+                        }
+                    }
+                }
+            }
         })
 
     }
@@ -164,6 +177,7 @@ class SearchActivity: AppCompatActivity() {
             Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
             return
         } else {    // 검색 요청
+            isEverSearched = true
             val keyword = word.toString().trim()
             when(tabPosition) {
                 0 -> youthViewModel.requestSearchYouth(keyword)  //청소년 활동 검색요청
@@ -171,8 +185,15 @@ class SearchActivity: AppCompatActivity() {
                 2 -> eduViewModel.requestSearchEdu(keyword)             // 평생교육 검색요청
 
             }
+        }
+    }
+
+    private fun setViewSearchAfter(itemCount: Int) {
+        if(itemCount == 0) {
+            search_start.visibility = View.VISIBLE
+            search_start.text = "검색 결과가 없습니다."
+        } else {
             search_start.visibility = View.GONE
-            recyclerView.visibility = View.VISIBLE
         }
     }
 

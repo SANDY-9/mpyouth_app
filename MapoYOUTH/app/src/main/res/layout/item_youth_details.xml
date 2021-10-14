@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="youth"
+            name="youthDetails"
             type="go.kr.mapo.mapoyouth.network.response.YouthDetails" />
     </data>
 
@@ -31,7 +31,7 @@
                     android:id="@+id/top_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/details_img_height"
-
+                    ImageLoad="@{youthDetails.programFiles[0].fileUri}"
                     android:scaleType="centerCrop"
                     android:src="@drawable/poster" />
 
@@ -51,7 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_700"
-                        android:text="@{youth.title}"
+                        android:text="@{youthDetails.title}"
                         tools:text="환경을 바꾸는 달리기 : 쓰담런 [시즌1]"
                         android:textSize="@dimen/details_title" />
 
@@ -60,7 +60,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_8dp"
-                        android:text="시립보라매청소년센터"
+                        android:text="@{youthDetails.organization.name}"
+                        tools:text="시립보라매청소년센터"
                         android:textColor="@color/mapo_gray"
                         android:textSize="11sp" />
                 </LinearLayout>

@@ -1,6 +1,21 @@
 package go.kr.mapo.mapoyouth.ui.volunteer
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import androidx.paging.liveData
+import dagger.hilt.android.lifecycle.HiltViewModel
+import go.kr.mapo.mapoyouth.network.MapoYouthService
+import go.kr.mapo.mapoyouth.network.repository.VolunteerDataSource
+import go.kr.mapo.mapoyouth.network.repository.VolunteerRepository
+import go.kr.mapo.mapoyouth.network.response.VolunteerDetails
+import go.kr.mapo.mapoyouth.util.PAGE_SIZE
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * @author SANDY
@@ -8,5 +23,32 @@ import androidx.lifecycle.ViewModel
  * @created 2021-09-14
  * @desc
  */
-class VolunteerViewModel : ViewModel() {
+
+@HiltViewModel
+class VolunteerViewModel @Inject constructor(
+    val mapoYouthService: MapoYouthService,
+    val volunteerRepository: VolunteerRepository) : ViewModel() {
+
+    val volunteerList = Pager(PagingConfig(PAGE_SIZE, 1, maxSize = 100)) {
+        VolunteerDataSource(mapoYouthService, null)
+    }.liveData.cachedIn(viewModelScope)
+
+    private val _volunteerDetails = MutableLiveData<VolunteerDetails>()
+    val volunteerDetails : LiveData<VolunteerDetails> = _volunteerDetails
+
+    private val _state = MutableLiveData(false)
+    val state : LiveData<Boolean> = _state
+
+    fun setVolunteerDetails(id : Int) {
+        _state.value = false
+        viewModelScope.launch {
+            volunteerRepository.getVolunteerDetails(id)?.let {
+                _volunteerDetails.value = it.value
+                _state.value = true
+            }
+        }
+    }
+
+
+
 }

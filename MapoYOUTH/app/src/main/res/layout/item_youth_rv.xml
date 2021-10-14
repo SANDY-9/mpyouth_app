@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/poster2" />
+                    ImageLoad="@{youth.thumbnail.fileUri}" />
 
             </androidx.cardview.widget.CardView>
 
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/mapo_gray"
                     android:textSize="12sp"
-                    android:text="@{youth.organizationName}"
+                    android:text="@{youth.organization.name}"
                     tools:text="마포청소년센터" />
 
                 <LinearLayout
@@ -126,24 +126,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:backgroundTint="@color/mapo_blue"
-                    android:text="모집 인원: 00명"
-                    android:textColor="@color/mapo_blue" />
+                    android:textColor="@color/mapo_blue"
+                    RecruitNumberText="@{youth.recruitNumber}"
+                    tools:text="모집 인원: 00명" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:background="@color/divider" />
-
         <FrameLayout
+            android:id="@+id/recruitedLayout"
+            RecruitedLayout="@{youth.recruitStatus}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#99FFFFFF">
+            android:background="#99FFFFFF"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_deem"
@@ -159,6 +156,13 @@
                 android:text="모집마감"
                 android:textColor="@color/white" />
         </FrameLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:background="@color/divider" />
 
     </FrameLayout>
 </layout>

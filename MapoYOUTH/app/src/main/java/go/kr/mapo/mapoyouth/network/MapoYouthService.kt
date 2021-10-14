@@ -1,11 +1,10 @@
 package go.kr.mapo.mapoyouth.network
 
-import go.kr.mapo.mapoyouth.network.response.Category
-import go.kr.mapo.mapoyouth.network.response.YouthDetailsResponse
-import go.kr.mapo.mapoyouth.network.response.YouthListResponse
+import go.kr.mapo.mapoyouth.network.response.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * @author SANDY
@@ -16,14 +15,38 @@ import retrofit2.http.Path
 interface MapoYouthService {
 
     @GET("program")
-    suspend fun getYouthList() : Response<YouthListResponse>
+    suspend fun getYouthList(
+        @Query("page") page : Int
+    ) : Response<YouthListResponse>
 
     @GET("program/{id}")
     suspend fun getYouthDetails(
         @Path("id")id : Int
     ) : Response<YouthDetailsResponse>
 
-    @GET("category")
-    suspend fun getCategory() : Response<Category.CategoryItem>
+    @GET("program/search")
+    suspend fun searchYouth(
+        @Query("keyword") keyword: String
+    ) : Response<YouthListResponse>
+
+    @GET("volunteer")
+    suspend fun getVolunteerList(
+        @Query("page") page : Int
+    ) : Response<VolunteerListResponse>
+
+    @GET("volunteer/{id}")
+    suspend fun getVolunteerDetails(
+        @Path("id")id : Int
+    ) : Response<VolunteerDetailsResponse>
+
+    @GET("donation")
+    suspend fun getDonationList(
+        @Query("page") page: Int
+    ) : Response<DonationListResponse>
+
+    @GET("donation/{id}")
+    suspend fun getDonationDetails(
+        @Query("id") id: Int
+    ) : Response<DonationDetailsResponse>
 
 }

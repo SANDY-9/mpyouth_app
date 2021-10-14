@@ -5,19 +5,22 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
+import android.text.Spannable
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.util.Log
-import android.view.MenuItem
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.ActionBar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.util.customView.CustomSpinner
+import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_RECRUITING
+import go.kr.mapo.mapoyouth.util.TimeConverter
+import go.kr.mapo.mapoyouth.util.VOLUNTEER_TYPE_INDIVIDUAL
 
 /**
  * @author SANDY
@@ -115,26 +118,117 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("ImageLoad")
-    fun setImage(imageView: ImageView, url: String) {
-        Glide.with(imageView).load(url).into(imageView)
+    fun setImage(imageView: ImageView, url: String?) {
+        Glide.with(imageView)
+            .load(url)
+            .placeholder(R.color.spinner_stroke)
+            .into(imageView)
     }
 
     @JvmStatic
-    @BindingAdapter("Recruited_layout")
-    fun setRecruited(frameLayout: FrameLayout, boolean: Boolean) {
-        frameLayout.visibility = if(boolean) View.VISIBLE else View.GONE
+    @BindingAdapter("RecruitedLayout")
+    fun setRecruited(frameLayout: FrameLayout, recruitedStatus: String?) {
+        frameLayout.visibility = when(recruitedStatus) {
+            RECRUIT_STATUS_RECRUITING -> View.GONE
+            else -> View.VISIBLE
+        }
     }
 
     @JvmStatic
-    @BindingAdapter("Recruited_textView")
-    fun setRecruited(textView: TextView, boolean: Boolean) {
-        textView.visibility = if(boolean) View.VISIBLE else View.GONE
+    @BindingAdapter("RecruitNumberText")
+    fun setRecruitNumber(textView: TextView, number: Int?) {
+        textView.text = "모집 인원: "+ if(number == 0 || number == null)"00명" else "${number}명"
     }
 
     @JvmStatic
-    @BindingAdapter("RecruitedButtonEnabled")
-    fun buttonEnabled(button: Button, boolean: Boolean) {
-        button.isEnabled = boolean
+    @BindingAdapter("RecruitNumberDetails")
+    fun setRecruitNumberDetails(textView: TextView, number: Int?) {
+        textView.text = if(number == 0 || number == null)"00명" else "${number}명"
+    }
+
+    @JvmStatic
+    @BindingAdapter("RecruitButtonEnabled")
+    fun buttonEnabled(button: Button, recruitedStatus: String?) {
+        button.isEnabled = when(recruitedStatus) {
+            RECRUIT_STATUS_RECRUITING -> true
+            else -> false
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["recruitStart", "recruitEnd"])
+    fun setRecruitPeriod(textView: TextView, recruitStart: String?, recruitEnd: String?) {
+        val start = recruitStart?.substring(0, 10)
+        val end = recruitEnd?.substring(5, 10)
+        textView.text = if(start.isNullOrBlank() || end.isNullOrBlank())
+            "$start ~ $end" else "2021-01-01 ~ 2021-01-01"
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["activityStart", "activityEnd"])
+    fun setActivityPeriod(textView: TextView, activityStart: String?, activityEnd: String?) {
+        val start = activityStart?.substring(0, 10)
+        val end = activityEnd?.substring(5, 10)
+        textView.text = if(!start.isNullOrBlank() && !end.isNullOrBlank())
+            "$start(${TimeConverter.getDayOfTheWeek(activityStart)}) ~ " +
+                "$end(${TimeConverter.getDayOfTheWeek(activityEnd)})"
+        else "2021-01-01 ~ 2021-01-01"
+    }
+
+    @JvmStatic
+    @BindingAdapter("EntryFee")
+    fun setFee(textView: TextView, fee: Int?) {
+        textView.text = if(fee == 0 || fee == null) "무료" else "$fee"
+    }
+
+    @JvmStatic
+    @BindingAdapter("Caution")
+    fun setNotice(textView: TextView, notice: String?) {
+        val resource = textView.context.resources
+        textView.text = if(notice.isNullOrBlank()) resource.getString(R.string.detail_notice) else notice
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["startDate", "endDate"])
+    fun setDateText(textView: TextView, startDate: String?, endDate: String?) {
+        val str = if(startDate.isNullOrBlank() || endDate.isNullOrBlank()) "2021-01-01 ~ 2021-01-01"
+            else startDate.substring(0, 10) + " ~ " + endDate.substring(0, 10)
+        textView.apply {
+            text = "일시 : $str"
+            (text as Spannable).apply {
+                setSpan(
+                    ForegroundColorSpan(Color.parseColor("#676767")),
+                    0,
+                    3,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("SetSpannable")
+    fun setSpannable(textView: TextView, location: String?) {
+        textView.apply {
+            text = "장소 : $location"
+            (text as Spannable).apply {
+                setSpan(
+                    ForegroundColorSpan(Color.parseColor("#676767")),
+                    0,
+                    3,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE
+                )
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("VolunteerType")
+    fun setVolunteerType(textView: TextView, type: String?) {
+        textView.text = when(type) {
+            VOLUNTEER_TYPE_INDIVIDUAL -> "개인"
+            else -> "단체"
+        }
     }
 
 }

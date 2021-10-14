@@ -25,9 +25,15 @@ class YouthActivityDetailsFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_youth_activity_details, container, false)
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
-            youth = viewModel
             return root
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.youthDetails.observe(viewLifecycleOwner, {
+            binding.youthDetails = it
+        })
     }
 
 }

@@ -18,6 +18,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_DONE
 import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_RECRUITING
 import go.kr.mapo.mapoyouth.util.TimeConverter
 import go.kr.mapo.mapoyouth.util.VOLUNTEER_TYPE_INDIVIDUAL
@@ -135,6 +136,15 @@ object CustomAttr {
     }
 
     @JvmStatic
+    @BindingAdapter("RecruitedTextBox")
+    fun setRecruited(textView: TextView, recruitedStatus: String?) {
+        textView.visibility = when(recruitedStatus) {
+            RECRUIT_STATUS_RECRUITING -> View.VISIBLE
+            else -> View.GONE
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("RecruitNumberText")
     fun setRecruitNumber(textView: TextView, number: Int?) {
         textView.text = "모집 인원: "+ if(number == 0 || number == null)"00명" else "${number}명"
@@ -234,8 +244,8 @@ object CustomAttr {
     @JvmStatic
     @BindingAdapter("ActivityPeriod")
     fun setActivityPeriodText(textView: TextView, period: String?) {
-        textView.text = period?.let { period->
-            val split = period.split("|")
+        textView.text = period?.let { s->
+            val split = s.split("|")
             var str = ""
             split.forEach { str += if(it == split.last()+1 || it == split[0]) "${it}요일" else ", ${it}요일" }
             str

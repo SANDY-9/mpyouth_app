@@ -65,7 +65,7 @@ class SearchActivity: AppCompatActivity() {
 
 
         val volunteerAdapter = VolunteerListAdapter()
-        val eduAdapter = EduListAdapter(listOf("1", "1", "1", "1", "1"))
+        val eduAdapter = EduListAdapter()
         val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
         with(recyclerView) {

@@ -82,6 +82,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -128,6 +129,7 @@
                     android:backgroundTint="@color/mapo_blue"
                     android:textColor="@color/mapo_blue"
                     RecruitNumberText="@{youth.recruitNumber}"
+                    RecruitedTextBox="@{youth.recruitStatus}"
                     tools:text="모집 인원: 00명" />
 
             </LinearLayout>
@@ -155,6 +157,7 @@
                 android:fontFamily="@font/roboto_700"
                 android:text="모집마감"
                 android:textColor="@color/white" />
+
         </FrameLayout>
 
         <View

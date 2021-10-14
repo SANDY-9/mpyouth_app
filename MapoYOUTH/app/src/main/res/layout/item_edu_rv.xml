@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -38,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8dp"
                 android:maxLines="2"
-                android:text="노숙자 및 쪽방촌 거주자를 위한 도시락 나눔 활동"
+                android:text="@{edu.title}"
+                tools:text="노숙자 및 쪽방촌 거주자를 위한 도시락 나눔 활동"
                 android:textSize="16sp" />
 
             <TextView
@@ -46,15 +48,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_4dp"
-                android:text="일시 : 2021-08-21(13:00 ~ 16:00)"
-                android:textColor="@color/mapo_gray" />
+                android:bufferType="spannable"
+                tools:text="일시 : 2021-08-21(13:00 ~ 16:00)"
+                app:endDate="@{edu.endDate}"
+                app:startDate="@{edu.startDate}" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="장소 : 서울특별시 광진구 아차산로330(자양동) 3층"
-                android:textColor="@color/mapo_gray" />
+                android:bufferType="spannable"
+                SetSpannable="@{edu.location}"
+                tools:text="장소 : 서울특별시 광진구 아차산로330(자양동) 3층" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -64,8 +69,30 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="@dimen/margin_16dp"
                 android:backgroundTint="@color/mapo_blue"
-                android:text="모집 인원: 3명"
+                RecruitNumberText="@{edu.recruitNumber}"
+                RecruitedTextBox="@{edu.recruitStatus}"
+                tools:text="모집 인원: 3명"
                 android:textColor="@color/mapo_blue" />
+
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/recruitedLayout"
+            RecruitedLayout="@{edu.recruitStatus}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99FFFFFF"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/recruit_done"
+                style="@style/RecruitedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                tools:text="모집마감" />
+
+        </FrameLayout>
+
     </androidx.cardview.widget.CardView>
 </layout>

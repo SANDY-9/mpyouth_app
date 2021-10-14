@@ -37,7 +37,7 @@ class EduViewModel @Inject constructor(
     private val _state = MutableLiveData(false)
     val state : LiveData<Boolean> = _state
 
-    fun setYouthDetails(id: Int) {
+    fun setEduDetails(id: Int) {
         _state.value = false
         viewModelScope.launch {
             eduRepository.getVolunteerDetails(id)?.let {

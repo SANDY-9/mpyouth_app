@@ -258,4 +258,25 @@ object CustomAttr {
         textView.text = if(number == 0 || number == null)"00명" else "${number}명"
     }
 
+    @JvmStatic
+    @BindingAdapter("TargetAge")
+    fun setTargetAge(textView: TextView, targetAge: String?) {
+        textView.visibility = if(targetAge!!.isNotBlank()) {
+            val isContained = targetAge.contains(textView.text)
+            if(isContained) View.VISIBLE else View.GONE
+        } else {
+            if(textView.text.contains("일반")) View.VISIBLE else View.GONE
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("TargetAgeText")
+    fun setTargetAgeText(textView: TextView, targetAge: String?) {
+        targetAge?.let {
+            if(targetAge.contains("|")) {
+                textView.text = targetAge.replace("|", ", ")
+            }
+        }
+    }
+
 }

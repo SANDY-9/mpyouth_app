@@ -51,7 +51,7 @@ interface MapoYouthService {
 
     @GET("life-long-edu/{id}")
     suspend fun getEduDetails(
-        @Query("id") id : Int
+        @Path("id") id : Int
     ) : Response<EduDetailsResponse>
 
     @GET("life-long-edu/search")

@@ -87,7 +87,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/age_e"
                         style="@style/AgeBox"
                         android:layout_width="22dp"
                         android:layout_height="21dp"
@@ -95,10 +95,11 @@
                         android:layout_marginEnd="@dimen/margin_4dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/mapo_olive"
+                        TargetAge="@{youth.targetAge}"
                         android:text="초" />
 
                     <TextView
-                        android:id="@+id/textView61"
+                        android:id="@+id/age_m"
                         style="@style/AgeBox"
                         android:layout_width="22dp"
                         android:layout_height="21dp"
@@ -106,17 +107,45 @@
                         android:layout_marginEnd="@dimen/margin_4dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/mapo_sky"
+                        TargetAge="@{youth.targetAge}"
                         android:text="중" />
 
                     <TextView
-                        android:id="@+id/textView62"
+                        android:id="@+id/age_h"
                         style="@style/AgeBox"
                         android:layout_width="22dp"
                         android:layout_height="21dp"
                         android:layout_marginTop="@dimen/margin_8dp"
+                        android:layout_marginEnd="@dimen/margin_4dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/mapo_navy"
+                        TargetAge="@{youth.targetAge}"
                         android:text="고" />
+
+                    <TextView
+                        android:id="@+id/age_u"
+                        style="@style/AgeBox"
+                        android:layout_width="22dp"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="@dimen/margin_8dp"
+                        android:layout_marginEnd="@dimen/margin_4dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/mapo_black"
+                        android:backgroundTint="@color/mapo_mist"
+                        TargetAge="@{youth.targetAge}"
+                        android:text="대" />
+
+                    <TextView
+                        android:id="@+id/age_g"
+                        style="@style/AgeBox"
+                        android:layout_width="30dp"
+                        android:layout_height="21dp"
+                        android:layout_marginTop="@dimen/margin_8dp"
+                        android:layout_marginEnd="@dimen/margin_4dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/name"
+                        TargetAge="@{youth.targetAge}"
+                        android:text="일반" />
 
                 </LinearLayout>
 

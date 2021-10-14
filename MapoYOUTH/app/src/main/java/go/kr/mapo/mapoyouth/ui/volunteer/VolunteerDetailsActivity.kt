@@ -37,7 +37,7 @@ class VolunteerDetailsActivity : AppCompatActivity() {
 
     private fun fetchVolunteerDetails() {
         val id = intent.getIntExtra(ID, -1)
-        viewModel.setVolunteerDetails(id)
+        if(id != -1) viewModel.setVolunteerDetails(id)
     }
 
     private fun subscribeToObserver() {

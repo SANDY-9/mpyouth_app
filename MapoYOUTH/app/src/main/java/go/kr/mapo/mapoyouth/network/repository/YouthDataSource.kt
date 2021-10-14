@@ -46,15 +46,11 @@ class YouthDataSource(
                 } else {
                     mapoYouthService.getYouthList(page).body()?.data
                 }
-            if(data != null) {
-                LoadResult.Page(
-                    data = data.content,
-                    prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
-                    nextKey = if (data.last) null else page + 1
-                )
-            } else {
-                LoadResult.Invalid()
-            }
+            LoadResult.Page(
+                data = data!!.content,
+                prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
+                nextKey = if (data.last) null else page + 1
+            )
         } catch (e: Exception) {
             LoadResult.Error(e)
         }

@@ -69,5 +69,8 @@ data class EduDetails(
     val targetAge: String = "", // 초|중|고
     @SerializedName("entryFee")
     @Expose
-    val entryFee: Int = 0 // 0
+    val entryFee: Int = 0, // 0
+    @SerializedName("caution")
+    @Expose
+    val caution: String = "" // string
 )

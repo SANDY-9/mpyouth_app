@@ -1,4 +1,4 @@
-package go.kr.mapo.mapoyouth.ui.volunteer
+package go.kr.mapo.mapoyouth.ui.edu
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,22 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerActivityDetailsBinding
+import go.kr.mapo.mapoyouth.databinding.FragmentEduActivityDetailsBinding
 
-@AndroidEntryPoint
-class VolunteerActivityDetailsFragment : Fragment() {
+class EduActivityDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentVolunteerActivityDetailsBinding
-    private val viewModel: VolunteerViewModel by activityViewModels()
+    private lateinit var binding : FragmentEduActivityDetailsBinding
+    private val viewModel : EduViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_volunteer_activity_details, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edu_activity_details, container, false)
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
             return root
@@ -31,8 +28,8 @@ class VolunteerActivityDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.volunteerDetails.observe(viewLifecycleOwner, {
-            binding.volunteerDetails = it
+        viewModel.eduDetails.observe(viewLifecycleOwner, {
+            binding.eduDetails = it
         })
     }
 }

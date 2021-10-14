@@ -6,19 +6,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import go.kr.mapo.mapoyouth.network.MapoYouthService
-import go.kr.mapo.mapoyouth.network.repository.VolunteerDataSource
-import go.kr.mapo.mapoyouth.network.repository.VolunteerRepository
-import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
-import go.kr.mapo.mapoyouth.network.repository.YouthRepository
-import go.kr.mapo.mapoyouth.ui.common.OrganizationDetailsFragment
-import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
+import go.kr.mapo.mapoyouth.network.repository.*
 import go.kr.mapo.mapoyouth.util.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
@@ -72,6 +66,12 @@ object HiltModules {
     @Provides
     fun provideVolunteerRepository(mapoYouthService: MapoYouthService) : VolunteerRepository {
         return VolunteerRepository(mapoYouthService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideEdurRepository(mapoYouthService: MapoYouthService) : EduRepository {
+        return EduRepository(mapoYouthService)
     }
 
 }

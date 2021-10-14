@@ -72,7 +72,9 @@
                 android:backgroundTint="@color/mapo_blue"
                 android:textColor="@color/mapo_blue"
                 RecruitNumberText="@{volunteer.recruitNumber}"
+                RecruitedTextBox="@{volunteer.recruitStatus}"
                 tools:text="모집 인원: 3명" />
+
         </LinearLayout>
 
         <FrameLayout
@@ -81,7 +83,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#99FFFFFF"
-            android:visibility="gone" />
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/done"
+                style="@style/RecruitedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_16dp"
+                tools:text="모집 완료" />
+
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

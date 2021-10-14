@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="volunteerDetails"
-            type="go.kr.mapo.mapoyouth.network.response.VolunteerDetails" />
+            name="eduDetails"
+            type="go.kr.mapo.mapoyouth.network.response.EduDetails" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -49,8 +49,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16dp"
                     tools:text="2021-08-28 ~ 2021-09-06"
-                    recruitStart="@{volunteerDetails.recruitStartDate}"
-                    recruitEnd="@{volunteerDetails.recruitEndDate}"
+                    recruitStart="@{eduDetails.recruitStartDate}"
+                    recruitEnd="@{eduDetails.recruitEndDate}"
                     app:layout_constraintStart_toEndOf="@+id/textView10"
                     app:layout_constraintTop_toTopOf="@+id/textView10" />
 
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_32dp"
-                    android:text="활동일"
+                    android:text="기간"
                     android:textColor="@color/name"
                     app:layout_constraintStart_toStartOf="@+id/textView10"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -68,7 +68,7 @@
                     android:id="@+id/textView24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="활동주기"
+                    android:text="대상"
                     android:textColor="@color/name"
                     app:layout_constraintStart_toStartOf="@+id/textView15"
                     app:layout_constraintTop_toTopOf="@+id/textView25" />
@@ -78,8 +78,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    ActivityPeriod="@{volunteerDetails.period}"
-                    tools:text="월요일, 화요일, 수요일"
+                    TargetAgeText="@{eduDetails.targetAge}"
+                    tools:text="학부모"
                     app:layout_constraintStart_toStartOf="@+id/textView16"
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -87,8 +87,8 @@
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    activityStart="@{volunteerDetails.startDate}"
-                    activityEnd="@{volunteerDetails.endDate}"
+                    activityStart="@{eduDetails.startDate}"
+                    activityEnd="@{eduDetails.endDate}"
                     tools:text="2021-09-07\n10:00 ~ 14:00 (4시간 인증)"
                     app:layout_constraintStart_toStartOf="@+id/textView14"
                     app:layout_constraintTop_toTopOf="@+id/textView15" />
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:lineSpacingExtra="0sp"
-                    android:text="@{volunteerDetails.location}"
+                    android:text="@{eduDetails.location}"
                     app:layout_constraintStart_toStartOf="@+id/textView16"
                     app:layout_constraintTop_toBottomOf="@+id/textView25"
                     tools:text="사단법인 다나 사무실" />
@@ -128,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="5명"
-                    DetailsRecruitNumberText="@{volunteerDetails.recruitNumber}"
+                    DetailsRecruitNumberText="@{eduDetails.recruitNumber}"
                     app:layout_constraintStart_toStartOf="@+id/textView18"
                     app:layout_constraintTop_toTopOf="@+id/textView19" />
 
@@ -147,28 +147,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="없음"
-                    EntryFee="@{volunteerDetails.entryFee}"
+                    EntryFee="@{eduDetails.entryFee}"
                     app:layout_constraintStart_toStartOf="@+id/textView20"
                     app:layout_constraintTop_toTopOf="@+id/textView26" />
-
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_32dp"
-                    android:text="봉사방식"
-                    android:textColor="@color/name"
-                    app:layout_constraintStart_toStartOf="@+id/textView26"
-                    app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    VolunteerType ="@{volunteerDetails.volunteerType}"
-                    tools:text="대면"
-                    app:layout_constraintStart_toStartOf="@+id/textView27"
-                    app:layout_constraintTop_toTopOf="@+id/textView28" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -215,7 +196,7 @@
                     android:layout_marginEnd="@dimen/margin_16dp"
                     android:layout_marginBottom="@dimen/margin_24dp"
                     android:inputType="textMultiLine"
-                    android:text="@{volunteerDetails.description}"
+                    android:text="@{eduDetails.description}"
                     tools:text="주먹밥 만들기- 도시락 포장 용기 정리- 도시락 식자재 손질 및 준비- 주방 도구 비품 준비"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
@@ -238,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_16dp"
                 android:layout_marginEnd="20dp"
-                Caution="@{volunteerDetails.caution}"
+                Caution="@{eduDetails.caution}"
                 tools:text="※ 재학 중인 중, 고등학생은 평일 봉사활동 인정 가능 시간이 학교마다 다르므로 반드시 수업 일정에 따른 봉사활동 시간을 확인해주시기 바랍니다.\n
       · 6교시 수업 - 봉사 시간 2시간 인정\n
       · 7교시 수업 - 봉사 시간 1시간 인정"

@@ -30,13 +30,13 @@ class YouthDetailsActivity : AppCompatActivity() {
             youthViewModel = viewModel
             setSupportActionBar(toolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
         }
-        getYouthDetails()
+        fetchYouthDetails()
         setInclude()
     }
 
-    private fun getYouthDetails() {
+    private fun fetchYouthDetails() {
         val programId = intent.getIntExtra(ID, -1)
-        viewModel.setYouthDetails(programId)
+        if(programId != -1) viewModel.setYouthDetails(programId)
     }
 
     private fun setInclude() {

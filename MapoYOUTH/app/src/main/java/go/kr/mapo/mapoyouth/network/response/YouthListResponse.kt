@@ -50,7 +50,7 @@ data class YouthData(
 data class Youth(
     @SerializedName("program_id")
     @Expose
-    val programId: Int = 0, // 1
+    val programId: Int, // 1
     @SerializedName("title")
     @Expose
     val title: String = "", // 테스트 제목

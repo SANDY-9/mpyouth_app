@@ -18,6 +18,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
+import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_DONE
 import go.kr.mapo.mapoyouth.util.RECRUIT_STATUS_RECRUITING
 import go.kr.mapo.mapoyouth.util.TimeConverter
 import go.kr.mapo.mapoyouth.util.VOLUNTEER_TYPE_INDIVIDUAL
@@ -80,7 +81,7 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("Call-Connection")
-    fun connectCallButton(button: Button, tel: String) {
+    fun connectCallButton(button: Button, tel: String?) {
         button.setOnClickListener {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
@@ -92,7 +93,7 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("Url-Connection")
-    fun connectURLButton(button: Button, url: String) {
+    fun connectURLButton(button: Button, url: String?) {
         button.setOnClickListener {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
@@ -102,7 +103,7 @@ object CustomAttr {
         }
     }
 
-    fun actionShare(context: Context, message: String) {
+    fun actionShare(context: Context, message: String?) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, message)
@@ -135,6 +136,15 @@ object CustomAttr {
     }
 
     @JvmStatic
+    @BindingAdapter("RecruitedTextBox")
+    fun setRecruited(textView: TextView, recruitedStatus: String?) {
+        textView.visibility = when(recruitedStatus) {
+            RECRUIT_STATUS_RECRUITING -> View.VISIBLE
+            else -> View.GONE
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("RecruitNumberText")
     fun setRecruitNumber(textView: TextView, number: Int?) {
         textView.text = "모집 인원: "+ if(number == 0 || number == null)"00명" else "${number}명"
@@ -161,7 +171,7 @@ object CustomAttr {
         val start = recruitStart?.substring(0, 10)
         val end = recruitEnd?.substring(5, 10)
         textView.text = if(start.isNullOrBlank() || end.isNullOrBlank())
-            "$start ~ $end" else "2021-01-01 ~ 2021-01-01"
+            "-" else "$start ~ $end"
     }
 
     @JvmStatic
@@ -172,7 +182,7 @@ object CustomAttr {
         textView.text = if(!start.isNullOrBlank() && !end.isNullOrBlank())
             "$start(${TimeConverter.getDayOfTheWeek(activityStart)}) ~ " +
                 "$end(${TimeConverter.getDayOfTheWeek(activityEnd)})"
-        else "2021-01-01 ~ 2021-01-01"
+        else "-"
     }
 
     @JvmStatic
@@ -228,6 +238,44 @@ object CustomAttr {
         textView.text = when(type) {
             VOLUNTEER_TYPE_INDIVIDUAL -> "개인"
             else -> "단체"
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("ActivityPeriod")
+    fun setActivityPeriodText(textView: TextView, period: String?) {
+        textView.text = period?.let { s->
+            val split = s.split("|")
+            var str = ""
+            split.forEach { str += if(it == split.last()+1 || it == split[0]) "${it}요일" else ", ${it}요일" }
+            str
+        } ?: "-"
+    }
+
+    @JvmStatic
+    @BindingAdapter("DetailsRecruitNumberText")
+    fun setDetailsRecruitNumber(textView: TextView, number: Int?) {
+        textView.text = if(number == 0 || number == null)"00명" else "${number}명"
+    }
+
+    @JvmStatic
+    @BindingAdapter("TargetAge")
+    fun setTargetAge(textView: TextView, targetAge: String?) {
+        textView.visibility = if(targetAge!!.isNotBlank()) {
+            val isContained = targetAge.contains(textView.text)
+            if(isContained) View.VISIBLE else View.GONE
+        } else {
+            if(textView.text.contains("일반")) View.VISIBLE else View.GONE
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("TargetAgeText")
+    fun setTargetAgeText(textView: TextView, targetAge: String?) {
+        targetAge?.let {
+            if(targetAge.contains("|")) {
+                textView.text = targetAge.replace("|", ", ")
+            }
         }
     }
 

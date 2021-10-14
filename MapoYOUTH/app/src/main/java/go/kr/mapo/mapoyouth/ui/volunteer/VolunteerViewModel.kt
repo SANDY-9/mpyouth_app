@@ -1,9 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.volunteer
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
@@ -12,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.repository.VolunteerDataSource
 import go.kr.mapo.mapoyouth.network.repository.VolunteerRepository
+import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
 import go.kr.mapo.mapoyouth.network.response.VolunteerDetails
 import go.kr.mapo.mapoyouth.util.PAGE_SIZE
 import kotlinx.coroutines.launch
@@ -47,6 +45,17 @@ class VolunteerViewModel @Inject constructor(
                 _state.value = true
             }
         }
+    }
+
+    private val keyword = MutableLiveData("")
+    val volunteerSearchResult = keyword.switchMap {
+        Pager(PagingConfig(PAGE_SIZE, maxSize = 100)) {
+            VolunteerDataSource(mapoYouthService, it)
+        }.liveData.cachedIn(viewModelScope)
+    }
+
+    fun requestSearchVolunteer(keyword: String) {
+        this.keyword.value = keyword
     }
 
 

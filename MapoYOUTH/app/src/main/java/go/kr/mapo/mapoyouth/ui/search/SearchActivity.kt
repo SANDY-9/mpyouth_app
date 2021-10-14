@@ -17,6 +17,7 @@ import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
+import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerViewModel
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthViewModel
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
@@ -45,9 +46,13 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var inputMethodManager : InputMethodManager
 
     private val youthViewModel : YouthViewModel by viewModels()
-
     private val youthAdapter by lazy { YouthListAdapter() }
 
+    private val volunteerViewModel : VolunteerViewModel by viewModels()
+    private val volunteerAdapter by lazy { VolunteerListAdapter() }
+
+
+    private var curTabPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,20 +81,18 @@ class SearchActivity: AppCompatActivity() {
         }
 
 
-
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
 
         // Tab 클릭시 동작
         tabLayout.apply {
             getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
-
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     tab?.let {
-                        val position = it.position
-                        CustomAttr.changeTabsBold(tabItem, position, tabLayout.tabCount
+                        curTabPosition = it.position
+                        CustomAttr.changeTabsBold(tabItem, curTabPosition, tabLayout.tabCount
                         ) // 탭 선택시 글씨 굵게
-                        recyclerView.adapter = when (position) {
+                        recyclerView.adapter = when (curTabPosition) {
                             0 -> youthAdapter
                             1 -> volunteerAdapter
                             2 -> eduAdapter
@@ -115,7 +118,7 @@ class SearchActivity: AppCompatActivity() {
                 search_start.visibility = View.GONE
                 recyclerView.visibility = View.VISIBLE
 
-                requestSearch(autoCompleteTextView.text)
+                requestSearch(autoCompleteTextView.text, curTabPosition)
                 inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 KBD Enter 클릭시 KBD 숨김
 
                 true
@@ -129,7 +132,7 @@ class SearchActivity: AppCompatActivity() {
 
         // 화면 내 검색 Btn로 검색시
         search_button.setOnClickListener {
-            requestSearch(autoCompleteTextView.text)
+            requestSearch(autoCompleteTextView.text, curTabPosition)
                 inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 search_button 클릭시 KBD 숨김
         }
         subscribeToObservers()
@@ -140,16 +143,25 @@ class SearchActivity: AppCompatActivity() {
             recyclerView.adapter = youthAdapter
             youthAdapter.submitData(lifecycle, it)
         })
+
+        volunteerViewModel.volunteerSearchResult.observe(this, {
+            recyclerView.adapter = volunteerAdapter
+            volunteerAdapter.submitData(lifecycle, it)
+        })
+
     }
 
     // 검색입력 검사
-    private fun requestSearch(word : Editable){
+    private fun requestSearch(word : Editable, tabPosition: Int){
         if (word.isBlank()){
             Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
             return
         } else {    // 검색 요청
             val keyword = word.toString().trim()
-            youthViewModel.requestSearchYouth(keyword)
+            when(tabPosition) {
+                0 -> youthViewModel.requestSearchYouth(keyword)  //청소년 활동 검색요청
+                1 -> volunteerViewModel.requestSearchVolunteer(keyword)  // 봉사활동 검색요청
+            }
             search_start.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }

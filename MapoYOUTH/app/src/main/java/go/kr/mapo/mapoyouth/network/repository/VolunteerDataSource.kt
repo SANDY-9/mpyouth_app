@@ -34,7 +34,12 @@ class VolunteerDataSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Volunteer> {
         return try {
             val page = params.key ?: STARTING_PAGE_INDEX
-            val data = mapoYouthService.getVolunteerList(page).body()?.data
+            val data =
+                if (keyword != null) {
+                    mapoYouthService.searchVolunteer(keyword).body()?.data
+                } else{
+                    mapoYouthService.getVolunteerList(page).body()?.data
+                }
             if(data != null) {
                 LoadResult.Page(
                     data = data.content,

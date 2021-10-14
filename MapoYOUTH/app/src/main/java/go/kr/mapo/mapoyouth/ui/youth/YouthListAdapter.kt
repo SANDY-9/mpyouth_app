@@ -1,19 +1,12 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ItemYouthRvBinding
-import go.kr.mapo.mapoyouth.network.repository.YouthSearchResult
 import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.util.ID
 

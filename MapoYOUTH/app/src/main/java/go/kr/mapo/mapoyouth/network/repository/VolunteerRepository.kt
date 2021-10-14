@@ -14,9 +14,8 @@ import javax.inject.Inject
 class VolunteerRepository @Inject constructor(private val mapoYouthService: MapoYouthService) {
 
     suspend fun getVolunteerDetails(id: Int) : LiveData<VolunteerDetails>? {
-        val volunteerDataSource = VolunteerDataSource(mapoYouthService)
+        val volunteerDataSource = VolunteerDataSource(mapoYouthService, null)
         volunteerDataSource.fetchVolunteerDetails(id)
         return volunteerDataSource.downloadedVolunteerDetails
     }
-
 }

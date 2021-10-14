@@ -1,13 +1,11 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
-import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
 import go.kr.mapo.mapoyouth.network.repository.YouthRepository
-import go.kr.mapo.mapoyouth.network.repository.YouthSearchResult
 import go.kr.mapo.mapoyouth.network.response.YouthDetails
 import go.kr.mapo.mapoyouth.util.PAGE_SIZE
 import kotlinx.coroutines.launch
@@ -46,6 +44,7 @@ class YouthViewModel @Inject constructor(
     }
 
     private val keyword = MutableLiveData("")
+
     val youthSearchResult = keyword.switchMap {
         Pager(PagingConfig(PAGE_SIZE, maxSize = 100)) {
             YouthDataSource(mapoYouthService, it)

@@ -48,10 +48,6 @@ interface MapoYouthService {
     suspend fun getEduList(
         @Query("page") page : Int
     ) : Response<EduListResponse>
-    @GET("donation")
-    suspend fun getDonationList(
-        @Query("page") page: Int
-    ) : Response<DonationListResponse>
 
     @GET("life-long-edu/{id}")
     suspend fun getEduDetails(
@@ -62,6 +58,13 @@ interface MapoYouthService {
     suspend fun searchEdu(
         @Query("keyword") keyword: String
     ) : Response<EduListResponse>
+
+
+    @GET("donation")
+    suspend fun getDonationList(
+        @Query("page") page: Int
+    ) : Response<DonationListResponse>
+
     @GET("donation/{id}")
     suspend fun getDonationDetails(
         @Query("id") id: Int

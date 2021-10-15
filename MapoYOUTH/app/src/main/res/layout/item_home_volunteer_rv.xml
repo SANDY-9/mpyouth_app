@@ -67,7 +67,6 @@
                 SetSpannable="@{volunteer.location}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/mapo_gray"
                 android:textSize="12sp"
                 tools:text="장소 : 서울특별시 광진구 아차산로330(자양동) 3층" />
 
@@ -83,6 +82,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/roboto_700"
                 android:text="@string/details_btn"
+                android:textColor="@color/mapo_gray"
                 android:textSize="12sp" />
 
         </LinearLayout>

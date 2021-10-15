@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="donationDetails"
+            type="go.kr.mapo.mapoyouth.network.response.DonationDetailsResponse.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_16dp"
-                android:text="초,중학교 학습지원 희망해요!\n(전교과 가능)"
+                android:text="@{donationDetails.title}"
                 android:textSize="18sp"
                 android:lineHeight="21sp"
                 android:fontFamily="@font/roboto_400"
@@ -49,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16dp"
-                android:text="도화청소년문화의집"
+                android:text="@{donationDetails.organization.name}"
                 android:textSize="12sp"
                 android:lineHeight="21sp"
                 android:fontFamily="@font/roboto_400"

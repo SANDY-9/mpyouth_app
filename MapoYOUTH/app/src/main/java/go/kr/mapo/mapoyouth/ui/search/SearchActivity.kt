@@ -75,7 +75,7 @@ class SearchActivity: AppCompatActivity() {
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
 
 
-        val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
+//        val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
 

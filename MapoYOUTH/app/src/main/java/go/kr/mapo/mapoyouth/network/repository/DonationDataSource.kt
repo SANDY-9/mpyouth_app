@@ -1,8 +1,11 @@
 package go.kr.mapo.mapoyouth.network.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import go.kr.mapo.mapoyouth.network.MapoYouthService
+import go.kr.mapo.mapoyouth.network.response.DonationDetailsResponse
 import go.kr.mapo.mapoyouth.network.response.DonationListResponse
 import go.kr.mapo.mapoyouth.util.STARTING_PAGE_INDEX
 import java.lang.Exception
@@ -10,6 +13,9 @@ import java.lang.Exception
 class DonationDataSource(
     private val mapoYouthService: MapoYouthService
     ): PagingSource<Int, DonationListResponse.Data.Content>() {
+
+    private val _downloadedDonationDetails = MutableLiveData<DonationDetailsResponse.Data>()
+    val downloadedDonationDetails : LiveData<DonationDetailsResponse.Data> = _downloadedDonationDetails
 
     override fun getRefreshKey(state: PagingState<Int, DonationListResponse.Data.Content>): Int? {
         return state.anchorPosition?.let {
@@ -30,6 +36,13 @@ class DonationDataSource(
             )
         }catch (e: Exception) {
             LoadResult.Error(e)
+        }
+    }
+
+    suspend fun fetchDonationDetails(id:Int) {
+        val response = mapoYouthService.getDonationDetails(id)
+        if(response.isSuccessful) {
+            _downloadedDonationDetails.value = response.body()!!.data
         }
     }
 }

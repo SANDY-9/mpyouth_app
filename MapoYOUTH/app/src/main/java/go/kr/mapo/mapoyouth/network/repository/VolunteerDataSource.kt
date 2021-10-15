@@ -7,8 +7,11 @@ import androidx.paging.PagingState
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.response.Volunteer
 import go.kr.mapo.mapoyouth.network.response.VolunteerDetails
-import go.kr.mapo.mapoyouth.network.response.YouthDetails
 import go.kr.mapo.mapoyouth.util.STARTING_PAGE_INDEX
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 /**
@@ -17,12 +20,18 @@ import java.lang.Exception
  * @created 2021-10-12
  * @desc
  */
+
+typealias LatestVolunteer = List<Volunteer>
+
 class VolunteerDataSource(
     private val mapoYouthService: MapoYouthService,
     private val keyword: String?) : PagingSource<Int, Volunteer>() {
 
     private val _downloadedVolunteerDetails = MutableLiveData<VolunteerDetails>()
     val downloadedVolunteerDetails : LiveData<VolunteerDetails> = _downloadedVolunteerDetails
+
+    private val _downloadedLatestVolunteer = MutableLiveData<LatestVolunteer>()
+    val downloadedLatestVolunteer: LiveData<LatestVolunteer> = _downloadedLatestVolunteer
 
     override fun getRefreshKey(state: PagingState<Int, Volunteer>): Int? {
         return state.anchorPosition?.let {
@@ -40,15 +49,11 @@ class VolunteerDataSource(
                 } else{
                     mapoYouthService.getVolunteerList(page).body()?.data
                 }
-            if(data != null) {
-                LoadResult.Page(
-                    data = data.content,
-                    prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
-                    nextKey = if (data.last) null else page + 1
-                )
-            } else {
-                LoadResult.Invalid()
-            }
+            LoadResult.Page(
+                data = data!!.content,
+                prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,
+                nextKey = if (data.last) null else page + 1
+            )
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
@@ -58,4 +63,13 @@ class VolunteerDataSource(
         val response = mapoYouthService.getVolunteerDetails(id)
         if(response.isSuccessful) _downloadedVolunteerDetails.value = response.body()!!.data
     }
+
+    suspend fun fetchLatestVolunteer() {
+        val response = mapoYouthService.getVolunteerList(STARTING_PAGE_INDEX)
+        CoroutineScope(Dispatchers.Main).launch {
+            if(response.isSuccessful) _downloadedLatestVolunteer.value = response.body()!!.data.content
+            cancel()
+        }
+    }
+
 }

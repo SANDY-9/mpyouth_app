@@ -26,22 +26,3 @@ class HomeDonationListAdapter(val list: List<String>) : RecyclerView.Adapter<Hom
 
     override fun getItemCount(): Int = list.size
 }
-
-class HomeDonationADAdapter(val list: List<String>) : RecyclerView.Adapter<HomeDonationADAdapter.HolderView>() {
-    inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): HomeDonationADAdapter.HolderView = HolderView(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_home_donation_ad, parent, false)
-    )
-
-    override fun onBindViewHolder(holder: HomeDonationADAdapter.HolderView, position: Int) {
-    }
-
-    override fun getItemCount(): Int = list.size
-
-}

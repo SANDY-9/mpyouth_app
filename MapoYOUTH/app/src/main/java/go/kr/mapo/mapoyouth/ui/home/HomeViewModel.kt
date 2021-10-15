@@ -1,6 +1,16 @@
 package go.kr.mapo.mapoyouth.ui.home
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import go.kr.mapo.mapoyouth.network.repository.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 /**
  * @author SANDY
@@ -8,5 +18,23 @@ import androidx.lifecycle.ViewModel
  * @created 2021-09-14
  * @desc
  */
-class HomeViewModel : ViewModel() {
+
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val youthRepository: YouthRepository,
+    private val volunteerRepository: VolunteerRepository,
+    private val eduRepository: EduRepository) : ViewModel() {
+
+    suspend fun getLatestYouth() = withContext(Dispatchers.IO) {
+        youthRepository.getLatestYouth()
+    }
+
+    suspend fun getLatestVolunteer() = withContext(Dispatchers.IO) {
+        volunteerRepository.getLatestVolunteer()
+    }
+
+    suspend fun getLatestEdu() = withContext(Dispatchers.IO) {
+        eduRepository.getLatestEdu()
+    }
+
 }

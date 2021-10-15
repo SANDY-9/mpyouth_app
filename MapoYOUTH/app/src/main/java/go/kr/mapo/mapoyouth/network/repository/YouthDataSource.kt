@@ -1,9 +1,7 @@
 package go.kr.mapo.mapoyouth.network.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import go.kr.mapo.mapoyouth.network.MapoYouthService
@@ -12,9 +10,9 @@ import go.kr.mapo.mapoyouth.network.response.YouthDetails
 import go.kr.mapo.mapoyouth.util.STARTING_PAGE_INDEX
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import javax.inject.Singleton
 
 /**
  * @author SANDY
@@ -23,12 +21,17 @@ import javax.inject.Singleton
  * @desc
  */
 
+typealias LatestYouth = List<Youth>
+
 class YouthDataSource(
     private val mapoYouthService: MapoYouthService,
     private val keyword: String?) : PagingSource<Int, Youth>() {
 
     private val _downloadedYouthDetails = MutableLiveData<YouthDetails>()
     val downloadedYouthDetails : LiveData<YouthDetails> = _downloadedYouthDetails
+
+    private val _downloadedLatestYouth = MutableLiveData<LatestYouth>()
+    val downloadedLatestYouth: LiveData<LatestYouth> = _downloadedLatestYouth
 
     override fun getRefreshKey(state: PagingState<Int, Youth>): Int? {
         return state.anchorPosition?.let {
@@ -59,6 +62,14 @@ class YouthDataSource(
     suspend fun fetchYouthDetails(id: Int) {
         val response = mapoYouthService.getYouthDetails(id)
         if(response.isSuccessful) _downloadedYouthDetails.value = response.body()!!.data
+    }
+
+    suspend fun fetchLatestYouth() {
+        val response = mapoYouthService.getYouthList(STARTING_PAGE_INDEX)
+        CoroutineScope(Dispatchers.Main).launch {
+            if(response.isSuccessful) _downloadedLatestYouth.value = response.body()!!.data.content
+            cancel()
+        }
     }
 
 }

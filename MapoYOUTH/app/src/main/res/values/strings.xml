@@ -38,28 +38,37 @@
     <string name="onboard_screen_content03">마포유스를 통해 청소년활동뿐 만아니라\n학부모 활동까지 한 눈에 확인하세요!</string>
 
 
-    <array name="youth_tab">
+    <array name="youth_category">
         <item>전체보기</item>
         <item>건강/스포츠</item>
         <item>모험개척</item>
         <item>역사탐방</item>
         <item>봉사협력</item>
+        <item>과학정보</item>
+        <item>진로탐구</item>
+        <item>자기개발</item>
+        <item>문화예술</item>
+        <item>환경보존</item>
+        <item>교류</item>
+        <item>기타</item>
     </array>
 
-    <array name="spinner_youth">
+    <array name="spinner_list">
         <item>전체</item>
         <item>초등학생</item>
         <item>중학생</item>
         <item>고등학생</item>
         <item>대학생</item>
+        <item>일반</item>
     </array>
 
-    <array name="volunteer_tab">
+    <array name="volunteer_category">
         <item>전체보기</item>
-        <item>교육봉사</item>
+        <item>지도(교육)봉사</item>
         <item>노력봉사</item>
         <item>문화봉사</item>
         <item>재능봉사</item>
+        <item>헌혈봉사</item>
     </array>
 
 </resources>

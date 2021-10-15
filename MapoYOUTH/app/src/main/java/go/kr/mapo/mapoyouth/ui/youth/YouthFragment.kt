@@ -30,15 +30,15 @@ class YouthFragment : Fragment() {
     private val viewModel : YouthViewModel by viewModels()
 
     private var curCategory : String = "전체보기"
-    private lateinit var sortedArray : Array<String>
     private var curSorted : String = "전체"
+
+    private lateinit var sortedArray : Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_youth, container, false)
-        pagerAdapter = ListItemPagerAdapter(YouthListAdapter(), null)
         sortedArray = resources.getStringArray(R.array.spinner_list)
         return binding.root
     }
@@ -52,6 +52,7 @@ class YouthFragment : Fragment() {
 
     private fun setupTabAndViewPager() {
         with(binding) {
+            pagerAdapter = ListItemPagerAdapter(YouthListAdapter(), null, tabs.tabCount)
             tabs.getTabAt(0)!!.select().apply {
                 val tabItem = tabs.getChildAt(0) as ViewGroup
                 CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount)
@@ -61,14 +62,8 @@ class YouthFragment : Fragment() {
                 adapter = pagerAdapter
             }
             TabLayoutMediator(tabs, viewPager) { tab, position ->
-                val tabList = resources.getStringArray(R.array.youth_tab)
-                tab.text = when (position) {
-                    0 -> tabList[0]
-                    1 -> tabList[1]
-                    2 -> tabList[2]
-                    3 -> tabList[3]
-                    else -> tabList[4]
-                }
+                val tabList = resources.getStringArray(R.array.youth_category)
+                tab.text = tabList[position]
             }.attach()
         }
     }

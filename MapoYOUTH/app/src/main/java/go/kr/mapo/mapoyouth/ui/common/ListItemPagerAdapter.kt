@@ -27,8 +27,9 @@ import javax.inject.Singleton
 
 
 class ListItemPagerAdapter(
-    val youthListAdapter : YouthListAdapter?,
-    val volunteerListAdapter: VolunteerListAdapter?) : RecyclerView.Adapter<ListItemPagerAdapter.HolderView>() {
+    private val youthListAdapter: YouthListAdapter?,
+    private val volunteerListAdapter: VolunteerListAdapter?,
+    private val tabCount: Int) : RecyclerView.Adapter<ListItemPagerAdapter.HolderView>() {
 
     lateinit var recyclerView: RecyclerView
 
@@ -48,7 +49,7 @@ class ListItemPagerAdapter(
         holder.setAdapter()
     }
 
-    override fun getItemCount(): Int = 5
+    override fun getItemCount(): Int = tabCount
 
     fun submitYouthData(lifecycle: Lifecycle, pagingData: PagingData<Youth>) {
         youthListAdapter?.let { it.submitData(lifecycle, pagingData) }

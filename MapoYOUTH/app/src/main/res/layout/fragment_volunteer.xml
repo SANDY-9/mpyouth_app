@@ -51,7 +51,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="교육봉사" />
+                android:text="지도(교육)봉사" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -67,6 +67,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="재능봉사" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="헌혈봉사" />
 
         </com.google.android.material.tabs.TabLayout>
 

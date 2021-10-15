@@ -31,9 +31,10 @@
                 style="@style/TagBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/mapo_green"
-                android:text="환경보존"
-                android:textColor="@color/mapo_green"
+                YouthCategoryBox="@{youth.category.name}"
+                tools:backgroundTint="@color/mapo_green"
+                tools:text="환경보존"
+                tools:textColor="@color/mapo_green"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

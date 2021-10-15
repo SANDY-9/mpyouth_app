@@ -27,12 +27,14 @@ class VolunteerFragment : Fragment() {
     private lateinit var pagerAdapter: ListItemPagerAdapter
     private val viewModel : VolunteerViewModel by viewModels()
 
+    private lateinit var categoryArray : Array<String>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_volunteer, container, false)
-        pagerAdapter = ListItemPagerAdapter(null, VolunteerListAdapter())
+        categoryArray = resources.getStringArray(R.array.volunteer_category)
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
             return root
@@ -47,6 +49,7 @@ class VolunteerFragment : Fragment() {
 
     private fun setupTabAndViewPager() {
         with(binding) {
+            pagerAdapter = ListItemPagerAdapter(null, VolunteerListAdapter(), tabs.tabCount)
             tabs.getTabAt(0)!!.select().also {
                 val tabItem = tabs.getChildAt(0) as ViewGroup
                 CustomAttr.changeTabsBold(tabItem, 0, tabs.tabCount)
@@ -56,14 +59,8 @@ class VolunteerFragment : Fragment() {
                 adapter = pagerAdapter
             }
             TabLayoutMediator(tabs, viewPager) { tab, position ->
-                val tabList = resources.getStringArray(R.array.volunteer_tab)
-                tab.text = when(position) {
-                    0 -> tabList[0]
-                    1 -> tabList[1]
-                    2 -> tabList[2]
-                    3 -> tabList[3]
-                    else -> tabList[4]
-                }
+                val tabList = resources.getStringArray(R.array.volunteer_category)
+                tab.text = tabList[position]
             }.attach()
         }
     }
@@ -79,14 +76,8 @@ class VolunteerFragment : Fragment() {
         addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 pagerAdapter.actionTopScroll()
-                tab?.let { selectedTab ->
-                    pagerAdapter.submitVolunteerData(lifecycle, when(selectedTab.position) {
-                        1 -> data.filter { volunteer -> volunteer.category.name == "교육봉사" }
-                        2 -> data.filter { volunteer -> volunteer.category.name == "노력봉사" }
-                        3 -> data.filter { volunteer -> volunteer.category.name == "문화봉사" }
-                        4 -> data.filter { volunteer -> volunteer.category.name == "재능봉사" }
-                        else -> data
-                    })
+                tab?.let {
+                    pagerAdapter.submitVolunteerData(lifecycle, getData(data, selectedTabPosition))
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -95,5 +86,8 @@ class VolunteerFragment : Fragment() {
             }
         })
     }
+
+    private fun getData(data: PagingData<Volunteer>, position: Int) =
+        if(position == 0) data else data.filter { it.category.name == categoryArray[position] }
 
 }

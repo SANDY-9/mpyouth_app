@@ -30,12 +30,13 @@
                 style="@style/TagBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/mapo_yellow"
+                tools:backgroundTint="@color/mapo_yellow"
                 android:backgroundTintMode="src_in"
                 android:fontFamily="@font/roboto_700"
                 android:paddingTop="3dp"
                 android:paddingBottom="3dp"
-                android:text="노력봉사"
+                VolunteerCategoryBox="@{volunteer.category.name}"
+                tools:text="노력봉사"
                 android:textColor="@color/white" />
 
             <TextView

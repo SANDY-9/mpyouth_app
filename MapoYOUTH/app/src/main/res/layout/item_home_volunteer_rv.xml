@@ -55,7 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:textColor="@color/mapo_gray"
                 android:textSize="12sp"
                 android:bufferType="spannable"
                 app:endDate="@{volunteer.endDate}"
@@ -84,7 +83,6 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/roboto_700"
                 android:text="@string/details_btn"
-                android:textColor="@color/mapo_gray"
                 android:textSize="12sp" />
 
         </LinearLayout>

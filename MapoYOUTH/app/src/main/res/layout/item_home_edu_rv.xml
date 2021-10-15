@@ -105,7 +105,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:singleLine="true"
-                android:textColor="@color/mapo_gray"
                 android:textSize="12sp"
                 android:bufferType="spannable"
                 app:endDate="@{edu.endDate}"
@@ -118,7 +117,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/mapo_gray"
                 android:textSize="12sp"
                 android:bufferType="spannable"
                 tools:text="장소 : 마포청소년센터" />

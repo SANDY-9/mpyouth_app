@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.paging.PagingData
+import androidx.paging.filter
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerBinding
+import go.kr.mapo.mapoyouth.network.response.Volunteer
+import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
 import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
@@ -36,6 +41,11 @@ class VolunteerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupTabAndViewPager()
+        subscribeToObservers()
+    }
+
+    private fun setupTabAndViewPager() {
         with(binding) {
             tabs.getTabAt(0)!!.select().also {
                 val tabItem = tabs.getChildAt(0) as ViewGroup
@@ -55,10 +65,35 @@ class VolunteerFragment : Fragment() {
                     else -> tabList[4]
                 }
             }.attach()
-            viewModel.volunteerList.observe(viewLifecycleOwner, {
-                pagerAdapter.submitVolunteerData(lifecycle, it)
-            })
         }
+    }
+
+    private fun subscribeToObservers() {
+        viewModel.volunteerList.observe(viewLifecycleOwner, {
+            pagerAdapter.submitVolunteerData(lifecycle, it)
+            whenTabSelected(it)
+        })
+    }
+
+    private fun whenTabSelected(data: PagingData<Volunteer>) = binding.tabs.apply {
+        addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                pagerAdapter.actionTopScroll()
+                tab?.let { selectedTab ->
+                    pagerAdapter.submitVolunteerData(lifecycle, when(selectedTab.position) {
+                        1 -> data.filter { volunteer -> volunteer.category.name == "교육봉사" }
+                        2 -> data.filter { volunteer -> volunteer.category.name == "노력봉사" }
+                        3 -> data.filter { volunteer -> volunteer.category.name == "문화봉사" }
+                        4 -> data.filter { volunteer -> volunteer.category.name == "재능봉사" }
+                        else -> data
+                    })
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
     }
 
 }

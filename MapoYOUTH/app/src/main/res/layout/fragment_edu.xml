@@ -46,10 +46,10 @@
                 android:layout_marginBottom="7dp"
                 android:background="@drawable/bg_spinner_close"
                 android:dropDownWidth="@dimen/spinner_width"
-                android:entries="@array/spinner_youth"
                 android:overlapAnchor="false"
                 android:spinnerMode="dropdown"
                 SpinnerEventListener="@{true}"
+                tools:entries="@array/spinner_list"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <View

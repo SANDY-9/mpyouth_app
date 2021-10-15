@@ -80,9 +80,9 @@
             android:background="@drawable/bg_spinner_close"
             android:dropDownWidth="@dimen/spinner_width"
             android:overlapAnchor="false"
-            android:entries="@array/spinner_youth"
             android:spinnerMode="dropdown"
             SpinnerEventListener="@{true}"
+            tools:entries="@array/spinner_list"
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.viewpager2.widget.ViewPager2

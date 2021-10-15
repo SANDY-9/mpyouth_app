@@ -5,12 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.paging.PagingData
+import androidx.paging.filter
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentEduBinding
+import go.kr.mapo.mapoyouth.network.response.Edu
+import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 
 @AndroidEntryPoint
@@ -34,12 +40,44 @@ class EduFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding) {
-            recyclerView.adapter = eduAdapter
-            viewModel.eduList.observe(viewLifecycleOwner, {
-                eduAdapter.submitData(lifecycle, it)
-            })
+        binding.recyclerView.adapter = eduAdapter
+        connectSpinnerAdapter()
+        subscribeToObservers()
+    }
+
+    private fun connectSpinnerAdapter() {
+        val spinnerAdapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.spinner_list,
+            R.layout.item_spinner
+        ).also { it.setDropDownViewResource(R.layout.item_spinner) }
+        binding.spinner.adapter = spinnerAdapter
+    }
+
+    private fun subscribeToObservers() {
+        viewModel.eduList.observe(viewLifecycleOwner, {
+            eduAdapter.submitData(lifecycle, it)
+            whenSpinnerSelected(it)
+        })
+    }
+
+    private fun whenSpinnerSelected(data: PagingData<Edu>) = binding.spinner.apply {
+        onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                eduAdapter.submitData(lifecycle, when(position) {
+                    1 -> data.filter { it.targetAge.contains("초") }
+                    2 -> data.filter { it.targetAge.contains("중") }
+                    3 -> data.filter { it.targetAge.contains("고") }
+                    4 -> data.filter { it.targetAge.contains("대") }
+                    5 -> data.filter { it.targetAge.contains("일반") }
+                    else -> data
+                }
+                )
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
         }
     }
+
 }
 

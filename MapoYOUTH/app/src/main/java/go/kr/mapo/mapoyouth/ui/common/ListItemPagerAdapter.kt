@@ -30,8 +30,12 @@ class ListItemPagerAdapter(
     val youthListAdapter : YouthListAdapter?,
     val volunteerListAdapter: VolunteerListAdapter?) : RecyclerView.Adapter<ListItemPagerAdapter.HolderView>() {
 
+    lateinit var recyclerView: RecyclerView
+
     inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView : RecyclerView = itemView.findViewById(R.id.recyclerView)
+        init {
+            recyclerView = itemView.findViewById(R.id.recyclerView)
+        }
         fun setAdapter() {
             recyclerView.adapter = youthListAdapter ?: volunteerListAdapter
         }
@@ -52,5 +56,9 @@ class ListItemPagerAdapter(
 
     fun submitVolunteerData(lifecycle: Lifecycle, pagingData: PagingData<Volunteer>) {
         volunteerListAdapter?.let { it.submitData(lifecycle, pagingData) }
+    }
+
+    fun actionTopScroll() {
+        recyclerView.smoothScrollToPosition(0)
     }
 }

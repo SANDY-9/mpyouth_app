@@ -46,12 +46,13 @@
         <item>봉사협력</item>
     </array>
 
-    <array name="spinner_youth">
+    <array name="spinner_list">
         <item>전체</item>
         <item>초등학생</item>
         <item>중학생</item>
         <item>고등학생</item>
         <item>대학생</item>
+        <item>일반</item>
     </array>
 
     <array name="volunteer_tab">

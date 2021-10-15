@@ -92,5 +92,8 @@ data class Youth(
     val organization: Organization = Organization(),
     @SerializedName("thumbnail")
     @Expose
-    val thumbnail: Thumbnail = Thumbnail()
+    val thumbnail: Thumbnail = Thumbnail(),
+    @SerializedName("category")
+    @Expose
+    val category: Category = Category()
 )

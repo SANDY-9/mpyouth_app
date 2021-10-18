@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DonationViewModel @Inject constructor(
     private val mapoYouthService: MapoYouthService,
-private val donationRepository: DonationRepository): ViewModel() {
+    private val donationRepository: DonationRepository): ViewModel() {
 
     val donationList = Pager(PagingConfig(PAGE_SIZE, prefetchDistance = 1, maxSize = 100)) {
         DonationDataSource(mapoYouthService)
@@ -36,7 +36,7 @@ private val donationRepository: DonationRepository): ViewModel() {
         _state.value = false
         viewModelScope.launch {
             donationRepository.getDonationDetails(id).let {
-                _donationDetails.value = donationDetails.value
+                _donationDetails.value = it.value
                 _state.value = true
             }
         }

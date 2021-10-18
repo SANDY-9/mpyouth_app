@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentDonationActivityDetailsBinding
 
-@AndroidEntryPoint
 class DonationActivityDetailsFragment : Fragment() {
 
     private lateinit var binding : FragmentDonationActivityDetailsBinding

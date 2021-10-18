@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
@@ -21,17 +22,23 @@ class DonationDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDonationDetailsBinding.inflate(layoutInflater).apply { setContentView(root) }
-        binding.lifecycleOwner = this@DonationDetailsActivity
+        binding =  DataBindingUtil.setContentView(this, R.layout.activity_donation_details)
 
+        binding.lifecycleOwner = this@DonationDetailsActivity
         setSupportActionBar(binding.toolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
 
-        observeDetails()
         getDetails()
+        observeDetails()
+    }
+
+    private fun getDetails() {
+        val id = intent.getIntExtra(ID, -1)
+        if(id != -1) {
+            viewModel.setDonationDetails(id)
+        }
     }
 
     private fun observeDetails() {
-
         val donationDetailActivity = DonationActivityDetailsFragment()
         viewModel.donationDetails.observe(this, {
             binding.donationDetails = it
@@ -39,22 +46,14 @@ class DonationDetailsActivity : AppCompatActivity() {
                 adapter = DetailsViewPagerAdapter(
                     this@DonationDetailsActivity,
                     donationDetailActivity,
-                    it.organization
-                )
+                    it.organization)
                 currentItem =0
             }
+            val tabLayoutTextArray = arrayOf("활동정보","기관정보")
+            TabLayoutMediator(binding.tabLayout,binding.viewPager){tab,position->
+                tab.text = tabLayoutTextArray[position]
+            }.attach()
         })
-        val tabLayoutTextArray = arrayOf("활동정보","기관정보")
-        TabLayoutMediator(binding.tabLayout,binding.viewPager){tab,position->
-            tab.text = tabLayoutTextArray[position]
-        }.attach()
-    }
-
-    private fun getDetails() {
-        val id = intent.getIntExtra(ID, -1)
-        if(id != 1) {
-            viewModel.setDonationDetails(id)
-        }
     }
 
 

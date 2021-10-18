@@ -74,4 +74,10 @@ object HiltModules {
         return EduRepository(mapoYouthService)
     }
 
+    @Singleton
+    @Provides
+    fun provideDonationRepository(mapoYouthService: MapoYouthService) : DonationRepository {
+        return DonationRepository(mapoYouthService)
+    }
+
 }

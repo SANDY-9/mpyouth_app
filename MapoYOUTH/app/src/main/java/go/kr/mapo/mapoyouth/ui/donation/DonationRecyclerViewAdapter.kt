@@ -20,15 +20,14 @@ class DonationRecyclerViewAdapter : PagingDataAdapter<DonationListResponse.Data.
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         getItem(position)?.let { item ->
             with(holder.binding) {
-//                val context = root.context
                 lifecycleOwner = lifecycleOwner
                 donation = item
                 root.setOnClickListener {
                     val intent = Intent(it.context, DonationDetailsActivity::class.java).apply {
-                        putExtra(ID, item.id)}
+                        putExtra(ID, item.id)
+                    }
                     it.context.startActivity(intent)
                 }
             }

@@ -9,9 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.repository.EduDataSource
 import go.kr.mapo.mapoyouth.network.repository.EduRepository
-import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
 import go.kr.mapo.mapoyouth.network.response.EduDetails
-import go.kr.mapo.mapoyouth.network.response.YouthDetails
 import go.kr.mapo.mapoyouth.util.PAGE_SIZE
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,7 +38,7 @@ class EduViewModel @Inject constructor(
     fun setEduDetails(id: Int) {
         _state.value = false
         viewModelScope.launch {
-            eduRepository.getVolunteerDetails(id)?.let {
+            eduRepository.getEduDetails(id)?.let {
                 _eduDetails.value = it.value
                 _state.value = true
             }

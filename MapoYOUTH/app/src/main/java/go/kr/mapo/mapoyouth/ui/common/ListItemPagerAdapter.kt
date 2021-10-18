@@ -27,11 +27,16 @@ import javax.inject.Singleton
 
 
 class ListItemPagerAdapter(
-    val youthListAdapter : YouthListAdapter?,
-    val volunteerListAdapter: VolunteerListAdapter?) : RecyclerView.Adapter<ListItemPagerAdapter.HolderView>() {
+    private val youthListAdapter: YouthListAdapter?,
+    private val volunteerListAdapter: VolunteerListAdapter?,
+    private val tabCount: Int) : RecyclerView.Adapter<ListItemPagerAdapter.HolderView>() {
+
+    lateinit var recyclerView: RecyclerView
 
     inner class HolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView : RecyclerView = itemView.findViewById(R.id.recyclerView)
+        init {
+            recyclerView = itemView.findViewById(R.id.recyclerView)
+        }
         fun setAdapter() {
             recyclerView.adapter = youthListAdapter ?: volunteerListAdapter
         }
@@ -44,7 +49,7 @@ class ListItemPagerAdapter(
         holder.setAdapter()
     }
 
-    override fun getItemCount(): Int = 5
+    override fun getItemCount(): Int = tabCount
 
     fun submitYouthData(lifecycle: Lifecycle, pagingData: PagingData<Youth>) {
         youthListAdapter?.let { it.submitData(lifecycle, pagingData) }
@@ -52,5 +57,9 @@ class ListItemPagerAdapter(
 
     fun submitVolunteerData(lifecycle: Lifecycle, pagingData: PagingData<Volunteer>) {
         volunteerListAdapter?.let { it.submitData(lifecycle, pagingData) }
+    }
+
+    fun actionTopScroll() {
+        recyclerView.smoothScrollToPosition(0)
     }
 }

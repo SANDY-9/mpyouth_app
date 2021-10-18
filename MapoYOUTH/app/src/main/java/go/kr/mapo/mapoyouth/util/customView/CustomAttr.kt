@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.util.customView
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
@@ -278,5 +279,50 @@ object CustomAttr {
             }
         }
     }
+
+    @JvmStatic
+    @BindingAdapter("YouthCategoryBox")
+    fun setYouthCategoryBox(textView: TextView, category: String?) {
+        category?.let {
+            val color = ColorStateList.valueOf(Color.parseColor( when(it) {
+                "건강/스포츠" -> "#A4C138"
+                "모험개척" -> "#0396A6"
+                "역사탐방" -> "#2FA894"
+                "봉사협력" -> "#F28705"
+                "과학정보" -> "#006699"
+                "진로탐구" -> "#F2D22E"
+                "자기개발" -> "#DC6B88"
+                "문화예술" -> "#549DC6"
+                "환경보존" -> "#007440"
+                "교류" -> "#F2D22E"
+                else -> "#666666"
+            }))
+            with(textView) {
+                text = category
+                setTextColor(color)
+                backgroundTintList = color
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("VolunteerCategoryBox")
+    fun setVolunteerCategoryBox(textView: TextView, category: String?) {
+        category?.let {
+            val color = ColorStateList.valueOf(Color.parseColor( when(it) {
+                "지도(교육)봉사" -> "#91D8CA"
+                "노력봉사" -> "#A1C410"
+                "문화봉사" -> "#FF8989"
+                "재능봉사" -> "#F28705"
+                else -> "#F2D22E"
+            }))
+            with(textView) {
+                text = "#$category"
+                backgroundTintList = color
+            }
+        }
+    }
+
+
 
 }

@@ -50,9 +50,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_tag"
-                    android:backgroundTint="@color/mapo_green"
-                    android:text="환경보존"
+                    YouthCategoryBox="@{youth.category.name}"
+                    tools:background="@drawable/bg_tag"
+                    tools:backgroundTint="@color/mapo_green"
+                    tools:text="환경보존"
                     android:textColor="@color/mapo_green" />
 
                 <TextView

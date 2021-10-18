@@ -1,10 +1,8 @@
 package go.kr.mapo.mapoyouth.network.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.response.YouthDetails
-import java.lang.Exception
 import javax.inject.Inject
 
 /**
@@ -15,10 +13,16 @@ import javax.inject.Inject
  */
 class YouthRepository @Inject constructor(private val mapoYouthService: MapoYouthService) {
 
-    suspend fun getYouthDetails(id: Int) : LiveData<YouthDetails>? {
+    suspend fun getYouthDetails(id: Int) : LiveData<YouthDetails> {
         val youthDataSource = YouthDataSource(mapoYouthService, null)
         youthDataSource.fetchYouthDetails(id)
         return youthDataSource.downloadedYouthDetails
+    }
+
+    suspend fun getLatestYouth() : LiveData<LatestYouth> {
+        val youthDataSource = YouthDataSource(mapoYouthService, null)
+        youthDataSource.fetchLatestYouth()
+        return youthDataSource.downloadedLatestYouth
     }
 
 }

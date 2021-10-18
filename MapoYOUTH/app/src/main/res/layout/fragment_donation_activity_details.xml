@@ -61,7 +61,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_place"
-                    android:layout_margin="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/name"
@@ -73,12 +74,12 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_place_val"
                     app:layout_constraintStart_toEndOf="@id/dona_de_count"
-                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:text="@{donationDetails.recruitNumber}" />
+                    RecruitNumberDetails="@{donationDetails.recruitNumber}" />
 
                 <TextView
                     android:id="@+id/dona_de_period"
@@ -86,7 +87,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_count"
-                    android:layout_margin="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/name"
@@ -98,12 +100,13 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_count_val"
                     app:layout_constraintStart_toEndOf="@id/dona_de_period"
-                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:text="@{donationDetails.recruitStartDate}" />
+                    recruitStart="@{donationDetails.recruitStartDate}"
+                    recruitEnd="@{donationDetails.recruitEndDate}" />
 
                 <TextView
                     android:id="@+id/dona_de_due"
@@ -111,7 +114,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_period"
-                    android:layout_margin="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/name"
@@ -123,12 +127,13 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_period_val"
                     app:layout_constraintStart_toEndOf="@id/dona_de_url"
-                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:text="@{donationDetails.startDate}" />
+                    activityStart="@{donationDetails.startDate}"
+                    activityEnd="@{donationDetails.endDate}" />
 
                 <TextView
                     android:id="@+id/dona_de_url"
@@ -136,7 +141,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_due"
-                    android:layout_margin="@dimen/margin_16dp"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/name"
@@ -148,7 +154,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_due_val"
                     app:layout_constraintStart_toEndOf="@id/dona_de_url"
-                    android:layout_marginVertical="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_32dp"
                     android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
@@ -165,14 +171,14 @@
                 app:layout_constraintTop_toBottomOf="@id/dona_de_first"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginVertical="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_24dp"
                 android:background="@color/white">
 
                 <View
-                android:id="@+id/topoutline"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/search_outline" />
+                    android:id="@+id/topoutline"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/search_outline" />
 
                 <TextView
                     android:id="@+id/dona_de_act_title"

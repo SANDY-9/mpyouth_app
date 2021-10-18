@@ -105,6 +105,7 @@
                 android:layout_marginEnd="@dimen/margin_10dp"
                 android:background="@drawable/bg_btn"
                 app:icon="@drawable/ic_call"
+                Call-Connection="@{donationDetails.organization.phone}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -114,6 +115,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/roboto_700"
+                Url-Connection="@{donationDetails.url}"
                 android:text="@string/btn_apply" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

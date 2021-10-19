@@ -215,10 +215,10 @@
 
                         <ImageView
                             android:id="@+id/imageView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/poster" />
+                            app:srcCompat="@drawable/banner_experience" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -266,29 +266,16 @@
 
                         <ImageView
                             android:id="@+id/imageView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/poster" />
+                            app:srcCompat="@drawable/banner_nanum" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#4D000000"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView47"
-                                style="@style/TagBox"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:backgroundTint="@color/mapo_orange"
-                                android:backgroundTintMode="src_in"
-                                android:fontFamily="@font/roboto_700"
-                                android:text="이벤트"
-                                android:textColor="@color/white" />
 
                             <TextView
                                 android:id="@+id/textView46"
@@ -301,7 +288,7 @@
                                 android:fontFamily="@font/roboto_700"
                                 android:gravity="bottom"
                                 android:maxLines="2"
-                                android:text="마포에 방송\n직업체험이 있다?"
+                                android:text="지금 당장\n무료나눔으로!"
                                 android:textColor="@color/white" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -379,7 +366,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/poster" />
+                        app:srcCompat="@drawable/banner_donation" />
 
                     <View
                         android:id="@+id/view3"

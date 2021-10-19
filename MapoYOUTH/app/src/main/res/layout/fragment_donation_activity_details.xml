@@ -32,7 +32,7 @@
 
                 <TextView
                     android:id="@+id/dona_de_place"
-                    android:layout_width="52dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
 
                 <TextView
                     android:id="@+id/dona_de_count"
-                    android:layout_width="52dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_place"
@@ -73,9 +73,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_place_val"
-                    app:layout_constraintStart_toEndOf="@id/dona_de_count"
+                    app:layout_constraintStart_toStartOf="@id/dona_de_place_val"
                     android:layout_marginTop="@dimen/margin_32dp"
-                    android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"
@@ -83,7 +82,7 @@
 
                 <TextView
                     android:id="@+id/dona_de_period"
-                    android:layout_width="52dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_count"
@@ -99,9 +98,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_count_val"
-                    app:layout_constraintStart_toEndOf="@id/dona_de_period"
+                    app:layout_constraintStart_toStartOf="@id/dona_de_place_val"
                     android:layout_marginTop="@dimen/margin_32dp"
-                    android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"
@@ -110,7 +108,7 @@
 
                 <TextView
                     android:id="@+id/dona_de_due"
-                    android:layout_width="52dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_period"
@@ -126,9 +124,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_period_val"
-                    app:layout_constraintStart_toEndOf="@id/dona_de_url"
+                    app:layout_constraintStart_toStartOf="@id/dona_de_place_val"
                     android:layout_marginTop="@dimen/margin_32dp"
-                    android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"
@@ -137,7 +134,7 @@
 
                 <TextView
                     android:id="@+id/dona_de_url"
-                    android:layout_width="52dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_due"
@@ -153,9 +150,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/dona_de_due_val"
-                    app:layout_constraintStart_toEndOf="@id/dona_de_url"
+                    app:layout_constraintStart_toStartOf="@id/dona_de_place_val"
                     android:layout_marginTop="@dimen/margin_32dp"
-                    android:layout_marginStart="@dimen/margin_24dp"
                     android:fontFamily="@font/roboto_400"
                     android:textSize="14sp"
                     android:textColor="@color/black"

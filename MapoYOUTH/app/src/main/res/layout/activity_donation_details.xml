@@ -106,6 +106,7 @@
                 android:background="@drawable/bg_btn"
                 app:icon="@drawable/ic_call"
                 Call-Connection="@{donationDetails.organization.phone}"
+                RecruitButtonEnabled="@{donationDetails.recruitStatus}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -116,6 +117,7 @@
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/roboto_700"
                 Url-Connection="@{donationDetails.url}"
+                RecruitButtonEnabled="@{donationDetails.recruitStatus}"
                 android:text="@string/btn_apply" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

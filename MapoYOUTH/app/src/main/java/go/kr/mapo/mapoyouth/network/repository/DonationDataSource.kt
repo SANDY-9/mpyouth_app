@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.network.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource
@@ -37,7 +38,7 @@ class DonationDataSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DonationListResponse.Data.Content> {
         return try {
             val page = params.key ?: STARTING_PAGE_INDEX
-            val data = mapoYouthService.getDonationList(page).body()?.data
+            val data = 
                 if (keyword != null) {
                     mapoYouthService.searchDonation(keyword).body()?.data
                 } else {

@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.util.di
 
+import android.util.Log
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

@@ -8,8 +8,14 @@ import javax.inject.Inject
 class DonationRepository @Inject constructor(private val mapoYouthService: MapoYouthService) {
 
     suspend fun getDonationDetails(id:Int) : LiveData<DonationDetailsResponse.Data> {
-        val donationData = DonationDataSource(mapoYouthService)
+        val donationData = DonationDataSource(mapoYouthService, null)
         donationData.fetchDonationDetails(id)
         return donationData.downloadedDonationDetails
+    }
+
+    suspend fun fetchLatestDonation() : LiveData<LatestDonation> {
+        val donationDataSource = DonationDataSource(mapoYouthService, null)
+        donationDataSource.fetchLatestDonation()
+        return donationDataSource.downloadedLatestDonation
     }
 }

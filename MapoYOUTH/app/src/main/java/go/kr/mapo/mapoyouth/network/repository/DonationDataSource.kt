@@ -8,14 +8,23 @@ import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.response.DonationDetailsResponse
 import go.kr.mapo.mapoyouth.network.response.DonationListResponse
 import go.kr.mapo.mapoyouth.util.STARTING_PAGE_INDEX
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
+typealias LatestDonation = List<DonationListResponse.Data.Content>
+
 class DonationDataSource(
-    private val mapoYouthService: MapoYouthService
-    ): PagingSource<Int, DonationListResponse.Data.Content>() {
+    private val mapoYouthService: MapoYouthService,
+    private val keyword: String?): PagingSource<Int, DonationListResponse.Data.Content>() {
 
     private val _downloadedDonationDetails = MutableLiveData<DonationDetailsResponse.Data>()
     val downloadedDonationDetails : LiveData<DonationDetailsResponse.Data> = _downloadedDonationDetails
+
+    private val _downloadedLatestDonation = MutableLiveData<LatestDonation>()
+    val downloadedLatestDonation : LiveData<LatestDonation> = _downloadedLatestDonation
 
     override fun getRefreshKey(state: PagingState<Int, DonationListResponse.Data.Content>): Int? {
         return state.anchorPosition?.let {
@@ -26,9 +35,14 @@ class DonationDataSource(
     
     //NULL CHECK 다시
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DonationListResponse.Data.Content> {
-        val page = params.key ?: STARTING_PAGE_INDEX
         return try {
+            val page = params.key ?: STARTING_PAGE_INDEX
             val data = mapoYouthService.getDonationList(page).body()?.data
+                if (keyword != null) {
+                    mapoYouthService.searchDonation(keyword).body()?.data
+                } else {
+                    mapoYouthService.getDonationList(page).body()?.data
+                }
             LoadResult.Page(
                 data = data!!.content,
                 prevKey = if(page == STARTING_PAGE_INDEX ) null else page-1,
@@ -43,6 +57,14 @@ class DonationDataSource(
         val response = mapoYouthService.getDonationDetails(id)
         if(response.isSuccessful) {
             _downloadedDonationDetails.value = response.body()!!.data
+        }
+    }
+
+    suspend fun fetchLatestDonation() {
+        val response = mapoYouthService.getDonationList(STARTING_PAGE_INDEX)
+        CoroutineScope(Dispatchers.Main).launch {
+            if(response.isSuccessful) _downloadedLatestDonation.value = response.body()!!.data.content
+            cancel()
         }
     }
 }

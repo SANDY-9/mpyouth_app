@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
 
 data class DonationListResponse(
-    @SerializedName("data")
+    @SerializedName("success")
     @Expose
-    val `data`: Data = Data(),
+    val success: String = "",
     @SerializedName("message")
     @Expose
     val message: String = "",
-    @SerializedName("success")
+    @SerializedName("data")
     @Expose
-    val success: String = ""
+    val `data`: Data = Data()
 ) {
     data class Data(
         @SerializedName("content")

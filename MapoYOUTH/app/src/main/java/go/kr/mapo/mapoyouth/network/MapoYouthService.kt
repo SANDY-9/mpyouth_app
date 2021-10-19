@@ -69,10 +69,9 @@ interface MapoYouthService {
         @Path("id") id: Int
     ) : Response<DonationDetailsResponse>
 
-
     @GET("donation/search")
     suspend fun searchDonation(
         @Query("keyword") keyword: String
-    ) : Response<EduListResponse>
+    ) : Response<DonationListResponse>
 
 }

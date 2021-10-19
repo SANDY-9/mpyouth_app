@@ -50,6 +50,7 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var autoCompleteTextView : AutoCompleteTextView
     private lateinit var inputMethodManager : InputMethodManager
+    private lateinit var tabLayoutGroup : LinearLayout
 
     private val youthViewModel : YouthViewModel by viewModels()
     private val youthAdapter by lazy { YouthListAdapter() }
@@ -77,6 +78,7 @@ class SearchActivity: AppCompatActivity() {
         search_start = findViewById(R.id.search_start)
         recyclerView = findViewById(R.id.recyclerView)
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
+        tabLayoutGroup = findViewById(R.id.tabLayoutGroup)
 
 
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
@@ -173,7 +175,7 @@ class SearchActivity: AppCompatActivity() {
 
         donationViewModel.donationSearchResult.observe(this, {
             if(isEverSearched) {
-                recyclerView.adapter = eduAdapter
+                recyclerView.adapter = donationAdapter
                 donationAdapter.submitData(lifecycle, it)
                 lifecycleScope.launch {
                     donationAdapter.loadStateFlow.collect { state ->
@@ -194,6 +196,7 @@ class SearchActivity: AppCompatActivity() {
             return
         } else {    // 검색 요청
             isEverSearched = true
+            if(isEverSearched) tabLayoutGroup.visibility = View.VISIBLE
             val keyword = word.toString().trim()
             when(tabPosition) {
                 0 -> youthViewModel.requestSearchYouth(keyword)             //청소년 활동 검색요청

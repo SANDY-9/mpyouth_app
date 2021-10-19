@@ -16,57 +16,48 @@
         android:background="@drawable/bg_donation_rv_item"
         android:padding="@dimen/item_donation_rv_outer_padding">
 
-        <LinearLayout
-            android:id="@+id/donatoinRvItemTagLayout"
+        <TextView
+            android:id="@+id/donationRvItemTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:paddingVertical="@dimen/item_donation_rv_tag_padding_vertical"
             android:paddingHorizontal="@dimen/item_domation_rv_tag_padding_horizontal"
-            android:orientation="vertical"
             android:background="@drawable/bg_donation_category_design"
-            >
+            DonationCategoryBox="@{donation.category.name}"
+            android:textSize="@dimen/item_donation_rv_tag_textsize"
+            android:textColor="@color/mapo_orange"
+            android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/donationRvItemTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="교육(지도)"
-                android:textSize="@dimen/item_donation_rv_tag_textsize"
-                android:textColor="@color/mapo_orange"
-                android:textStyle="bold"/>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/donationRvItemTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{donation.title}"
+            android:textSize="@dimen/item_donation_rv_title_tv_size"
+            app:layout_constraintStart_toStartOf="@id/donationRvItemTag"
+            app:layout_constraintTop_toBottomOf="@id/donationRvItemTag"
+            android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
+            android:layout_marginBottom="@dimen/item_donation_rv_tag_padding_vertical"/>
 
-            <TextView
-                android:id="@+id/donationRvItemTitleTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{donation.title}"
-                android:textSize="@dimen/item_donation_rv_title_tv_size"
-                app:layout_constraintStart_toStartOf="@id/donatoinRvItemTagLayout"
-                app:layout_constraintTop_toBottomOf="@id/donatoinRvItemTagLayout"
-                android:layout_marginTop="@dimen/item_donation_rv_text_margin_vertical"
-                android:layout_marginBottom="@dimen/item_donation_rv_tag_padding_vertical"/>
-            <TextView
-                android:id="@+id/donationTvItemContent1TvTitle"
-                android:textSize="@dimen/item_donation_rv_content_tv_size"
-                android:text="주최기관 : "
-                android:textColor="@color/mapo_gray"
-                android:layout_width="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/donationRvItemTitleTv"
-                app:layout_constraintTop_toBottomOf="@id/donationRvItemTitleTv"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/donationTvItemContent1TvText"
-                android:textSize="@dimen/item_donation_rv_content_tv_size"
-                android:text="@{donation.organization.name}"
-                app:layout_constraintStart_toEndOf="@id/donationTvItemContent1TvTitle"
-                app:layout_constraintTop_toTopOf="@id/donationTvItemContent1TvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/donationTvItemContent1TvTitle"
+            android:textSize="@dimen/item_donation_rv_content_tv_size"
+            android:text="주최기관 : "
+            android:textColor="@color/mapo_gray"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/donationRvItemTitleTv"
+            app:layout_constraintTop_toBottomOf="@id/donationRvItemTitleTv"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/donationTvItemContent1TvText"
+            android:textSize="@dimen/item_donation_rv_content_tv_size"
+            android:text="@{donation.organization.name}"
+            app:layout_constraintStart_toEndOf="@id/donationTvItemContent1TvTitle"
+            app:layout_constraintTop_toTopOf="@id/donationTvItemContent1TvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <!--<TextView
             android:id="@+id/donationTvItemContent2TvTitle"

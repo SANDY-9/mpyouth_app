@@ -64,13 +64,13 @@ class HomeFragment : Fragment() {
     private fun subscribeToObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             with(viewModel) {
-                getLatestYouth().observe(viewLifecycleOwner, {
+                getLatestYouth()!!.observe(viewLifecycleOwner, {
                     homeYouthListAdapter.submitList(it)
                 })
-                getLatestVolunteer().observe(viewLifecycleOwner, {
+                getLatestVolunteer()!!.observe(viewLifecycleOwner, {
                     homeVolunteerListAdapter.submitList(it)
                 })
-                getLatestEdu().observe(viewLifecycleOwner, {
+                getLatestEdu()!!.observe(viewLifecycleOwner, {
                     homeEduListAdapter.submitList(it)
                 })
             }

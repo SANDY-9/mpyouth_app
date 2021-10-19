@@ -157,8 +157,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/map_height"
                     android:layout_margin="1dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/map_tp" />
+                    MapImage="@{organ.name}"
+                    android:scaleType="centerCrop" />
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

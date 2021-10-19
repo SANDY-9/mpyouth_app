@@ -324,6 +324,27 @@ object CustomAttr {
     }
 
     @JvmStatic
+    @BindingAdapter("DonationCategoryBox")
+    fun setDonationCategoryBox(textView: TextView, category: String?) {
+        category?.let {
+            val color = ColorStateList.valueOf(Color.parseColor( when(it) {
+                "디자인" -> "#F28705"
+                "번역/외국어" -> "#DC6B88"
+                "생활" -> "#A4C138"
+                "음악/영상" -> "#0396A6"
+                "프로그램개발" -> "#006699"
+                "문서작성" -> "#549DC6"
+                else -> "#2FA894"
+            }))
+            with(textView) {
+                text = category
+                setTextColor(color)
+                backgroundTintList = color
+            }
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("MapImage")
     fun setMap(imageView: ImageView, name: String?) {
         imageView.setImageDrawable(imageView.context.resources.getDrawable(

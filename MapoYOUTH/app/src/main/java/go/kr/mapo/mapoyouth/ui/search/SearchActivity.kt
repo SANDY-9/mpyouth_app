@@ -17,6 +17,7 @@ import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.ui.donation.DonationRecyclerViewAdapter
+import go.kr.mapo.mapoyouth.ui.donation.DonationViewModel
 import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.edu.EduViewModel
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
@@ -59,6 +60,9 @@ class SearchActivity: AppCompatActivity() {
     private val eduViewModel : EduViewModel by viewModels()
     private val eduAdapter by lazy { EduListAdapter() }
 
+    private val donationViewModel : DonationViewModel by viewModels()
+    private val donationAdapter by lazy { DonationRecyclerViewAdapter() }
+
 
     private var curTabPosition = 0
     private var isEverSearched = false
@@ -74,8 +78,6 @@ class SearchActivity: AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
 
-
-//        val donationAdapter = DonationRecyclerViewAdapter(listOf("1", "1", "1", "1", "1"))
 
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
 
@@ -169,6 +171,20 @@ class SearchActivity: AppCompatActivity() {
             }
         })
 
+        donationViewModel.donationSearchResult.observe(this, {
+            if(isEverSearched) {
+                recyclerView.adapter = eduAdapter
+                donationAdapter.submitData(lifecycle, it)
+                lifecycleScope.launch {
+                    donationAdapter.loadStateFlow.collect { state ->
+                        if(state.append.endOfPaginationReached) {
+                            setViewSearchAfter(donationAdapter.itemCount)
+                        }
+                    }
+                }
+            }
+        })
+
     }
 
     // 검색입력 검사
@@ -180,10 +196,10 @@ class SearchActivity: AppCompatActivity() {
             isEverSearched = true
             val keyword = word.toString().trim()
             when(tabPosition) {
-                0 -> youthViewModel.requestSearchYouth(keyword)  //청소년 활동 검색요청
-                1 -> volunteerViewModel.requestSearchVolunteer(keyword)  // 봉사활동 검색요청
-                2 -> eduViewModel.requestSearchEdu(keyword)             // 평생교육 검색요청
-
+                0 -> youthViewModel.requestSearchYouth(keyword)             //청소년 활동 검색요청
+                1 -> volunteerViewModel.requestSearchVolunteer(keyword)     //봉사활동 검색요청
+                2 -> eduViewModel.requestSearchEdu(keyword)                 //평생교육 검색요청
+                3 -> donationViewModel.requestSearchDonation(keyword)      // 재능기부 검색요청
             }
         }
     }

@@ -1,9 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.donation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
@@ -23,7 +20,7 @@ class DonationViewModel @Inject constructor(
     private val donationRepository: DonationRepository): ViewModel() {
 
     val donationList = Pager(PagingConfig(PAGE_SIZE, prefetchDistance = 1, maxSize = 100)) {
-        DonationDataSource(mapoYouthService)
+        DonationDataSource(mapoYouthService, null)
     }.liveData.cachedIn(viewModelScope)
 
     private val _donationDetails = MutableLiveData<DonationDetailsResponse.Data>()
@@ -42,4 +39,15 @@ class DonationViewModel @Inject constructor(
         }
     }
 
+    private val keyword = MutableLiveData("")
+
+    val donationSearchResult = keyword.switchMap {
+        Pager(PagingConfig(PAGE_SIZE, maxSize = 100)) {
+            DonationDataSource(mapoYouthService, it)
+        }.liveData.cachedIn(viewModelScope)
+    }
+
+    fun requestSearchDonation(keyword : String){
+        this.keyword.value = keyword
+    }
 }

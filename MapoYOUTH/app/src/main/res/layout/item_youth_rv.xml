@@ -31,10 +31,11 @@
 
                 <ImageView
                     android:id="@+id/poster"
+                    ImageLoad="@{youth.thumbnail.fileUri}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    ImageLoad="@{youth.thumbnail.fileUri}" />
+                    android:src="@color/black"
+                    android:scaleType="fitXY" />
 
             </androidx.cardview.widget.CardView>
 

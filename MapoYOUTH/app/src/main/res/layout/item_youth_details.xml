@@ -33,7 +33,7 @@
                     android:layout_height="@dimen/details_img_height"
                     ImageLoad="@{youthDetails.programFiles[0].fileUri}"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/poster" />
+                    android:src="@color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/poster" />
+                    android:src="@color/black" />
             </androidx.cardview.widget.CardView>
 
             <TextView

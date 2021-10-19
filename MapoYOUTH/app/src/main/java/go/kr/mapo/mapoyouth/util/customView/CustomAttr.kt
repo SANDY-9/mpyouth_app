@@ -323,6 +323,19 @@ object CustomAttr {
         }
     }
 
+    @JvmStatic
+    @BindingAdapter("MapImage")
+    fun setMap(imageView: ImageView, name: String?) {
+        imageView.setImageDrawable(imageView.context.resources.getDrawable(
+            when(name) {
+                "구립마포청소년문화의집" -> R.drawable.map_mapo_gu
+                "시립마포청소년센터" -> R.drawable.map_mapo_si
+                "망원청소년문화센터" -> R.drawable.map_mangwon
+                else -> R.drawable.map_dohwa
+            }, null)
+        )
+    }
+
 
 
 }

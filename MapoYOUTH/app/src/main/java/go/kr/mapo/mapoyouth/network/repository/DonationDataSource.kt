@@ -1,6 +1,5 @@
 package go.kr.mapo.mapoyouth.network.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingSource

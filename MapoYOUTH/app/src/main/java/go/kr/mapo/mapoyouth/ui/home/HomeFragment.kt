@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
     private val homeYouthListAdapter by lazy { HomeYouthListAdapter() }
     private val homeVolunteerListAdapter by lazy { HomeVolunteerListAdapter() }
     private val homeEduListAdapter by lazy { HomeEduListAdapter() }
+    private val homeDonationListAdapter by lazy { HomeDonationListAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +57,7 @@ class HomeFragment : Fragment() {
             rvYouth.adapter = homeYouthListAdapter
             rvVolunteer.adapter = homeVolunteerListAdapter
             rvEdu.adapter = homeEduListAdapter
-            rvDonation.adapter = HomeDonationListAdapter(listOf("1", "1", "1", "1", "1"))
+            rvDonation.adapter = homeDonationListAdapter
         }
         subscribeToObservers()
     }
@@ -72,6 +73,9 @@ class HomeFragment : Fragment() {
                 })
                 getLatestEdu()!!.observe(viewLifecycleOwner, {
                     homeEduListAdapter.submitList(it)
+                })
+                getDonation()!!.observe(viewLifecycleOwner, {
+                    homeDonationListAdapter.submitList(it)
                 })
             }
         }

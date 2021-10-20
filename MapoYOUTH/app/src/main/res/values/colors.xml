@@ -22,6 +22,11 @@
     <color name="mapo_bluegreen">#2FA894</color>
     <color name="mapo_black">#333333</color>
 
+    <color name="mapo_dona_design">#F28705</color>
+    <color name="mapo_dona_lang">#DC6B88</color>
+    <color name="mapo_dona_life">#A4C138</color>
+    <color name="mapo_dona_music">#8503A6</color>
+
     <color name="app_background">#F8F9FA</color>
     <color name="spinner_stroke">#F5F5F5</color>
     <color name="divider">#E5E5E5</color>

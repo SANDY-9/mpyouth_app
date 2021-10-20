@@ -90,5 +90,17 @@
         <item name="fontFamily">@font/roboto_700</item>
     </style>
 
+    <style name="DonationTagBox">
+        <item name="android:paddingStart">@dimen/item_domation_rv_tag_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/item_domation_rv_tag_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/item_donation_rv_tag_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/item_donation_rv_tag_padding_vertical</item>
+        <item name="android:textSize">@dimen/item_donation_rv_tag_textsize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/bg_donation_category_design</item>
+        <item name="fontFamily">@font/roboto_700</item>
+        <item name="android:textColor">@color/mapo_orange</item>
+    </style>
+
 
 </resources>

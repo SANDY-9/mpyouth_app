@@ -9,7 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.repository.VolunteerDataSource
 import go.kr.mapo.mapoyouth.network.repository.VolunteerRepository
-import go.kr.mapo.mapoyouth.network.repository.YouthDataSource
 import go.kr.mapo.mapoyouth.network.response.VolunteerDetails
 import go.kr.mapo.mapoyouth.util.PAGE_SIZE
 import kotlinx.coroutines.launch

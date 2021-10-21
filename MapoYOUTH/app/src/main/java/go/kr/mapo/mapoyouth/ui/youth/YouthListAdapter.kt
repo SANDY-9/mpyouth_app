@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.ui.youth
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -21,17 +22,10 @@ class YouthListAdapter : PagingDataAdapter<Youth, YouthListAdapter.MyViewHolder>
 
     override fun onBindViewHolder(holder: YouthListAdapter.MyViewHolder, position: Int) {
         getItem(position)?.let { item ->
-            with(holder.binding) {
-                val context = root.context
+            holder.binding.apply {
                 youth = item
                 lifecycleOwner = lifecycleOwner
-                root.setOnClickListener {
-                    val intent = Intent(context, YouthDetailsActivity::class.java).apply {
-                        putExtra(ID, item.programId)
-                    }
-                    context.startActivity(intent)
-                }
-            }
+            }.also { holder.setHolderView(item) }
         }
     }
 
@@ -43,7 +37,19 @@ class YouthListAdapter : PagingDataAdapter<Youth, YouthListAdapter.MyViewHolder>
         return MyViewHolder(binding)
     }
 
-    inner class MyViewHolder(val binding :ItemYouthRvBinding) : RecyclerView.ViewHolder(binding.root) {}
+    inner class MyViewHolder(val binding :ItemYouthRvBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun setHolderView(item: Youth) = binding.apply {
+            if(bindingAdapterPosition == itemCount - 1) {
+                divider.visibility = View.GONE
+            }
+            root.setOnClickListener {
+                val intent = Intent(it.context, YouthDetailsActivity::class.java).apply {
+                    putExtra(ID, item.programId)
+                }
+                it.context.startActivity(intent)
+            }
+        }
+    }
 
     companion object {
         val DIFF_UTIL_YOUTH = object : DiffUtil.ItemCallback<Youth>() {

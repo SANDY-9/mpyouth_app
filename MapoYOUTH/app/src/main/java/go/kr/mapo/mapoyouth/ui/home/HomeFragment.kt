@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,10 +45,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerViewAdapter()
+
         val tabItem = binding.tabs.getChildAt(0) as ViewGroup
         setupTabSelected(tabItem)
         setupNestedScrollView(tabItem)
-        setupRecyclerViewAdapter()
     }
 
     private fun setupRecyclerViewAdapter() {
@@ -82,26 +82,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupTabSelected(tabItem: ViewGroup) {
-        with(binding.tabs) {
-            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    Log.e("[네버엔딩]", "디버깅0")
-                    tab?.let {
-                        Log.e("[네버엔딩]", "디버깅1")
-                        autoScroll(it.position)
-                        CustomAttr.changeTabsBold(tabItem, it.position, tabCount)
-                    }
-                }
-                override fun onTabUnselected(tab: TabLayout.Tab?) {
-                }
-                override fun onTabReselected(tab: TabLayout.Tab?) {
-                }
-            })
-        }
+        binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let { autoScroll(tabItem, it.position) }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                tab?.let { autoScroll(tabItem, it.position) }
+            }
+        })
     }
 
-    private fun autoScroll(position : Int) {
-        Log.e("[네버엔딩]", "디버깅2")
+    private fun autoScroll(tabItem: ViewGroup, position : Int) {
         with(binding) {
             ObjectAnimator.ofInt(
                 nestedScrollView, "scrollY", when (position) {
@@ -113,50 +106,28 @@ class HomeFragment : Fragment() {
             ).apply {
                 duration = 500L // 스크롤이 지속되는 시간을 설정한다. (1000 밀리초 == 1초)
             }.start()
+            CustomAttr.changeTabsBold(tabItem, position, tabs.tabCount)
+        }
+    }
+
+    private fun changeTabItemBold(tabItem: ViewGroup, position: Int, tabCount: Int) {
+        for (i in 0 until tabCount) {
+            tabItem.getChildAt(i).isSelected = i == position
+            CustomAttr.changeTabsBold(tabItem, position, tabCount)
         }
     }
 
     private fun setupNestedScrollView(tabItem: ViewGroup) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            with(binding) {
-                nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-                    when(scrollY) {
-                        in 0 until titleYouth.bottom -> {
-                            setVisibilityDisplay(true)
-                            changeTabItemBold(tabItem, 0, tabs.tabCount)
-                        }
-                        in titleYouth.bottom until titleVolunteer.top -> {
-                            setVisibilityDisplay(false)
-                            changeTabItemBold(tabItem, 0, tabs.tabCount)
-                        }
-                        in titleVolunteer.top until titleEdu.top -> {
-                            setVisibilityDisplay(false)
-                            changeTabItemBold(tabItem, 1, tabs.tabCount)
-                        }
-                        in titleEdu.top until rvEdu.top+100-> {
-                            setVisibilityDisplay(false)
-                            changeTabItemBold(tabItem, 2, tabs.tabCount)
-                        }
-                        in rvEdu.top+100 until bottomView.bottom -> {
-                            setVisibilityDisplay(false)
-                            changeTabItemBold(tabItem, 3, tabs.tabCount)
-                        }
-                    }
-                }
+            binding.nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+                setVisibilityDisplay(tabItem, scrollY)
             }
         }
     }
 
-    private fun changeTabItemBold(tabs: ViewGroup, position: Int, tabCount: Int) {
-        for (i in 0 until tabCount) {
-            tabs.getChildAt(i).isSelected = i == position
-            CustomAttr.changeTabsBold(tabs, position, tabCount)
-        }
-    }
-
-    private fun setVisibilityDisplay(boolean: Boolean) {
+    private fun setVisibilityDisplay(tabItem: ViewGroup, scrollY: Int) {
         with(binding) {
-            if(boolean) {
+            if(scrollY > 0 && scrollY < titleYouth.bottom) {
                 searchLayout.visibility = View.VISIBLE
                 topSearch.visibility = View.GONE
                 tabLayout.visibility = View.GONE
@@ -167,6 +138,12 @@ class HomeFragment : Fragment() {
                 tabLayout.visibility = View.VISIBLE
                 shadow.visibility = View.VISIBLE
             }
+            changeTabItemBold(tabItem, when(scrollY) {
+                in 0 until titleVolunteer.top -> 0
+                in titleVolunteer.top until titleEdu.top -> 1
+                in titleEdu.top until rvEdu.top+100-> 2
+                else -> 3
+            }, tabs.tabCount)
         }
     }
 

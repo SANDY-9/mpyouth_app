@@ -1,17 +1,15 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.ActivityYouthDetailsBinding
-import go.kr.mapo.mapoyouth.network.response.Organization
 import go.kr.mapo.mapoyouth.ui.common.DetailsViewPagerAdapter
 import go.kr.mapo.mapoyouth.util.ID
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr

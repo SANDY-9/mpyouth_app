@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentYouthBinding
 import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 @AndroidEntryPoint
@@ -43,9 +45,22 @@ class YouthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         setupTabAndViewPager()
         connectSpinnerAdapter()
         subscribeToObservers()
+    }
+
+    private fun setupToolbar() = binding.toolbar.apply {
+        setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_search -> {
+                    startActivity(Intent(requireContext(), SearchActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setupTabAndViewPager() {

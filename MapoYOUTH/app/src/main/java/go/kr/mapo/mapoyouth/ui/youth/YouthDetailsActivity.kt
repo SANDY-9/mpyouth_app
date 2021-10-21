@@ -37,10 +37,13 @@ class YouthDetailsActivity : AppCompatActivity() {
         if(programId != -1) viewModel.setYouthDetails(programId)
     }
 
+    private var title = ""
+
     private fun setInclude() {
         val youthDetailsFragment = YouthActivityDetailsFragment()
         with(binding.include) {
             viewModel.youthDetails.observe(this@YouthDetailsActivity, {
+                title = it.title
                 viewPager.apply {
                     adapter = DetailsViewPagerAdapter(
                         this@YouthDetailsActivity,
@@ -66,7 +69,7 @@ class YouthDetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             android.R.id.home -> finish()
-            R.id.menu_share -> CustomAttr.actionShare(this, "공유할 내용")
+            R.id.menu_share -> CustomAttr.actionShare(this, title)
         }
         return super.onOptionsItemSelected(item)
     }

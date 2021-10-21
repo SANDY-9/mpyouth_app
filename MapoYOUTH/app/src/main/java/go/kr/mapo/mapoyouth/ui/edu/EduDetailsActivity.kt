@@ -36,9 +36,12 @@ class EduDetailsActivity : AppCompatActivity() {
         if(id != -1) viewModel.setEduDetails(id)
     }
 
+    private var title = ""
+
     private fun subscribeToObserver() {
         val eduActivityDetailsFragment = EduActivityDetailsFragment()
         viewModel.eduDetails.observe(this, {
+            title = it.title
             binding.eduDetails = it
             with(binding) {
                 viewPager.apply {
@@ -64,7 +67,10 @@ class EduDetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home) finish()
+        when(item.itemId) {
+            android.R.id.home -> finish()
+            R.id.menu_share -> CustomAttr.actionShare(this, title)
+        }
         return super.onOptionsItemSelected(item)
     }
 }

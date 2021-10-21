@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.volunteer
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerBinding
 import go.kr.mapo.mapoyouth.network.response.Volunteer
 import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
@@ -43,8 +45,22 @@ class VolunteerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         setupTabAndViewPager()
         subscribeToObservers()
+
+    }
+
+    private fun setupToolbar() = binding.toolbar.apply {
+        setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_search -> {
+                    startActivity(Intent(requireContext(), SearchActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setupTabAndViewPager() {

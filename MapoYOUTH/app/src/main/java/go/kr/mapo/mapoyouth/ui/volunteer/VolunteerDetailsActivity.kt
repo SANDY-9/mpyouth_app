@@ -40,9 +40,12 @@ class VolunteerDetailsActivity : AppCompatActivity() {
         if(id != -1) viewModel.setVolunteerDetails(id)
     }
 
+    private var title = ""
+
     private fun subscribeToObserver() {
         val volunteerDetailsFragment = VolunteerActivityDetailsFragment()
         viewModel.volunteerDetails.observe(this@VolunteerDetailsActivity, {
+            title = it.title
             binding.volunteerDetails = it
             with(binding) {
                 viewPager.apply {
@@ -68,7 +71,10 @@ class VolunteerDetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home) finish()
+        when(item.itemId) {
+            android.R.id.home -> finish()
+            R.id.menu_share -> CustomAttr.actionShare(this, title)
+        }
         return super.onOptionsItemSelected(item)
     }
 }

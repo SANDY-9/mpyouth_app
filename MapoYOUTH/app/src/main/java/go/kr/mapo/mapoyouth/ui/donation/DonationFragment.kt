@@ -1,8 +1,9 @@
 package go.kr.mapo.mapoyouth.ui.donation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
+import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
@@ -19,7 +20,7 @@ class DonationFragment : Fragment() {
     private var donationAdapter = DonationRecyclerViewAdapter()
     private val viewModel: DonationViewModel by viewModels()
 
-    private var categoryArray: Array<TextView> = arrayOf()
+    private var categoryArray: Array<RadioButton> = arrayOf()
     private var bgColorArray: Array<Int> = arrayOf()
     private var colorArray: Array<Int> = arrayOf()
 
@@ -45,6 +46,7 @@ class DonationFragment : Fragment() {
         }
     }
 
+    @SuppressLint("ResourceType")
     private fun getDonationFilterList() {
         categoryArray = arrayOf(binding.sltAll, binding.sltDesign, binding.sltLanguage,
             binding.sltLife, binding.sltMusic, binding.sltDevelop, binding.sltDoc, binding.sltBusiness)
@@ -58,8 +60,6 @@ class DonationFragment : Fragment() {
             R.color.mapo_dona_music, R.color.mapo_navy, R.color.mapo_sky, R.color.mapo_bluegreen)
 
         viewModel.donationList.observe(viewLifecycleOwner, {
-            val data = it
-            donationAdapter.submitData(lifecycle, data)
 
             var category: String? = null
             when(category) {
@@ -72,29 +72,24 @@ class DonationFragment : Fragment() {
                 "문서작성" -> 6
                 else -> 7
             }
-
+            val data = it
+            donationAdapter.submitData(lifecycle, data)
             for (i in 0..7) {
-                categoryArray[i].setOnClickListener {
-                    var filterData = data
-                    if( i == 0 ) binding.recyclerView.scrollToPosition(0)
-                    else filterData = data.filter { it.category.name == categoryArray[i].text }
+                categoryArray[i].setOnCheckedChangeListener { button, isChecked ->
+                    if(isChecked) {
+                        var filterData = data
 
-                    categoryArray[i].setBackgroundResource(bgColorArray[i])
-                    categoryArray[i].setTextColor(resources.getColor(colorArray[i]))
-                    donationAdapter.submitData(lifecycle, filterData)
+                        if( i > 0 ) filterData = data.filter { it.category.name == categoryArray[i].text }
+
+                        button.setBackgroundResource(bgColorArray[i])
+                        button.setTextColor(resources.getColor(colorArray[i]))
+                        donationAdapter.submitData(lifecycle, filterData)
+                    } else {
+                        button.setBackgroundResource(R.drawable.bg_dona_btn)
+                        button.setTextColor(resources.getColor(R.color.mapo_gray))
+                    }
                 }
             }
         })
-//                    categoryArray[i].setOnTouchListener { _: View, event: MotionEvent ->
-//                        when (event.action) {
-//                            MotionEvent.ACTION_DOWN -> {
-//                                categoryArray[i].setBackgroundResource(bgColorArrray[i])
-//                                binding.sltDesign.setTextColor(ColorStateList.valueOf(Color.parseColor("#F28705")))
-//                                val filterData = data.filter { it.category.name == "디자인" }
-//                                donationAdapter.submitData(lifecycle, filterData)
-//                            }
-//                        }
-//                        true
-//                    }
     }
 }

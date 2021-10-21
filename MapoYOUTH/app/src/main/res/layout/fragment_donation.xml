@@ -73,139 +73,153 @@
                             android:lineHeight="18dp"
                             android:text="@string/dona_sub" />
 
-                        <TextView
-                            android:id="@+id/sltAll"
-                            android:layout_width="wrap_content"
+                        <go.kr.mapo.mapoyouth.util.customView.ToggleButtonGroupTableLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toBottomOf="@id/subtitle"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginTop="@dimen/margin_16dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/all" />
+                            android:stretchColumns="*"
+                            android:id="@+id/radGroup">
 
-                        <TextView
-                            android:id="@+id/sltDesign"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/subtitle"
-                            app:layout_constraintStart_toEndOf="@id/sltAll"
-                            android:layout_marginTop="@dimen/margin_16dp"
-                            android:layout_marginStart="6dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/dona_design" />
+                            <TableRow>
 
-                        <TextView
-                            android:id="@+id/sltLanguage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/subtitle"
-                            app:layout_constraintStart_toEndOf="@id/sltDesign"
-                            android:layout_marginTop="@dimen/margin_16dp"
-                            android:layout_marginStart="6dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/dona_language" />
+                                <RadioButton
+                                    android:id="@+id/sltAll"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="20"
+                                    android:button="@null"
+                                    android:checked="true"
+                                    android:textColor="@color/mapo_gray"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:textSize="14sp"
+                                    android:paddingVertical="8dp"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:textAlignment="center"
+                                    android:text="@string/all"
+                                    tools:ignore="TouchTargetSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/sltLife"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/subtitle"
-                            app:layout_constraintStart_toEndOf="@id/sltLanguage"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginTop="@dimen/margin_16dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/dona_life" />
+                                <RadioButton
+                                    android:id="@+id/sltDesign"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="25"
+                                    android:layout_marginStart="6dp"
+                                    android:button="@null"
+                                    android:textColor="@color/mapo_gray"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:textSize="14sp"
+                                    android:paddingVertical="8dp"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:textAlignment="center"
+                                    android:text="@string/dona_design"
+                                    tools:ignore="TouchTargetSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/sltMusic"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/sltAll"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/dona_music" />
+                                <RadioButton
+                                    android:id="@+id/sltLanguage"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="35"
+                                    android:layout_marginStart="6dp"
+                                    android:button="@null"
+                                    android:textColor="@color/mapo_gray"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:textSize="14sp"
+                                    android:paddingVertical="8dp"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:textAlignment="center"
+                                    android:text="@string/dona_language"
+                                    tools:ignore="TouchTargetSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/sltDevelop"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/sltAll"
-                            app:layout_constraintStart_toEndOf="@id/sltMusic"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/dona_develop" />
+                                <RadioButton
+                                    android:id="@+id/sltLife"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_span="20"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:button="@null"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:paddingVertical="8dp"
+                                    android:text="@string/dona_life"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/mapo_gray"
+                                    android:textSize="14sp"
+                                    tools:ignore="TouchTargetSizeCheck" />
+                            </TableRow>
 
-                        <TextView
-                            android:id="@+id/sltDoc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/sltAll"
-                            app:layout_constraintStart_toEndOf="@id/sltDevelop"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="16dp"
-                            android:text="@string/dona_doc" />
+                            <TableRow
+                                android:layout_marginTop="@dimen/margin_8dp">
 
-                        <TextView
-                            android:id="@+id/sltBusiness"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/sltMusic"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/mapo_gray"
-                            android:fontFamily="@font/roboto_400"
-                            android:textSize="14sp"
-                            android:paddingVertical="8dp"
-                            android:paddingHorizontal="@dimen/margin_16dp"
-                            android:background="@drawable/bg_dona_btn"
-                            android:lineHeight="@dimen/margin_16dp"
-                            android:text="@string/dona_business" />
+                                <RadioButton
+                                    android:id="@+id/sltMusic"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="31"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:button="@null"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:paddingVertical="8dp"
+                                    android:text="@string/dona_music"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/mapo_gray"
+                                    android:textSize="14sp"
+                                    tools:ignore="TouchTargetSizeCheck" />
 
+                                <RadioButton
+                                    android:id="@+id/sltDevelop"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="38"
+                                    android:layout_marginStart="6dp"
+                                    android:button="@null"
+                                    android:textColor="@color/mapo_gray"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:textSize="14sp"
+                                    android:paddingVertical="8dp"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:textAlignment="center"
+                                    android:text="@string/dona_develop"
+                                    tools:ignore="TouchTargetSizeCheck" />
+
+                                <RadioButton
+                                    android:id="@+id/sltDoc"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="29"
+                                    android:layout_marginStart="6dp"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:button="@null"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:paddingVertical="8dp"
+                                    android:text="@string/dona_doc"
+                                    android:textColor="@color/mapo_gray"
+                                    android:textAlignment="center"
+                                    android:textSize="14sp"
+                                    tools:ignore="TouchTargetSizeCheck" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_marginTop="@dimen/margin_8dp">
+
+                                <RadioButton
+                                    android:id="@+id/sltBusiness"
+                                    android:layout_width="0dp"
+                                    android:layout_height="35dp"
+                                    android:layout_span="44"
+                                    android:background="@drawable/bg_dona_btn"
+                                    android:button="@null"
+                                    android:fontFamily="@font/roboto_400"
+                                    android:paddingVertical="8dp"
+                                    android:text="@string/dona_business"
+                                    android:textColor="@color/mapo_gray"
+                                    android:textAlignment="center"
+                                    android:textSize="14sp"
+                                    tools:ignore="TouchTargetSizeCheck" />
+
+                            </TableRow>
+                        </go.kr.mapo.mapoyouth.util.customView.ToggleButtonGroupTableLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
@@ -223,7 +237,6 @@
                 android:paddingBottom="60dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 tools:listitem="@layout/item_donation_rv" />
-
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

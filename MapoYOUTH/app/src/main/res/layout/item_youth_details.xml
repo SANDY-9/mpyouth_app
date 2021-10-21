@@ -86,7 +86,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/search_outline"
-                    tools:layout_editor_absoluteY="48dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"

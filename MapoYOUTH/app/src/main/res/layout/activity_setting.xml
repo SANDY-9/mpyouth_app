@@ -87,7 +87,6 @@
         android:layout_height="34dp"
         android:background="#F6F6F6"
         android:elevation="1px"
-        android:fontFamily="@font/roboto_700"
         android:gravity="left|center"
         android:paddingStart="@dimen/margin_24dp"
         android:text="약관 및 정책"
@@ -101,52 +100,33 @@
     <Button
         android:id="@+id/btn_terms_of_service"
         style="@style/buttonTheme"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_700"
+        android:background="?attr/selectableItemBackground"
         android:gravity="left|center"
+        android:letterSpacing="0.01"
         android:paddingStart="@dimen/margin_24dp"
         android:text="서비스 이용약관"
         android:textColor="#B3000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_terms_of_service" />
-
-<!--    &lt;!&ndash; 위치정보서비스 이용약관 - 21.09.23 삭제 &ndash;&gt;
-    <Button
-        android:id="@+id/btn_location_of_service"
-        style="@style/buttonTheme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_700"
-        android:gravity="left|center"
-        android:paddingStart="@dimen/margin_24dp"
-        android:text="위치정보서비스 이용약관"
-        app:layout_constraintTop_toBottomOf="@+id/btn_terms_of_service" />-->
-
-
-<!--    &lt;!&ndash; 개인정보 처리방침 - 21.09.23 삭제&ndash;&gt;
-    <Button
-        android:id="@+id/btn_privacy_policy"
-        style="@style/buttonTheme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_700"
-        android:gravity="left|center"
-        android:paddingStart="@dimen/margin_24dp"
-        android:text="개인정보 처리방침"
-        app:layout_constraintTop_toBottomOf="@+id/btn_location_of_service" />-->
 
 
     <!-- 오픈소스 라이선스 -->
     <Button
         android:id="@+id/btn_open_source"
         style="@style/buttonTheme"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_700"
+        android:background="?attr/selectableItemBackground"
         android:gravity="left|center"
+        android:letterSpacing="0.01"
         android:paddingStart="@dimen/margin_24dp"
         android:text="오픈소스 라이선스"
         android:textColor="#B3000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_terms_of_service" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

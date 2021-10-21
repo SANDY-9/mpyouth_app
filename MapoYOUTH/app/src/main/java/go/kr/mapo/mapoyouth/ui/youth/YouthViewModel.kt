@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.*
 import dagger.hilt.android.lifecycle.HiltViewModel

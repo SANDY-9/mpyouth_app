@@ -28,6 +28,8 @@ class EduFragment : Fragment() {
     private lateinit var eduAdapter: EduListAdapter
     private val viewModel: EduViewModel by viewModels()
 
+    private var curPosition = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,7 +73,7 @@ class EduFragment : Fragment() {
 
     private fun subscribeToObservers() {
         viewModel.eduList.observe(viewLifecycleOwner, {
-            eduAdapter.submitData(lifecycle, it)
+            eduAdapter.submitData(lifecycle, getData(it, curPosition))
             whenSpinnerSelected(it)
         })
     }
@@ -79,19 +81,21 @@ class EduFragment : Fragment() {
     private fun whenSpinnerSelected(data: PagingData<Edu>) = binding.spinner.apply {
         onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                eduAdapter.submitData(lifecycle, when(position) {
-                    1 -> data.filter { it.targetAge.contains("초") }
-                    2 -> data.filter { it.targetAge.contains("중") }
-                    3 -> data.filter { it.targetAge.contains("고") }
-                    4 -> data.filter { it.targetAge.contains("대") }
-                    5 -> data.filter { it.targetAge.contains("일반") }
-                    else -> data
-                }
-                )
+                curPosition = position
+                eduAdapter.submitData(lifecycle, getData(data, curPosition))
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
+    }
+
+    private fun getData(data: PagingData<Edu>, position: Int) = when(position) {
+        1 -> data.filter { it.targetAge.contains("초") }
+        2 -> data.filter { it.targetAge.contains("중") }
+        3 -> data.filter { it.targetAge.contains("고") }
+        4 -> data.filter { it.targetAge.contains("대") }
+        5 -> data.filter { it.targetAge.contains("일반") }
+        else -> data
     }
 
 }

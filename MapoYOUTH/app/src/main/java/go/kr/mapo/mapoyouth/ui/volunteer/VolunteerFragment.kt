@@ -31,6 +31,8 @@ class VolunteerFragment : Fragment() {
 
     private lateinit var categoryArray : Array<String>
 
+    private var curPosition = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +50,6 @@ class VolunteerFragment : Fragment() {
         setupToolbar()
         setupTabAndViewPager()
         subscribeToObservers()
-
     }
 
     private fun setupToolbar() = binding.toolbar.apply {
@@ -83,7 +84,7 @@ class VolunteerFragment : Fragment() {
 
     private fun subscribeToObservers() {
         viewModel.volunteerList.observe(viewLifecycleOwner, {
-            pagerAdapter.submitVolunteerData(lifecycle, it)
+            pagerAdapter.submitVolunteerData(lifecycle, getData(it, curPosition))
             whenTabSelected(it)
         })
     }
@@ -93,6 +94,7 @@ class VolunteerFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 pagerAdapter.actionTopScroll()
                 tab?.let {
+                    curPosition = selectedTabPosition
                     pagerAdapter.submitVolunteerData(lifecycle, getData(data, selectedTabPosition))
                 }
             }

@@ -2,6 +2,7 @@ package go.kr.mapo.mapoyouth.ui.youth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.withStarted
 import androidx.paging.PagingData
 import androidx.paging.filter
 import com.google.android.material.tabs.TabLayout
@@ -32,14 +34,11 @@ class YouthFragment : Fragment() {
     private var curCategory : String = "전체보기"
     private var curSorted : String = "전체"
 
-    private lateinit var sortedArray : Array<String>
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_youth, container, false)
-        sortedArray = resources.getStringArray(R.array.spinner_list)
         return binding.root
     }
 
@@ -92,7 +91,7 @@ class YouthFragment : Fragment() {
 
     private fun subscribeToObservers() {
         viewModel.youthList.observe(viewLifecycleOwner, {
-            pagerAdapter.submitYouthData(lifecycle, it)
+            pagerAdapter.submitYouthData(lifecycle, getData(it))
             whenTabSelected(it)
             whenSpinnerSelected(it)
         })
@@ -104,17 +103,7 @@ class YouthFragment : Fragment() {
                 pagerAdapter.actionTopScroll()
                 tab?.let { selectedTab ->
                     curCategory = selectedTab.text.toString()
-                    pagerAdapter.submitYouthData(lifecycle, when(selectedTab.position) {
-                        0 -> if(curSorted == "전체") data else data.filter { it.targetAge.contains(curSorted) }
-                        else -> {
-                            data.filter {
-                                when(curSorted) {
-                                    "전체" -> it.category.name == curCategory
-                                    else -> it.category.name == curCategory && it.targetAge.contains(curSorted)
-                                }
-                            }
-                        }
-                    })
+                    pagerAdapter.submitYouthData(lifecycle, getData(data))
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -128,27 +117,25 @@ class YouthFragment : Fragment() {
         onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 curSorted = when(position) {
+                    0 -> "전체"
                     1 -> "초"
                     2 -> "중"
                     3 -> "고"
                     4 -> "대"
-                    else -> sortedArray[position]
+                    else -> "일반"
                 }
-                pagerAdapter.submitYouthData(lifecycle, when(position) {
-                    0 -> if(curCategory == "전체보기") data else data.filter { it.category.name == curCategory }
-                    else -> {
-                        data.filter {
-                            when(curCategory) {
-                                "전체보기" -> it.targetAge.contains(curSorted)
-                                else -> it.targetAge.contains(curSorted) && it.category.name == curCategory
-                            }
-                        }
-                    }
-                })
+                pagerAdapter.submitYouthData(lifecycle, getData(data))
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
+    }
+
+    private fun getData(data: PagingData<Youth>) = when {
+        curCategory == "전체보기" && curSorted == "전체" -> data
+        curCategory == "전체보기" && curSorted != "전체" -> data.filter { it.targetAge.contains(curSorted) }
+        curCategory != "전체보기" && curSorted == "전체" -> data.filter { it.category.name == curCategory }
+        else -> data.filter { it.category.name == curCategory && it.targetAge.contains(curSorted) }
     }
 
 }

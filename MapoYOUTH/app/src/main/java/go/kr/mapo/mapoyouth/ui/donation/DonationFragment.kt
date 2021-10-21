@@ -1,6 +1,7 @@
 package go.kr.mapo.mapoyouth.ui.donation
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.RadioButton
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentDonationBinding
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 
 @AndroidEntryPoint
 class DonationFragment : Fragment() {
@@ -36,6 +38,19 @@ class DonationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getDonationList()
         getDonationFilterList()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() = binding.toolbar.apply {
+        setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_search -> {
+                    startActivity(Intent(requireContext(), SearchActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun getDonationList() {

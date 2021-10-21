@@ -1,5 +1,6 @@
 package go.kr.mapo.mapoyouth.ui.edu
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentEduBinding
 import go.kr.mapo.mapoyouth.network.response.Edu
 import go.kr.mapo.mapoyouth.network.response.Youth
+import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 
 @AndroidEntryPoint
@@ -40,9 +42,22 @@ class EduFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         binding.recyclerView.adapter = eduAdapter
         connectSpinnerAdapter()
         subscribeToObservers()
+    }
+
+    private fun setupToolbar() = binding.toolbar.apply {
+        setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_search -> {
+                    startActivity(Intent(requireContext(), SearchActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun connectSpinnerAdapter() {

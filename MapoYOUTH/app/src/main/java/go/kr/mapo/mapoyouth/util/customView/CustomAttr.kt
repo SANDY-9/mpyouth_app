@@ -189,7 +189,7 @@ object CustomAttr {
     @JvmStatic
     @BindingAdapter("EntryFee")
     fun setFee(textView: TextView, fee: Int?) {
-        textView.text = if(fee == 0 || fee == null) "무료" else "$fee"
+        textView.text = if(fee == 0 || fee == null) "무료" else "${fee} 원"
     }
 
     @JvmStatic

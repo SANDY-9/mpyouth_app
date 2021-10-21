@@ -23,7 +23,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val youthRepository: YouthRepository,
     private val volunteerRepository: VolunteerRepository,
-    private val eduRepository: EduRepository) : ViewModel() {
+    private val eduRepository: EduRepository,
+    private val donationRepository: DonationRepository) : ViewModel() {
 
     suspend fun getLatestYouth() = withContext(Dispatchers.IO) {
         youthRepository.getLatestYouth()
@@ -37,4 +38,7 @@ class HomeViewModel @Inject constructor(
         eduRepository.getLatestEdu()
     }
 
+    suspend fun getDonation() = withContext(Dispatchers.IO) {
+        donationRepository.fetchLatestDonation()
+    }
 }

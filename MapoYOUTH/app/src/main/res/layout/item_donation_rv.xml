@@ -22,13 +22,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:paddingVertical="@dimen/item_donation_rv_tag_padding_vertical"
-            android:paddingHorizontal="@dimen/item_domation_rv_tag_padding_horizontal"
-            android:background="@drawable/bg_donation_category_design"
-            DonationCategoryBox="@{donation.category.name}"
-            android:textSize="@dimen/item_donation_rv_tag_textsize"
-            android:textColor="@color/mapo_orange"
-            android:textStyle="bold"/>
+            style="@style/DonationTagBox"
+            DonationCategoryBox="@{donation.category.name}"/>
 
         <TextView
             android:id="@+id/donationRvItemTitleTv"

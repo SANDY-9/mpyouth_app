@@ -9,14 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.network.response.Volunteer
 import go.kr.mapo.mapoyouth.network.response.Youth
-import go.kr.mapo.mapoyouth.ui.edu.EduListAdapter
 import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 import go.kr.mapo.mapoyouth.ui.youth.YouthListAdapter
-import go.kr.mapo.mapoyouth.util.FLAG_EDU
-import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
-import go.kr.mapo.mapoyouth.util.FLAG_YOUTH
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * @author SANDY

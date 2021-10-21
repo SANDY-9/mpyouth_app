@@ -1,6 +1,5 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View

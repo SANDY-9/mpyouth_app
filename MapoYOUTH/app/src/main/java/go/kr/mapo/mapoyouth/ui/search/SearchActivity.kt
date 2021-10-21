@@ -3,15 +3,16 @@ package go.kr.mapo.mapoyouth.ui.search
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
-import android.view.*
+import android.view.KeyEvent
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.filter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,11 +39,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchActivity: AppCompatActivity() {
 
-    // Toolbar에는 Home(왼쪽 배치)과 menu(오른쪽 배치)가 존재함
-    // HomeBtn을 BackBtn으로 변경진행
-
-    // Fragment는 레이아웃 매니저와 어댑터를 생성하고 연결해주는 곳
-
     private lateinit var mToolbar: Toolbar
     private lateinit var tabLayout: TabLayout
     private lateinit var search_button : ImageButton
@@ -65,13 +61,20 @@ class SearchActivity: AppCompatActivity() {
     private val donationAdapter by lazy { DonationRecyclerViewAdapter() }
 
 
-    private var curTabPosition = 0
-    private var isEverSearched = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
+        init()
+        // 상단바 설정
+        setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
+
+        setupTapState()
+        setupSearchState()
+        subscribeToObservers()
+    }
+
+    private fun init() {
         mToolbar = findViewById(R.id.search_toolbar)
         tabLayout = findViewById(R.id.tabLayout)
         search_button = findViewById(R.id.search_button)
@@ -80,54 +83,66 @@ class SearchActivity: AppCompatActivity() {
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
         tabLayoutGroup = findViewById(R.id.tabLayoutGroup)
 
+        inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
 
+    private var curTabPosition = 0
+    private var isEverSearched = false
+
+    private fun setupTapState() = tabLayout.apply {
         val tabItem = tabLayout.getChildAt(0) as ViewGroup
-
+        CustomAttr.changeTabsBold(tabItem, 0, tabCount)
         // Tab 클릭시 동작
-        tabLayout.apply {
-            getTabAt(0)!!.select().also { CustomAttr.changeTabsBold(tabItem, 0, tabCount) }
-            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    tab?.let {
-                        curTabPosition = it.position
-                        CustomAttr.changeTabsBold(tabItem, curTabPosition, tabLayout.tabCount) // 탭 선택시 글씨 굵게
-                        if(isEverSearched) {
-                            requestSearch(autoCompleteTextView.text, curTabPosition)
-                        }
+        addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    curTabPosition = it.position
+                    CustomAttr.changeTabsBold(tabItem, curTabPosition, tabLayout.tabCount) // 탭 선택시 글씨 굵게
+                    if(isEverSearched) {
+                        requestSearch(autoCompleteTextView.text, curTabPosition)
                     }
                 }
-                override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                override fun onTabReselected(tab: TabLayout.Tab?) {}
-            })
-        }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
 
-        // 화면 뒤로가기 - Btn 생성
-        setSupportActionBar(mToolbar).also { CustomAttr.commonSettingActionbar(supportActionBar) }
-
-        inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
+    private fun setupSearchState(){
         // KBD 검색 Btn(Enter)로 검색시
         autoCompleteTextView.setOnKeyListener { _, keyCode, event ->
-            if ((event.action== KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                search_start.visibility = View.GONE
-                recyclerView.visibility = View.VISIBLE
-
-                requestSearch(autoCompleteTextView.text, curTabPosition)
-                inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 KBD Enter 클릭시 KBD 숨김
-
-                true
-
-            } else {
-                false
+            when {
+                event.action== KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER -> {
+                    requestSearch(autoCompleteTextView.text, curTabPosition)
+                    true
+                }
+                else -> false
             }
         }
 
         // 화면 내 검색 Btn로 검색시
         search_button.setOnClickListener {
             requestSearch(autoCompleteTextView.text, curTabPosition)
-                inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 search_button 클릭시 KBD 숨김
         }
-        subscribeToObservers()
+    }
+
+    // 검색입력 검사
+    private fun requestSearch(word : Editable, tabPosition: Int){
+        if (word.isBlank()){
+            Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            return
+        } else {    // 검색 요청
+            isEverSearched = true
+            if(isEverSearched) tabLayoutGroup.visibility = View.VISIBLE
+            val keyword = word.toString().trim()
+            when(tabPosition) {
+                0 -> youthViewModel.requestSearchYouth(keyword)             //청소년 활동 검색요청
+                1 -> volunteerViewModel.requestSearchVolunteer(keyword)     //봉사활동 검색요청
+                2 -> eduViewModel.requestSearchEdu(keyword)                 //평생교육 검색요청
+                3 -> donationViewModel.requestSearchDonation(keyword)      // 재능기부 검색요청
+            }
+        }
+        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS) // 내용 입력 후 KBD Enter 클릭시 KBD 숨김
     }
 
     private fun subscribeToObservers() {
@@ -187,24 +202,6 @@ class SearchActivity: AppCompatActivity() {
             }
         })
 
-    }
-
-    // 검색입력 검사
-    private fun requestSearch(word : Editable, tabPosition: Int){
-        if (word.isBlank()){
-            Toast.makeText(this, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
-            return
-        } else {    // 검색 요청
-            isEverSearched = true
-            if(isEverSearched) tabLayoutGroup.visibility = View.VISIBLE
-            val keyword = word.toString().trim()
-            when(tabPosition) {
-                0 -> youthViewModel.requestSearchYouth(keyword)             //청소년 활동 검색요청
-                1 -> volunteerViewModel.requestSearchVolunteer(keyword)     //봉사활동 검색요청
-                2 -> eduViewModel.requestSearchEdu(keyword)                 //평생교육 검색요청
-                3 -> donationViewModel.requestSearchDonation(keyword)      // 재능기부 검색요청
-            }
-        }
     }
 
     private fun setViewSearchAfter(itemCount: Int) {

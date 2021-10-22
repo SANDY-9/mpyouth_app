@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.FragmentFirstScreenBinding
+import go.kr.mapo.mapoyouth.databinding.FragmentOnboardFirstScreenBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR
 import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
@@ -20,7 +20,7 @@ class OnboardFirstScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFirstScreenBinding.inflate(inflater, container, false)
+        val binding = FragmentOnboardFirstScreenBinding.inflate(inflater, container, false)
 
         return binding.root
     }

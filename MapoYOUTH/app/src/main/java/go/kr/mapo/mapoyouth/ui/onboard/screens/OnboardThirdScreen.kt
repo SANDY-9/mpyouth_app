@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import go.kr.mapo.mapoyouth.R
-import go.kr.mapo.mapoyouth.databinding.FragmentFirstScreenBinding
 import go.kr.mapo.mapoyouth.databinding.FragmentOnboardThirdScreenBinding
 import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.util.ONBOARD_FINISHED_STR

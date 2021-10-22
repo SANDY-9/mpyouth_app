@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.onboard.screens.OnboardFirstScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="255dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/onboard_screen_indicator"
+        android:layout_marginBottom="@dimen/margin_12dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/onboard_screen_img01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_screen01"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/onboard_screen_indicator"
+        android:layout_width="44dp"
+        android:layout_height="8dp"
+        android:background="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.55"
+        />
+
+    <TextView
+        android:id="@+id/onboard_screen_title01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/onboard_screen_title01"
+        android:textSize="@dimen/item_onboard_title_text_size"
+        android:fontFamily="@font/mapo_dpp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboard_screen_indicator"
+        android:layout_marginTop="@dimen/margin_24dp"/>
+
+    <TextView
+        android:id="@+id/onboard_screen_content01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/onboard_screen_content01"
+        android:textColor="@color/onboard_content_text_color"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboard_screen_title01"
+        android:layout_marginTop="@dimen/margin_20dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

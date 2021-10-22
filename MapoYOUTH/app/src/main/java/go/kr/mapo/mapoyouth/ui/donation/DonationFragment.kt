@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentDonationBinding
+import go.kr.mapo.mapoyouth.network.response.DonationListResponse
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
 
 @AndroidEntryPoint
@@ -41,7 +42,6 @@ class DonationFragment : Fragment() {
         setupToolbar()
         getDonationList()
         getDonationFilterList()
-        setupToolbar()
     }
 
     private fun setupToolbar() = binding.toolbar.apply {
@@ -81,27 +81,11 @@ class DonationFragment : Fragment() {
 
         viewModel.donationList.observe(viewLifecycleOwner, {
 
-            //var category: String? = null
-            /*
-            when(category) {
-                "전체" -> 0
-                "디자인" -> 1
-                "번역/외국어" -> 2
-                "생활" -> 3
-                "음악/영상" -> 4
-                "프로그램 개발" -> 5
-                "문서작성" -> 6
-                else -> 7
-            }
-             */
-            //val data = it
             donationAdapter.submitData(lifecycle, getData(it))
+
             for (i in 0..7) {
                 categoryArray[i].setOnCheckedChangeListener { button, isChecked ->
                     if(isChecked) {
-                        //var filterData = data
-                        //if( i > 0 ) filterData = data.filter { it.category.name == categoryArray[i].text }
-
                         curCategory = categoryArray[i].text.toString()
                         button.setBackgroundResource(bgColorArray[i])
                         button.setTextColor(resources.getColor(colorArray[i]))

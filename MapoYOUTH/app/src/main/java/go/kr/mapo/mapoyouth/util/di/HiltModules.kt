@@ -1,12 +1,14 @@
 package go.kr.mapo.mapoyouth.util.di
 
-import android.util.Log
+import android.content.Context
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import go.kr.mapo.mapoyouth.network.MapoYouthService
+import go.kr.mapo.mapoyouth.network.NetworkState
 import go.kr.mapo.mapoyouth.network.repository.*
 import go.kr.mapo.mapoyouth.util.BASE_URL
 import okhttp3.Interceptor
@@ -43,8 +45,8 @@ object HiltModules {
         }
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(requestInterceptor)
-            .connectTimeout(5, TimeUnit.SECONDS)
-            .readTimeout(5, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
             .build()
         val gson = GsonBuilder()
             .setLenient()
@@ -56,6 +58,10 @@ object HiltModules {
             .build()
             .create(MapoYouthService::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideNetworkState(@ApplicationContext app: Context) = NetworkState(app)
 
     @Singleton
     @Provides

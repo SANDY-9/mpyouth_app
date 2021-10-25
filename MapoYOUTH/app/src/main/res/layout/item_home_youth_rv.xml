@@ -11,7 +11,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/home_youth_item_width"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_16dp"
         android:paddingBottom="@dimen/margin_24dp"
         app:cardCornerRadius="8dp"
@@ -29,14 +29,14 @@
             <TextView
                 android:id="@+id/textView46"
                 style="@style/TagBox"
+                YouthCategoryBox="@{youth.category.name}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                YouthCategoryBox="@{youth.category.name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:backgroundTint="@color/mapo_green"
                 tools:text="환경보존"
-                tools:textColor="@color/mapo_green"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:textColor="@color/mapo_green" />
 
             <TextView
                 android:id="@+id/textView47"
@@ -106,10 +106,10 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:fontFamily="@font/roboto_700"
                 android:gravity="end|bottom"
-                android:text="@string/details_btn"
-                android:textColor="@color/mapo_gray"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
+                android:text="@string/details_btn"
+                android:textColor="@color/mapo_gray"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView49" />

@@ -1,8 +1,10 @@
 package go.kr.mapo.mapoyouth.ui.youth
 
-import android.util.Log
 import androidx.lifecycle.*
-import androidx.paging.*
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import androidx.paging.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import go.kr.mapo.mapoyouth.network.MapoYouthService
 import go.kr.mapo.mapoyouth.network.repository.YouthDataSource

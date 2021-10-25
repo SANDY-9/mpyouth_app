@@ -1,12 +1,11 @@
 package go.kr.mapo.mapoyouth.ui.common
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.fragment.app.Fragment
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentOrganizationDetailsBinding
 import go.kr.mapo.mapoyouth.network.response.Organization

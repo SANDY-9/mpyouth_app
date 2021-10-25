@@ -2,11 +2,11 @@ package go.kr.mapo.mapoyouth.ui.volunteer
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import androidx.paging.filter
@@ -16,10 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentVolunteerBinding
 import go.kr.mapo.mapoyouth.network.response.Volunteer
-import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.common.ListItemPagerAdapter
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
-import go.kr.mapo.mapoyouth.util.FLAG_VOLUNTEER
 import go.kr.mapo.mapoyouth.util.customView.CustomAttr
 
 @AndroidEntryPoint

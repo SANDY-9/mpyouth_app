@@ -66,7 +66,7 @@ class DonationFragment : Fragment() {
 
     private var curCategory = "전체"
 
-    @SuppressLint("ResourceType")
+    @Suppress("DEPRECATION")
     private fun getDonationFilterList() {
         categoryArray = arrayOf(binding.sltAll, binding.sltDesign, binding.sltLanguage,
             binding.sltLife, binding.sltMusic, binding.sltDevelop, binding.sltDoc, binding.sltBusiness)

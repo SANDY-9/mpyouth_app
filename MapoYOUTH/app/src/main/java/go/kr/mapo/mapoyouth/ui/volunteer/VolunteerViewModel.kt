@@ -39,7 +39,7 @@ class VolunteerViewModel @Inject constructor(
     fun setVolunteerDetails(id : Int) {
         _state.value = false
         viewModelScope.launch {
-            volunteerRepository.getVolunteerDetails(id)?.let {
+            volunteerRepository.getVolunteerDetails(id).also {
                 _volunteerDetails.value = it.value
                 _state.value = true
             }

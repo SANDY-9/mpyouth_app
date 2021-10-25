@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
     private lateinit var binding : FragmentHomeBinding
     private val viewModel : HomeViewModel by viewModels()
 
@@ -63,21 +64,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun subscribeToObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            with(viewModel) {
-                getLatestYouth()!!.observe(viewLifecycleOwner, {
-                    homeYouthListAdapter.submitList(it)
-                })
-                getLatestVolunteer()!!.observe(viewLifecycleOwner, {
-                    homeVolunteerListAdapter.submitList(it)
-                })
-                getLatestEdu()!!.observe(viewLifecycleOwner, {
-                    homeEduListAdapter.submitList(it)
-                })
-                getDonation()!!.observe(viewLifecycleOwner, {
-                    homeDonationListAdapter.submitList(it)
-                })
-            }
+        with(viewModel) {
+            getNetworkState()
+            isOnlined.observe(viewLifecycleOwner, { isOnlined ->
+                binding.state = isOnlined
+                if(isOnlined) {
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        with(viewModel) {
+                            getLatestYouth().observe(viewLifecycleOwner, {
+                                homeYouthListAdapter.submitList(it)
+                            })
+                            getLatestVolunteer().observe(viewLifecycleOwner, {
+                                homeVolunteerListAdapter.submitList(it)
+                            })
+                            getLatestEdu().observe(viewLifecycleOwner, {
+                                homeEduListAdapter.submitList(it)
+                            })
+                            getDonation().observe(viewLifecycleOwner, {
+                                homeDonationListAdapter.submitList(it)
+                            })
+                        }
+                    }
+                }
+            })
         }
     }
 

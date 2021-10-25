@@ -128,22 +128,24 @@
 
             <Button
                 android:id="@+id/button"
+                Call-Connection="@{eduDetails.managerContact}"
+                RecruitButtonEnabled="@{eduDetails.recruitStatus}"
                 android:layout_width="@dimen/details_bottom_size"
                 android:layout_height="@dimen/details_bottom_size"
                 android:layout_marginEnd="@dimen/margin_10dp"
                 android:background="@drawable/bg_btn"
                 app:icon="@drawable/ic_call"
-                Call-Connection="@{eduDetails.managerContact}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/button2"
+                RecruitButtonEnabled="@{eduDetails.recruitStatus}"
+                Url-Connection="@{eduDetails.url}"
                 android:layout_width="@dimen/details_bottom_size"
                 android:layout_height="@dimen/details_bottom_size"
                 android:layout_weight="1"
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/roboto_700"
-                Url-Connection="@{eduDetails.url}"
                 android:text="@string/btn_apply" />
 
         </LinearLayout>

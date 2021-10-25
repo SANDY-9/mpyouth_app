@@ -2,24 +2,21 @@ package go.kr.mapo.mapoyouth.ui.edu
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
 import androidx.paging.filter
-import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentEduBinding
 import go.kr.mapo.mapoyouth.network.response.Edu
-import go.kr.mapo.mapoyouth.network.response.Youth
 import go.kr.mapo.mapoyouth.ui.search.SearchActivity
-import go.kr.mapo.mapoyouth.ui.volunteer.VolunteerListAdapter
 
 @AndroidEntryPoint
 class EduFragment : Fragment() {

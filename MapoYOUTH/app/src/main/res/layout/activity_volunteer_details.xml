@@ -133,6 +133,7 @@
                 android:layout_marginEnd="@dimen/margin_10dp"
                 android:background="@drawable/bg_btn"
                 app:icon="@drawable/ic_call"
+                RecruitButtonEnabled="@{volunteerDetails.recruitStatus}"
                 Call-Connection="@{volunteerDetails.managerContact}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -143,6 +144,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/roboto_700"
+                RecruitButtonEnabled="@{volunteerDetails.recruitStatus}"
                 Url-Connection="@{volunteerDetails.url}"
                 android:text="@string/btn_apply" />
 

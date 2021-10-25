@@ -1,14 +1,13 @@
 package go.kr.mapo.mapoyouth.ui.home
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import go.kr.mapo.mapoyouth.network.NetworkState
 import go.kr.mapo.mapoyouth.network.repository.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -21,10 +20,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    private val networkState: NetworkState,
     private val youthRepository: YouthRepository,
     private val volunteerRepository: VolunteerRepository,
     private val eduRepository: EduRepository,
     private val donationRepository: DonationRepository) : ViewModel() {
+
+    private val _isOnlined = MutableLiveData(false)
+    val isOnlined = _isOnlined
+
+    fun getNetworkState() {
+        _isOnlined.value = networkState.isOnline()
+    }
 
     suspend fun getLatestYouth() = withContext(Dispatchers.IO) {
         youthRepository.getLatestYouth()
@@ -41,4 +48,5 @@ class HomeViewModel @Inject constructor(
     suspend fun getDonation() = withContext(Dispatchers.IO) {
         donationRepository.fetchLatestDonation()
     }
+
 }

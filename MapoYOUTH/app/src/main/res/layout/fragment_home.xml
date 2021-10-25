@@ -7,6 +7,10 @@
         <variable
             name="fragment"
             type="go.kr.mapo.mapoyouth.ui.home.HomeFragment" />
+
+        <variable
+            name="state"
+            type="java.lang.Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -153,8 +157,27 @@
                     android:text="청소년 활동"
                     android:textSize="22sp" />
 
+                <FrameLayout
+                    android:id="@+id/progressBar"
+                    LoadingState="@{state}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/white">
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_youth"
+                    LoadedState="@{state}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16dp"
@@ -176,8 +199,27 @@
                     android:text="봉사활동"
                     android:textSize="22sp" />
 
+                <FrameLayout
+                    android:id="@+id/progressBar2"
+                    LoadingState="@{state}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/white">
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_volunteer"
+                    LoadedState="@{state}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16dp"
@@ -306,8 +348,27 @@
                     android:text="평생교육"
                     android:textSize="22sp" />
 
+                <FrameLayout
+                    android:id="@+id/progressBar3"
+                    LoadingState="@{state}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/white">
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_edu"
+                    LoadedState="@{state}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16dp"
@@ -331,8 +392,27 @@
                     android:text="재능기부"
                     android:textSize="22sp" />
 
+                <FrameLayout
+                    android:id="@+id/progressBar4"
+                    LoadingState="@{state}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/white">
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_donation"
+                    LoadedState="@{state}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16dp"

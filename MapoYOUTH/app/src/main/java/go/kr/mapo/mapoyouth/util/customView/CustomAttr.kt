@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import go.kr.mapo.mapoyouth.R
@@ -30,8 +31,6 @@ import go.kr.mapo.mapoyouth.util.VOLUNTEER_TYPE_INDIVIDUAL
  * @created 2021-09-16
  * @desc
  */
-
-private const val TAG = "CustomAttr"
 
 object CustomAttr {
 
@@ -114,8 +113,14 @@ object CustomAttr {
 
     @JvmStatic
     @BindingAdapter("LoadingState")
-    fun loadingProgress(frameLayout: FrameLayout, load:Boolean) {
-        frameLayout.visibility = if(load) View.GONE else View.VISIBLE
+    fun loadingProgress(frameLayout: FrameLayout, load:Boolean?) {
+        frameLayout.visibility = if(load == true) View.GONE else View.VISIBLE
+    }
+
+    @JvmStatic
+    @BindingAdapter("LoadedState")
+    fun loadedProgress(recyclerView: RecyclerView, load:Boolean?) {
+        recyclerView.visibility = if(load == true) View.VISIBLE else View.GONE
     }
 
     @JvmStatic
@@ -160,9 +165,11 @@ object CustomAttr {
     @JvmStatic
     @BindingAdapter("RecruitButtonEnabled")
     fun buttonEnabled(button: Button, recruitedStatus: String?) {
-        button.isEnabled = when(recruitedStatus) {
-            RECRUIT_STATUS_RECRUITING -> true
-            else -> false
+        button.apply {
+            isEnabled = when (recruitedStatus) {
+                RECRUIT_STATUS_RECRUITING -> true
+                else -> false
+            }
         }
     }
 

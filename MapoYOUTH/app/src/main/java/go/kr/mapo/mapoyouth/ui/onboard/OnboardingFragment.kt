@@ -2,17 +2,14 @@ package go.kr.mapo.mapoyouth.ui.onboard
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import go.kr.mapo.mapoyouth.R
 import go.kr.mapo.mapoyouth.databinding.FragmentOnboardingBinding
-import go.kr.mapo.mapoyouth.ui.MainActivity
 import go.kr.mapo.mapoyouth.ui.onboard.screens.OnboardFirstScreen
 import go.kr.mapo.mapoyouth.ui.onboard.screens.OnboardSecondScreen
 import go.kr.mapo.mapoyouth.ui.onboard.screens.OnboardThirdScreen
@@ -21,21 +18,19 @@ import go.kr.mapo.mapoyouth.util.ONBOARD_SHARED_PREF
 
 class OnboardingFragment : Fragment() {
 
-    private lateinit var owner : MainActivity
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        owner = context as MainActivity
-    }
+    private lateinit var binding : FragmentOnboardingBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val fragList = arrayListOf<Fragment>(
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val fragList = arrayListOf(
             OnboardFirstScreen(),
             OnboardSecondScreen(),
             OnboardThirdScreen()
@@ -67,11 +62,8 @@ class OnboardingFragment : Fragment() {
             this.setOnClickListener {
                 findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
                 onBoardingFinished()
-                owner.binding.navBottom.visibility = View.VISIBLE
             }
         }
-
-        return binding.root
     }
 
     private fun onBoardingFinished() {

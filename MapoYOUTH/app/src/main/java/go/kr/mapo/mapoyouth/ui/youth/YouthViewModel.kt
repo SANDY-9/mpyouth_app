@@ -39,7 +39,7 @@ class YouthViewModel @Inject constructor(
     fun setYouthDetails(id: Int) {
         _state.value = false
         viewModelScope.launch {
-            youthRepository.getYouthDetails(id)?.let {
+            youthRepository.getYouthDetails(id).also {
                 _youthDetails.value = it.value
                 _state.value = true
             }

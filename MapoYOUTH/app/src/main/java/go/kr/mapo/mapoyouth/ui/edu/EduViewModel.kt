@@ -38,7 +38,7 @@ class EduViewModel @Inject constructor(
     fun setEduDetails(id: Int) {
         _state.value = false
         viewModelScope.launch {
-            eduRepository.getEduDetails(id)?.let {
+            eduRepository.getEduDetails(id).also {
                 _eduDetails.value = it.value
                 _state.value = true
             }

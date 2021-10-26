@@ -43,20 +43,22 @@ class YouthDetailsActivity : AppCompatActivity() {
         val youthDetailsFragment = YouthActivityDetailsFragment()
         with(binding.include) {
             viewModel.youthDetails.observe(this@YouthDetailsActivity, {
-                title = it.title
-                viewPager.apply {
-                    adapter = DetailsViewPagerAdapter(
-                        this@YouthDetailsActivity,
-                        youthDetailsFragment,
-                        it.organization)
-                    currentItem = 0
-                }
-                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                    tab.text = when(position) {
-                        0 -> "활동정보"
-                        else -> "기관정보"
+                it?.let {
+                    title = it.title
+                    viewPager.apply {
+                        adapter = DetailsViewPagerAdapter(
+                            this@YouthDetailsActivity,
+                            youthDetailsFragment,
+                            it.organization)
+                        currentItem = 0
                     }
-                }.attach()
+                    TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                        tab.text = when(position) {
+                            0 -> "활동정보"
+                            else -> "기관정보"
+                        }
+                    }.attach()
+                }
             })
         }
     }

@@ -66,10 +66,7 @@ class EduDataSource (
 
     suspend fun fetchLatestEdu() {
         val response = mapoYouthService.getEduList(STARTING_PAGE_INDEX)
-        CoroutineScope(Dispatchers.Main).launch {
-            if(response.isSuccessful) _downloadedLatestEdu.value = response.body()!!.data.content
-            cancel()
-        }
+        if(response.isSuccessful) _downloadedLatestEdu.postValue(response.body()!!.data.content)
     }
 
 }

@@ -40,8 +40,8 @@ class YouthViewModel @Inject constructor(
         _state.value = false
         viewModelScope.launch {
             youthRepository.getYouthDetails(id).also {
-                _youthDetails.value = it.value
-                _state.value = true
+                _youthDetails.postValue(it.value)
+                _state.postValue(true)
             }
         }
     }

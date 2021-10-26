@@ -40,8 +40,8 @@ class VolunteerViewModel @Inject constructor(
         _state.value = false
         viewModelScope.launch {
             volunteerRepository.getVolunteerDetails(id).also {
-                _volunteerDetails.value = it.value
-                _state.value = true
+                _volunteerDetails.postValue(it.value)
+                _state.postValue(true)
             }
         }
     }

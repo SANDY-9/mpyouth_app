@@ -66,10 +66,7 @@ class VolunteerDataSource(
 
     suspend fun fetchLatestVolunteer() {
         val response = mapoYouthService.getVolunteerList(STARTING_PAGE_INDEX)
-        CoroutineScope(Dispatchers.Main).launch {
-            if(response.isSuccessful) _downloadedLatestVolunteer.value = response.body()!!.data.content
-            cancel()
-        }
+        if(response.isSuccessful) _downloadedLatestVolunteer.postValue(response.body()!!.data.content)
     }
 
 }

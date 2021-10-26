@@ -55,16 +55,11 @@ class DonationDataSource(
 
     suspend fun fetchDonationDetails(id:Int) {
         val response = mapoYouthService.getDonationDetails(id)
-        if(response.isSuccessful) {
-            _downloadedDonationDetails.value = response.body()!!.data
-        }
+        if(response.isSuccessful)  _downloadedDonationDetails.value = response.body()!!.data
     }
 
     suspend fun fetchLatestDonation() {
         val response = mapoYouthService.getDonationList(STARTING_PAGE_INDEX)
-        CoroutineScope(Dispatchers.Main).launch {
-            if(response.isSuccessful) _downloadedLatestDonation.value = response.body()!!.data.content
-            cancel()
-        }
+        if(response.isSuccessful) _downloadedLatestDonation.postValue(response.body()!!.data.content)
     }
 }

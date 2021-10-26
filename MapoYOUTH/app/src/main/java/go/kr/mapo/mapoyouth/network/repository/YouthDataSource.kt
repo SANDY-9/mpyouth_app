@@ -66,10 +66,7 @@ class YouthDataSource(
 
     suspend fun fetchLatestYouth() {
         val response = mapoYouthService.getYouthList(STARTING_PAGE_INDEX)
-        CoroutineScope(Dispatchers.Main).launch {
-            if(response.isSuccessful) _downloadedLatestYouth.value = response.body()!!.data.content
-            cancel()
-        }
+        if(response.isSuccessful) _downloadedLatestYouth.postValue(response.body()!!.data.content)
     }
 
 }

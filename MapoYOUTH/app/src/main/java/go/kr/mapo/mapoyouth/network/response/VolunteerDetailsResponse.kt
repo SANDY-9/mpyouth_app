@@ -70,7 +70,7 @@ data class VolunteerDetails(
     @SerializedName("volunteerType")
     @Expose
     val volunteerType: String = "", // INDIVIDUAL
-    @SerializedName("entry_fee")
+    @SerializedName("entryFee")
     @Expose
     val entryFee: Int = 0, // 0
     @SerializedName("caution")

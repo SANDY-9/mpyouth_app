@@ -48,34 +48,34 @@ data class YouthData(
     val empty: Boolean = false // false
 )
 data class Youth(
-    @SerializedName("program_id")
+    @SerializedName("programId")
     @Expose
     val programId: Int, // 1
     @SerializedName("title")
     @Expose
     val title: String = "", // 테스트 제목
-    @SerializedName("start_date")
+    @SerializedName("startDate")
     @Expose
     val startDate: String = "", // 2021-10-10 01:14:55
-    @SerializedName("end_date")
+    @SerializedName("endDate")
     @Expose
     val endDate: String = "", // 2021-12-14 16:34:22
-    @SerializedName("recruit_start_date")
+    @SerializedName("recruitStartDate")
     @Expose
     val recruitStartDate: String = "", // 2021-12-14 16:34:23
-    @SerializedName("recruit_end_date")
+    @SerializedName("recruitEndDate")
     @Expose
     val recruitEndDate: String = "", // 2021-12-14 16:34:24
-    @SerializedName("recruit_number")
+    @SerializedName("recruitNumber")
     @Expose
     val recruitNumber: Int = 0, // 10
-    @SerializedName("recruit_status")
+    @SerializedName("recruitStatus")
     @Expose
     val recruitStatus: String = "", // RECRUITING
-    @SerializedName("target_age")
+    @SerializedName("targetAge")
     @Expose
     val targetAge: String = "", // 초|중|고
-    @SerializedName("entry_fee")
+    @SerializedName("entryFee")
     @Expose
     val entryFee: Int = 0, // 100
     @SerializedName("caution")
@@ -84,7 +84,7 @@ data class Youth(
     @SerializedName("period")
     @Expose
     val period: String = "", // 주기
-    @SerializedName("volunteer_type")
+    @SerializedName("volunteerType")
     @Expose
     val volunteerType: String = "", // INDIVIDUAL
     @SerializedName("organization")

@@ -13,7 +13,7 @@ const val ONBOARD_FINISHED_STR = "finished"
 // Network
 const val STARTING_PAGE_INDEX = 0
 const val PAGE_SIZE = 10
-const val BASE_URL = "http://52.78.206.155:8080/api/"
+const val BASE_URL = "http://121.162.15.140:8081/api/"
 
 // Time
 const val TIME_FORMAT = "yyyy-MM-dd HH:mm:ss"

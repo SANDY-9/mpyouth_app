@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
 data class VolunteerDetailsResponse(
     @SerializedName("data")
     @Expose
-    val `data`: VolunteerDetails = VolunteerDetails(),
+    val `data`: VolunteerDetails,
     @SerializedName("message")
     @Expose
     val message: String = "", // string
@@ -18,14 +18,17 @@ data class VolunteerDetailsResponse(
 data class VolunteerDetails(
     @SerializedName("category")
     @Expose
-    val category: Category = Category(),
-    @SerializedName("contentsStatus")
+    val category: Category,
+    @SerializedName("caution")
+    @Expose
+    val caution: String = "", // string
+    @SerializedName("contents_status")
     @Expose
     val contentsStatus: String = "", // BEFORE
     @SerializedName("description")
     @Expose
     val description: String = "", // 마포구 청소년동아리의 균형적 발전과 청소년문화 환경을 개선하고자 ...
-    @SerializedName("endDate")
+    @SerializedName("end_date")
     @Expose
     val endDate: String = "", // 2021-12-25 00:00:00
     @SerializedName("id")
@@ -34,31 +37,31 @@ data class VolunteerDetails(
     @SerializedName("location")
     @Expose
     val location: String = "", // 서울특별시 마포구 도화동 353-2
-    @SerializedName("managerContact")
+    @SerializedName("manager_contact")
     @Expose
     val managerContact: String = "", // 010-1234-5678
-    @SerializedName("managerName")
+    @SerializedName("manager_name")
     @Expose
     val managerName: String = "", // 김철수
     @SerializedName("organization")
     @Expose
-    val organization: Organization = Organization(),
+    val organization: Organization,
     @SerializedName("period")
     @Expose
     val period: String = "", // 월|화|수
-    @SerializedName("recruitEndDate")
+    @SerializedName("recruit_end_date")
     @Expose
     val recruitEndDate: String = "", // 2021-12-25 00:00:00
-    @SerializedName("recruitNumber")
+    @SerializedName("recruit_number")
     @Expose
     val recruitNumber: Int = 0, // 10
-    @SerializedName("recruitStartDate")
+    @SerializedName("recruit_start_date")
     @Expose
     val recruitStartDate: String = "", // 2021-12-25 00:00:00
-    @SerializedName("recruitStatus")
+    @SerializedName("recruit_status")
     @Expose
     val recruitStatus: String = "", // RECRUITING
-    @SerializedName("startDate")
+    @SerializedName("start_date")
     @Expose
     val startDate: String = "", // 2021-12-25 00:00:00
     @SerializedName("title")
@@ -66,14 +69,11 @@ data class VolunteerDetails(
     val title: String = "", // 청소년동아리지원사업 '스스로 프로젝트'
     @SerializedName("url")
     @Expose
-    val url: String = "", // http://mwyouth.org/
-    @SerializedName("volunteerType")
+    val url: String = "", // https://mwyouth.org/
+    @SerializedName("volunteer_type")
     @Expose
     val volunteerType: String = "", // INDIVIDUAL
-    @SerializedName("entryFee")
+    @SerializedName("entry_fee")
     @Expose
-    val entryFee: Int = 0, // 0
-    @SerializedName("caution")
-    @Expose
-    val caution: String = "" // string
+    val entryFee: Int = 0 // INDIVIDUAL
 )

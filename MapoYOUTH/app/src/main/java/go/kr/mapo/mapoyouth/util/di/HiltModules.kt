@@ -42,7 +42,6 @@ object HiltModules {
                 .newBuilder()
                 .url(url)
                 .build()
-            Log.e("[URL]", url.toString())
             return@Interceptor it.proceed(request)
         }
         val okHttpClient = OkHttpClient.Builder()

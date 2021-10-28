@@ -1,6 +1,7 @@
 package go.kr.mapo.mapoyouth.util.di
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -41,6 +42,7 @@ object HiltModules {
                 .newBuilder()
                 .url(url)
                 .build()
+            Log.e("[URL]", url.toString())
             return@Interceptor it.proceed(request)
         }
         val okHttpClient = OkHttpClient.Builder()

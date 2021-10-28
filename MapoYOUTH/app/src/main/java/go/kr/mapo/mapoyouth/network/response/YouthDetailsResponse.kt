@@ -25,19 +25,19 @@ data class YouthDetails(
     @SerializedName("description")
     @Expose
     val description: String = "", // string
-    @SerializedName("end_date")
+    @SerializedName("endDate")
     @Expose
     val endDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("entry_fee")
+    @SerializedName("entryFee")
     @Expose
     val entryFee: Int = 0, // 0
     @SerializedName("location")
     @Expose
     val location: String = "", // string
-    @SerializedName("manager_contact")
+    @SerializedName("managerContact")
     @Expose
     val managerContact: String = "", // string
-    @SerializedName("manager_name")
+    @SerializedName("managerName")
     @Expose
     val managerName: String = "", // string
     @SerializedName("organization")
@@ -46,28 +46,28 @@ data class YouthDetails(
     @SerializedName("period")
     @Expose
     val period: String = "", // string
-    @SerializedName("program_files")
+    @SerializedName("programFiles")
     @Expose
     val programFiles: List<ProgramFile> = listOf(),
-    @SerializedName("program_id")
+    @SerializedName("programId")
     @Expose
     val programId: Int = 0, // 0
-    @SerializedName("recruit_end_date")
+    @SerializedName("recruitEndDate")
     @Expose
     val recruitEndDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("recruit_number")
+    @SerializedName("recruitNumber")
     @Expose
     val recruitNumber: Int = 0, // 0
-    @SerializedName("recruit_start_date")
+    @SerializedName("recruitStartDate")
     @Expose
     val recruitStartDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("recruit_status")
+    @SerializedName("recruitStatus")
     @Expose
     val recruitStatus: String = "", // DONE
-    @SerializedName("start_date")
+    @SerializedName("startDate")
     @Expose
     val startDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("target_age")
+    @SerializedName("targetAge")
     @Expose
     val targetAge: String = "", // string
     @SerializedName("thumbnail")
@@ -79,7 +79,7 @@ data class YouthDetails(
     @SerializedName("url")
     @Expose
     val url: String = "", // string
-    @SerializedName("volunteer_type")
+    @SerializedName("volunteerType")
     @Expose
     val volunteerType: String = "" // GROUP
 )

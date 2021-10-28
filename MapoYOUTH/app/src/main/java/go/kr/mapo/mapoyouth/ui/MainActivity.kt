@@ -27,7 +27,12 @@ class MainActivity : AppCompatActivity() {
             setContentView(root)}
 
         // NavController 정의
-        val navController = findNavController(R.id.navHostFragment)
+        val navController = findNavController(R.id.navHostFragment).apply {
+            addOnDestinationChangedListener { _, destination, _ ->
+                if(destination.id == R.id.homeFragment) binding.navBottom.visibility = View.VISIBLE
+            }
+        }
+
         binding.navBottom.setupWithNavController(navController)
 
         if (onBoardingFinished()) {

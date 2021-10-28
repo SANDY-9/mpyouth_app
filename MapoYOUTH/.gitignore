@@ -47,3 +47,5 @@ proguard/
 
 # Windows clutter
 Thumbs.db
+
+Constants.kt

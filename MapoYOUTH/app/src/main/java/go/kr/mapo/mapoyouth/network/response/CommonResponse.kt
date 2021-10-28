@@ -63,22 +63,22 @@ data class Thumbnail(
 )
 
 data class ProgramFile(
-    @SerializedName("file_name")
+    @SerializedName("fileName")
     @Expose
     val fileName: String = "", // string
-    @SerializedName("file_size")
+    @SerializedName("fileSize")
     @Expose
     val fileSize: Int = 0, // 0
-    @SerializedName("file_uri")
+    @SerializedName("fileUri")
     @Expose
     val fileUri: String = "", // string
-    @SerializedName("original_file_name")
+    @SerializedName("originalFileName")
     @Expose
     val originalFileName: String = "" // string
 )
 
 data class Category(
-    @SerializedName("category_id")
+    @SerializedName("categoryId")
     @Expose
     val categoryId: Int = 0, // 0
     @SerializedName("level")
@@ -87,7 +87,7 @@ data class Category(
     @SerializedName("name")
     @Expose
     val name: String = "", // string
-    @SerializedName("parent_name")
+    @SerializedName("parentName")
     @Expose
     val parentName: String = "" // string
 )

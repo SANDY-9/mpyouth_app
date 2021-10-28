@@ -18,68 +18,65 @@ data class YouthDetailsResponse(
 data class YouthDetails(
     @SerializedName("category")
     @Expose
-    val category: Category = Category(),
+    val category: Category,
     @SerializedName("caution")
     @Expose
     val caution: String = "", // string
+    @SerializedName("contents_status")
+    @Expose
+    val contentsStatus: String = "", // BEFORE
     @SerializedName("description")
     @Expose
-    val description: String = "", // string
-    @SerializedName("endDate")
+    val description: String = "", // 마포구 청소년동아리의 균형적 발전과 청소년문화 환경을 개선하고자 ...
+    @SerializedName("end_date")
     @Expose
-    val endDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("entryFee")
+    val endDate: String = "", // 2021-12-25 00:00:00
+    @SerializedName("entry_fee")
     @Expose
     val entryFee: Int = 0, // 0
+    @SerializedName("id")
+    @Expose
+    val id: Int = 0, // 0
     @SerializedName("location")
     @Expose
-    val location: String = "", // string
-    @SerializedName("managerContact")
+    val location: String = "", // 서울특별시 마포구 도화동 353-2
+    @SerializedName("manager_contact")
     @Expose
-    val managerContact: String = "", // string
-    @SerializedName("managerName")
+    val managerContact: String = "", // 010-1234-5678
+    @SerializedName("manager_name")
     @Expose
-    val managerName: String = "", // string
+    val managerName: String = "", // 김철수
     @SerializedName("organization")
     @Expose
-    val organization: Organization = Organization(),
-    @SerializedName("period")
+    val organization: Organization,
+    @SerializedName("program_files")
     @Expose
-    val period: String = "", // string
-    @SerializedName("programFiles")
+    val programFiles: List<ProgramFile>,
+    @SerializedName("recruit_end_date")
     @Expose
-    val programFiles: List<ProgramFile> = listOf(),
-    @SerializedName("programId")
+    val recruitEndDate: String = "", // 2021-12-25 00:00:00
+    @SerializedName("recruit_number")
     @Expose
-    val programId: Int = 0, // 0
-    @SerializedName("recruitEndDate")
+    val recruitNumber: Int = 0, // 10
+    @SerializedName("recruit_start_date")
     @Expose
-    val recruitEndDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("recruitNumber")
+    val recruitStartDate: String = "", // 2021-12-25 00:00:00
+    @SerializedName("recruit_status")
     @Expose
-    val recruitNumber: Int = 0, // 0
-    @SerializedName("recruitStartDate")
+    val recruitStatus: String = "", // RECRUITING
+    @SerializedName("start_date")
     @Expose
-    val recruitStartDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("recruitStatus")
-    @Expose
-    val recruitStatus: String = "", // DONE
-    @SerializedName("startDate")
-    @Expose
-    val startDate: String = "", // yyyy-MM-dd kk:mm:ss
-    @SerializedName("targetAge")
+    val startDate: String = "", // 2021-12-25 00:00:00
+    @SerializedName("target_age")
     @Expose
     val targetAge: String = "", // string
     @SerializedName("thumbnail")
     @Expose
-    val thumbnail: Thumbnail = Thumbnail(),
+    val thumbnail: Thumbnail,
     @SerializedName("title")
     @Expose
-    val title: String = "", // string
+    val title: String = "", // 청소년동아리지원사업 '스스로 프로젝트'
     @SerializedName("url")
     @Expose
-    val url: String = "", // string
-    @SerializedName("volunteerType")
-    @Expose
-    val volunteerType: String = "" // GROUP
+    val url: String = "" // https://mwyouth.org/
 )

@@ -13,90 +13,84 @@ data class YouthListResponse(
     val message: String = "", // Program 전체 조회
     @SerializedName("data")
     @Expose
-    val `data`: YouthData = YouthData()
+    val `data`: YouthData,
 )
 data class YouthData(
     @SerializedName("content")
     @Expose
     val content: List<Youth> = listOf(),
-    @SerializedName("pageable")
+    @SerializedName("empty")
     @Expose
-    val pageable: Pageable = Pageable(),
-    @SerializedName("totalPages")
-    @Expose
-    val totalPages: Int = 0, // 2
-    @SerializedName("totalElements")
-    @Expose
-    val totalElements: Int = 0, // 11
-    @SerializedName("last")
-    @Expose
-    val last: Boolean = false, // false
-    @SerializedName("number")
-    @Expose
-    val number: Int = 0, // 0
-    @SerializedName("size")
-    @Expose
-    val size: Int = 0, // 10
-    @SerializedName("numberOfElements")
-    @Expose
-    val numberOfElements: Int = 0, // 10
+    val empty: Boolean = false, // true
     @SerializedName("first")
     @Expose
     val first: Boolean = false, // true
-    @SerializedName("empty")
+    @SerializedName("last")
     @Expose
-    val empty: Boolean = false // false
+    val last: Boolean = false, // true
+    @SerializedName("number")
+    @Expose
+    val number: Int = 0, // 0
+    @SerializedName("numberOfElements")
+    @Expose
+    val numberOfElements: Int = 0, // 0
+    @SerializedName("pageable")
+    @Expose
+    val pageable: Pageable,
+    @SerializedName("size")
+    @Expose
+    val size: Int = 0, // 0
+    @SerializedName("sort")
+    @Expose
+    val sort: Sort,
+    @SerializedName("totalElements")
+    @Expose
+    val totalElements: Int = 0, // 0
+    @SerializedName("totalPages")
+    @Expose
+    val totalPages: Int = 0 // 0
 )
 data class Youth(
-    @SerializedName("programId")
-    @Expose
-    val programId: Int, // 1
-    @SerializedName("title")
-    @Expose
-    val title: String = "", // 테스트 제목
-    @SerializedName("startDate")
-    @Expose
-    val startDate: String = "", // 2021-10-10 01:14:55
-    @SerializedName("endDate")
-    @Expose
-    val endDate: String = "", // 2021-12-14 16:34:22
-    @SerializedName("recruitStartDate")
-    @Expose
-    val recruitStartDate: String = "", // 2021-12-14 16:34:23
-    @SerializedName("recruitEndDate")
-    @Expose
-    val recruitEndDate: String = "", // 2021-12-14 16:34:24
-    @SerializedName("recruitNumber")
-    @Expose
-    val recruitNumber: Int = 0, // 10
-    @SerializedName("recruitStatus")
-    @Expose
-    val recruitStatus: String = "", // RECRUITING
-    @SerializedName("targetAge")
-    @Expose
-    val targetAge: String = "", // 초|중|고
-    @SerializedName("entryFee")
-    @Expose
-    val entryFee: Int = 0, // 100
-    @SerializedName("caution")
-    @Expose
-    val caution: String = "", // 주의사항
-    @SerializedName("period")
-    @Expose
-    val period: String = "", // 주기
-    @SerializedName("volunteerType")
-    @Expose
-    val volunteerType: String = "", // INDIVIDUAL
-    @SerializedName("organization")
-    @Expose
-    val organization: Organization = Organization(),
-    @SerializedName("thumbnail")
-    @Expose
-    val thumbnail: Thumbnail = Thumbnail(),
     @SerializedName("category")
     @Expose
-    val category: Category = Category(),
+    val category: Category,
     @SerializedName("description")
     @Expose
     val description: String = "", // string
+    @SerializedName("end_date")
+    @Expose
+    val endDate: String = "", // yyyy-MM-dd kk:mm:ss
+    @SerializedName("entry_fee")
+    @Expose
+    val entryFee: Int = 0, // 0
+    @SerializedName("organization")
+    @Expose
+    val organization: Organization,
+    @SerializedName("program_id")
+    @Expose
+    val programId: Int = 0, // 0
+    @SerializedName("recruit_end_date")
+    @Expose
+    val recruitEndDate: String = "", // yyyy-MM-dd kk:mm:ss
+    @SerializedName("recruit_number")
+    @Expose
+    val recruitNumber: Int = 0, // 0
+    @SerializedName("recruit_start_date")
+    @Expose
+    val recruitStartDate: String = "", // yyyy-MM-dd kk:mm:ss
+    @SerializedName("recruit_status")
+    @Expose
+    val recruitStatus: String = "", // DONE
+    @SerializedName("start_date")
+    @Expose
+    val startDate: String = "", // yyyy-MM-dd kk:mm:ss
+    @SerializedName("target_age")
+    @Expose
+    val targetAge: String = "", // string
+    @SerializedName("thumbnail")
+    @Expose
+    val thumbnail: Thumbnail,
+    @SerializedName("title")
+    @Expose
+    val title: String = "" // string
 )

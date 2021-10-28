@@ -30,55 +30,49 @@ data class Organization(
 ) : Serializable
 
 data class Pageable(
-    @SerializedName("offset")
-    @Expose
-    val offset: Int = 0, // 0
-    @SerializedName("pageNumber")
+    @SerializedName("page")
     @Expose
     val pageNumber: Int = 0, // 0
-    @SerializedName("pageSize")
+    @SerializedName("size")
     @Expose
     val pageSize: Int = 0, // 10
-    @SerializedName("paged")
+    @SerializedName("sort")
     @Expose
-    val paged: Boolean = false, // true
-    @SerializedName("unpaged")
-    @Expose
-    val unpaged: Boolean = false // false
+    val sort: Sort
 )
 
 data class Thumbnail(
-    @SerializedName("originalFileName")
+    @SerializedName("original_file_name")
     @Expose
     val originalFileName: String = "", // twice_jihyo.png
-    @SerializedName("fileName")
+    @SerializedName("file_name")
     @Expose
     val fileName: String = "", // thumb_a062718d-23cb-4b9d-939a-e05ecef2f4d5.png
-    @SerializedName("fileUri")
+    @SerializedName("file_uri")
     @Expose
     val fileUri: String = "", // http://52.78.206.155:8080/file/thumb_a062718d-23cb-4b9d-939a-e05ecef2f4d5.png
-    @SerializedName("fileSize")
+    @SerializedName("file_size")
     @Expose
     val fileSize: Int = 0 // 101
 )
 
 data class ProgramFile(
-    @SerializedName("fileName")
+    @SerializedName("file_name")
     @Expose
     val fileName: String = "", // string
-    @SerializedName("fileSize")
+    @SerializedName("file_size")
     @Expose
     val fileSize: Int = 0, // 0
-    @SerializedName("fileUri")
+    @SerializedName("file_uri")
     @Expose
     val fileUri: String = "", // string
-    @SerializedName("originalFileName")
+    @SerializedName("original_file_name")
     @Expose
     val originalFileName: String = "" // string
 )
 
 data class Category(
-    @SerializedName("categoryId")
+    @SerializedName("category_id")
     @Expose
     val categoryId: Int = 0, // 0
     @SerializedName("level")
@@ -87,7 +81,7 @@ data class Category(
     @SerializedName("name")
     @Expose
     val name: String = "", // string
-    @SerializedName("parentName")
+    @SerializedName("parent_name")
     @Expose
     val parentName: String = "" // string
 )

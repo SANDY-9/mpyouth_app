@@ -15,4 +15,9 @@
 검색, 설정
 <br><br>
 ## 🛠 기술 스택
-kotlin JAVA11 Android Studio Arctic Fox androidx androidx ktx 1.6.0 androidx appcompat 1.3.1 google material 1.4.0 material legacy suppor v4:1.0 androidx junit 4 androidx espresso core 3.4.0 androidx navigation Components 2.3.5 lifecycle 2.3.1 androidx paging 3.1.0 google dagger hilt 2.39 bumptech glide 4.12.0 squareup retrofit2 2.9.0 tbuonomo dotsindicator 4.2
+<img src="https://img.shields.io/badge/Android-34A853?style=flat&logo=android&logoColor=white"/> <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat&logo=Kotlin&logoColor=white"/> <img src="https://img.shields.io/badge/MVVM-000000?style=flat&logo=&logoColor=white"/> <img src="https://img.shields.io/badge/RESTful API-000000?style=flat&logo=&logoColor=000000"/> </br>
++ AAC(Android Architecture Component) : Lifecycles, LiveData, ViewModel, Paging, DataBinding, Navigation
++ Dagger-Hilt
++ Retrofit2
++ Coroutine
++ Glide
